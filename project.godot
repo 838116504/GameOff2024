@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[addon]
+
+scene_transition/transtion_path="res://addons/scene_transition/transition.tscn"
+
+[application]
+
+config/name="Game Off 2024"
+run/main_scene="res://scene/title/title_scene.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+user_setting="*res://autoload/user_setting.gd"
+volume_setting="*res://autoload/volume_setting.gd"
+bgm_manager="*res://autoload/bgm_manager.gd"
+sound_bus="*res://autoload/sound_bus.gd"
+event_bus="*res://autoload/event_bus.gd"
+scene_transition="*res://autoload/scene_transition.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/id_table_convert/plugin.cfg", "res://addons/scene_transition/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://asset/font/SourceHanSansSC-Bold-2.otf"
