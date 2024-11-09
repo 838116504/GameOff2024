@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dwlmbn8ht4r1v"
+
+[deps]
+
+files=["res://asset/tr/level_edit_scene.zh.translation", "res://asset/tr/level_edit_scene.en.translation"]
+
+source_file="res://asset/tr/level_edit_scene.csv"
+dest_files=["res://asset/tr/level_edit_scene.zh.translation", "res://asset/tr/level_edit_scene.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

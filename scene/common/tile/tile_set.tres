@@ -1,0 +1,37 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ic24y1qifkto"]
+
+[ext_resource type="Texture2D" uid="uid://d4gdrws5qf2hv" path="res://asset/img/tile/floor.png" id="1_3kt2j"]
+[ext_resource type="Texture2D" uid="uid://blsucd18y7xlk" path="res://asset/img/tile/void.png" id="2_h8b1t"]
+[ext_resource type="Texture2D" uid="uid://6ryf8yettkdb" path="res://asset/img/tile/wall.png" id="3_7v5qv"]
+[ext_resource type="Texture2D" uid="uid://on50fnjemxox" path="res://asset/img/tile/cracked_wall.png" id="4_4ya1u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5q82t"]
+resource_name = "地板"
+texture = ExtResource("1_3kt2j")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7kx17"]
+resource_name = "虛空"
+texture = ExtResource("2_h8b1t")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2aw5l"]
+resource_name = "牆"
+texture = ExtResource("3_7v5qv")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x61um"]
+resource_name = "破解了的牆"
+texture = ExtResource("4_4ya1u")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(70, 70)
+sources/1 = SubResource("TileSetAtlasSource_5q82t")
+sources/2 = SubResource("TileSetAtlasSource_7kx17")
+sources/3 = SubResource("TileSetAtlasSource_2aw5l")
+sources/4 = SubResource("TileSetAtlasSource_x61um")

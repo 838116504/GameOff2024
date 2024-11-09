@@ -7,14 +7,11 @@ var blocked := false
 var node:Node2D
 
 
-func get_id() -> int:
+func get_map_item_id() -> int:
 	return 0
 
 func create_node() -> Node2D:
 	return null
-
-func get_edit_property_list() -> Array:
-	return []
 
 func _map_item_entered(_item):
 	pass

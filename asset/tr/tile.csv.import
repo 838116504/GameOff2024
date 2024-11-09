@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://5ygq11a303dm"
+
+[deps]
+
+files=["res://asset/tr/tile.zh.translation", "res://asset/tr/tile.en.translation"]
+
+source_file="res://asset/tr/tile.csv"
+dest_files=["res://asset/tr/tile.zh.translation", "res://asset/tr/tile.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

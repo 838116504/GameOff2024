@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SkillTable" load_steps=5 format=3 uid="uid://by0dp3kg3vhiu"]
+
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_6o63p"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_lqrvb"]
+
+[sub_resource type="Resource" id="Resource_hmxqi"]
+script = ExtResource("1_6o63p")
+id = 1
+name = "SKILL_1"
+description = "SKILL_DESC_1"
+icon = "1.png"
+action_first = 1
+cd = 3
+strike_damage = 3
+thrust_damage = 0
+slash_damage = 0
+strike_damage_rate = 1.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_iws2v"]
+script = ExtResource("1_6o63p")
+id = 2
+name = "SKILL_2"
+description = "SKILL_DESC_2"
+icon = "2.png"
+action_first = 0
+cd = 6
+strike_damage = 6
+thrust_damage = 0
+slash_damage = 0
+strike_damage_rate = 2.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[resource]
+script = ExtResource("2_lqrvb")
+row_list = Array[ExtResource("1_6o63p")]([SubResource("Resource_hmxqi"), SubResource("Resource_iws2v")])

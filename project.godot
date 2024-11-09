@@ -27,6 +27,7 @@ bgm_manager="*res://autoload/bgm_manager.gd"
 sound_bus="*res://autoload/sound_bus.gd"
 event_bus="*res://autoload/event_bus.gd"
 scene_transition="*res://autoload/scene_transition.gd"
+table_set="*res://autoload/table_set.gd"
 
 [display]
 
@@ -42,3 +43,7 @@ enabled=PackedStringArray("res://addons/id_table_convert/plugin.cfg", "res://add
 [gui]
 
 theme/custom_font="res://asset/font/SourceHanSansSC-Bold-2.otf"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://asset/tr/level_edit_scene.en.translation", "res://asset/tr/level_edit_scene.zh.translation", "res://asset/tr/skill.en.translation", "res://asset/tr/skill.zh.translation", "res://asset/tr/unit.en.translation", "res://asset/tr/unit.zh.translation", "res://asset/tr/tile.en.translation", "res://asset/tr/tile.zh.translation")

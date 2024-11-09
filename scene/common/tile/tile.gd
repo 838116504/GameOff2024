@@ -2,13 +2,11 @@ extends Resource
 class_name Tile
 
 @export var name:String
-@export var texture:Texture2D
+@export var tile_id:int
 @export var blocked:bool = true
 
-func create_tile():
-	var tile = Sprite2D.new()
-	tile.texture = texture
-	return tile
+func get_tile_id():
+	return tile_id
 
 func get_tile_name() -> String:
 	return name

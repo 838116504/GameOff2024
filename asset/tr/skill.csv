@@ -1,0 +1,33 @@
+﻿keys,zh,en
+SKILL_1,直拳,Jab
+SKILL_DESC_1,對面前一格造成{damage}，先手,"Deal {damage} to he front cell, action first"
+SKILL_2,重拳,Heavy Punch
+SKILL_DESC_2,對面前一格造成{damage},Deal {damage} to the front cell
+SKILL_3,推,Push
+SKILL_DESC_3,對面前一格造成{damage}並擊退,Deal {damage} to target in the front cell and repel
+SKILL_4,翻倒,Tip
+SKILL_DESC_4,把面前一格目標丟到身后並造成{damage}\n身後沒有空地时失效,Throws the person in front of you to the back and deal {damage} \nInvalid if there is no empty cell behind you
+SKILL_5,射箭,Archery
+SKILL_DESC_5,對面前第一個目標造成{damage},Deal {damage} to the first target ahead
+SKILL_6,陷阱,Trap
+SKILL_DESC_6,在面前放置一個陷阱，對進入的人造成{damage},Place a trap in the cell ahead. Trap deals {damage} to anyone who enters
+SKILL_7,连射,Continuous Archery
+SKILL_DESC_7,對面前兩目標造成{damage}，需要填充1次,Deal {damage} to the first two targets ahead. Need to be recharged 1 time
+SKILL_8,暗箭,Shoot Hidden Arrow
+SKILL_DESC_8,對面前第一個目標造成{damage}，附加沒法移动1回合,"Deal {damage} to the first target ahead, and makes him unable to move for 1 turn"
+SKILL_9,水平斬,Horizontal Slash
+SKILL_DESC_9,對前面兩格造成{damage},Deal {damage} to the two cells directly in front
+SKILL_10,回旋斬,Spinning Slash
+SKILL_DESC_10,對前後一格造成{damage},Deal {damage} to the front and back cells
+SKILL_11,居合斬,Lai Slash
+SKILL_DESC_11,對面前一格造成{damage}，傷害隨着放置的回合增加,"Deal {damage} to the front cell, and the damage increases with the round it is placed"
+SKILL_12,霹靂一閃,Flash Of Thunder
+SKILL_DESC_12,移動到面前最前的空地，對路過的人造成{damage},Move to the frontmost empty cell and deal {damage} to people passing by
+SKILL_13,格檔,Block
+SKILL_DESC_13,進入免疫傷害狀態直到下一階段\n放置无行動消耗,Enters a state of immunity to damage until the next stage\nThere is no turn consumption when placed
+SKILL_14,換位,Transposition
+SKILL_DESC_14,和面前一格的人換位\n放置无行動消耗,Change places with the person in front of cell\nThere is no turn consumption when placed
+SKILL_15,轉向,Turn
+SKILL_DESC_15,改變方向\n放置无行動消耗,Change direction\nThere is no turn consumption when placed
+SKILL_16,衝刺,Dash
+SKILL_DESC_16,衝到最前方\n放置无行動消耗,Rush to the front

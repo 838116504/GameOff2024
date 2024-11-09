@@ -29,6 +29,11 @@ func get_height() -> int:
 func _to_map_position_id(p_pos:Vector2i):
 	return p_pos.y * get_width() + p_pos.x
 
+func get_item(p_pos:Vector2i):
+	return item_list[_to_map_position_id(p_pos)]
+
+func get_tile(p_pos:Vector2i):
+	return tile_list[_to_map_position_id(p_pos)]
 
 func set_item(p_layer:int, p_pos:Vector2i, p_id:int):
 	before_item_changed.emit(p_layer, p_pos, p_id)
