@@ -309,10 +309,14 @@ func open(p_path):
 	if file == null:
 		return
 	
+	file_path = p_path
 	var data = file.get_var()
 	var loadMap = Map.new()
 	loadMap.set_data(data)
 	map = loadMap
+	
+	version = undo_redo.get_version()
+	update_file_btn_text()
 
 func init_save_confirm_dialoge():
 	var dialog = get_save_confirm_dialog()

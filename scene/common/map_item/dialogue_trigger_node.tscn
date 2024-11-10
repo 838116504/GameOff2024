@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://c2adbrotlh28p"]
+[gd_scene load_steps=2 format=3 uid="uid://c2adbrotlh28p"]
 
-[node name="dialogue_trigger_node" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cj22i0fudgynr" path="res://asset/img/map_item/dialogue.png" id="1_8jcy7"]
+
+[node name="dialogue_trigger_node" type="Sprite2D"]
+texture = ExtResource("1_8jcy7")
