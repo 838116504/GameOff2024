@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://4gb4nvuh3hkp"]
+
+[ext_resource type="Script" path="res://scene/level_edit/tile_btn.gd" id="1_lmvsb"]
+
+[node name="tile_btn" type="TextureButton"]
+custom_minimum_size = Vector2(72, 72)
+stretch_mode = 3
+script = ExtResource("1_lmvsb")

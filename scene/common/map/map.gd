@@ -9,16 +9,23 @@ signal item_swapped(p_layer:int, p_a:Vector2i, p_b:Vector2i)
 
 signal before_tile_changed(p_layer:int, p_pos:Vector2i, p_id:int)
 signal tile_changed(p_layer:int, p_pos:Vector2i, p_id:int)
+signal layer_changed(p_layer:int)
 
 
+@export var default_tile_id:int = 1
+
+## 物品id / [ 物品id, data ] / MapItem
 var item_list := []
-var tile_list := []
+var tile_id_list:Array = []
 var entrance_layer:int = 0
 var entrance_position:Vector2i
 
 
+func _init():
+	add_layer(1)
+
 func get_layer() -> int:
-	return tile_list.size()
+	return tile_id_list.size()
 
 func get_width() -> int:
 	return 15
@@ -29,11 +36,34 @@ func get_height() -> int:
 func _to_map_position_id(p_pos:Vector2i):
 	return p_pos.y * get_width() + p_pos.x
 
-func get_item(p_pos:Vector2i):
-	return item_list[_to_map_position_id(p_pos)]
+func get_item(p_layer:int, p_pos:Vector2i):
+	var posId = _to_map_position_id(p_pos)
+	var itemData = item_list[p_layer][posId]
+	if itemData == null:
+		return null
+	
+	if itemData is int:
+		if itemData < 1 || itemData >= MapItemConst.MAP_ITEM_LIST.size():
+			return null
+		
+		var ret = MapItemConst.MAP_ITEM_LIST[itemData].new()
+		item_list[p_layer][posId] = ret
+		return ret
+	
+	if itemData is Array:
+		var ret = MapItemConst.MAP_ITEM_LIST[itemData[0]].new()
+		ret.set_data(itemData[1])
+		item_list[p_layer][posId] = ret
+		return ret
+	
+	return itemData
 
-func get_tile(p_pos:Vector2i):
-	return tile_list[_to_map_position_id(p_pos)]
+func get_tile(p_layer:int, p_pos:Vector2i):
+	var ret = TileConst.TILE_LIST[tile_id_list[p_layer][_to_map_position_id(p_pos)]]
+	if ret == null:
+		ret = TileConst.TILE_LIST[default_tile_id]
+	
+	return ret
 
 func set_item(p_layer:int, p_pos:Vector2i, p_id:int):
 	before_item_changed.emit(p_layer, p_pos, p_id)
@@ -51,6 +81,15 @@ func move_item(p_layer:int, p_from:Vector2i, p_to:Vector2i):
 	
 	item_moved.emit(p_layer, p_from, p_to)
 
+func erase_item(p_layer:int, p_pos:Vector2i):
+	item_list[p_layer][_to_map_position_id(p_pos)] = 0
+	item_changed.emit(p_layer, p_pos, 0)
+
+func set_item_layer(p_layer:int, p_pos:Vector2i, p_target_layer:int):
+	var id = _to_map_position_id(p_pos)
+	item_list[p_target_layer][id] = item_list[p_layer][id]
+	item_list[p_layer][id] = 0
+
 func swap_item(p_layer:int, p_a:Vector2i, p_b:Vector2i):
 	var aId = _to_map_position_id(p_a)
 	var bId = _to_map_position_id(p_b)
@@ -62,15 +101,34 @@ func swap_item(p_layer:int, p_a:Vector2i, p_b:Vector2i):
 
 func set_tile(p_layer:int, p_pos:Vector2i, p_id:int):
 	before_tile_changed.emit(p_layer, p_pos, p_id)
-	tile_list[p_layer][_to_map_position_id(p_pos)] = p_id
+	tile_id_list[p_layer][_to_map_position_id(p_pos)] = p_id
 	tile_changed.emit(p_layer, p_pos, p_id)
 
 func is_tile_blocked(p_layer:int, p_pos:Vector2i) -> bool:
-	var id = _to_map_position_id(p_pos)
-	return tile_list[p_layer][id] == null || !tile_list[p_layer][id].is_blocked()
+	var tile = get_tile(p_layer, p_pos)
+	return tile == null || !tile.is_blocked()
+
+func add_layer(p_value:int):
+	if p_value == 0:
+		return
+	
+	var curLayer = get_layer()
+	var nextLayer = max(curLayer + p_value, 0)
+	tile_id_list.resize(nextLayer)
+	item_list.resize(nextLayer)
+	var s = get_width() * get_height()
+	if nextLayer > curLayer:
+		for i in range(curLayer, nextLayer):
+			tile_id_list[i] = []
+			tile_id_list[i].resize(s)
+			tile_id_list[i].fill(0)
+			item_list[i] = []
+			item_list[i].resize(s)
+	
+	layer_changed.emit(nextLayer)
 
 func get_data():
-	return { "item_list":item_list, "tile_list": tile_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position}
+	return { "item_list":item_list, "tile_id_list": tile_id_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position}
 
 func set_data(p_data):
 	var keys = p_data.keys()

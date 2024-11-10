@@ -4,6 +4,7 @@ class_name Tile
 @export var name:String
 @export var tile_id:int
 @export var blocked:bool = true
+@export var layer:int = 0
 
 func get_tile_id():
 	return tile_id

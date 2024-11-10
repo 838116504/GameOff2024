@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbg2poyxvru2l"
-path="res://.godot/imported/downstairs.png-de93b6631692244e35fc33c361c49b6e.ctex"
+uid="uid://c2skipj0oh3su"
+path="res://.godot/imported/file_btn_hover.png-5567dedd1b791434bc64df2c491310cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/img/map_item/downstairs.png"
-dest_files=["res://.godot/imported/downstairs.png-de93b6631692244e35fc33c361c49b6e.ctex"]
+source_file="res://asset/img/ui/level_edit_scene/file_btn_hover.png"
+dest_files=["res://.godot/imported/file_btn_hover.png-5567dedd1b791434bc64df2c491310cd.ctex"]
 
 [params]
 

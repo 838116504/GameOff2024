@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://evemiefxepxo"]
+
+[ext_resource type="Texture2D" uid="uid://0bf1mregdp01" path="res://asset/img/map_item/red_door.png" id="1_usf4w"]
+
+[node name="red_door_node" type="Sprite2D"]
+texture = ExtResource("1_usf4w")

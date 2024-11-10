@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bybuxx4ylw1pv"]
+
+[ext_resource type="Texture2D" uid="uid://wabkxhx77j5b" path="res://asset/img/ui/level_edit_scene/item_btn.png" id="1_pxow6"]
+[ext_resource type="Script" path="res://scene/level_edit/item_btn.gd" id="2_7mp2b"]
+
+[node name="item_btn" type="TextureButton"]
+custom_minimum_size = Vector2(72, 72)
+texture_normal = ExtResource("1_pxow6")
+script = ExtResource("2_7mp2b")
+
+[node name="center" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

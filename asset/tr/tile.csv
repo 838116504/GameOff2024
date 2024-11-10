@@ -3,3 +3,5 @@ TILE_1,地板,Floor
 TILE_2,虛空,Void
 TILE_3,牆,Wall
 TILE_4,破解的牆,Cracked wall
+TILE_5,上樓梯,Upstairs
+TILE_6,下樓梯,Downstairs

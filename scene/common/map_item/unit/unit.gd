@@ -42,7 +42,7 @@ func set_id(p_value):
 		hp = row.hp
 
 func get_map_item_id() -> int:
-	return MapItemConst.BASE_UNIT_ID
+	return MapItemConst.MapItemId.UNIT
 
 func _mouse_entered():
 	pass

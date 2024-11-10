@@ -13,6 +13,8 @@ signal data_count_changed(p_count:int)
 signal yellow_key_count_changed(p_count:int)
 signal blue_key_count_changed(p_count:int)
 signal red_key_count_changed(p_count:int)
+signal bug_count_changed(p_count:int)
+signal layer_changed(p_layer:int)
 
 
 var strike_def:int
@@ -23,6 +25,8 @@ var data_count:int = 0 : set = set_data_count
 var yellow_key_count:int = 0 : set = set_yellow_key_count
 var blue_key_count:int = 0 : set = set_blue_key_count
 var red_key_count:int = 0 : set = set_red_key_count
+var bug_count:int = 0 : set = set_bug_count
+var layer:int = 0 : set = set_layer
 
 
 func add_data(p_id:int, p_count:int = 1):
@@ -71,3 +75,17 @@ func set_red_key_count(p_value):
 	
 	red_key_count = p_value
 	red_key_count_changed.emit(red_key_count)
+
+func set_bug_count(p_value):
+	if bug_count == p_value:
+		return
+	
+	bug_count = p_value
+	bug_count_changed.emit(bug_count)
+
+func set_layer(p_layer):
+	if layer == p_layer:
+		return
+	
+	layer = p_layer
+	layer_changed.emit(layer)

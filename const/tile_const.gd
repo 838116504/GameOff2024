@@ -3,7 +3,7 @@ class_name TileConst
 
 const TILE_SET = preload("res://scene/common/tile/tile_set.tres")
 enum TileId {
-	FLOOR = 1, VOID, WALL, CRASHED_WALL
+	FLOOR = 1, VOID, WALL, CRASHED_WALL, UPSTAIRS, DOWNSTAIRS
 }
 
 const TILE_LIST = [
@@ -12,4 +12,6 @@ const TILE_LIST = [
 	preload("res://scene/common/tile/void.tres"),
 	preload("res://scene/common/tile/wall.tres"),
 	preload("res://scene/common/tile/crashed_wall.tres"),
+	preload("res://scene/common/tile/upstairs.tres"),
+	preload("res://scene/common/tile/downstairs.tres"),
 ]

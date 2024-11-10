@@ -3,3 +3,15 @@ LES_LEFT,右,Left
 LES_RIGHT,右,Right
 LES_FIGHT_X,戰斗初始位置,Fight Position
 LES_FIGHT_DIRECTION,戰斗初始方向,Fight Direction
+LES_CURRENT_LAYER,當前層,Current Layer
+LES_ENTRANCE,入口,Entrance
+LES_ITEM_TAB,物品,Item
+LES_TILE_TAB,瓦块,Tile
+LES_UNNAMED,未命名,Unnamed
+LES_SAVE,保存,Save
+LES_NO_SAVE,不保存,No Save
+LES_CANCEL,取消,Cancel
+LES_SAVE_CONFIRM_TEXT,是否保存修改內容?,Do you want to save the changes?
+LES_NEW,新建,New
+LES_OPEN,打开,Open
+LES_SAVE_AS,另存,Save As

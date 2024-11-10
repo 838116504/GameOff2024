@@ -1,4 +1,56 @@
-[gd_scene format=3 uid="uid://bxjrydcmttav4"]
+[gd_scene load_steps=19 format=3 uid="uid://bxjrydcmttav4"]
+
+[ext_resource type="Script" path="res://scene/level_edit/level_edit_scene.gd" id="1_6484w"]
+[ext_resource type="Texture2D" uid="uid://c2skipj0oh3su" path="res://asset/img/ui/level_edit_scene/file_btn_hover.png" id="1_nfpaj"]
+[ext_resource type="Texture2D" uid="uid://d1vqbgsy15ln" path="res://asset/img/ui/level_edit_scene/undo_btn.png" id="3_yhlh7"]
+[ext_resource type="Script" path="res://scene/level_edit/undo_btn.gd" id="4_7qtnm"]
+[ext_resource type="Texture2D" uid="uid://c4c0s6fakhsj1" path="res://asset/img/ui/level_edit_scene/redo_btn.png" id="4_vocaa"]
+[ext_resource type="Script" path="res://scene/level_edit/select_tab_cntr.gd" id="6_2d6id"]
+[ext_resource type="Script" path="res://scene/level_edit/redo_btn.gd" id="6_3cnle"]
+[ext_resource type="Texture2D" uid="uid://diqk52d6ltjsq" path="res://asset/img/ui/level_edit_scene/cursor_btn.png" id="6_jykpi"]
+[ext_resource type="Script" path="res://scene/common/map/map_view.gd" id="6_yf4nk"]
+[ext_resource type="Texture2D" uid="uid://dh8d2badc7ck7" path="res://asset/img/ui/level_edit_scene/select_box.png" id="7_vhc3l"]
+[ext_resource type="Script" path="res://scene/level_edit/save_file_dialog.gd" id="11_0hbof"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3gcc"]
+bg_color = Color(0.898039, 0.898039, 0.898039, 1)
+
+[sub_resource type="Theme" id="Theme_r7q65"]
+PopupMenu/font_sizes/font_size = 24
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vl4pj"]
+texture = ExtResource("1_nfpaj")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4i2wx"]
+texture = ExtResource("1_nfpaj")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfphr"]
+texture = ExtResource("1_nfpaj")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.05662
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epl6g"]
+texture = ExtResource("1_nfpaj")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.05662
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xt3t"]
+texture_margin_left = 3.0
+texture_margin_right = 3.0
 
 [node name="level_edit_scene" type="Control"]
 layout_mode = 3
@@ -7,3 +59,224 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6484w")
+
+[node name="color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+
+[node name="top_bar_panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+offset_right = 870.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q3gcc")
+
+[node name="hbox" type="HBoxContainer" parent="top_bar_panel"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="file_btn" type="MenuButton" parent="top_bar_panel/hbox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_r7q65")
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_vl4pj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4i2wx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mfphr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_epl6g")
+text = "文件名字"
+item_count = 4
+popup/item_0/text = "LES_NEW"
+popup/item_1/text = "LES_OPEN"
+popup/item_1/id = 1
+popup/item_2/text = "LES_SAVE"
+popup/item_2/id = 2
+popup/item_3/text = "LES_SAVE_AS"
+popup/item_3/id = 3
+
+[node name="vsep" type="VSeparator" parent="top_bar_panel/hbox"]
+layout_mode = 2
+
+[node name="undo_btn" type="Button" parent="top_bar_panel/hbox"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Undo"
+theme_override_icons/icon = ExtResource("3_yhlh7")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5xt3t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xt3t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5xt3t")
+disabled = true
+script = ExtResource("4_7qtnm")
+
+[node name="redo_btn" type="Button" parent="top_bar_panel/hbox"]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Redo"
+theme_override_icons/icon = ExtResource("4_vocaa")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5xt3t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xt3t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5xt3t")
+disabled = true
+script = ExtResource("6_3cnle")
+
+[node name="left_ui" type="Panel" parent="."]
+layout_mode = 2
+offset_top = 50.0
+offset_right = 870.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="hbox" type="HBoxContainer" parent="left_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+
+[node name="current_layer_label" type="Label" parent="left_ui/hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "LES_CURRENT_LAYER"
+
+[node name="current_layer_edit" type="SpinBox" parent="left_ui/hbox"]
+layout_mode = 2
+alignment = 1
+suffix = "F"
+
+[node name="space" type="Control" parent="left_ui/hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="entrance_label" type="Label" parent="left_ui/hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "LES_ENTRANCE"
+
+[node name="entrance_layer_edit" type="SpinBox" parent="left_ui/hbox"]
+layout_mode = 2
+alignment = 1
+suffix = "F"
+
+[node name="entrance_x_edit" type="SpinBox" parent="left_ui/hbox"]
+layout_mode = 2
+max_value = 14.0
+alignment = 1
+prefix = "x"
+
+[node name="entrance_y_edit" type="SpinBox" parent="left_ui/hbox"]
+layout_mode = 2
+max_value = 14.0
+alignment = 1
+prefix = "y"
+
+[node name="select_tab_cntr" type="TabContainer" parent="left_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+current_tab = 0
+script = ExtResource("6_2d6id")
+map_input_path = NodePath("../../map_view/map_input")
+
+[node name="item_scroll_cntr" type="ScrollContainer" parent="left_ui/select_tab_cntr"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="item_hflow_cntr" type="HFlowContainer" parent="left_ui/select_tab_cntr/item_scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cursor_btn" type="TextureButton" parent="left_ui/select_tab_cntr/item_scroll_cntr/item_hflow_cntr"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture_normal = ExtResource("6_jykpi")
+
+[node name="select_box_patch" type="NinePatchRect" parent="left_ui/select_tab_cntr/item_scroll_cntr/item_hflow_cntr/cursor_btn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vhc3l")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="tile_scroll_cntr" type="ScrollContainer" parent="left_ui/select_tab_cntr"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="tile_hflow_cntr" type="HFlowContainer" parent="left_ui/select_tab_cntr/tile_scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="map_view" type="Control" parent="."]
+custom_minimum_size = Vector2(1050, 1050)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 870.0
+offset_top = 15.0
+offset_right = 1920.0
+offset_bottom = 1065.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("6_yf4nk")
+
+[node name="map_input" type="Control" parent="map_view"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="save_comfirm_dialog" type="ConfirmationDialog" parent="."]
+size = Vector2i(500, 100)
+dialog_autowrap = true
+
+[node name="save_file_dialog" type="FileDialog" parent="."]
+size = Vector2i(800, 500)
+filters = PackedStringArray("*.lvl;Level File")
+script = ExtResource("11_0hbof")
+
+[node name="open_file_dialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(800, 500)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.lvl;Level File")
+
+[connection signal="item_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_item_put"]
+[connection signal="layer_changed" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_layer_changed"]
+[connection signal="tile_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_tile_put"]
+[connection signal="file_selected" from="open_file_dialog" to="." method="_on_open_file_dialog_file_selected"]

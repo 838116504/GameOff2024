@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc06gt4cbiobw"
-path="res://.godot/imported/upstairs.png-6e72b70016035a5c7403458ce82ff830.ctex"
+uid="uid://c4c0s6fakhsj1"
+path="res://.godot/imported/redo_btn.png-399c0fb4721ede5b476d06a8c6237f05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/img/map_item/upstairs.png"
-dest_files=["res://.godot/imported/upstairs.png-6e72b70016035a5c7403458ce82ff830.ctex"]
+source_file="res://asset/img/ui/level_edit_scene/redo_btn.png"
+dest_files=["res://.godot/imported/redo_btn.png-399c0fb4721ede5b476d06a8c6237f05.ctex"]
 
 [params]
 

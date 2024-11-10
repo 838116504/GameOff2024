@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhjlnfruf5lq0"]
+
+[ext_resource type="Texture2D" uid="uid://drcvmyfae26fs" path="res://asset/img/map_item/blue_key.png" id="1_hlnco"]
+
+[node name="blue_key_node" type="Sprite2D"]
+texture = ExtResource("1_hlnco")
