@@ -116,6 +116,12 @@ func init_item():
 		itemBtn.item = MapItemConst.MAP_ITEM_LIST[i].new()
 		itemBtn.pressed.connect(_on_item_btn_pressed.bind(itemBtn))
 		itemHflowCntr.add_child(itemBtn)
+	
+	for row in table_set.unit.get_row_list():
+		var itemBtn = ItemBtnScene.instantiate()
+		itemBtn.item = Unit.create_by_id(row.id)
+		itemBtn.pressed.connect(_on_item_btn_pressed.bind(itemBtn))
+		itemHflowCntr.add_child(itemBtn)
 
 func init_tile():
 	var tileHflowCntr = get_tile_hflow_cntr()

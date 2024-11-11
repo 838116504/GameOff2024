@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxjrydcmttav4"]
+[gd_scene load_steps=23 format=3 uid="uid://bxjrydcmttav4"]
 
 [ext_resource type="Script" path="res://scene/level_edit/level_edit_scene.gd" id="1_6484w"]
 [ext_resource type="Texture2D" uid="uid://c2skipj0oh3su" path="res://asset/img/ui/level_edit_scene/file_btn_hover.png" id="1_nfpaj"]
@@ -10,7 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://diqk52d6ltjsq" path="res://asset/img/ui/level_edit_scene/cursor_btn.png" id="6_jykpi"]
 [ext_resource type="Script" path="res://scene/common/map/map_view.gd" id="6_yf4nk"]
 [ext_resource type="Texture2D" uid="uid://dh8d2badc7ck7" path="res://asset/img/ui/level_edit_scene/select_box.png" id="7_vhc3l"]
+[ext_resource type="Script" path="res://scene/level_edit/map_item_detail_ui.gd" id="10_mid7w"]
 [ext_resource type="Script" path="res://scene/level_edit/save_file_dialog.gd" id="11_0hbof"]
+[ext_resource type="PackedScene" uid="uid://4cepv0oorf2c" path="res://scene/common/map_item_view/map_item_view_panel_cntr.tscn" id="11_tyxvh"]
+[ext_resource type="Script" path="res://scene/common/map_item_view/unit_view_vbox.gd" id="12_er1xq"]
+[ext_resource type="PackedScene" uid="uid://d7gh78udyw1g" path="res://scene/common/map_item_view/unit_panel_cntr.tscn" id="13_c57w5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3gcc"]
 bg_color = Color(0.898039, 0.898039, 0.898039, 1)
@@ -239,6 +243,63 @@ metadata/_tab_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="map_item_detail_ui" type="ColorRect" parent="left_ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.187176, 0.187176, 0.187176, 1)
+script = ExtResource("10_mid7w")
+
+[node name="scroll_cntr" type="ScrollContainer" parent="left_ui/map_item_detail_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="vbox" type="VBoxContainer" parent="left_ui/map_item_detail_ui/scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="map_item_view_panel_cntr" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox" instance=ExtResource("11_tyxvh")]
+visible = false
+layout_mode = 2
+
+[node name="unit_view_vbox" type="VBoxContainer" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox"]
+visible = false
+layout_mode = 2
+script = ExtResource("12_er1xq")
+
+[node name="unit_panel_cntr" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox/unit_view_vbox" instance=ExtResource("13_c57w5")]
+layout_mode = 2
+
+[node name="close_btn" type="Button" parent="left_ui/map_item_detail_ui"]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "X"
 
 [node name="map_view" type="Control" parent="."]
 custom_minimum_size = Vector2(1050, 1050)

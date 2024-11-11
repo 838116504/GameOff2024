@@ -15,4 +15,17 @@ const MAP_ITEM_LIST = [
 	preload("res://scene/common/map_item/red_key.gd"),
 	preload("res://scene/common/map_item/bug.gd"),
 	preload("res://scene/common/map_item/dialogue_trigger.gd"),
+	preload("res://scene/common/map_item/unit/unit.gd"),
+]
+
+const MAP_ITEM_ICON_FILE_LIST = [
+	"",
+	"yellow_door.png",
+	"blue_door.png",
+	"red_door.png",
+	"yellow_key.png",
+	"bule_key.png",
+	"red_key.png",
+	"bug.png",
+	"dialogue.png",
 ]

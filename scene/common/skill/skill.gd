@@ -27,7 +27,7 @@ func get_description() -> String:
 	return tr(row.description)
 
 func get_icon() -> Texture2D:
-	return load(DirConst.SKILL.path_join(row.icon))
+	return load(DirConst.SKILL_IMG.path_join(row.icon))
 
 func get_cd():
 	return max(row.cd + extra_cd, 0)
@@ -61,3 +61,8 @@ func round_start(_state):
 
 func is_action_first() -> bool:
 	return row.action_first != 0
+
+static func create_by_id(p_id:int):
+	var ret = Skill.new()
+	ret.id = p_id
+	return ret

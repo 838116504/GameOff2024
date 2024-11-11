@@ -1,6 +1,5 @@
 extends MapItem
 
-
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.BLUE_KEY
 

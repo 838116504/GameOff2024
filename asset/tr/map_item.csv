@@ -1,0 +1,17 @@
+﻿keys,zh,en
+MAP_ITEM_1,黃門,Yellow Door
+MAP_ITEM_DESC_1,消耗黃鎖匙來開啟,Consume the yellow key to open it
+MAP_ITEM_2,藍門,Blue Door
+MAP_ITEM_DESC_2,消耗藍鎖匙來開啟,Consume the blue key to open it
+MAP_ITEM_3,紅門,Red Door
+MAP_ITEM_DESC_3,消耗紅鎖匙來開啟,Consume the red key to open it
+MAP_ITEM_4,黃鎖匙,Yellow Key
+MAP_ITEM_DESC_4,用于開啟黃門,Used to open the yellow door
+MAP_ITEM_5,藍鎖匙,Blue Key
+MAP_ITEM_DESC_5,用于開啟藍門,Used to open the blue door
+MAP_ITEM_6,紅鎖匙,Red Key
+MAP_ITEM_DESC_6,用于開啟紅門,Used to open the red door
+MAP_ITEM_7,漏洞,Bug
+MAP_ITEM_DESC_7,用于使用作弊能力,Used to use cheat abilities
+MAP_ITEM_8,事件,Event
+MAP_ITEM_DESC_8,進入會觸發某個事件,Entering will trigger an event

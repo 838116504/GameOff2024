@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://0sknuifahe1i"]
+
+[ext_resource type="Script" path="res://scene/common/map_item_view/skill_cd_hbox.gd" id="1_3ftos"]
+[ext_resource type="Texture2D" uid="uid://db5rpkowgotte" path="res://asset/img/ui/common/cd_icon.png" id="2_5ts67"]
+
+[node name="cd_hbox" type="HBoxContainer"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_3ftos")
+fill_color = Color(1, 1, 1, 1)
+empty_color = Color(0.756863, 0.223529, 0.223529, 1)
+
+[node name="cd_tex_rect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_5ts67")
+stretch_mode = 3

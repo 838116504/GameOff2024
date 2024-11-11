@@ -3,7 +3,6 @@ class_name DialogueTrigger
 
 var dialogue_id:int
 
-
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.DIALOGUE_TRIGGER
 

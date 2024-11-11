@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://4cepv0oorf2c"]
+
+[ext_resource type="Texture2D" uid="uid://csi65u2exdqmc" path="res://asset/img/ui/common/round_panel.png" id="1_2glk5"]
+[ext_resource type="Script" path="res://scene/common/map_item_view/map_item_view_panel_cntr.gd" id="2_q2r1l"]
+[ext_resource type="Texture2D" uid="uid://6fb2kktwnxty" path="res://asset/img/map_item/blue_door.png" id="3_to5yr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5lgs"]
+texture = ExtResource("1_2glk5")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[node name="map_item_view_panel_cntr" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_t5lgs")
+script = ExtResource("2_q2r1l")
+
+[node name="vbox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="hbox" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="icon_tex_rect" type="TextureRect" parent="vbox/hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_to5yr")
+stretch_mode = 3
+
+[node name="name_label" type="Label" parent="vbox/hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "名字"
+
+[node name="hsep" type="HSeparator" parent="vbox"]
+layout_mode = 2
+
+[node name="desc_label" type="RichTextLabel" parent="vbox"]
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "1"
+fit_content = true
+scroll_active = false

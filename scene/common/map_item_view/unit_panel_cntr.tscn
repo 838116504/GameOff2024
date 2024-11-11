@@ -1,0 +1,269 @@
+[gd_scene load_steps=13 format=3 uid="uid://d7gh78udyw1g"]
+
+[ext_resource type="Texture2D" uid="uid://csi65u2exdqmc" path="res://asset/img/ui/common/round_panel.png" id="1_wubou"]
+[ext_resource type="Script" path="res://scene/common/map_item_view/unit_panel_cntr.gd" id="2_ag8a7"]
+[ext_resource type="Texture2D" uid="uid://c6m1fevs7k3gl" path="res://asset/img/unit/cat_man_right.png" id="3_ttwju"]
+[ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="4_vgtej"]
+[ext_resource type="Texture2D" uid="uid://c8rpj1lvb1w7r" path="res://asset/img/ui/common/property_panel.png" id="5_hik7u"]
+[ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="6_j2gri"]
+[ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="7_3a3qv"]
+[ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="8_jpmyx"]
+[ext_resource type="Texture2D" uid="uid://cqwsicojsxm8i" path="res://asset/img/ui/icon/spd_icon.png" id="9_xi3vl"]
+[ext_resource type="Script" path="res://scene/common/map_item_view/skill_vflow_cntr.gd" id="10_hvvm4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5lgs"]
+texture = ExtResource("1_wubou")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_13skq"]
+texture = ExtResource("1_wubou")
+texture_margin_left = 14.0
+texture_margin_top = 12.0
+texture_margin_right = 14.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.820455, 0.500811, 1.92523e-07, 1)
+
+[node name="unit_panel_cntr" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_t5lgs")
+script = ExtResource("2_ag8a7")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox"]
+layout_mode = 2
+texture = ExtResource("3_ttwju")
+stretch_mode = 3
+
+[node name="vbox" type="VBoxContainer" parent="hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name_label" type="Label" parent="hbox/vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "名字"
+
+[node name="hsep" type="HSeparator" parent="hbox/vbox"]
+layout_mode = 2
+
+[node name="hp_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/hp_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_vgtej")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/hp_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/hp_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="strike_def_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/strike_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_j2gri")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/strike_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/strike_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="thrust_def_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/thrust_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_3a3qv")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/thrust_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/thrust_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="slash_def_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/slash_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_jpmyx")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/slash_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/slash_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="spd_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/spd_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_xi3vl")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/spd_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/spd_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="skill_panel_cntr" type="PanelContainer" parent="hbox/vbox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_13skq")
+
+[node name="vbox" type="VBoxContainer" parent="hbox/vbox/skill_panel_cntr"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="skill_vflow_cntr" type="HFlowContainer" parent="hbox/vbox/skill_panel_cntr/vbox"]
+layout_mode = 2
+script = ExtResource("10_hvvm4")
