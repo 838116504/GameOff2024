@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bxadckd2hc118"
+
+[deps]
+
+files=["res://asset/tr/passive.zh.translation", "res://asset/tr/passive.en.translation"]
+
+source_file="res://asset/tr/passive.csv"
+dest_files=["res://asset/tr/passive.zh.translation", "res://asset/tr/passive.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

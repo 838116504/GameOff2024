@@ -1,4 +1,8 @@
 ﻿keys,zh,en
+SKILL_DAMAGE_0,%d点打擊傷害,%d strike damage
+SKILL_DAMAGE_1,%d点突擊傷害,%d thrust damage
+SKILL_DAMAGE_2,%d点斬擊傷害,%d slash damage
+SKILL_DAMAGE_3,%d点隨機類型傷害,%d random type damage
 SKILL_1,直拳,Jab
 SKILL_DESC_1,對面前一格造成{damage}，先手,"Deal {damage} to he front cell, action first"
 SKILL_2,重拳,Heavy Punch
