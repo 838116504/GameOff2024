@@ -2,7 +2,7 @@ extends RefCounted
 class_name MapItemConst
 
 enum MapItemId {
-	YELLOW_DOOR = 1, BLUE_DOOR, RED_DOOR, YELLOW_KEY, BLUE_KEY, RED_KEY, BUG, DIALOGUE_TRIGGER, UNIT
+	YELLOW_DOOR = 1, BLUE_DOOR, RED_DOOR, YELLOW_KEY, BLUE_KEY, RED_KEY, BUG, DIALOGUE_TRIGGER, UNIT, PLAYER_UNIT,
 }
 
 const MAP_ITEM_LIST = [
@@ -16,6 +16,7 @@ const MAP_ITEM_LIST = [
 	preload("res://scene/common/map_item/bug.gd"),
 	preload("res://scene/common/map_item/dialogue_trigger.gd"),
 	preload("res://scene/common/map_item/unit/unit.gd"),
+	preload("res://scene/common/map_item/unit/player_unit.gd"),
 ]
 
 const MAP_ITEM_ICON_FILE_LIST = [
@@ -29,3 +30,7 @@ const MAP_ITEM_ICON_FILE_LIST = [
 	"bug.png",
 	"dialogue.png",
 ]
+
+static func get_map_item_icon(p_id:int) -> Texture2D:
+	assert(p_id >= 0 && p_id < MAP_ITEM_ICON_FILE_LIST.size())
+	return load(DirConst.MAP_ITEM_IMG.path_join(MAP_ITEM_ICON_FILE_LIST[p_id]))

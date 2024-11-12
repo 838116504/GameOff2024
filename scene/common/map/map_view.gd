@@ -2,7 +2,7 @@ extends Control
 class_name MapView
 
 var map:Map : set = set_map
-var current_layer:int = 0
+var current_layer:int = 0 : set = set_current_layer
 var item_node_list := []
 var tile_map:TileMap
 var item_root:Node2D
@@ -72,6 +72,7 @@ func create_item_node(p_item:MapItem, p_pos):
 	
 	var node:Node = p_item.create_node()
 	p_item.map_view = self
+	p_item.position = p_pos
 	if node:
 		item_node_list[itemId] = node
 		node.set_meta(&"item", p_item)
@@ -96,7 +97,7 @@ func move_item(p_from:Vector2i, p_to:Vector2i):
 	var itemNode:Node2D = item_node_list[fromId]
 	assert(itemNode)
 	
-	var item = itemNode.item
+	var item = itemNode.get_meta(&"item")
 	if item_node_list[toId]:
 		var toItem = item_node_list[toId].item
 		
@@ -107,6 +108,7 @@ func move_item(p_from:Vector2i, p_to:Vector2i):
 		erase_item(p_to)
 	
 	itemNode.position = get_cell_center_position(Vector2(p_to))
+	item.position = p_to
 	item_node_list[fromId] = null
 	item_node_list[toId] = itemNode
 	
@@ -127,6 +129,10 @@ func swap_item(p_a:Vector2i, p_b:Vector2i):
 	assert(aItemNode && bItemNode)
 	aItemNode.position = get_cell_center_position(Vector2(p_b))
 	bItemNode.position = get_cell_center_position(Vector2(p_a))
+	var aItem = aItemNode.get_meta(&"item")
+	var bItem = bItemNode.get_meta(&"item")
+	aItem.position = p_b
+	bItem.position = p_a
 	item_node_list[aId] = bItemNode
 	item_node_list[bId] = aItemNode
 	
@@ -164,6 +170,12 @@ func udpate_cell_item(p_cell:Vector2i):
 	var item = map.get_item(current_layer, p_cell)
 	create_item_node(item, p_cell)
 
+func set_current_layer(p_value):
+	if current_layer == p_value:
+		return
+	
+	current_layer = p_value
+	update_layer()
 
 func update_layer():
 	clear()

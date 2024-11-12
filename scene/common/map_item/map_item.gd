@@ -15,7 +15,7 @@ func get_map_item_id() -> int:
 func get_icon() -> Texture2D:
 	var id = get_map_item_id()
 	if id < MapItemConst.MAP_ITEM_ICON_FILE_LIST.size():
-		return load("res://asset/img/map_item/".path_join(MapItemConst.MAP_ITEM_ICON_FILE_LIST[id]))
+		return MapItemConst.get_map_item_icon(id)
 	
 	return null
 

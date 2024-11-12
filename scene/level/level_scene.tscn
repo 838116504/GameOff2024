@@ -1,0 +1,716 @@
+[gd_scene load_steps=34 format=3 uid="uid://wthqcgpv2spv"]
+
+[ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
+[ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/player_view.gd" id="2_thlmp"]
+[ext_resource type="Texture2D" uid="uid://hmhnyger1c3q" path="res://asset/img/ui/level_scene/player_icon_bg.png" id="3_vmcjo"]
+[ext_resource type="Texture2D" uid="uid://clrdj8ecevou0" path="res://asset/img/ui/icon/magnifier_icon.png" id="4_m76xl"]
+[ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="4_uc5jt"]
+[ext_resource type="Texture2D" uid="uid://c8rpj1lvb1w7r" path="res://asset/img/ui/common/property_panel.png" id="5_abc1p"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/hp_view.gd" id="6_fdyuc"]
+[ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="6_w4cai"]
+[ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="7_sqchm"]
+[ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="8_1hf0r"]
+[ext_resource type="Texture2D" uid="uid://cqwsicojsxm8i" path="res://asset/img/ui/icon/spd_icon.png" id="9_uyw32"]
+[ext_resource type="Texture2D" uid="uid://yuqphlaa7yc3" path="res://asset/img/ui/level_scene/layer_view_bg.png" id="10_mtse3"]
+[ext_resource type="Texture2D" uid="uid://myj3p2wx1s38" path="res://asset/img/ui/icon/data_icon.png" id="11_f28ca"]
+[ext_resource type="Texture2D" uid="uid://dvoeoxp2axex4" path="res://asset/img/map_item/yellow_key.png" id="12_3qiug"]
+[ext_resource type="Texture2D" uid="uid://drcvmyfae26fs" path="res://asset/img/map_item/blue_key.png" id="13_psaew"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/layer_patch.gd" id="14_1m6nh"]
+[ext_resource type="Texture2D" uid="uid://cnhi2tu0wr0jj" path="res://asset/img/map_item/red_key.png" id="14_glvrg"]
+[ext_resource type="Texture2D" uid="uid://0okbb2rvtn85" path="res://asset/img/ui/level_scene/blue_btn_hover.png" id="15_7n6e5"]
+[ext_resource type="Script" path="res://scene/common/map/map_view.gd" id="15_hfit3"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/data_count_view.gd" id="15_qsbr4"]
+[ext_resource type="Texture2D" uid="uid://pfvmxk1i4rni" path="res://asset/img/map_item/bug.png" id="16_7xxej"]
+[ext_resource type="Texture2D" uid="uid://dnlbrm1dkxpik" path="res://asset/img/ui/level_scene/blue_btn.png" id="16_e5ulc"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/yellow_key_count_view.gd" id="17_040dq"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/blue_key_count_view.gd" id="19_o8roe"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/red_key_count_view.gd" id="21_par0f"]
+[ext_resource type="Script" path="res://scene/level/ui/cheat_view/cheat_view.gd" id="26_etthi"]
+[ext_resource type="Script" path="res://scene/level/input.gd" id="28_ohq6x"]
+[ext_resource type="PackedScene" uid="uid://0yvvlo5xttpw" path="res://scene/fight/fight_scene.tscn" id="29_vg6fr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
+texture = ExtResource("15_7n6e5")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0os0e"]
+texture = ExtResource("15_7n6e5")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75hfw"]
+texture = ExtResource("16_e5ulc")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8idwf"]
+texture = ExtResource("16_e5ulc")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 7.0
+
+[node name="level_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vopfr")
+
+[node name="bg_color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="left_ui" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 400.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="player_view" type="Control" parent="left_ui"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 700.0
+grow_horizontal = 2
+script = ExtResource("2_thlmp")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 52.0
+texture = ExtResource("2_i5utg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name_label" type="Label" parent="left_ui/player_view/icon_tex_rect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 10.0
+theme_override_font_sizes/font_size = 32
+text = "玩家名字"
+vertical_alignment = 2
+
+[node name="player_panel_btn" type="TextureButton" parent="left_ui/player_view/icon_tex_rect/name_label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_right = 2.0
+grow_vertical = 2
+texture_normal = ExtResource("4_m76xl")
+stretch_mode = 3
+
+[node name="bg_patch" type="NinePatchRect" parent="left_ui/player_view/icon_tex_rect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vmcjo")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="property_vbox" type="VBoxContainer" parent="left_ui/player_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 70.0
+offset_right = -40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="hp_view" type="Control" parent="left_ui/player_view/property_vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("6_fdyuc")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/property_vbox/hp_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_uc5jt")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="left_ui/player_view/property_vbox/hp_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="left_ui/player_view/property_vbox/hp_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="strike_def_view" type="Control" parent="left_ui/player_view/property_vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/property_vbox/strike_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_w4cai")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="left_ui/player_view/property_vbox/strike_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="left_ui/player_view/property_vbox/strike_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="thrust_def_view" type="Control" parent="left_ui/player_view/property_vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/property_vbox/thrust_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_sqchm")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="left_ui/player_view/property_vbox/thrust_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="left_ui/player_view/property_vbox/thrust_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="slash_def_view" type="Control" parent="left_ui/player_view/property_vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/property_vbox/slash_def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_1hf0r")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="left_ui/player_view/property_vbox/slash_def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="left_ui/player_view/property_vbox/slash_def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="spd_view" type="Control" parent="left_ui/player_view/property_vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/property_vbox/spd_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_uyw32")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="left_ui/player_view/property_vbox/spd_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="left_ui/player_view/property_vbox/spd_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="layer_patch" type="NinePatchRect" parent="left_ui/player_view"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 350.0
+offset_bottom = 40.0
+texture = ExtResource("10_mtse3")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+script = ExtResource("14_1m6nh")
+
+[node name="layer_label" type="Label" parent="left_ui/player_view/layer_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "0F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_vbox" type="VBoxContainer" parent="left_ui/player_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="data_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("15_qsbr4")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/item_vbox/data_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+texture = ExtResource("11_f28ca")
+
+[node name="x_label" type="Label" parent="left_ui/player_view/item_vbox/data_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_right = 70.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+vertical_alignment = 1
+
+[node name="count_label" type="Label" parent="left_ui/player_view/item_vbox/data_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -4.0
+offset_right = 94.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "0"
+vertical_alignment = 1
+
+[node name="yellow_key_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("17_040dq")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/item_vbox/yellow_key_count_view"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+texture = ExtResource("12_3qiug")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="x_label" type="Label" parent="left_ui/player_view/item_vbox/yellow_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_right = 70.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+vertical_alignment = 1
+
+[node name="count_label" type="Label" parent="left_ui/player_view/item_vbox/yellow_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -4.0
+offset_right = 94.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "0"
+vertical_alignment = 1
+
+[node name="blue_key_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("19_o8roe")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/item_vbox/blue_key_count_view"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+texture = ExtResource("13_psaew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="x_label" type="Label" parent="left_ui/player_view/item_vbox/blue_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_right = 70.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+vertical_alignment = 1
+
+[node name="count_label" type="Label" parent="left_ui/player_view/item_vbox/blue_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -4.0
+offset_right = 94.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "0"
+vertical_alignment = 1
+
+[node name="red_key_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("21_par0f")
+
+[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/item_vbox/red_key_count_view"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+texture = ExtResource("14_glvrg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="x_label" type="Label" parent="left_ui/player_view/item_vbox/red_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_right = 70.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "X"
+vertical_alignment = 1
+
+[node name="count_label" type="Label" parent="left_ui/player_view/item_vbox/red_key_count_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = -4.0
+offset_right = 94.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "0"
+vertical_alignment = 1
+
+[node name="btns_grid_cntr" type="GridContainer" parent="left_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+
+[node name="skip_layer_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_SKIP_LAYER_BTN"
+
+[node name="skill_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_SKILL_DETAIL_BTN"
+
+[node name="volume_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_VOLUME_BTN"
+
+[node name="exit_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_EXIT"
+
+[node name="map_view" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 15.0
+offset_right = 1450.0
+offset_bottom = 1065.0
+script = ExtResource("15_hfit3")
+
+[node name="right_ui" type="Control" parent="."]
+custom_minimum_size = Vector2(470, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="cheat_view" type="Control" parent="right_ui"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("26_etthi")
+
+[node name="title_hbox" type="HBoxContainer" parent="right_ui/cheat_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 35.0
+
+[node name="title_label" type="Label" parent="right_ui/cheat_view/title_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "LS_CHEAT_ABILITY"
+
+[node name="bug_icon_tex_rect" type="TextureRect" parent="right_ui/cheat_view/title_hbox"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("16_7xxej")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="x_label" type="Label" parent="right_ui/cheat_view/title_hbox"]
+layout_mode = 2
+text = "x"
+vertical_alignment = 1
+
+[node name="bug_count_label" type="Label" parent="right_ui/cheat_view/title_hbox"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="scroll_cntr" type="ScrollContainer" parent="right_ui/cheat_view"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cheat_vbox" type="VBoxContainer" parent="right_ui/cheat_view/scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="input" type="Node" parent="."]
+script = ExtResource("28_ohq6x")
+
+[node name="fight_layer" type="CanvasLayer" parent="."]
+
+[node name="fight_scene" parent="fight_layer" instance=ExtResource("29_vg6fr")]
+visible = false
