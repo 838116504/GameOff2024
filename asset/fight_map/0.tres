@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FightMap" load_steps=5 format=3 uid="uid://budj7bgoa12t7"]
+
+[ext_resource type="Script" path="res://scene/common/fight_map/fight_map.gd" id="1_6111f"]
+[ext_resource type="Texture2D" uid="uid://cyruet17crhwf" path="res://asset/img/fight_map/default_cell.png" id="1_ao1vm"]
+[ext_resource type="Texture2D" uid="uid://dqvrbckbcy6ag" path="res://asset/img/fight_map/default_cell_0.png" id="2_e5bjf"]
+[ext_resource type="Texture2D" uid="uid://bbq01sqomkb6l" path="res://asset/img/fight_map/default_cell_1.png" id="3_jm28p"]
+
+[resource]
+script = ExtResource("1_6111f")
+name = ""
+cell_texture = ExtResource("1_ao1vm")
+faction_cell_texture_list = Array[Texture2D]([ExtResource("2_e5bjf"), ExtResource("3_jm28p")])
+cell_y = 707
+cell_order_list = Array[int]([1, 0, 2, 3, 4, 5, 6, 7, 8])

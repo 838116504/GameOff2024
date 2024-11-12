@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="SkillTable" load_steps=5 format=3 uid="uid://bic87l6v5gsw3"]
+[gd_resource type="Resource" script_class="SkillTable" load_steps=5 format=3 uid="uid://dk25syu7d57ev"]
 
-[ext_resource type="Script" path="res://table/skill_row.gd" id="1_67nrn"]
-[ext_resource type="Script" path="res://table/skill_table.gd" id="2_cvydb"]
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_hsile"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_ah7u4"]
 
-[sub_resource type="Resource" id="Resource_rm4yu"]
-script = ExtResource("1_67nrn")
+[sub_resource type="Resource" id="Resource_n6rbu"]
+script = ExtResource("1_hsile")
 id = 1
 name = "SKILL_1"
 description = "SKILL_DESC_1"
@@ -20,8 +20,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_yyvq8"]
-script = ExtResource("1_67nrn")
+[sub_resource type="Resource" id="Resource_sur3p"]
+script = ExtResource("1_hsile")
 id = 2
 name = "SKILL_2"
 description = "SKILL_DESC_2"
@@ -38,5 +38,5 @@ effect_id = 0
 charge_count = 0
 
 [resource]
-script = ExtResource("2_cvydb")
-row_list = Array[ExtResource("1_67nrn")]([SubResource("Resource_rm4yu"), SubResource("Resource_yyvq8")])
+script = ExtResource("2_ah7u4")
+row_list = Array[ExtResource("1_hsile")]([SubResource("Resource_n6rbu"), SubResource("Resource_sur3p")])

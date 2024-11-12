@@ -1,16 +1,18 @@
 @tool
 extends Resource
 
-# 物品id
+# 單位id
 @export var id:int
 # 血量
 @export var hp:int
-# 打防
-@export var strike_def:int
-# 突防
-@export var thrust_def :int
-# 斬防
-@export var slash_def :int
+# 防禦
+@export var def:int
+# 被打擊傷害倍率
+@export var strike_hit_rate:float
+# 被突擊傷害倍率
+@export var thrust_hit_rate:int
+# 被斬擊傷害倍率
+@export var slash_hit_rate:int
 # 速度
 @export var spd:int
 # 技能id數組
