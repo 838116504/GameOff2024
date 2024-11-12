@@ -20,9 +20,19 @@ var tile_id_list:Array = []
 var entrance_layer:int = 0
 var entrance_position:Vector2i
 
+var player_unit:PlayerUnit
+
 
 func _init():
 	add_layer(1)
+
+func _set(p_prop:StringName, p_value) -> bool:
+	if p_prop == &"player_unit_data":
+		player_unit = PlayerUnit.new()
+		player_unit.set_data(p_value)
+		return true
+	
+	return false
 
 func get_layer() -> int:
 	return tile_id_list.size()
@@ -42,18 +52,21 @@ func get_item(p_layer:int, p_pos:Vector2i):
 	if itemData == null:
 		return null
 	
+	if itemData is MapItem:
+		return itemData
+	
 	if itemData is int:
 		if itemData < 1 || itemData >= MapItemConst.MAP_ITEM_LIST.size():
 			return null
 		
 		var ret = MapItemConst.MAP_ITEM_LIST[itemData].new()
-		item_list[p_layer][posId] = ret
+		ret.position = p_pos
 		return ret
 	
 	if itemData is Array:
 		var ret = MapItemConst.MAP_ITEM_LIST[itemData[0]].new()
 		ret.set_data(itemData[1])
-		item_list[p_layer][posId] = ret
+		ret.position = p_pos
 		return ret
 	
 	return itemData
@@ -128,10 +141,23 @@ func add_layer(p_value:int):
 	layer_changed.emit(nextLayer)
 
 func get_data():
-	return { "item_list":item_list, "tile_id_list": tile_id_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position}
+	var ret = { "item_list":item_list, "tile_id_list": tile_id_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position}
+	if player_unit:
+		var items = item_list.duplicate()
+		items[player_unit.layer][_to_map_position_id(player_unit.position)] = null
+		ret.item_list = items
+		ret.player_unit_data = player_unit.get_data()
+	
+	return ret
 
 func set_data(p_data):
+	if !p_data is Dictionary:
+		return
+	
 	var keys = p_data.keys()
 	var values = p_data.values()
 	for i in keys.size():
 		set(keys[i], values[i])
+	
+	if player_unit:
+		item_list[player_unit.layer][_to_map_position_id(player_unit.position)] = player_unit

@@ -93,6 +93,7 @@ text = "8"
 vertical_alignment = 1
 
 [node name="strike_def_view" type="Control" parent="hbox/vbox"]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2
@@ -134,6 +135,7 @@ text = "8"
 vertical_alignment = 1
 
 [node name="thrust_def_view" type="Control" parent="hbox/vbox"]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2
@@ -175,6 +177,7 @@ text = "8"
 vertical_alignment = 1
 
 [node name="slash_def_view" type="Control" parent="hbox/vbox"]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2

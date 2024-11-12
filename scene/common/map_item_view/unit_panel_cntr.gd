@@ -38,9 +38,9 @@ func update():
 	get_icon_tex_rect().texture = unit.get_icon()
 	get_name_label().text = unit.get_map_item_name()
 	get_hp_value_label().text = str(unit.hp)
-	get_strike_def_value_label().text = str(unit.get_strike_def())
-	get_thrust_def_value_label().text = str(unit.get_thrust_def())
-	get_slash_def_value_label().text = str(unit.get_slash_def())
+	#get_strike_def_value_label().text = str(unit.get_strike_def())
+	#get_thrust_def_value_label().text = str(unit.get_thrust_def())
+	#get_slash_def_value_label().text = str(unit.get_slash_def())
 	get_spd_value_label().text = str(unit.get_spd())
 	
 	var skills = []

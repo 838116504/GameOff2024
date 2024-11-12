@@ -1,8 +1,6 @@
 extends MapItem
 class_name Unit
 
-enum DamageType { STRIKE = 0, THRUST = 1, SLASH = 2 }
-
 signal died
 signal hp_changed(p_hp)
 signal fight_x_changed(p_x)
@@ -15,11 +13,14 @@ var hp:int : set = set_hp
 var next_operate
 var fight_x:int : set = set_fight_x
 var fight_direction:int = 1 : set = set_fight_direction
-var fight_scene = null
-var extra_strike_def:int
-var extra_thrust_def:int
-var extra_slash_def:int
+var fight_scene:FightScene = null
+var fight_node:Node = null
+var extra_def:int
 var extra_spd:int
+var def_rate:float
+var extra_strike_hit_rate:float
+var extra_thrust_hit_rate:float
+var extra_slash_hit_rate:float
 var strike_def_rate:float = 1.0
 var thrust_def_rate:float = 1.0
 var slash_def_rate:float = 1.0
@@ -162,7 +163,7 @@ func turn_operate():
 func put_skill_operate(p_skillState:SkillState):
 	pass
 
-func hit(p_attacker, p_type:DamageType, p_damage:int):
+func hit(p_attacker, p_type:SkillConst.DamageType, p_damage:int):
 	pass
 
 func round_start():
@@ -179,23 +180,29 @@ func get_init_hp() -> int:
 	
 	return 1
 
-func get_strike_def():
+func get_def() -> int:
 	if row:
-		return (row.strike_def + extra_strike_def) * strike_def_rate
+		return (row.def + extra_def) * def_rate
 	
-	return extra_strike_def * strike_def_rate
+	return extra_def * def_rate
 
-func get_thrust_def():
+func get_strike_hit_rate() -> float:
 	if row:
-		return (row.thrust_def + extra_thrust_def) * thrust_def_rate
+		return row.strike_hit_rate + extra_strike_hit_rate
 	
-	return extra_thrust_def * thrust_def_rate
+	return extra_strike_hit_rate
 
-func get_slash_def():
+func get_thrust_hit_rate() -> float:
 	if row:
-		return (row.slash_def + extra_slash_def) * slash_def_rate
+		return row.thrust_hit_rate + extra_thrust_hit_rate
 	
-	return extra_slash_def * slash_def_rate
+	return extra_thrust_hit_rate
+
+func get_slash_hit_rate() -> float:
+	if row:
+		return row.slash_hit_rate + extra_slash_hit_rate
+	
+	return extra_slash_hit_rate
 
 func get_spd():
 	if row:
