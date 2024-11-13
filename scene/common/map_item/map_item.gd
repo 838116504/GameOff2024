@@ -6,6 +6,14 @@ var map_view
 var node:Node2D
 
 
+
+func _mouse_entered():
+	event_bus.emit_signal(EventConst.SHOW_MAP_ITEM_DETAIL, self)
+
+func _mouse_exited():
+	event_bus.emit_signal(EventConst.HIDE_MAP_ITEM_DETAIL)
+
+
 func is_blocked() -> bool:
 	return false
 
