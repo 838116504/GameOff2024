@@ -402,6 +402,9 @@ func _input(p_event):
 	elif InputMap.event_is_action(p_event, &"les_save", true):
 		save()
 		get_tree().root.set_input_as_handled()
+	elif InputMap.event_is_action(p_event, &"les_cursor", true):
+		select_tab_cntr.to_cursor_mode()
+		get_tree().root.set_input_as_handled()
 
 
 func _on_open_file_dialog_file_selected(p_path: String) -> void:

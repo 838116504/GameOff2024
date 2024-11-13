@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxjrydcmttav4"]
+[gd_scene load_steps=22 format=3 uid="uid://bxjrydcmttav4"]
 
 [ext_resource type="Script" path="res://scene/level_edit/level_edit_scene.gd" id="1_6484w"]
 [ext_resource type="Texture2D" uid="uid://c2skipj0oh3su" path="res://asset/img/ui/level_edit_scene/file_btn_hover.png" id="1_nfpaj"]
@@ -13,8 +13,7 @@
 [ext_resource type="Script" path="res://scene/level_edit/map_item_detail_ui.gd" id="10_mid7w"]
 [ext_resource type="Script" path="res://scene/level_edit/save_file_dialog.gd" id="11_0hbof"]
 [ext_resource type="PackedScene" uid="uid://4cepv0oorf2c" path="res://scene/common/map_item_view/map_item_view_panel_cntr.tscn" id="11_tyxvh"]
-[ext_resource type="Script" path="res://scene/common/map_item_view/unit_view_vbox.gd" id="12_er1xq"]
-[ext_resource type="PackedScene" uid="uid://d7gh78udyw1g" path="res://scene/common/map_item_view/unit_panel_cntr.tscn" id="13_c57w5"]
+[ext_resource type="PackedScene" uid="uid://chscm7mfh86kf" path="res://scene/common/map_item_view/unit_view_vbox.tscn" id="12_akqye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3gcc"]
 bg_color = Color(0.898039, 0.898039, 0.898039, 1)
@@ -277,12 +276,8 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 
-[node name="unit_view_vbox" type="VBoxContainer" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox"]
+[node name="unit_view_vbox" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox" instance=ExtResource("12_akqye")]
 visible = false
-layout_mode = 2
-script = ExtResource("12_er1xq")
-
-[node name="unit_panel_cntr" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox/unit_view_vbox" instance=ExtResource("13_c57w5")]
 layout_mode = 2
 
 [node name="close_btn" type="Button" parent="left_ui/map_item_detail_ui"]

@@ -17,6 +17,7 @@ var _left_button_pressed := false
 var _right_button_pressed := false
 
 @onready var select_box_patch = get_select_box_patch()
+@onready var cursor_btn = get_cursor_btn()
 
 func get_select_box_patch() -> NinePatchRect:
 	return $item_scroll_cntr/item_hflow_cntr/cursor_btn/select_box_patch
@@ -30,6 +31,8 @@ func get_tile_hflow_cntr():
 func get_map_input() -> Control:
 	return get_node_or_null(map_input_path)
 
+func get_cursor_btn():
+	return $item_scroll_cntr/item_hflow_cntr/cursor_btn
 
 func _ready():
 	set_tab_title(0, tr("LES_ITEM_TAB"))
@@ -110,7 +113,7 @@ func _position_to_cell(p_pos:Vector2):
 func init_item():
 	var itemHflowCntr = get_item_hflow_cntr()
 	var cursorBtn = itemHflowCntr.get_child(0)
-	cursorBtn.pressed.connect(_on_cursor_btn_pressed.bind(cursorBtn))
+	cursorBtn.pressed.connect(_on_cursor_btn_pressed)
 	for i in range(1, MapItemConst.MapItemId.UNIT):
 		var itemBtn = ItemBtnScene.instantiate()
 		itemBtn.item = MapItemConst.MAP_ITEM_LIST[i].new()
@@ -131,11 +134,14 @@ func init_tile():
 		tileBtn.pressed.connect(_on_tile_btn_pressed.bind(tileBtn))
 		tileHflowCntr.add_child(tileBtn)
 
-func _on_cursor_btn_pressed(p_btn):
-	if select_box_patch.get_parent() == p_btn:
+func _on_cursor_btn_pressed():
+	to_cursor_mode()
+
+func to_cursor_mode():
+	if select_box_patch.get_parent() == cursor_btn:
 		return
 	
-	select_box_patch.reparent(p_btn, false)
+	select_box_patch.reparent(cursor_btn, false)
 	mode = mode_list[0]
 
 func _on_item_btn_pressed(p_btn):
