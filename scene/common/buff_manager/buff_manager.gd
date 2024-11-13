@@ -46,6 +46,14 @@ func erase_buff(p_buff:StringName) -> bool:
 func has_buff(p_buff:StringName) -> bool:
 	return get_buff(p_buff) != null
 
+func round_start():
+	for buff in buff_list:
+		buff.round_start()
+
+func stage_start():
+	for buff in buff_list:
+		buff.stage_start()
+
 func get_data():
 	var data = []
 	data.resize(buff_list.size())

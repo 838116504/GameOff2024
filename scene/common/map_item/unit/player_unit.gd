@@ -247,6 +247,18 @@ func get_unit_hand_combat_damage(p_unit:Unit):
 	
 	return totalHp - endTotalHp
 
+func move_left():
+	super()
+	
+	if passive_state:
+		passive_state.move_left()
+
+func move_right():
+	super()
+	
+	if passive_state:
+		passive_state.move_right()
+
 func get_data():
 	var ret = { "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 
 			"spd":spd, "faction_id":faction_id, "data_count":data_count, 

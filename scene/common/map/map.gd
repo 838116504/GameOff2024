@@ -46,6 +46,11 @@ func get_height() -> int:
 func _to_map_position_id(p_pos:Vector2i):
 	return p_pos.y * get_width() + p_pos.x
 
+func _to_cell_position(p_id:int) -> Vector2i:
+	@warning_ignore("integer_division")
+	var y:int = p_id / get_width()
+	return Vector2i(p_id - y * get_width(), y)
+
 func get_item(p_layer:int, p_pos:Vector2i):
 	var posId = _to_map_position_id(p_pos)
 	var itemData = item_list[p_layer][posId]

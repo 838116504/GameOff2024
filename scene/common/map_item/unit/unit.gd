@@ -30,6 +30,7 @@ var skill_state_list := []
 var skill_slot_max_count:int = 3
 var put_skill_state_list := []
 var dead := false
+var invincible_count:int = 0
 
 var followed_unit = null
 var follow_unit_list := []
@@ -150,6 +151,7 @@ func put_skill(p_skillState):
 func execute_operate():
 	assert(next_operate)
 	
+	buff_manager.stage_start()
 	next_operate.execute()
 
 func attack_operate():
@@ -192,6 +194,9 @@ func put_skill_operate(p_skillState:SkillState):
 	next_operate = op
 
 func hit(p_attacker, p_type:SkillConst.DamageType, p_damage:int):
+	if is_invincible():
+		return
+	
 	var dam = p_damage - get_def()
 	if dam <= 0:
 		return
@@ -214,6 +219,8 @@ func get_hit_rate(p_type:SkillConst.DamageType) -> float:
 	return 1.0
 
 func round_start():
+	buff_manager.round_start()
+	
 	for i in skill_state_list:
 		i.round_start()
 	
@@ -297,6 +304,9 @@ func create_fight_node():
 
 func is_blocked() -> bool:
 	return true
+
+func is_invincible() -> bool:
+	return invincible_count > 0
 
 func get_data():
 	var ret = {}
