@@ -1,6 +1,8 @@
 extends Unit
 class_name PlayerUnit
 
+enum State { IDLE, MOVE, FIGHT }
+
 class DataStack:
 	var id:int
 	var count:int = 1
@@ -39,6 +41,7 @@ var layer:int = 0 : set = set_layer
 var cheat:Cheat
 var passive_state:PassiveState : set = set_passive_state
 var unit_hand_combat_damage_dict := {}
+var state := State.IDLE
 
 func add_data(p_id:int, p_count:int = 1):
 	data_count += p_count
@@ -259,8 +262,90 @@ func move_right():
 	if passive_state:
 		passive_state.move_right()
 
+func map_move(p_dir):
+	if map_view == null:
+		return
+	
+	state = State.MOVE
+	if node:
+		node.play_move_animation(p_dir)
+	
+	map_view.move_item(position, position + p_dir)
+	await Engine.get_main_loop().create_timer(0.1, false).timeout
+	state = State.IDLE
+
+func set_unit_id(p_value):
+	unit_id = p_value
+	row = table_set.player_unit.get_row(unit_id)
+
+func set_row(p_value):
+	if row == p_value:
+		return
+	
+	row = p_value
+	if row:
+		hp = row.hp
+		def = row.def
+		strike_hit_rate = row.strike_hit_rate
+		thrust_hit_rate = row.thrust_hit_rate
+		slash_hit_rate = row.slash_hit_rate
+		spd = row.spd
+		
+		skill_state_list.clear()
+		for skillId in row.skill_id_list:
+			var skill = Skill.create_by_id(skillId)
+			var state = SkillState.new()
+			state.skill = skill
+			skill_state_list.append(state)
+		
+		cheat = CheatConst.CHEAT_LIST[row.cheat_id].new()
+		passive_state = PassiveState.new()
+		passive_state.passive = PassiveConst.PASSIVE_LIST[row.passive_id].new()
+
+func input(p_event:InputEvent):
+	match state:
+		State.IDLE:
+			if InputMap.event_is_action(p_event, &"left"):
+				if p_event.is_pressed():
+					map_move(Vector2i.LEFT)
+			elif InputMap.event_is_action(p_event, &"right"):
+				if p_event.is_pressed():
+					map_move(Vector2i.RIGHT)
+			elif InputMap.event_is_action(p_event, &"up"):
+				if p_event.is_pressed():
+					map_move(Vector2i.UP)
+			elif InputMap.event_is_action(p_event, &"down"):
+				if p_event.is_pressed():
+					map_move(Vector2i.DOWN)
+		State.FIGHT:
+			pass
+
+func get_icon() -> Texture2D:
+	if row:
+		return load(DirConst.PLAYER_IMG.path_join(row.image))
+	
+	return null
+
+func get_fight_image() -> Texture2D:
+	if row:
+		return load(DirConst.PLAYER_IMG.path_join(row.right_image))
+	
+	return null
+
+func get_up_image() -> Texture2D:
+	if row:
+		return load(DirConst.PLAYER_IMG.path_join(row.back_image))
+	
+	return null
+
+func get_down_image() -> Texture2D:
+	return get_icon()
+
+func get_right_image() -> Texture2D:
+	return get_fight_image()
+
 func get_data():
-	var ret = { "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 
+	var ret = { "unit_id":unit_id, "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 
 			"spd":spd, "faction_id":faction_id, "data_count":data_count, 
 			"yellow_key_count":yellow_key_count, "blue_key_count":blue_key_count, "red_key_count":red_key_count, 
 			"bug_count":bug_count, "layer":layer, "position":position }
@@ -291,6 +376,10 @@ func get_data():
 func set_data(p_data):
 	if !p_data is Dictionary:
 		return
+	
+	if p_data.has("unit_id"):
+		set_unit_id(p_data.unit_id)
+		p_data.erase("unit_id")
 	
 	if p_data.has("data_stack_data_list"):
 		var datas = p_data.data_stack_data_list

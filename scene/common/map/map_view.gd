@@ -30,14 +30,12 @@ func set_map(p_map):
 	if map:
 		map.tile_changed.disconnect(_on_map_tile_changed)
 		map.item_changed.disconnect(_on_map_item_changed)
-		map.item_data_changed.disconnect(_on_map_item_data_changed)
 		clear()
 	
 	map = p_map
 	if map:
 		map.tile_changed.connect(_on_map_tile_changed)
 		map.item_changed.connect(_on_map_item_changed)
-		map.item_data_changed.connect(_on_map_item_data_changed)
 		init_map()
 
 func clear():
@@ -64,6 +62,8 @@ func init_map():
 func create_item_node(p_item:MapItem, p_pos):
 	var itemId = map._to_map_position_id(p_pos)
 	if item_node_list[itemId] != null:
+		var item = item_node_list[itemId].get_meta(&"item")
+		item.node = null
 		item_node_list[itemId].queue_free()
 		item_node_list[itemId] = null
 	
@@ -99,7 +99,7 @@ func move_item(p_from:Vector2i, p_to:Vector2i):
 	
 	var item = itemNode.get_meta(&"item")
 	if item_node_list[toId]:
-		var toItem = item_node_list[toId].item
+		var toItem = item_node_list[toId].get_meta(&"item")
 		
 		toItem._map_item_entered(item)
 		if toItem.is_blocked():
@@ -154,13 +154,7 @@ func _on_map_tile_changed(p_layer:int, p_pos:Vector2i, _id:int):
 	var tile = map.get_tile(current_layer, p_pos)
 	_set_tile(p_pos, tile)
 
-func _on_map_item_changed(p_layer:int, p_pos:Vector2i, _id:int):
-	if p_layer != current_layer:
-		return
-	
-	udpate_cell_item(p_pos)
-
-func _on_map_item_data_changed(p_layer:int, p_pos:Vector2i, _id:int, _data):
+func _on_map_item_changed(p_layer:int, p_pos:Vector2i):
 	if p_layer != current_layer:
 		return
 	

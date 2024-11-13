@@ -3,6 +3,8 @@ extends Resource
 
 # 技能id
 @export var id:int
+# 腳本id
+@export var script_id:int
 # 名字
 @export var name:String
 # 描述

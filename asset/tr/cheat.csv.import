@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cfls8hdhb4xyq"
+
+[deps]
+
+files=["res://asset/tr/cheat.zh.translation", "res://asset/tr/cheat.en.translation"]
+
+source_file="res://asset/tr/cheat.csv"
+dest_files=["res://asset/tr/cheat.zh.translation", "res://asset/tr/cheat.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

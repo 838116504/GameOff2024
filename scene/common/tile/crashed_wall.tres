@@ -6,4 +6,5 @@
 script = ExtResource("1_fxqmx")
 name = "TILE_4"
 tile_id = 4
-blocked = true
+blocked = false
+layer = 0

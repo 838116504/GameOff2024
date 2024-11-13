@@ -35,3 +35,5 @@ SKILL_15,轉向,Turn
 SKILL_DESC_15,改變方向\n放置无行動消耗,Change direction\nThere is no turn consumption when placed
 SKILL_16,衝刺,Dash
 SKILL_DESC_16,衝到最前方\n放置无行動消耗,Rush to the front
+SKILL_17,解包,Unpacking
+SKILL_DESC_17,對面前一格造成{damage},Deal {damage} to the front cell

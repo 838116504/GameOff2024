@@ -9,5 +9,5 @@ enum SkillId {
 
 const SKILL_LIST = [
 	preload("res://scene/common/skill/skill.gd"),
-	preload("res://scene/common/skill/attack_front_skill.gd")
+	preload("res://scene/common/skill/attack_front_skill.gd"),
 ]

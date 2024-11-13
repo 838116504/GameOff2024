@@ -1,20 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://o4ewhcv85p1y"]
+[gd_scene load_steps=11 format=3 uid="uid://o4ewhcv85p1y"]
 
-[ext_resource type="Texture2D" uid="uid://bcc3mu2k81put" path="res://asset/img/ui/common/skill_panel.png" id="1_smoru"]
+[ext_resource type="Texture2D" uid="uid://ci0ibmfh682rk" path="res://asset/img/ui/common/skill_panel2.png" id="1_75yli"]
 [ext_resource type="Script" path="res://scene/common/map_item_view/skill_patch.gd" id="2_oe4sx"]
+[ext_resource type="Texture2D" uid="uid://4vcktkcs1acp" path="res://asset/img/skill/17.png" id="3_12xj5"]
 [ext_resource type="Texture2D" uid="uid://dltofyymrj0lo" path="res://asset/img/ui/icon/strike_icon.png" id="3_kq504"]
 [ext_resource type="Texture2D" uid="uid://sos8l423fg57" path="res://asset/img/ui/icon/thrust_icon.png" id="5_3w62o"]
 [ext_resource type="Texture2D" uid="uid://qfrxnpgt68c4" path="res://asset/img/ui/icon/slash_icon.png" id="6_0eti4"]
 [ext_resource type="Texture2D" uid="uid://bwbwritqqt27q" path="res://asset/img/ui/icon/random_damage_icon.png" id="6_7r7hj"]
+[ext_resource type="Texture2D" uid="uid://dcrxi5oxmcnl5" path="res://asset/img/ui/common/skill_cd_panel.png" id="7_b8kae"]
 [ext_resource type="PackedScene" uid="uid://0sknuifahe1i" path="res://scene/common/map_item_view/cd_hbox.tscn" id="7_pmoen"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cn0j4"]
+texture = ExtResource("7_b8kae")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 2.0
+expand_margin_bottom = 3.0
 
 [node name="skill_patch" type="NinePatchRect"]
 custom_minimum_size = Vector2(108, 108)
-texture = ExtResource("1_smoru")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource("1_75yli")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 script = ExtResource("2_oe4sx")
 
 [node name="icon_tex_rect" type="TextureRect" parent="."]
@@ -23,6 +33,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 104.0
 offset_bottom = 84.0
+texture = ExtResource("3_12xj5")
 
 [node name="damage_hbox" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -94,9 +105,17 @@ theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_font_sizes/font_size = 22
 text = "1"
 
-[node name="cd_hbox" parent="." instance=ExtResource("7_pmoen")]
+[node name="cd_panel_cntr" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_bottom = 0.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cn0j4")
+
+[node name="cd_hbox" parent="cd_panel_cntr" instance=ExtResource("7_pmoen")]
+layout_mode = 2

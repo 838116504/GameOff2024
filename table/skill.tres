@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="SkillTable" load_steps=5 format=3 uid="uid://x8ys7ojqlf1i"]
+[gd_resource type="Resource" script_class="SkillTable" load_steps=6 format=3 uid="uid://b0kfwvpu0n8w5"]
 
-[ext_resource type="Script" path="res://table/skill_row.gd" id="1_2dt2c"]
-[ext_resource type="Script" path="res://table/skill_table.gd" id="2_3xmsl"]
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_7n2ab"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_tgwol"]
 
-[sub_resource type="Resource" id="Resource_v8wfl"]
-script = ExtResource("1_2dt2c")
+[sub_resource type="Resource" id="Resource_wbeit"]
+script = ExtResource("1_7n2ab")
 id = 1
+script_id = 1
 name = "SKILL_1"
 description = "SKILL_DESC_1"
 icon = "1.png"
@@ -22,9 +23,10 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_xasdc"]
-script = ExtResource("1_2dt2c")
+[sub_resource type="Resource" id="Resource_rg2rb"]
+script = ExtResource("1_7n2ab")
 id = 2
+script_id = 1
 name = "SKILL_2"
 description = "SKILL_DESC_2"
 icon = "2.png"
@@ -41,6 +43,26 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
+[sub_resource type="Resource" id="Resource_8rs2r"]
+script = ExtResource("1_7n2ab")
+id = 17
+script_id = 1
+name = "SKILL_17"
+description = "SKILL_DESC_17"
+icon = "17.png"
+action_first = 0
+cd = 4
+strike_damage = 1
+thrust_damage = 1
+slash_damage = 1
+random_damage_type = 1
+free_put = 0
+strike_damage_rate = 1.0
+thrust_damage_rate = 1.0
+slash_damage_rate = 1.0
+effect_id = 0
+charge_count = 0
+
 [resource]
-script = ExtResource("2_3xmsl")
-row_list = Array[ExtResource("1_2dt2c")]([SubResource("Resource_v8wfl"), SubResource("Resource_xasdc")])
+script = ExtResource("2_tgwol")
+row_list = Array[ExtResource("1_7n2ab")]([SubResource("Resource_wbeit"), SubResource("Resource_rg2rb"), SubResource("Resource_8rs2r")])

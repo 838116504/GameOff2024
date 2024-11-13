@@ -297,6 +297,7 @@ func reset():
 func create_node():
 	var ret = preload("unit_node.tscn").instantiate()
 	ret.unit = self
+	node = ret
 	return ret
 
 func create_fight_node():

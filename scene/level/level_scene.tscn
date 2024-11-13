@@ -592,6 +592,20 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_SKIP_LAYER_BTN"
 
+[node name="help_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_HELP"
+
 [node name="volume_btn" type="Button" parent="left_ui/btns_grid_cntr"]
 layout_mode = 2
 size_flags_horizontal = 3

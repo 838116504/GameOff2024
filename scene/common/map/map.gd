@@ -2,8 +2,7 @@ extends RefCounted
 class_name Map
 
 signal before_item_changed(p_layer:int, p_pos:Vector2i, p_id:int)
-signal item_changed(p_layer:int, p_pos:Vector2i, p_id:int)
-signal item_data_changed(p_layer:int, p_pos:Vector2i, p_id:int, p_data)
+signal item_changed(p_layer:int, p_pos:Vector2i)
 signal item_moved(p_layer:int, p_from:Vector2i, p_to:Vector2i)
 signal item_swapped(p_layer:int, p_a:Vector2i, p_b:Vector2i)
 
@@ -20,7 +19,7 @@ var tile_id_list:Array = []
 var entrance_layer:int = 0
 var entrance_position:Vector2i
 
-var player_unit:PlayerUnit
+var player_unit:PlayerUnit : set = set_player_unit
 
 
 func _init():
@@ -86,11 +85,12 @@ func get_tile(p_layer:int, p_pos:Vector2i):
 func set_item(p_layer:int, p_pos:Vector2i, p_id:int):
 	before_item_changed.emit(p_layer, p_pos, p_id)
 	item_list[p_layer][_to_map_position_id(p_pos)] = p_id
-	item_changed.emit(p_layer, p_pos, p_id)
+	item_changed.emit(p_layer, p_pos)
 
 func set_item_data(p_layer:int, p_pos:Vector2i, p_id:int, p_data):
+	before_item_changed.emit(p_layer, p_pos, p_id)
 	item_list[p_layer][_to_map_position_id(p_pos)] = [p_id, p_data]
-	item_data_changed.emit(p_layer, p_pos, p_id, p_data)
+	item_changed.emit(p_layer, p_pos)
 
 func move_item(p_layer:int, p_from:Vector2i, p_to:Vector2i):
 	var fromId = _to_map_position_id(p_from)
@@ -100,8 +100,9 @@ func move_item(p_layer:int, p_from:Vector2i, p_to:Vector2i):
 	item_moved.emit(p_layer, p_from, p_to)
 
 func erase_item(p_layer:int, p_pos:Vector2i):
+	before_item_changed.emit(p_layer, p_pos, 0)
 	item_list[p_layer][_to_map_position_id(p_pos)] = 0
-	item_changed.emit(p_layer, p_pos, 0)
+	item_changed.emit(p_layer, p_pos)
 
 func set_item_layer(p_layer:int, p_pos:Vector2i, p_target_layer:int):
 	var id = _to_map_position_id(p_pos)
@@ -124,7 +125,7 @@ func set_tile(p_layer:int, p_pos:Vector2i, p_id:int):
 
 func is_tile_blocked(p_layer:int, p_pos:Vector2i) -> bool:
 	var tile = get_tile(p_layer, p_pos)
-	return tile == null || !tile.is_blocked()
+	return tile != null && tile.is_blocked()
 
 func add_layer(p_value:int):
 	if p_value == 0:
@@ -163,6 +164,13 @@ func set_data(p_data):
 	var values = p_data.values()
 	for i in keys.size():
 		set(keys[i], values[i])
+
+func set_player_unit(p_value):
+	if player_unit == p_value:
+		return
 	
+	player_unit = p_value
 	if player_unit:
+		before_item_changed.emit(player_unit.layer, player_unit.position, player_unit.layer, player_unit.get_map_item_id())
 		item_list[player_unit.layer][_to_map_position_id(player_unit.position)] = player_unit
+		item_changed.emit(player_unit.layer, player_unit.position)

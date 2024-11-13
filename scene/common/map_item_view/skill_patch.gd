@@ -31,7 +31,7 @@ func get_random_label():
 	return $damage_hbox/random_label
 
 func get_cd_hbox():
-	return $cd_hbox
+	return $cd_panel_cntr/cd_hbox
 
 
 func set_skill(p_value):

@@ -20,20 +20,31 @@ func get_right_ui():
 func get_map_view() -> MapView:
 	return $map_view
 
+func get_input():
+	return $input
 
 func _ready():
 	if map == null:
 		load_level(TEST_LVL_PATH)
 	
 	if player_unit == null:
-		player_unit = PlayerUnit.new()
-		player_unit.passive_state
-		player_unit.cheat
+		if map.player_unit:
+			player_unit = map.player_unit
+		else:
+			player_unit = PlayerUnit.new()
+			player_unit.set_unit_id(1)
+			player_unit.layer = map.entrance_layer
+			player_unit.position = map.entrance_position
+			map.player_unit = player_unit
 	
+	player_unit.map_view = map_view
+	map_view.current_layer = player_unit.layer
 	
 	for child in left_ui.get_children() + right_ui.get_children():
 		if child.has_method("set_player_unit"):
 			child.set_player_unit(player_unit)
+	
+	get_input().player_unit = player_unit
 
 func load_level(p_path):
 	var file = FileAccess.open(p_path, FileAccess.READ)

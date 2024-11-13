@@ -24,10 +24,10 @@ func set_cheat(p_value):
 		tooltip_text = cheat.get_description()
 
 func disable():
-	use_btn.disable = true
+	use_btn.disabled = true
 
 func enable():
-	use_btn.disable = false
+	use_btn.disabled = false
 
 func _on_use_btn_pressed():
 	used.emit(cheat)
