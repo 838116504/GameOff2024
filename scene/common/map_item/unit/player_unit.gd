@@ -38,7 +38,7 @@ var bug_count:int = 0 : set = set_bug_count
 var layer:int = 0 : set = set_layer
 var cheat:Cheat
 var passive_state:PassiveState : set = set_passive_state
-
+var unit_hand_combat_damage_dict := {}
 
 func add_data(p_id:int, p_count:int = 1):
 	data_count += p_count
@@ -121,16 +121,131 @@ func set_passive_state(p_value):
 	if passive_state:
 		passive_state.owner = self
 
-func set_passive_by_id(p_id):
+func set_passive_by_id(p_id:int):
 	passive_state = PassiveState.new()
 	passive_state.passive = PassiveConst.PASSIVE_LIST[p_id].new()
 
-func set_cheat_by_id(p_id):
+func set_cheat_by_id(p_id:int):
 	cheat = CheatConst.CHEAT_LIST[p_id].new()
 
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.PLAYER_UNIT
 
+func reset():
+	super()
+	passive_state.reset()
+
+func duplicate():
+	var ret = PlayerUnit.new()
+	ret.set_data(get_data())
+	return ret
+
+func get_unit_hand_combat_damage(p_unit:Unit):
+	assert(p_unit != null)
+	
+	var uid = p_unit.get_unit_id()
+	if unit_hand_combat_damage_dict.has(uid):
+		return unit_hand_combat_damage_dict[uid]
+	
+	var myUnits = [self] + follow_unit_list
+	var enemyUnits = [p_unit] + p_unit.follow_unit_list
+	
+	var enemyHighestDef = 0
+	for i in enemyUnits:
+		enemyHighestDef = max(enemyHighestDef, i.get_def())
+	var myHighestAtk = 0
+	for i in myUnits:
+		for s in i.skill_state_list:
+			myHighestAtk = max(myHighestAtk, s.skill.get_damage(s.skill.get_damage_type()))
+	
+	if myHighestAtk <= enemyHighestDef:
+		unit_hand_combat_damage_dict[uid] = INF
+		return INF
+	
+	var totalHp = 0
+	for i in myUnits.size():
+		totalHp += myUnits[i].hp
+		myUnits[i] = myUnits[i].duplicate()
+	
+	for i in enemyUnits.size():
+		enemyUnits[i] = enemyUnits[i].duplicate()
+	
+	var firstUnits:Array = []
+	var orderUnits:Array = []
+	var actionCount:int = 1
+	while !myUnits.is_empty() && !enemyUnits.is_empty():
+		actionCount = 1
+		# unit's next operate
+		for unit in myUnits + enemyUnits:
+			unit.round_start()
+			if unit.has_skill_slot() && unit.has_ready_skill():
+				for skillState in unit.skill_state_list:
+					if skillState.is_cding() || skillState.skill.get_max_attack_target() <= 0:
+						continue
+					
+					if skillState.skill.is_free_put():
+						unit.put_skill(skillState)
+						if !unit.has_skill_slot():
+							break
+					else:
+						unit.put_skill_operate()
+						break
+					
+				if unit.next_operate:
+					continue
+				
+				if !unit.put_skill_state_list.is_empty():
+					if unit in myUnits:
+						unit.hand_combat_attack_operate(enemyUnits)
+					else:
+						unit.hand_combat_attack_operate(myUnits)
+					actionCount = max(actionCount, unit.next_operate.get_stage_count())
+		
+		for i in actionCount:
+			firstUnits.clear()
+			orderUnits.clear()
+			
+			for unit in myUnits + enemyUnits:
+				if unit.next_operate == null || i >= unit.next_operate.get_state_count():
+					continue
+				
+				var inserted := false
+				var unitSpd = unit.get_spd()
+				if unit.next_operate.is_action_first():
+					for j in firstUnits.size():
+						if firstUnits[j].get_spd() < unitSpd:
+							inserted = true
+							firstUnits.insert(j, unit)
+							break
+					if !inserted:
+						firstUnits.append(unit)
+				else:
+					for j in orderUnits.size():
+						if orderUnits[j].get_spd() < unitSpd:
+							inserted = true
+							orderUnits.insert(j, unit)
+							break
+					if !inserted:
+						orderUnits.append(unit)
+			
+			for unit in firstUnits + orderUnits:
+				unit.execute_operate()
+		
+		for i in range(myUnits.size() - 1, -1, -1):
+			if myUnits[i].is_dead():
+				myUnits.remove_at(i)
+		
+		for i in range(enemyUnits.size() - 1, -1, -1):
+			if enemyUnits[i].is_dead():
+				enemyUnits.remove_at(i)
+	
+	var endTotalHp = 0
+	for i in myUnits.size():
+		endTotalHp += myUnits[i].hp
+	
+	unit_hand_combat_damage_dict[uid] = totalHp - endTotalHp
+	
+	return totalHp - endTotalHp
 
 func get_data():
 	var ret = { "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 

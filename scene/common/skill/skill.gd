@@ -32,7 +32,7 @@ func get_skill_name() -> String:
 func get_description() -> String:
 	var damType = get_damage_type()
 	if damType >= 0:
-		return tr(row.description).format([["damage", DAMAGE_TEXT_LIST[damType] % get_damage(damType) ]])
+		return tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage(damType) ]])
 	
 	return tr(row.description)
 
@@ -76,6 +76,16 @@ func get_damage_type():
 	if row.random_damage_type != 0:
 		return SkillConst.DamageType.RANDOM
 	
+	if row.strike_damage > 0:
+		return SkillConst.DamageType.STRIKE
+	
+	if row.thrust_damage > 0:
+		return SkillConst.DamageType.THRUST
+	
+	if row.slash_damage > 0:
+		return SkillConst.DamageType.SLASH
+	
+	return SkillConst.DamageType.NONE
 
 func get_damage(p_type:SkillConst.DamageType) -> float:
 	match p_type:
@@ -101,6 +111,16 @@ func round_start(_state):
 
 func is_action_first() -> bool:
 	return row.action_first != 0
+
+func is_free_put() -> bool:
+	return row.free_put != 0
+
+func get_max_attack_target() -> int:
+	return 1
+
+func attack(p_target, p_attcker):
+	var damType = get_damage_type()
+	p_target.hit(p_attcker, damType, get_damage(damType))
 
 func get_data():
 	return { "script_id":get_script_id(), "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, "extra_cd":extra_cd }

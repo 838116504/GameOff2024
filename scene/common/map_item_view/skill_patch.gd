@@ -24,6 +24,12 @@ func get_slash_tex_rect():
 func get_slash_label():
 	return $damage_hbox/slash_label
 
+func get_random_tex_rect():
+	return $damage_hbox/random_tex_rect
+
+func get_random_label():
+	return $damage_hbox/random_label
+
 func get_cd_hbox():
 	return $cd_hbox
 
@@ -39,16 +45,14 @@ func update():
 	var iconTexRect = get_icon_tex_rect()
 	iconTexRect.texture = skill.get_icon()
 	
-	var dams = [ skill.get_strike_damage(), 
-			skill.get_thrust_damage(), skill.get_slash_damage() ]
-	var damTexRects = [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect() ]
-	var damLabels = [ get_strike_label(), get_thrust_label(), get_slash_label() ]
-	
-	for i in dams.size():
-		if dams[i] > 0:
-			damTexRects[i].show()
-			damLabels[i].text = str(dams[i])
-			damLabels[i].show()
+	var damType = skill.get_damage_type()
+	if damType >= 0:
+		var dam = skill.get_damage(damType)
+		var damTexRects = [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect(), get_random_tex_rect() ]
+		var damLabels = [ get_strike_label(), get_thrust_label(), get_slash_label(), get_random_label() ]
+		damTexRects[damType].show()
+		damLabels[damType].text = str(dam)
+		damLabels[damType].show()
 	
 	var cdHbox = get_cd_hbox()
 	cdHbox.set_max_value(skill.get_cd())

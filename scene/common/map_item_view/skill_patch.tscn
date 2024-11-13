@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://o4ewhcv85p1y"]
+[gd_scene load_steps=8 format=3 uid="uid://o4ewhcv85p1y"]
 
 [ext_resource type="Texture2D" uid="uid://bcc3mu2k81put" path="res://asset/img/ui/common/skill_panel.png" id="1_smoru"]
 [ext_resource type="Script" path="res://scene/common/map_item_view/skill_patch.gd" id="2_oe4sx"]
 [ext_resource type="Texture2D" uid="uid://dltofyymrj0lo" path="res://asset/img/ui/icon/strike_icon.png" id="3_kq504"]
 [ext_resource type="Texture2D" uid="uid://sos8l423fg57" path="res://asset/img/ui/icon/thrust_icon.png" id="5_3w62o"]
 [ext_resource type="Texture2D" uid="uid://qfrxnpgt68c4" path="res://asset/img/ui/icon/slash_icon.png" id="6_0eti4"]
+[ext_resource type="Texture2D" uid="uid://bwbwritqqt27q" path="res://asset/img/ui/icon/random_damage_icon.png" id="6_7r7hj"]
 [ext_resource type="PackedScene" uid="uid://0sknuifahe1i" path="res://scene/common/map_item_view/cd_hbox.tscn" id="7_pmoen"]
 
 [node name="skill_patch" type="NinePatchRect"]
@@ -45,7 +46,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "1"
 
 [node name="thrust_tex_rect" type="TextureRect" parent="damage_hbox"]
@@ -60,7 +61,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "1"
 
 [node name="slash_tex_rect" type="TextureRect" parent="damage_hbox"]
@@ -75,10 +76,27 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="random_tex_rect" type="TextureRect" parent="damage_hbox"]
+visible = false
+custom_minimum_size = Vector2(28, 16)
+layout_mode = 2
+texture = ExtResource("6_7r7hj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="random_label" type="Label" parent="damage_hbox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 22
 text = "1"
 
 [node name="cd_hbox" parent="." instance=ExtResource("7_pmoen")]
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_right = 0.5
+offset_bottom = 0.0

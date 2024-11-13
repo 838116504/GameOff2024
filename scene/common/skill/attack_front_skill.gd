@@ -18,6 +18,5 @@ func execute(p_owner:Unit, _state):
 		
 		var unit = p_owner.fight_scene.get_unit(targetX)
 		if unit != null:
-			var damType = get_damage_type()
-			unit.hit(p_owner, damType, get_damage(damType))
+			attack(unit, p_owner)
 			break

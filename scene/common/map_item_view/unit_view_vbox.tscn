@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://chscm7mfh86kf"]
+
+[ext_resource type="Script" path="res://scene/common/map_item_view/unit_view_vbox.gd" id="1_4kpkp"]
+[ext_resource type="PackedScene" uid="uid://d7gh78udyw1g" path="res://scene/common/map_item_view/unit_panel_cntr.tscn" id="2_8sqh5"]
+[ext_resource type="Texture2D" uid="uid://csi65u2exdqmc" path="res://asset/img/ui/common/round_panel.png" id="2_bv6nn"]
+[ext_resource type="Texture2D" uid="uid://bwodasj3q28bo" path="res://asset/img/ui/icon/hand_combat_icon.png" id="3_s1i0h"]
+[ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="4_1het0"]
+
+[node name="unit_view_vbox" type="VBoxContainer"]
+script = ExtResource("1_4kpkp")
+
+[node name="hand_combat_damage_patch" type="NinePatchRect" parent="."]
+visible = false
+self_modulate = Color(0.141176, 0.141176, 0.141176, 1)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("2_bv6nn")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="icon_tex_rect" type="TextureRect" parent="hand_combat_damage_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_right = 6.0
+grow_vertical = 2
+texture = ExtResource("3_s1i0h")
+stretch_mode = 2
+
+[node name="label" type="Label" parent="hand_combat_damage_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+grow_vertical = 2
+text = ":"
+
+[node name="hp_icon_tex_rect" type="TextureRect" parent="hand_combat_damage_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_right = 50.0
+grow_vertical = 2
+texture = ExtResource("4_1het0")
+stretch_mode = 2
+
+[node name="sub_label" type="Label" parent="hand_combat_damage_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = -2.0
+offset_right = 84.0
+offset_bottom = -2.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.956863, 0.219608, 0.219608, 1)
+theme_override_font_sizes/font_size = 24
+text = "-"
+vertical_alignment = 1
+
+[node name="damage_label" type="Label" parent="hand_combat_damage_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -1.0
+offset_right = 96.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.956863, 0.219608, 0.219608, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+vertical_alignment = 1
+
+[node name="unit_panel_cntr" parent="." instance=ExtResource("2_8sqh5")]
+layout_mode = 2

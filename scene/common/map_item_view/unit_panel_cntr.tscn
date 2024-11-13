@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d7gh78udyw1g"]
+[gd_scene load_steps=14 format=3 uid="uid://d7gh78udyw1g"]
 
 [ext_resource type="Texture2D" uid="uid://csi65u2exdqmc" path="res://asset/img/ui/common/round_panel.png" id="1_wubou"]
 [ext_resource type="Script" path="res://scene/common/map_item_view/unit_panel_cntr.gd" id="2_ag8a7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="4_vgtej"]
 [ext_resource type="Texture2D" uid="uid://c8rpj1lvb1w7r" path="res://asset/img/ui/common/property_panel.png" id="5_hik7u"]
 [ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="6_j2gri"]
+[ext_resource type="Texture2D" uid="uid://bcy2m0dqea4li" path="res://asset/img/ui/icon/def_icon.png" id="6_ybkqf"]
 [ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="7_3a3qv"]
 [ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="8_jpmyx"]
 [ext_resource type="Texture2D" uid="uid://cqwsicojsxm8i" path="res://asset/img/ui/icon/spd_icon.png" id="9_xi3vl"]
@@ -28,6 +29,7 @@ texture_margin_bottom = 12.0
 modulate_color = Color(0.820455, 0.500811, 1.92523e-07, 1)
 
 [node name="unit_panel_cntr" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
 theme_override_styles/panel = SubResource("StyleBoxTexture_t5lgs")
 script = ExtResource("2_ag8a7")
 
@@ -92,8 +94,48 @@ theme_override_font_sizes/font_size = 26
 text = "8"
 vertical_alignment = 1
 
+[node name="def_view" type="Control" parent="hbox/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="icon_tex_rect" type="TextureRect" parent="hbox/vbox/def_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_ybkqf")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="hbox/vbox/def_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hik7u")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="hbox/vbox/def_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
 [node name="strike_def_view" type="Control" parent="hbox/vbox"]
-visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2
@@ -135,7 +177,6 @@ text = "8"
 vertical_alignment = 1
 
 [node name="thrust_def_view" type="Control" parent="hbox/vbox"]
-visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2
@@ -177,7 +218,6 @@ text = "8"
 vertical_alignment = 1
 
 [node name="slash_def_view" type="Control" parent="hbox/vbox"]
-visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 mouse_filter = 2

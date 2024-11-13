@@ -34,3 +34,8 @@ func set_cd(p_value):
 	
 	cd = p_value
 	cd_changed.emit(cd)
+
+func reset():
+	cd = skill.get_cd()
+	charge_count = 0
+	extra_attack = 0

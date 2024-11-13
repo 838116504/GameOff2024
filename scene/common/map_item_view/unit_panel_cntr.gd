@@ -11,6 +11,9 @@ func get_name_label():
 func get_hp_value_label():
 	return $hbox/vbox/hp_view/patch/value_label
 
+func get_def_value_label():
+	return $hbox/vbox/def_view/patch/value_label
+
 func get_strike_def_value_label():
 	return $hbox/vbox/strike_def_view/patch/value_label
 
@@ -38,9 +41,10 @@ func update():
 	get_icon_tex_rect().texture = unit.get_icon()
 	get_name_label().text = unit.get_map_item_name()
 	get_hp_value_label().text = str(unit.hp)
-	#get_strike_def_value_label().text = str(unit.get_strike_def())
-	#get_thrust_def_value_label().text = str(unit.get_thrust_def())
-	#get_slash_def_value_label().text = str(unit.get_slash_def())
+	get_def_value_label().text = str(unit.get_def())
+	get_strike_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_strike_hit_rate())
+	get_thrust_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_thrust_hit_rate())
+	get_slash_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_slash_hit_rate())
 	get_spd_value_label().text = str(unit.get_spd())
 	
 	var skills = []

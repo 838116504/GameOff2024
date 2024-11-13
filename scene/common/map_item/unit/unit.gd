@@ -7,10 +7,10 @@ signal fight_x_changed(p_x)
 signal fight_direction_changed(p_dir)
 
 
-var id:int = 0 : set = set_id
+var unit_id:int = 0 : set = set_unit_id
 var faction_id:int = 1
 var hp:int : set = set_hp
-var next_operate
+var next_operate:FightOperate = null
 var fight_x:int : set = set_fight_x
 var fight_direction:int = 1 : set = set_fight_direction
 var fight_scene:FightScene = null
@@ -27,7 +27,9 @@ var slash_def_rate:float = 1.0
 var direction := Vector2.DOWN
 var buff_manager := BuffManager.new()
 var skill_state_list := []
-
+var skill_slot_max_count:int = 3
+var put_skill_state_list := []
+var dead := false
 
 var followed_unit = null
 var follow_unit_list := []
@@ -35,18 +37,18 @@ var row : set = set_row
 
 
 
-func get_id() -> int:
-	return id
+func get_unit_id() -> int:
+	return unit_id
 
 func get_map_item_name() -> String:
-	return tr("UNIT_%d" % id)
+	return tr("UNIT_%d" % unit_id)
 
-func set_id(p_value):
-	if id == p_value:
+func set_unit_id(p_value):
+	if unit_id == p_value:
 		return
 	
-	id = p_value
-	row = table_set.unit.get_row(id)
+	unit_id = p_value
+	row = table_set.unit.get_row(unit_id)
 
 func set_hp(p_value):
 	if hp == p_value:
@@ -54,6 +56,15 @@ func set_hp(p_value):
 	
 	hp = p_value
 	hp_changed.emit(hp)
+	if hp <= 0:
+		die()
+
+func die():
+	if dead:
+		return
+	
+	dead = true
+	died.emit()
 
 func set_fight_x(p_value):
 	if fight_x == p_value:
@@ -108,14 +119,9 @@ func get_faction_id():
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.UNIT
 
-func _mouse_entered():
-	pass
-
-func _mouse_exited():
-	pass
-
-func _pressed():
-	pass
+func _map_item_entered(p_item):
+	if p_item is PlayerUnit:
+		event_bus.emit_signal(EventConst.SHOW_UNIT_UI, self)
 
 func attack():
 	pass
@@ -138,33 +144,74 @@ func standby():
 func turn():
 	pass
 
-func put_skill(_skillState):
-	pass
+func put_skill(p_skillState):
+	put_skill_state_list.append(p_skillState)
 
 func execute_operate():
-	pass
+	assert(next_operate)
+	
+	next_operate.execute()
 
 func attack_operate():
-	pass
+	var op = AttackOperate.new()
+	op.owner = self
+	op.stage_count = put_skill_state_list.size()
+	next_operate = op
+
+func hand_combat_attack_operate(p_enemys:Array):
+	var op = HandCombatAttackOperate.new()
+	op.owner = self
+	op.enemy_list = p_enemys
+	op.stage_count = put_skill_state_list.size()
+	next_operate = op
 
 func move_left_operate():
-	pass
+	var op = MoveLeftOperate.new()
+	op.owner = self
+	next_operate = op.new()
 
 func move_right_operate():
-	pass
-
+	var op = MoveRightOperate.new()
+	op.owner = self
+	next_operate = op.new()
 
 func standby_operate():
-	pass
+	var op = StandbyOperate.new()
+	op.owner = self
+	next_operate = op.new()
 
 func turn_operate():
-	pass
+	var op = TurnOperate.new()
+	op.owner = self
+	next_operate = op.new()
 
 func put_skill_operate(p_skillState:SkillState):
-	pass
+	var op = PutSkillOperate.new()
+	op.owner = self
+	op.skill_state = p_skillState
+	next_operate = op
 
 func hit(p_attacker, p_type:SkillConst.DamageType, p_damage:int):
-	pass
+	var dam = p_damage - get_def()
+	if dam <= 0:
+		return
+	
+	var finalDam = dam * get_hit_rate(p_type)
+	hp -= finalDam
+
+func get_hit_rate(p_type:SkillConst.DamageType) -> float:
+	if p_type == SkillConst.DamageType.RANDOM:
+		p_type = randi_range(SkillConst.DamageType.STRIKE, SkillConst.DamageType.SLASH)
+	
+	match p_type:
+		SkillConst.DamageType.STRIKE:
+			return get_strike_hit_rate()
+		SkillConst.DamageType.THRUST:
+			return get_thrust_hit_rate()
+		SkillConst.DamageType.SLASH:
+			return get_slash_hit_rate()
+	
+	return 1.0
 
 func round_start():
 	for i in skill_state_list:
@@ -172,7 +219,9 @@ func round_start():
 	
 
 func show_operate():
-	pass
+	assert(next_operate)
+	
+	next_operate.show_operate()
 
 func get_init_hp() -> int:
 	if row:
@@ -235,7 +284,8 @@ func get_fight_map_cell_count() -> int:
 	return 4
 
 func reset():
-	pass
+	for skillState in skill_state_list:
+		skillState.reset()
 
 func create_node():
 	var ret = preload("unit_node.tscn").instantiate()
@@ -245,9 +295,12 @@ func create_node():
 func create_fight_node():
 	return
 
+func is_blocked() -> bool:
+	return true
+
 func get_data():
 	var ret = {}
-	ret.id = id
+	ret.unit_id = unit_id
 	
 	return ret
 
@@ -260,9 +313,26 @@ func set_data(p_data):
 	for i in keys.size():
 		set(keys[i], values[i])
 
+func has_skill_slot() -> bool:
+	return skill_slot_max_count > skill_state_list.size()
+
+func has_ready_skill() -> bool:
+	for i in skill_state_list:
+		if !i.is_cding():
+			return true
+	
+	return false
+
+func duplicate():
+	var ret = Unit.new()
+	ret.set_data(get_data())
+	return ret
+
+func is_dead() -> bool:
+	return dead
 
 static func create_by_id(p_id:int, p_followed_unit = null):
 	var ret = Unit.new()
 	ret.followed_unit = p_followed_unit
-	ret.id = p_id
+	ret.unit_id = p_id
 	return ret

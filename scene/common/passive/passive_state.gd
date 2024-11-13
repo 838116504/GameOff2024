@@ -32,3 +32,6 @@ func set_cd(p_value):
 	
 	cd = p_value
 	cd_changed.emit(cd)
+
+func reset():
+	cd = passive.get_cd()

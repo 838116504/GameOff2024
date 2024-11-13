@@ -19,6 +19,12 @@ extends Resource
 @export var thrust_damage:int
 # 斬击伤害
 @export var slash_damage:int
+# 是否隨机傷害类型
+# (非0 = 是)
+@export var random_damage_type:int
+# 放置不消耗回合
+# (非0 = 是)
+@export var free_put:int
 # 打击伤害增加倍率
 @export var strike_damage_rate:float
 # 突击伤害增加倍率
