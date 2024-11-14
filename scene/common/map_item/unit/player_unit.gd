@@ -467,3 +467,9 @@ func set_data(p_data):
 	var values = p_data.values()
 	for i in keys.size():
 		set(keys[i], values[i])
+
+func _mouse_entered():
+	pass
+
+func _mouse_exited():
+	pass

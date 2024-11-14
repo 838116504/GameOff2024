@@ -7,6 +7,7 @@ var item_node_list := []
 var tile_map:TileMap
 var item_root:Node2D
 
+var hover_item:MapItem = null : set = set_hover_item
 
 func _init():
 	tile_map = TileMap.new()
@@ -17,11 +18,28 @@ func _init():
 	item_root.y_sort_enabled = true
 	add_child(item_root)
 
+func _gui_input(p_event:InputEvent) -> void:
+	if map == null:
+		return
+	
+	if p_event is InputEventMouseMotion:
+		var cell = get_cell(p_event.position)
+		var cellId = map._to_map_position_id(cell)
+		if item_node_list[cellId] == null:
+			hover_item = null
+			return
+		
+		hover_item = item_node_list[cellId].get_meta(&"item")
+
 func get_cell_size() -> Vector2:
 	return tile_map.tile_set.tile_size
 
 func get_cell_center_position(p_pos:Vector2):
 	return Vector2(get_cell_size()) * (p_pos + Vector2(0.5, 0.5))
+
+func get_cell(p_pos:Vector2) -> Vector2i:
+	var cellSize = get_cell_size()
+	return Vector2i(int(p_pos.x / cellSize.x), int(p_pos.y / cellSize.y))
 
 func set_map(p_map):
 	if map == p_map:
@@ -175,3 +193,26 @@ func update_layer():
 	clear()
 	
 	init_map()
+
+func set_hover_item(p_value):
+	if hover_item == p_value:
+		return
+	
+	if hover_item:
+		if hover_item.node && hover_item.node.tree_exited.is_connected(_on_hover_item_node_tree_exited):
+			hover_item.node.tree_exited.disconnect(_on_hover_item_node_tree_exited)
+		
+		hover_item._mouse_exited()
+	
+	hover_item = p_value
+	if hover_item:
+		if hover_item.node:
+			hover_item.node.tree_exited.connect(_on_hover_item_node_tree_exited.bind(hover_item.node))
+		
+		hover_item._mouse_entered()
+
+func _on_hover_item_node_tree_exited(p_node):
+	if hover_item != p_node.get_meta(&"item"):
+		return
+	
+	hover_item = null
