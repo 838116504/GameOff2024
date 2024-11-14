@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=4 format=3 uid="uid://chpe5o4qwfusd"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=4 format=3 uid="uid://cqxxx1n3pn36y"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_8is37"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_6thcf"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_rs65d"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_txbnk"]
 
-[sub_resource type="Resource" id="Resource_lpu3e"]
-script = ExtResource("1_8is37")
+[sub_resource type="Resource" id="Resource_gc5m7"]
+script = ExtResource("1_rs65d")
 id = 1
 hp = 8
-def = 1
+def = 0
 strike_hit_rate = 1.0
 thrust_hit_rate = 1
 slash_hit_rate = 1
@@ -24,5 +24,5 @@ image = "cat_man_right.png"
 right_image = "cat_man_right.png"
 
 [resource]
-script = ExtResource("2_6thcf")
-row_list = Array[ExtResource("1_8is37")]([SubResource("Resource_lpu3e")])
+script = ExtResource("2_txbnk")
+row_list = Array[ExtResource("1_rs65d")]([SubResource("Resource_gc5m7")])

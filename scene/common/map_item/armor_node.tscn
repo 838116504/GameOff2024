@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coy471tt8rrpc"]
+
+[ext_resource type="Texture2D" uid="uid://bcsr3v4hjdt4b" path="res://asset/img/map_item/armor.png" id="1_odint"]
+
+[node name="armor_node" type="Sprite2D"]
+texture = ExtResource("1_odint")

@@ -1,23 +1,22 @@
 extends MapItem
-class_name DialogueTrigger
 
-var dialogue_id:int
+var def:int = 1
 
 func get_map_item_id() -> int:
-	return MapItemConst.MapItemId.DIALOGUE_TRIGGER
+	return MapItemConst.MapItemId.ARMOR
 
 func create_node() -> Node2D:
-	node = preload("dialogue_trigger_node.tscn").instantiate()
+	node = preload("armor_node.tscn").instantiate()
 	return node
 
 func _map_item_entered(p_item):
 	if p_item is PlayerUnit:
-		pass
+		p_item.def += def
 
 
 func set_data(p_data):
 	if p_data is int:
-		dialogue_id = p_data
+		def = p_data
 
 func get_data():
-	return dialogue_id
+	return def

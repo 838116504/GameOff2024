@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5u1hkgdidvj"]
+
+[ext_resource type="Texture2D" uid="uid://b5j0qxgb2impo" path="res://asset/img/map_item/siren.png" id="1_1bfgj"]
+
+[node name="siren_node" type="Sprite2D"]
+texture = ExtResource("1_1bfgj")
