@@ -9,6 +9,7 @@ var player_unit:PlayerUnit : set = set_player_unit
 @onready var left_ui = get_left_ui()
 @onready var right_ui = get_right_ui()
 @onready var map_view = get_map_view()
+@onready var popup_layer = get_popup_layer()
 
 
 func get_left_ui():
@@ -22,6 +23,10 @@ func get_map_view() -> MapView:
 
 func get_input():
 	return $input
+
+func get_popup_layer():
+	return $popup_layer
+
 
 func _ready():
 	if map == null:
@@ -40,7 +45,7 @@ func _ready():
 	player_unit.map_view = map_view
 	map_view.current_layer = player_unit.layer
 	
-	for child in left_ui.get_children() + right_ui.get_children():
+	for child in left_ui.get_children() + right_ui.get_children() + popup_layer.get_children():
 		if child.has_method("set_player_unit"):
 			child.set_player_unit(player_unit)
 	

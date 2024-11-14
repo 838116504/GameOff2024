@@ -4,7 +4,8 @@ class_name AttackOperate
 var stage_count:int
 
 func execute():
-	pass
+	if owner.put_skill_state_list.is_empty():
+		owner.next_operate = null
 
 func show_operate():
 	pass

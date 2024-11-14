@@ -118,9 +118,9 @@ func is_free_put() -> bool:
 func get_max_attack_target() -> int:
 	return 1
 
-func attack(p_target, p_attcker):
+func attack(p_target, p_attacker):
 	var damType = get_damage_type()
-	p_target.hit(p_attcker, damType, get_damage(damType))
+	p_target.hit(p_attacker, damType, get_damage(damType))
 
 func get_data():
 	return { "script_id":get_script_id(), "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, "extra_cd":extra_cd }

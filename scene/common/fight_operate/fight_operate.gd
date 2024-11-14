@@ -4,7 +4,7 @@ class_name FightOperate
 var owner:Unit
 
 func execute():
-	pass
+	owner.next_operate = null
 
 func show_operate():
 	pass

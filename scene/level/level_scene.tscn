@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=56 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -32,6 +32,16 @@
 [ext_resource type="Script" path="res://scene/level/ui/map_item_detail_ui/map_item_detail_ui.gd" id="28_sgvju"]
 [ext_resource type="PackedScene" uid="uid://4cepv0oorf2c" path="res://scene/common/map_item_view/map_item_view_panel_cntr.tscn" id="28_yixql"]
 [ext_resource type="PackedScene" uid="uid://0yvvlo5xttpw" path="res://scene/fight/fight_scene.tscn" id="29_vg6fr"]
+[ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="33_0eium"]
+[ext_resource type="Shader" path="res://asset/shader/blur.gdshader" id="33_whc2o"]
+[ext_resource type="Texture2D" uid="uid://doqsjhrwfcdxm" path="res://asset/img/ui/level_scene/enemy_panel.png" id="34_avbcr"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/enemy_panel.gd" id="35_cirdb"]
+[ext_resource type="Texture2D" uid="uid://dfvbdgeb1febt" path="res://asset/img/ui/level_scene/enemy_panel_btn.png" id="35_wagut"]
+[ext_resource type="Texture2D" uid="uid://bttmccsbwch8k" path="res://asset/img/ui/level_scene/fight_icon.png" id="36_i12g5"]
+[ext_resource type="Texture2D" uid="uid://coug628i4mrqx" path="res://asset/img/ui/level_scene/enemy_panel_btn_focus.png" id="36_kojdq"]
+[ext_resource type="Texture2D" uid="uid://bwodasj3q28bo" path="res://asset/img/ui/icon/hand_combat_icon.png" id="37_klaal"]
+[ext_resource type="Texture2D" uid="uid://cs02u75v3g2ut" path="res://asset/img/ui/level_scene/exit_icon.png" id="38_4tqv8"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/hp_not_enough_popup.gd" id="42_w2raj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
 texture = ExtResource("15_7n6e5")
@@ -60,6 +70,69 @@ texture_margin_left = 8.0
 texture_margin_top = 5.0
 texture_margin_right = 8.0
 texture_margin_bottom = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhnow"]
+shader = ExtResource("33_whc2o")
+shader_parameter/blur = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnps1"]
+texture = ExtResource("34_avbcr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dgih"]
+texture = ExtResource("36_kojdq")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.411765, 0.756863, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frlbg"]
+texture = ExtResource("35_wagut")
+texture_margin_left = 9.0
+texture_margin_top = 8.50732
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hc0wj"]
+texture = ExtResource("35_wagut")
+texture_margin_left = 9.0
+texture_margin_top = 8.50732
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tervp"]
+texture = ExtResource("35_wagut")
+texture_margin_left = 9.0
+texture_margin_top = 8.50732
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ox7b0"]
+texture = ExtResource("35_wagut")
+texture_margin_left = 9.0
+texture_margin_top = 8.50732
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5w3a"]
+texture = ExtResource("36_kojdq")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.411765, 0.756863, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h63tx"]
+texture = ExtResource("36_kojdq")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(0.411765, 0.756863, 1, 1)
 
 [node name="level_scene" type="Control"]
 layout_mode = 3
@@ -99,7 +172,7 @@ grow_horizontal = 2
 script = ExtResource("2_thlmp")
 
 [node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
@@ -114,12 +187,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 10.0
+offset_top = -3.0
 offset_right = 10.0
-theme_override_font_sizes/font_size = 32
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 24
 text = "玩家名字"
-vertical_alignment = 2
 
 [node name="player_panel_btn" type="TextureButton" parent="left_ui/player_view/icon_tex_rect/name_label"]
 layout_mode = 1
@@ -129,7 +202,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 2.0
+offset_top = -2.0
 offset_right = 2.0
+offset_bottom = -2.0
 grow_vertical = 2
 texture_normal = ExtResource("4_m76xl")
 stretch_mode = 3
@@ -156,10 +231,10 @@ patch_margin_bottom = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_left = 16.0
-offset_top = 70.0
+offset_left = 76.0
+offset_top = 34.0
 offset_right = -40.0
-offset_bottom = 40.0
+offset_bottom = 34.0
 theme_override_constants/separation = 10
 
 [node name="hp_view" type="Control" parent="left_ui/player_view/property_vbox"]
@@ -447,6 +522,19 @@ theme_override_font_sizes/font_size = 44
 text = "0"
 vertical_alignment = 1
 
+[node name="data_panel_btn" type="TextureButton" parent="left_ui/player_view/item_vbox/data_count_view/count_label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_right = 2.0
+grow_vertical = 2
+texture_normal = ExtResource("4_m76xl")
+stretch_mode = 3
+
 [node name="yellow_key_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -606,6 +694,20 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_HELP"
 
+[node name="save_load_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.180392, 0.368627, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0.179229, 0.368736, 0.993361, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_colors/font_color = Color(0.0705882, 0.0823529, 0.94902, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
+text = "LS_SKIP_LAYER_BTN"
+
 [node name="volume_btn" type="Button" parent="left_ui/btns_grid_cntr"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -758,3 +860,209 @@ script = ExtResource("28_ohq6x")
 
 [node name="fight_scene" parent="fight_layer" instance=ExtResource("29_vg6fr")]
 visible = false
+
+[node name="popup_layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="bbc" type="BackBufferCopy" parent="popup_layer"]
+visible = false
+copy_mode = 2
+rect = Rect2(0, 0, 1920, 1080)
+script = ExtResource("33_0eium")
+
+[node name="blur_color_rect" type="ColorRect" parent="popup_layer/bbc"]
+material = SubResource("ShaderMaterial_vhnow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="enemy_panel" type="Panel" parent="popup_layer"]
+process_mode = 3
+visible = false
+offset_left = 442.0
+offset_top = 193.0
+offset_right = 1408.0
+offset_bottom = 887.0
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qnps1")
+script = ExtResource("35_cirdb")
+
+[node name="btns_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="fight_btn" type="Button" parent="popup_layer/enemy_panel/btns_hbox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../exit_btn")
+focus_neighbor_right = NodePath("../hand_combat_btn")
+focus_next = NodePath("../hand_combat_btn")
+focus_previous = NodePath("../exit_btn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_3dgih")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tervp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ox7b0")
+
+[node name="icon_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/btns_hbox/fight_btn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -25.5
+offset_right = 4.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("36_i12g5")
+
+[node name="hand_combat_btn" type="Button" parent="popup_layer/enemy_panel/btns_hbox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../fight_btn")
+focus_neighbor_right = NodePath("../exit_btn")
+focus_next = NodePath("../exit_btn")
+focus_previous = NodePath("../fight_btn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_x5w3a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tervp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ox7b0")
+
+[node name="icon_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/btns_hbox/hand_combat_btn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 4.0
+offset_right = 4.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("37_klaal")
+
+[node name="damage_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel/btns_hbox/hand_combat_btn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="hp_icon_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/btns_hbox/hand_combat_btn/damage_hbox"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_uc5jt")
+stretch_mode = 3
+
+[node name="damage_label" type="Label" parent="popup_layer/enemy_panel/btns_hbox/hand_combat_btn/damage_hbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 0.219608, 0.219608, 1)
+theme_override_font_sizes/font_size = 20
+text = "-123456"
+
+[node name="exit_btn" type="Button" parent="popup_layer/enemy_panel/btns_hbox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../hand_combat_btn")
+focus_neighbor_right = NodePath("../fight_btn")
+focus_next = NodePath("../fight_btn")
+focus_previous = NodePath("../hand_combat_btn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_h63tx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tervp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ox7b0")
+
+[node name="icon_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/btns_hbox/exit_btn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("38_4tqv8")
+
+[node name="hp_not_enough_popup" type="Control" parent="popup_layer/enemy_panel"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -442.0
+offset_top = -193.0
+offset_right = 1478.0
+offset_bottom = 887.0
+script = ExtResource("42_w2raj")
+
+[node name="panel_cntr" type="PanelContainer" parent="popup_layer/enemy_panel/hp_not_enough_popup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="margin_cntr" type="MarginContainer" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="text_label" type="Label" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "LS_HP_NOT_ENOUGH_CONFIRM"
+
+[node name="btn_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="yes_btn" type="Button" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "LS_YES_BTN"
+
+[node name="no_btn" type="Button" parent="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "LS_NO_BTN"
+
+[connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/fight_btn" to="popup_layer/enemy_panel" method="_on_fight_btn_pressed"]
+[connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/hand_combat_btn" to="popup_layer/enemy_panel" method="_on_hand_combat_btn_pressed"]
+[connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/exit_btn" to="popup_layer/enemy_panel" method="_on_exit_btn_pressed"]
+[connection signal="yes_btn_pressed" from="popup_layer/enemy_panel/hp_not_enough_popup" to="popup_layer/enemy_panel" method="_on_hp_not_enough_popup_yes_btn_pressed"]
+[connection signal="pressed" from="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox/yes_btn" to="popup_layer/enemy_panel/hp_not_enough_popup" method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox/no_btn" to="popup_layer/enemy_panel/hp_not_enough_popup" method="_on_no_btn_pressed"]

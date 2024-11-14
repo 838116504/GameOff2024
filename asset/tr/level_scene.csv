@@ -2,13 +2,14 @@
 LS_CHEAT_USE_BTN,發動,Use
 LS_SKIP_LAYER_BTN,跳轉樓層,Skip Layer
 LS_SKILL_DETAIL_BTN,查看技能,Skill
+LS_SAVE_LOAD,保存/讀取,Save/Load
 LS_HELP,幫助,Help
 LS_VOLUME_BTN,音量设置,Volumes
 LS_EXIT,離開,Exit
 LS_CHEAT_ABILITY,作弊能力,Cheating Ability
-,,
-,,
-,,
+LS_HP_NOT_ENOUGH_CONFIRM,你的血量不足，是否確認正面決斗?,You don't have enough hp. Do you want to fight head-on?
+LS_YES_BTN,是,Yes
+LS_NO_BTN,否,No
 ,,
 ,,
 ,,

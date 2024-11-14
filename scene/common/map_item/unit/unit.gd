@@ -17,7 +17,7 @@ var fight_scene:FightScene = null
 var fight_node:Node = null
 var extra_def:int
 var extra_spd:int
-var def_rate:float
+var def_rate:float = 1.0
 var extra_strike_hit_rate:float
 var extra_thrust_hit_rate:float
 var extra_slash_hit_rate:float
@@ -122,7 +122,7 @@ func get_map_item_id() -> int:
 
 func _map_item_entered(p_item):
 	if p_item is PlayerUnit:
-		event_bus.emit_signal(EventConst.SHOW_UNIT_UI, self)
+		event_bus.emit_signal(EventConst.SHOW_ENEMY_PANEL, self)
 
 func attack():
 	pass
@@ -193,19 +193,24 @@ func put_skill_operate(p_skillState:SkillState):
 	op.skill_state = p_skillState
 	next_operate = op
 
-func hit(p_attacker, p_type:SkillConst.DamageType, p_damage:int):
+func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int):
 	if is_invincible():
 		return
 	
 	var dam = p_damage - get_def()
+	
 	if dam <= 0:
 		return
 	
 	var finalDam = dam * get_hit_rate(p_type)
+	var tempHp = hp
+	@warning_ignore("narrowing_conversion")
 	hp -= finalDam
+	print(_attacker.get_map_item_name(), " attacked ", get_map_item_name(), ", deal ", finalDam, " damage. HP: ", tempHp, "->", hp)
 
 func get_hit_rate(p_type:SkillConst.DamageType) -> float:
 	if p_type == SkillConst.DamageType.RANDOM:
+		@warning_ignore("int_as_enum_without_cast")
 		p_type = randi_range(SkillConst.DamageType.STRIKE, SkillConst.DamageType.SLASH)
 	
 	match p_type:
@@ -240,6 +245,7 @@ func get_def() -> int:
 	if row:
 		return (row.def + extra_def) * def_rate
 	
+	@warning_ignore("narrowing_conversion")
 	return extra_def * def_rate
 
 func get_strike_hit_rate() -> float:
@@ -325,11 +331,11 @@ func set_data(p_data):
 		set(keys[i], values[i])
 
 func has_skill_slot() -> bool:
-	return skill_slot_max_count > skill_state_list.size()
+	return skill_slot_max_count > put_skill_state_list.size()
 
 func has_ready_skill() -> bool:
 	for i in skill_state_list:
-		if !i.is_cding():
+		if !i.is_cding() && !i in put_skill_state_list:
 			return true
 	
 	return false

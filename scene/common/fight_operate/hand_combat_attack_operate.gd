@@ -15,11 +15,12 @@ func execute():
 			
 			if enemy_list[curI].is_dead():
 				skipCount += 1
-				for j in range(curI + 1, enemy_list.size()):
-					if enemy_list[j].is_dead():
+				curI += 1
+				for j in range(curI, enemy_list.size()):
+					if !enemy_list[j].is_dead():
 						skipCount += 1
+						curI += 1
 					else:
-						curI = j
 						break
 				
 				if curI >= enemy_list.size():
@@ -27,6 +28,9 @@ func execute():
 			
 			skillState.skill.attack(enemy_list[curI], owner)
 			skillState.cd = 0
+	
+	if owner.put_skill_state_list.is_empty():
+		owner.next_operate = null
 
 
 func get_stage_count() -> int:
