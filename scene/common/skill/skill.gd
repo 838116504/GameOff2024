@@ -135,10 +135,10 @@ func set_data(p_data):
 		set(keys[i], values[i])
 
 static func create_by_id(p_id:int):
-	var row = table_set.skill.get_row(p_id)
-	if row == null:
+	var skillRow = table_set.skill.get_row(p_id)
+	if skillRow == null:
 		return null
 	
-	var ret = SkillConst.SKILL_LIST[row.script_id].new()
+	var ret = SkillConst.SKILL_LIST[skillRow.script_id].new()
 	ret.id = p_id
 	return ret

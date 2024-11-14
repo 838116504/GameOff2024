@@ -106,6 +106,7 @@ func set_layer(p_layer):
 	layer_changed.emit(layer)
 
 func get_def() -> int:
+	@warning_ignore("narrowing_conversion")
 	return (def + extra_def) * def_rate
 
 func get_strike_hit_rate():
@@ -344,9 +345,9 @@ func set_row(p_value):
 		skill_state_list.clear()
 		for skillId in row.skill_id_list:
 			var skill = Skill.create_by_id(skillId)
-			var state = SkillState.new()
-			state.skill = skill
-			skill_state_list.append(state)
+			var skillState = SkillState.new()
+			skillState.skill = skill
+			skill_state_list.append(skillState)
 		
 		cheat = CheatConst.CHEAT_LIST[row.cheat_id].new()
 		passive_state = PassiveState.new()
