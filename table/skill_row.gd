@@ -5,6 +5,8 @@ extends Resource
 @export var id:int
 # 腳本id
 @export var script_id:int
+# 技能參數數組
+@export var arg_list:Array
 # 名字
 @export var name:String
 # 描述
@@ -13,6 +15,8 @@ extends Resource
 @export var icon:String
 # 先手
 @export var action_first:int
+# 无法格档
+@export var unable_block:int
 # cd
 @export var cd:int
 # 打击伤害

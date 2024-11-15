@@ -4,6 +4,7 @@ class_name FightScene
 var cell_count:int = 0 : set = set_cell_count
 var fight_map:FightMap : set = set_fight_map
 var cell_unit_list := [  ]
+var cell_items_list := [ ]
 # format = [ [ faction 0 unitA, ... ], [ faction 1 unitB, ...] ]
 var faction_unit_list := []
 var cell_width:int = 160
@@ -53,6 +54,8 @@ func _add_unit(p_unit:Unit, p_x:int):
 	
 	faction_unit_list[p_unit.faction_id].append(p_unit)
 	set_cell_faction(p_x, p_unit.faction_id)
+	for item in cell_items_list[p_x]:
+		item._unit_entered(p_unit)
 
 func _on_unit_died(p_unit:Unit):
 	if cell_unit_list[p_unit.fight_x] == p_unit:
@@ -127,6 +130,10 @@ func set_cell_faction(p_x:int, p_factionId:int):
 
 func update_cell_count():
 	cell_unit_list.resize(cell_count)
+	cell_items_list.resize(cell_count)
+	for i in cell_items_list.size():
+		cell_items_list[i] = []
+	
 	var cellRoot = get_cell_root()
 	for child in cellRoot.get_children():
 		cellRoot.remove_child(child)
@@ -168,6 +175,10 @@ func move_unit(p_unit:Unit, p_x:int):
 	cell_unit_list[p_unit.fight_x] = null
 	cell_unit_list[p_x] = p_unit
 	p_unit.fight_node.position.x = get_cell_center_x(p_x)
+	
+	for item in cell_items_list[p_x]:
+		item._unit_entered(p_unit)
+
 
 func swap_unit(p_a:Unit, p_b:Unit):
 	var aX = p_a.fight_x
@@ -176,3 +187,41 @@ func swap_unit(p_a:Unit, p_b:Unit):
 	cell_unit_list[bX] = p_a
 	p_a.fight_node.position.x = get_cell_center_x(bX)
 	p_b.fight_node.position.x = get_cell_center_x(aX)
+	for item in cell_items_list[aX]:
+		item._unit_entered(p_b)
+	for item in cell_items_list[bX]:
+		item._unit_entered(p_a)
+
+func add_cell_item(p_item:FightCellItem, p_x:int):
+	if !has_cell(p_x):
+		return
+	
+	p_item.fight_scene = self
+	p_item.fight_x = p_x
+	cell_items_list[p_x].append(p_item)
+	if cell_unit_list[p_x]:
+		p_item._unit_entered(cell_unit_list[p_x])
+
+func erase_cell_item(p_item:FightCellItem):
+	cell_items_list[p_item.fight_x].erase(p_item)
+
+func get_first_unit_cell(p_x:int, p_dir:int) -> int:
+	var curX = p_x + p_dir
+	while has_cell(curX):
+		if get_unit(curX):
+			return curX
+		
+		curX = p_x + p_dir
+	
+	return -1
+
+func get_final_empty_cell(p_x:int, p_dir:int) -> int:
+	var ret = -1
+	var curX = p_x + p_dir
+	while has_cell(curX):
+		if get_unit(curX) == null:
+			ret = curX
+		
+		curX = p_x + p_dir
+	
+	return ret

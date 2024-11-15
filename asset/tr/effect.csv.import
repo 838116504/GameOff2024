@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bp1nfxu627vpm"
+
+[deps]
+
+files=["res://asset/tr/effect.zh.translation", "res://asset/tr/effect.en.translation"]
+
+source_file="res://asset/tr/effect.csv"
+dest_files=["res://asset/tr/effect.zh.translation", "res://asset/tr/effect.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

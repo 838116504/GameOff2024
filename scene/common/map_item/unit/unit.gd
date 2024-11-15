@@ -31,6 +31,8 @@ var skill_slot_max_count:int = 3
 var put_skill_state_list := []
 var dead := false
 var invincible_count:int = 0
+var cannot_move_count:int = 0
+var block_count:int = 0
 
 var followed_unit = null
 var follow_unit_list := []
@@ -125,19 +127,20 @@ func _map_item_entered(p_item):
 		event_bus.emit_signal(EventConst.SHOW_ENEMY_PANEL, self)
 
 func attack():
-	pass
+	var skillState:SkillState = put_skill_state_list.pop_front()
+	skillState.execute(self)
+	skillState.put = false
 
 func move_left():
-	pass
+	if !can_move():
+		return
+	
 
 func move_right():
-	pass
+	if !can_move():
+		return
+	
 
-func move_up():
-	pass
-
-func move_down():
-	pass
 
 func standby():
 	pass
@@ -145,8 +148,9 @@ func standby():
 func turn():
 	pass
 
-func put_skill(p_skillState):
+func put_skill(p_skillState:SkillState):
 	put_skill_state_list.append(p_skillState)
+	p_skillState.put = true
 
 func execute_operate():
 	assert(next_operate)
@@ -193,7 +197,11 @@ func put_skill_operate(p_skillState:SkillState):
 	op.skill_state = p_skillState
 	next_operate = op
 
-func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int):
+func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int, p_blockable:bool = true):
+	if is_blocking() && p_blockable:
+		buff_manager.erase_buff(&"block")
+		return
+	
 	if is_invincible():
 		return
 	
@@ -203,10 +211,8 @@ func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int):
 		return
 	
 	var finalDam = dam * get_hit_rate(p_type)
-	var tempHp = hp
 	@warning_ignore("narrowing_conversion")
 	hp -= finalDam
-	print(_attacker.get_map_item_name(), " attacked ", get_map_item_name(), ", deal ", finalDam, " damage. HP: ", tempHp, "->", hp)
 
 func get_hit_rate(p_type:SkillConst.DamageType) -> float:
 	if p_type == SkillConst.DamageType.RANDOM:
@@ -347,6 +353,12 @@ func duplicate():
 
 func is_dead() -> bool:
 	return dead
+
+func can_move() -> bool:
+	return cannot_move_count <= 0
+
+func is_blocking() -> bool:
+	return block_count > 0
 
 static func create_by_id(p_id:int, p_followed_unit = null):
 	var ret = Unit.new()

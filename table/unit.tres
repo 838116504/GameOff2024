@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=4 format=3 uid="uid://cqxxx1n3pn36y"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=4 format=3 uid="uid://d1utvww52fs67"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_rs65d"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_txbnk"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_4e6fg"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_7siwe"]
 
-[sub_resource type="Resource" id="Resource_gc5m7"]
-script = ExtResource("1_rs65d")
+[sub_resource type="Resource" id="Resource_h5svj"]
+script = ExtResource("1_4e6fg")
 id = 1
 hp = 8
 def = 0
@@ -24,5 +24,5 @@ image = "cat_man_right.png"
 right_image = "cat_man_right.png"
 
 [resource]
-script = ExtResource("2_txbnk")
-row_list = Array[ExtResource("1_rs65d")]([SubResource("Resource_gc5m7")])
+script = ExtResource("2_7siwe")
+row_list = Array[ExtResource("1_4e6fg")]([SubResource("Resource_h5svj")])

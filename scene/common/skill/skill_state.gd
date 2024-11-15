@@ -7,6 +7,7 @@ var cd:int : set = set_cd
 var skill:Skill : set = set_skill
 var charge_count:int = 0
 var extra_attack:int = 0
+var put := false : set = set_put
 
 func is_cding() -> bool:
 	return cd < skill.get_cd()
@@ -20,6 +21,10 @@ func round_start():
 		return
 	
 	cd += 1
+	if put:
+		var effects = skill.get_effect_list()
+		for effect in effects:
+			effect.round_start(self)
 
 
 func set_skill(p_skill):
@@ -39,3 +44,11 @@ func reset():
 	cd = skill.get_cd()
 	charge_count = 0
 	extra_attack = 0
+
+func set_put(p_value):
+	if put == p_value:
+		return
+	
+	put = p_value
+	if !put:
+		extra_attack = 0

@@ -1,0 +1,35 @@
+﻿keys,zh,en
+EFFECT_1,【擊退】,【Repel】
+EFFECT_DESC_1,使攻擊目標擊飛到最遠，對撞到的人造成傷害,"Repel the victim as far as possible, causing damage to those it hits."
+EFFECT_2,【翻倒】,【Overturn】
+EFFECT_DESC_2,把攻擊目標的方向改變,Change the direction of the victim
+EFFECT_3,【沒法移動】,【Unable to move】
+EFFECT_DESC_3,攻击目標沒法移動1回合,The victim cannot move for 1 round
+EFFECT_4,【蓄力】,【Charge】
+EFFECT_DESC_4,放置後每一回合增加1傷害,Increases damage by 1 each round after placement
+EFFECT_5,【格擋】,【Block】
+EFFECT_DESC_5,免疫可格擋傷害1次,Immune to block damage 1 time
+EFFECT_6,【換位】,【Transposition】
+EFFECT_DESC_6,和面前一格的人換位,Change places with the person in front of cell
+EFFECT_7,【轉向】,【Turn】
+EFFECT_DESC_7,改變方向,Change direction
+EFFECT_8,【衝刺】,【Dash】
+EFFECT_DESC_8,衝到最前方,Rush to the front
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,

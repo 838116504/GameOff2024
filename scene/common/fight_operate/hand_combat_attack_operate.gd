@@ -28,6 +28,8 @@ func execute():
 			
 			skillState.skill.attack(enemy_list[curI], owner)
 			skillState.cd = 0
+		
+		skillState.put = false
 	
 	if owner.put_skill_state_list.is_empty():
 		owner.next_operate = null

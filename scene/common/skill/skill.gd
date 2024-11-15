@@ -22,19 +22,40 @@ func set_id(p_value):
 	
 	id = p_value
 	row = table_set.skill.get_row(get_id())
+	if row:
+		set_skill_arg(row.arg_list)
 
-func execute(_owner, _state):
+func set_skill_arg(_arg):
 	pass
+
+func execute(p_owner, p_state):
+	for i in get_effect_list():
+		i.execute(p_owner, p_state)
 
 func get_skill_name() -> String:
 	return tr(row.name)
 
 func get_description() -> String:
 	var damType = get_damage_type()
+	var ret = ""
+	var words = []
 	if damType >= 0:
-		return tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage(damType) ]])
+		ret = tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage(damType) ]])
+		if !is_blockable():
+			words.append(tr("SKILL_UNABLE_BLOCK"))
 	
-	return tr(row.description)
+	ret = tr(row.description)
+	if is_action_first():
+		words.append(tr("SKILL_ACTION_FIRST"))
+	if is_free_put():
+		words.append(tr("SKILL_FREE_PUT"))
+	if get_charge_count() > 0:
+		words.append(tr("SKILL_CHARGE") % get_charge_count())
+	
+	if !words.is_empty():
+		ret += "\n" + " ".join(PackedStringArray(words))
+	
+	return ret
 
 func get_icon() -> Texture2D:
 	return load(DirConst.SKILL_IMG.path_join(row.icon))
@@ -101,7 +122,12 @@ func get_damage(p_type:SkillConst.DamageType) -> float:
 	return 0
 
 func get_effect_list() -> Array:
-	return [ row.effect_id ] + extra_effect_list
+	var ret = []
+	var effectIds = [ row.effect_id ] + extra_effect_list
+	for i in effectIds:
+		ret.append(SkillConst.SKILL_EFFECT_LIST[i].new())
+	
+	return ret
 
 func get_charge_count() -> int:
 	return row.charge_count
@@ -112,6 +138,9 @@ func round_start(_state):
 func is_action_first() -> bool:
 	return row.action_first != 0
 
+func is_blockable():
+	return row.unable_block == 0
+
 func is_free_put() -> bool:
 	return row.free_put != 0
 
@@ -120,7 +149,11 @@ func get_max_attack_target() -> int:
 
 func attack(p_target, p_attacker):
 	var damType = get_damage_type()
-	p_target.hit(p_attacker, damType, get_damage(damType))
+	var dam = get_damage(damType)
+	var blockable = is_blockable()
+	p_target.hit(p_attacker, damType, dam, blockable)
+	for effect in get_effect_list():
+		effect.attack(p_attacker, p_target, damType, dam, blockable)
 
 func get_data():
 	return { "script_id":get_script_id(), "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, "extra_cd":extra_cd }
