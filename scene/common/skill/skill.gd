@@ -28,7 +28,7 @@ func set_id(p_value):
 func set_skill_arg(_arg):
 	pass
 
-func execute(p_owner, p_state):
+func execute(p_owner:Unit, p_state):
 	for i in get_effect_list():
 		i.execute(p_owner, p_state)
 

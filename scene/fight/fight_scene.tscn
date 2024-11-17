@@ -1,6 +1,309 @@
-[gd_scene load_steps=2 format=3 uid="uid://0yvvlo5xttpw"]
+[gd_scene load_steps=21 format=3 uid="uid://0yvvlo5xttpw"]
 
 [ext_resource type="Script" path="res://scene/fight/fight_scene.gd" id="1_rulib"]
+[ext_resource type="Script" path="res://scene/fight/ui/unit_panel/unit_panel.gd" id="3_8sesy"]
+[ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="3_22k5n"]
+[ext_resource type="Texture2D" uid="uid://b4iv82b7r4eoa" path="res://asset/img/ui/fight_scene/skill_view_panel.png" id="3_drh8k"]
+[ext_resource type="Script" path="res://scene/fight/ui/skill_panel/skill_panel_cntr.gd" id="4_ry5md"]
+[ext_resource type="PackedScene" uid="uid://er5shc6u4boq" path="res://scene/fight/ui/unit_panel/property_view_patch.tscn" id="4_ywcth"]
+[ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="5_dip84"]
+[ext_resource type="Texture2D" uid="uid://bcy2m0dqea4li" path="res://asset/img/ui/icon/def_icon.png" id="6_ua7kp"]
+[ext_resource type="Texture2D" uid="uid://cqwsicojsxm8i" path="res://asset/img/ui/icon/spd_icon.png" id="7_u4gvi"]
+[ext_resource type="PackedScene" uid="uid://c1clo3cjjx6ur" path="res://scene/fight/ui/unit_panel/property_precent_view_patch.tscn" id="8_dmtkc"]
+[ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="9_g3rkv"]
+[ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="10_i0i2d"]
+[ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="11_y202e"]
+[ext_resource type="Script" path="res://scene/fight/ui/win_ui/win_ui.gd" id="14_a7pud"]
+[ext_resource type="Script" path="res://scene/fight/ui/lose_ui/lose_ui.gd" id="15_mnhor"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7bjh"]
+texture = ExtResource("3_drh8k")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="Animation" id="Animation_eu5d1"]
+resource_name = "win"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("win_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(811, 420), Vector2(811, 420), Vector2(811, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("win_label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg_color_rect:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 480), Vector2(1920, 480)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bg_color_rect/confirm_btn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("bg_color_rect/confirm_btn:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("bg_color_rect/hbox:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_cv0bo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("win_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(811, 420)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("win_label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg_color_rect:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 480)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bg_color_rect/confirm_btn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("bg_color_rect/confirm_btn:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("bg_color_rect/hbox:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../lose_ui/lose_label:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../lose_ui/confirm_btn:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../lose_ui/confirm_btn:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../lose_ui:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ht1lk"]
+resource_name = "lose"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../lose_ui/lose_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../lose_ui/confirm_btn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../lose_ui/confirm_btn:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../lose_ui:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mihgf"]
+_data = {
+"RESET": SubResource("Animation_cv0bo"),
+"lose": SubResource("Animation_ht1lk"),
+"win": SubResource("Animation_eu5d1")
+}
 
 [node name="fight_scene" type="Control"]
 layout_mode = 3
@@ -9,7 +312,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_rulib")
+
+[node name="bg_color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="bg_tex_rect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -23,11 +337,236 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_top = 620.0
+offset_bottom = 620.0
 grow_horizontal = 2
 mouse_filter = 2
 
 [node name="unit_root" type="Control" parent="cell_root"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+mouse_filter = 2
+
+[node name="skill_panel_cntr" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_p7bjh")
+script = ExtResource("4_ry5md")
+
+[node name="grid_cntr" type="GridContainer" parent="skill_panel_cntr"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 13
+
+[node name="unit_panel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(580, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_8sesy")
+
+[node name="avatar_tex_rect" type="TextureRect" parent="unit_panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 160.0
+texture = ExtResource("3_22k5n")
+
+[node name="hp_view_patch" parent="unit_panel" instance=ExtResource("4_ywcth")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 20.0
+offset_right = 360.0
+offset_bottom = 60.0
+icon = ExtResource("5_dip84")
+
+[node name="def_view_patch" parent="unit_panel" instance=ExtResource("4_ywcth")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 70.0
+offset_right = 360.0
+offset_bottom = 110.0
+icon = ExtResource("6_ua7kp")
+
+[node name="spd_view_patch" parent="unit_panel" instance=ExtResource("4_ywcth")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 120.0
+offset_right = 360.0
+offset_bottom = 160.0
+icon = ExtResource("7_u4gvi")
+
+[node name="strike_view_patch" parent="unit_panel" instance=ExtResource("8_dmtkc")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 20.0
+offset_right = 560.0
+offset_bottom = 60.0
+icon = ExtResource("9_g3rkv")
+
+[node name="thrust_view_patch" parent="unit_panel" instance=ExtResource("8_dmtkc")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 70.0
+offset_right = 560.0
+offset_bottom = 110.0
+icon = ExtResource("10_i0i2d")
+
+[node name="slash_view_patch" parent="unit_panel" instance=ExtResource("8_dmtkc")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 120.0
+offset_right = 560.0
+offset_bottom = 160.0
+icon = ExtResource("11_y202e")
+
+[node name="round_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Rounds : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../win_ui")
+libraries = {
+"": SubResource("AnimationLibrary_mihgf")
+}
+
+[node name="win_ui" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("14_a7pud")
+
+[node name="bg_color_rect" type="ColorRect" parent="win_ui"]
+layout_mode = 0
+offset_top = 200.0
+offset_bottom = 680.0
+color = Color(0, 0.858824, 0.968627, 0.654902)
+
+[node name="hbox" type="HBoxContainer" parent="win_ui/bg_color_rect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="confirm_btn" type="Button" parent="win_ui/bg_color_rect"]
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -116.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(100, 30)
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "FS_WIN_CONFIRM"
+
+[node name="win_label" type="Label" parent="win_ui"]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 420.0
+offset_right = 1109.0
+offset_bottom = 653.0
+pivot_offset = Vector2(149, 115)
+theme_override_colors/font_color = Color(0.949284, 0.890392, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 160
+text = "Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lose_ui" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("15_mnhor")
+
+[node name="lose_label" type="Label" parent="lose_ui"]
+offset_left = 779.0
+offset_top = 400.0
+offset_right = 1141.0
+offset_bottom = 633.0
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(181, 115)
+theme_override_colors/font_color = Color(0.505281, 0.523826, 0.922195, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 160
+text = "Lose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confirm_btn" type="Button" parent="lose_ui"]
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(100, 30)
+theme_override_font_sizes/font_size = 32
+text = "FS_LOSE_CONFIRM"
+
+[connection signal="dragging_view_changed" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_dragging_view_changed"]
+[connection signal="skill_state_view_mouse_entered" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_skill_state_view_mouse_entered"]
+[connection signal="skill_state_view_mouse_exited" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_skill_state_view_mouse_exited"]
+[connection signal="confirmed" from="win_ui" to="." method="_on_win_ui_confirmed"]
+[connection signal="pressed" from="win_ui/bg_color_rect/confirm_btn" to="win_ui" method="_on_confirm_btn_pressed"]
+[connection signal="confirmed" from="lose_ui" to="." method="_on_lose_ui_confirmed"]
+[connection signal="pressed" from="lose_ui/confirm_btn" to="lose_ui" method="_on_confirm_btn_pressed"]

@@ -5,7 +5,7 @@ var enemy_list := []
 var stage_count:int
 
 func execute():
-	var skillState = owner.put_skill_state_list.pop_front()
+	var skillState = owner.pop_skill()
 	if skillState:
 		var skipCount:int = 0
 		for i in skillState.skill.get_max_attack_target():

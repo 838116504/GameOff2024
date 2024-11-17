@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://bpvjglgces87d"]
+
+[ext_resource type="Script" path="res://scene/fight/ui/skill_panel/skill_state_view.gd" id="1_t665r"]
+[ext_resource type="Texture2D" uid="uid://ci0ibmfh682rk" path="res://asset/img/ui/common/skill_panel2.png" id="2_73saf"]
+[ext_resource type="Texture2D" uid="uid://4vcktkcs1acp" path="res://asset/img/skill/17.png" id="4_mcpe3"]
+[ext_resource type="Texture2D" uid="uid://dltofyymrj0lo" path="res://asset/img/ui/icon/strike_icon.png" id="5_gprox"]
+[ext_resource type="Texture2D" uid="uid://sos8l423fg57" path="res://asset/img/ui/icon/thrust_icon.png" id="6_ki4lo"]
+[ext_resource type="Texture2D" uid="uid://qfrxnpgt68c4" path="res://asset/img/ui/icon/slash_icon.png" id="7_qtunf"]
+[ext_resource type="Texture2D" uid="uid://bwbwritqqt27q" path="res://asset/img/ui/icon/random_damage_icon.png" id="8_coiyr"]
+[ext_resource type="Texture2D" uid="uid://dcrxi5oxmcnl5" path="res://asset/img/ui/common/skill_cd_panel.png" id="9_aox66"]
+[ext_resource type="PackedScene" uid="uid://0sknuifahe1i" path="res://scene/common/map_item_view/cd_hbox.tscn" id="10_o6p4t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cn0j4"]
+texture = ExtResource("9_aox66")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 2.0
+expand_margin_bottom = 3.0
+
+[node name="skill_state_view" type="Control"]
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_t665r")
+
+[node name="patch" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 108.0
+texture = ExtResource("2_73saf")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="icon_tex_rect" type="TextureRect" parent="patch"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 84.0
+texture = ExtResource("4_mcpe3")
+
+[node name="damage_hbox" type="HBoxContainer" parent="patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="strike_tex_rect" type="TextureRect" parent="patch/damage_hbox"]
+visible = false
+custom_minimum_size = Vector2(20, 16)
+layout_mode = 2
+texture = ExtResource("5_gprox")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="strike_label" type="Label" parent="patch/damage_hbox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="thrust_tex_rect" type="TextureRect" parent="patch/damage_hbox"]
+visible = false
+custom_minimum_size = Vector2(20, 16)
+layout_mode = 2
+texture = ExtResource("6_ki4lo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="thrust_label" type="Label" parent="patch/damage_hbox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="slash_tex_rect" type="TextureRect" parent="patch/damage_hbox"]
+visible = false
+custom_minimum_size = Vector2(20, 16)
+layout_mode = 2
+texture = ExtResource("7_qtunf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="slash_label" type="Label" parent="patch/damage_hbox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="random_tex_rect" type="TextureRect" parent="patch/damage_hbox"]
+visible = false
+custom_minimum_size = Vector2(28, 16)
+layout_mode = 2
+texture = ExtResource("8_coiyr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="random_label" type="Label" parent="patch/damage_hbox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="cd_panel_cntr" type="PanelContainer" parent="patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cn0j4")
+
+[node name="cd_hbox" parent="patch/cd_panel_cntr" instance=ExtResource("10_o6p4t")]
+layout_mode = 2

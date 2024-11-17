@@ -214,7 +214,6 @@ func get_unit_hand_combat_damage(p_unit:Unit):
 		myUnits[i] = myUnits[i].duplicate()
 	
 	var tempMyUnits = myUnits.duplicate()
-	print("check my units ", tempMyUnits, " == ", myUnits)
 	for i in enemyUnits.size():
 		enemyUnits[i] = enemyUnits[i].duplicate()
 	
@@ -288,7 +287,6 @@ func get_unit_hand_combat_damage(p_unit:Unit):
 			if enemyUnits[i].is_dead():
 				enemyUnits.remove_at(i)
 	
-	print("check my units2 ", tempMyUnits, " == ", myUnits)
 	var loseHps = []
 	loseHps.resize(tempMyUnits.size())
 	var ret:int = 0
@@ -326,6 +324,7 @@ func map_move(p_dir):
 	state = State.IDLE
 
 func set_unit_id(p_value):
+	faction_id = 0
 	unit_id = p_value
 	row = table_set.player_unit.get_row(unit_id)
 
@@ -377,11 +376,11 @@ func get_icon() -> Texture2D:
 	
 	return null
 
-func get_fight_image() -> Texture2D:
+func get_fight_skin() -> String:
 	if row:
-		return load(DirConst.PLAYER_IMG.path_join(row.right_image))
+		return row.skin
 	
-	return null
+	return ""
 
 func get_up_image() -> Texture2D:
 	if row:
@@ -393,7 +392,10 @@ func get_down_image() -> Texture2D:
 	return get_icon()
 
 func get_right_image() -> Texture2D:
-	return get_fight_image()
+	if row:
+		return load(DirConst.PLAYER_IMG.path_join(row.right_image))
+	
+	return null
 
 func get_data():
 	var ret = { "unit_id":unit_id, "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 

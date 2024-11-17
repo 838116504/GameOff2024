@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv6rum8nd7whm"]
+
+[ext_resource type="Script" path="res://scene/common/map_item/unit/lose_hp_color_rect.gd" id="1_4g5l2"]
+
+[node name="lose_hp_color_rect" type="ColorRect"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 22.0
+color = Color(1, 0.501503, 0.567248, 1)
+script = ExtResource("1_4g5l2")

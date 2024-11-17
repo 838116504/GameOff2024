@@ -1,13 +1,32 @@
 extends BaseScene
 class_name FightScene
 
+signal winned
+signal losed
+
+
+var cell_width:int = 160
 var cell_count:int = 0 : set = set_cell_count
 var fight_map:FightMap : set = set_fight_map
-var cell_unit_list := [  ]
-var cell_items_list := [ ]
+var cell_unit_list := []
+var cell_items_list := []
+var order_unit_list := []
 # format = [ [ faction 0 unitA, ... ], [ faction 1 unitB, ...] ]
 var faction_unit_list := []
-var cell_width:int = 160
+var round_count:int = 0 : set = set_round_count
+
+var player_unit:PlayerUnit
+var enemy_unit:Unit
+
+var current_unit:Unit = null : set = set_current_unit
+var ended := false
+
+
+@onready var unit_panel = get_unit_panel()
+@onready var skill_panel_cntr = get_skill_panel_cntr()
+@onready var round_label = get_round_label()
+@onready var anim_player = get_anim_player()
+
 
 func get_bg_tex_rect():
 	return $bg_tex_rect
@@ -18,18 +37,152 @@ func get_cell_root() -> Control:
 func get_unit_root() -> Control:
 	return $cell_root/unit_root
 
+func get_unit_panel():
+	return $unit_panel
+
+func get_skill_panel_cntr():
+	return $skill_panel_cntr
+
+func get_round_label():
+	return $round_label
+
+func get_anim_player() -> AnimationPlayer:
+	return $anim_player
+
+func get_win_ui():
+	return $win_ui
+
+func get_lose_ui():
+	return $lose_ui
+
+
+func _ready():
+	super()
+	
+	if enemy_unit == null:
+		var playerUnit = PlayerUnit.new()
+		playerUnit.set_unit_id(1)
+		set_fight(playerUnit, Unit.create_by_id(1))
+
+func _gui_input(p_event:InputEvent) -> void:
+	get_tree().root.set_input_as_handled()
+	
+	if p_event is InputEventMouseMotion:
+		if p_event.position.y > fight_map.cell_y || p_event.position.y < fight_map.cell_y - 130:
+			unit_panel.unit = null
+		else:
+			var x = p_event.position.x - 0.5 * (size.x - cell_width * cell_count)
+			if x < 0 || x > cell_width * cell_count:
+				unit_panel.unit = null
+				return
+			 
+			var cellId = int(x / cell_width)
+			var unit = get_unit(cellId)
+			if unit == null || abs(x - cellId * cell_width + 0.5 * cell_width) > 65:
+				unit_panel.unit = null
+				return
+			
+			unit_panel.unit = unit
+	elif InputMap.event_is_action(p_event, &"left", true):
+		if p_event.is_released():
+			if current_unit == null:
+				return
+			
+			current_unit.move_left_operate()
+	elif InputMap.event_is_action(p_event, &"right", true):
+		if p_event.is_released():
+			if current_unit == null:
+				return
+			
+			current_unit.move_right_operate()
+	elif InputMap.event_is_action(p_event, &"up", true):
+		if p_event.is_released():
+			if current_unit == null:
+				return
+			
+			current_unit.turn_operate()
+	elif InputMap.event_is_action(p_event, &"down", true):
+		if p_event.is_released():
+			if current_unit == null:
+				return
+			
+			current_unit.standby_operate()
+	elif InputMap.event_is_action(p_event, &"attack", true):
+		if p_event.is_released():
+			if current_unit == null:
+				return
+			
+			current_unit.attack_operate()
 
 func round_start():
-	pass
+	order_unit_list.clear()
+	
+	for i in cell_unit_list:
+		if i == null:
+			continue
+		
+		i.round_start()
+		
+		var find = false
+		for j in order_unit_list.size():
+			if order_unit_list[j].get_spd() < i.get_spd():
+				order_unit_list.insert(j, i)
+				find = true
+				break
+		
+		if !find:
+			order_unit_list.append(i)
+	
+	for i in order_unit_list.size():
+		order_unit_list[i].fight_node.show_order(i)
+	
+	for i in order_unit_list.size():
+		if order_unit_list[i].next_operate != null:
+			continue
+		
+		current_unit = order_unit_list[i]
+		await current_unit.next_operate_changed
+	
+	current_unit = null
+	execute_stage()
 
 func show_stage():
 	pass
 
 func execute_stage():
-	pass
+	var actionCount:int = 1
+	var firstUnits = []
+	var orderUnits = []
+	for i in order_unit_list.size():
+		actionCount = max(actionCount, order_unit_list[i].next_operate.get_stage_count())
+		if order_unit_list[i].next_operate.is_action_first():
+			firstUnits.append(order_unit_list[i])
+		else:
+			orderUnits.append(order_unit_list[i])
+	
+	for i in actionCount:
+		for unit in firstUnits + orderUnits:
+			await unit.next_operate.execute()
+			if ended:
+				return
+		
+		if i + 1 < actionCount:
+			firstUnits.clear()
+			orderUnits.clear()
+			for j in order_unit_list.size():
+				if order_unit_list[j].next_operate == null:
+					continue
+				
+				if order_unit_list[j].next_operate.is_action_first():
+					firstUnits.append(order_unit_list[j])
+				else:
+					orderUnits.append(order_unit_list[j])
+	
+	round_count += 1
+	round_start()
 
 func has_cell(p_x:int) -> bool:
-	return p_x > 0 && p_x < cell_count
+	return p_x >= 0 && p_x < cell_count
 
 func get_unit(p_x:int) -> Unit:
 	if !has_cell(p_x):
@@ -38,12 +191,13 @@ func get_unit(p_x:int) -> Unit:
 	return cell_unit_list[p_x]
 
 func _add_unit(p_unit:Unit, p_x:int):
+	assert(p_unit != null)
+	
 	cell_unit_list[p_x] = p_unit
 	p_unit.fight_x = p_x
 	p_unit.fight_scene = self
 	p_unit.died.connect(_on_unit_died.bind(p_unit))
 	var fightNode = p_unit.create_fight_node()
-	fightNode.position.x = get_cell_center_x(p_x)
 	
 	var unitRoot = get_unit_root()
 	unitRoot.add_child(fightNode)
@@ -53,7 +207,7 @@ func _add_unit(p_unit:Unit, p_x:int):
 			faction_unit_list.append([])
 	
 	faction_unit_list[p_unit.faction_id].append(p_unit)
-	set_cell_faction(p_x, p_unit.faction_id)
+	set_cell_faction(p_unit.fight_x, p_unit.faction_id)
 	for item in cell_items_list[p_x]:
 		item._unit_entered(p_unit)
 
@@ -63,10 +217,21 @@ func _on_unit_died(p_unit:Unit):
 	
 	faction_unit_list[p_unit.faction_id].erase(p_unit)
 	if faction_unit_list[p_unit.faction_id].is_empty():
-		check_gameover()
+		if p_unit.faction_id == player_unit.faction_id:
+			lose()
+		else:
+			win()
 
-func check_gameover():
-	pass
+func win():
+	anim_player.play(&"win")
+	await anim_player.animation_finished
+	
+	var winUI = get_win_ui()
+	var units = [enemy_unit] + enemy_unit.follow_unit_list
+	winUI.add_reward_unit_list(units)
+
+func lose():
+	anim_player.play(&"lose")
 
 func _find_empty_cell() -> int:
 	for i in fight_map.cell_order_list:
@@ -100,6 +265,9 @@ func add_unit_with_map_order(p_unit:Unit):
 	return true
 
 func clear():
+	round_count = 0
+	current_unit = null
+	
 	for i in cell_unit_list.size():
 		if cell_unit_list[i] == null:
 			continue
@@ -112,6 +280,12 @@ func clear():
 	for i in unitRoot.get_children():
 		i.queue_free()
 		unitRoot.remove_child(i)
+	
+	ended = false
+	var winUI = get_win_ui()
+	winUI.hide()
+	winUI.clear()
+	get_lose_ui().hide()
 
 func get_cell_center_x(p_x:int) -> float:
 	return 0.5 * (size.x - cell_width * cell_count + cell_width) + p_x * cell_width
@@ -122,7 +296,7 @@ func set_cell_faction(p_x:int, p_factionId:int):
 	
 	assert(fight_map)
 	var cellRoot = get_cell_root()
-	var cellTexRect = cellRoot.get_child(p_x)
+	var cellTexRect = cellRoot.get_child(p_x + 1)
 	if p_factionId < 0:
 		cellTexRect.texture =  fight_map.cell_texture
 	else:
@@ -135,7 +309,8 @@ func update_cell_count():
 		cell_items_list[i] = []
 	
 	var cellRoot = get_cell_root()
-	for child in cellRoot.get_children():
+	for _i in range(1, cellRoot.get_child_count()):
+		var child = cellRoot.get_child(1)
 		cellRoot.remove_child(child)
 		child.queue_free()
 	
@@ -163,21 +338,50 @@ func set_fight_map(p_value):
 	if fight_map:
 		var cellRoot = get_cell_root()
 		cellRoot.offset_top = fight_map.cell_y
-		if cellRoot.get_child_count() < cell_count:
+		if cellRoot.get_child_count() + 1 < cell_count:
 			update_cell_count()
 		else:
-			for child in cellRoot.get_children():
+			for i in range(1, cellRoot.get_child_count()):
+				var child = cellRoot.get_child(i)
 				child.texture = fight_map.cell_texture
 		
 		get_bg_tex_rect().texture = fight_map.bg_texture
 
+func set_fight(p_player:PlayerUnit, p_enemy:Unit):
+	assert(p_player && p_enemy)
+	clear()
+	enemy_unit = p_enemy
+	player_unit = p_player
+	
+	cell_count = enemy_unit.get_fight_map_cell_count()
+	set_fight_map(FightMapConst.get_fight_map(enemy_unit.get_fight_map_id()))
+	add_unit(enemy_unit)
+	for unit in enemy_unit.follow_unit_list:
+		add_unit(unit)
+	
+	player_unit.fight_x = fight_map.cell_order_list[0]
+	add_unit(player_unit)
+	for i in player_unit.follow_unit_list.size():
+		player_unit.follow_unit_list[i].fight_x = fight_map.cell_order_list[i + 1]
+		add_unit(player_unit.follow_unit_list[i])
+	
+	show()
+	grab_focus()
+	
+	round_start()
+
 func move_unit(p_unit:Unit, p_x:int):
+	if !has_cell(p_x):
+		return false
+	
 	cell_unit_list[p_unit.fight_x] = null
 	cell_unit_list[p_x] = p_unit
-	p_unit.fight_node.position.x = get_cell_center_x(p_x)
+	#p_unit.fight_node.position.x = get_cell_center_x(p_x)
 	
 	for item in cell_items_list[p_x]:
 		item._unit_entered(p_unit)
+	
+	return true
 
 
 func swap_unit(p_a:Unit, p_b:Unit):
@@ -225,3 +429,44 @@ func get_final_empty_cell(p_x:int, p_dir:int) -> int:
 		curX = p_x + p_dir
 	
 	return ret
+
+func set_current_unit(p_value):
+	if current_unit == p_value:
+		return
+	
+	if current_unit:
+		current_unit.fight_node.current = false
+	
+	current_unit = p_value
+	skill_panel_cntr.unit = current_unit
+	if current_unit:
+		current_unit.fight_node.current = true
+
+func set_round_count(p_value):
+	round_count = p_value
+	round_label.text = tr("FS_ROUND_COUNT") + " : " + str(round_count)
+
+func _on_skill_panel_cntr_skill_state_view_mouse_entered(_view) -> void:
+	if current_unit:
+		current_unit.fight_node.skill_hover = true
+
+func _on_skill_panel_cntr_skill_state_view_mouse_exited(_view) -> void:
+	if current_unit:
+		current_unit.fight_node.skill_hover = false
+
+
+func _on_skill_panel_cntr_dragging_view_changed(p_view) -> void:
+	if current_unit:
+		current_unit.fight_node.skill_dragging = p_view != null
+
+
+func _on_win_ui_confirmed() -> void:
+	release_focus()
+	hide()
+	winned.emit()
+
+
+func _on_lose_ui_confirmed() -> void:
+	release_focus()
+	hide()
+	losed.emit()

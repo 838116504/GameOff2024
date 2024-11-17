@@ -3,6 +3,9 @@ class_name FightOperate
 
 var owner:Unit
 
+func get_id():
+	return -1
+
 func execute():
 	owner.next_operate = null
 

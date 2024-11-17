@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnlj5ldkpeka6"]
+
+[ext_resource type="Texture2D" uid="uid://bxuruiwuc5iwk" path="res://asset/img/ui/fight_scene/skill_slot.png" id="1_l6scr"]
+[ext_resource type="Script" path="res://scene/common/map_item/unit/skill_slot_patch.gd" id="2_6535a"]
+[ext_resource type="PackedScene" uid="uid://bpvjglgces87d" path="res://scene/fight/ui/skill_panel/skill_state_view.tscn" id="3_xbic6"]
+
+[node name="skill_slot_patch" type="NinePatchRect"]
+custom_minimum_size = Vector2(108, 108)
+texture = ExtResource("1_l6scr")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+script = ExtResource("2_6535a")
+
+[node name="skill_state_view" parent="." instance=ExtResource("3_xbic6")]
+mouse_filter = 2

@@ -1,16 +1,21 @@
 extends MapItem
 class_name Unit
 
+const UnitFightNodeScene = preload("res://scene/common/map_item/unit/unit_fight_node.tscn")
+
 signal died
+signal be_hit(p_damage)
 signal hp_changed(p_hp)
 signal fight_x_changed(p_x)
 signal fight_direction_changed(p_dir)
+signal put_skill_state_list_changed(p_states)
+signal next_operate_changed(p_op)
 
 
 var unit_id:int = 0 : set = set_unit_id
 var faction_id:int = 1
 var hp:int : set = set_hp
-var next_operate:FightOperate = null
+var next_operate:FightOperate = null : set = set_next_operate
 var fight_x:int : set = set_fight_x
 var fight_direction:int = 1 : set = set_fight_direction
 var fight_scene:FightScene = null
@@ -39,6 +44,8 @@ var follow_unit_list := []
 var row : set = set_row
 
 
+func _init():
+	buff_manager.owner = self
 
 func get_unit_id() -> int:
 	return unit_id
@@ -127,30 +134,81 @@ func _map_item_entered(p_item):
 		event_bus.emit_signal(EventConst.SHOW_ENEMY_PANEL, self)
 
 func attack():
-	var skillState:SkillState = put_skill_state_list.pop_front()
-	skillState.execute(self)
+	var skillState:SkillState = pop_skill()
+	await skillState.execute(self)
 	skillState.put = false
 
 func move_left():
 	if !can_move():
 		return
 	
+	var targetX = fight_x - 1
+	if !fight_scene.has_cell(targetX) || fight_scene.get_unit(targetX) != null:
+		return
+	
+	fight_scene.move_unit(self, targetX)
+	fight_node.play_animation(&"move")
+	var tween = fight_node.create_tween()
+	var moveTo = fight_scene.get_cell_center_x(targetX)
+	tween.tween_property(fight_node, ^"position:x", moveTo, 20.0 / 30.0)
+	await tween.finished
+	
+	fight_x = targetX
 
 func move_right():
 	if !can_move():
 		return
 	
+	var targetX = fight_x + 1
+	if !fight_scene.has_cell(targetX) || fight_scene.get_unit(targetX) != null:
+		return
+	
+	fight_scene.move_unit(self, targetX)
+	fight_node.play_animation(&"move")
+	var tween = fight_node.create_tween()
+	var moveTo = fight_scene.get_cell_center_x(targetX)
+	tween.tween_property(fight_node, ^"position:x", moveTo, 20.0 / 30.0)
+	await tween.finished
+	
+	fight_x = targetX
 
 
 func standby():
 	pass
 
 func turn():
-	pass
+	fight_direction = -fight_direction
 
-func put_skill(p_skillState:SkillState):
-	put_skill_state_list.append(p_skillState)
+func put_skill(p_skillState:SkillState, p_pos = -1):
+	if p_pos < 0:
+		put_skill_state_list.append(p_skillState)
+	else:
+		put_skill_state_list.insert(p_pos, p_skillState)
+	
 	p_skillState.put = true
+	put_skill_state_list_changed.emit(put_skill_state_list)
+
+func swap_put_skill(p_posA:int, p_posB:int):
+	var temp = put_skill_state_list[p_posA]
+	put_skill_state_list[p_posA] = put_skill_state_list[p_posB]
+	put_skill_state_list[p_posB] = temp
+	put_skill_state_list_changed.emit(put_skill_state_list)
+
+func erase_put_skill(p_skillState:SkillState):
+	var find = put_skill_state_list.find(p_skillState)
+	if find < 0:
+		return
+	
+	put_skill_state_list.remove_at(find)
+	put_skill_state_list_changed.emit(put_skill_state_list)
+
+func pop_skill():
+	if put_skill_state_list.is_empty():
+		return null
+	
+	var ret = put_skill_state_list.pop_front()
+	put_skill_state_list_changed.emit(put_skill_state_list)
+	return ret
 
 func execute_operate():
 	assert(next_operate)
@@ -174,27 +232,28 @@ func hand_combat_attack_operate(p_enemys:Array):
 func move_left_operate():
 	var op = MoveLeftOperate.new()
 	op.owner = self
-	next_operate = op.new()
+	next_operate = op
 
 func move_right_operate():
 	var op = MoveRightOperate.new()
 	op.owner = self
-	next_operate = op.new()
+	next_operate = op
 
 func standby_operate():
 	var op = StandbyOperate.new()
 	op.owner = self
-	next_operate = op.new()
+	next_operate = op
 
 func turn_operate():
 	var op = TurnOperate.new()
 	op.owner = self
-	next_operate = op.new()
+	next_operate = op
 
-func put_skill_operate(p_skillState:SkillState):
+func put_skill_operate(p_skillState:SkillState, p_pos = -1):
 	var op = PutSkillOperate.new()
 	op.owner = self
 	op.skill_state = p_skillState
+	op.position = p_pos
 	next_operate = op
 
 func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int, p_blockable:bool = true):
@@ -210,9 +269,11 @@ func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int, p_blockable:bool
 	if dam <= 0:
 		return
 	
-	var finalDam = dam * get_hit_rate(p_type)
-	@warning_ignore("narrowing_conversion")
-	hp -= finalDam
+	var finalDam = int(dam * get_hit_rate(p_type))
+	if finalDam != 0:
+		@warning_ignore("narrowing_conversion")
+		hp -= finalDam
+		be_hit.emit(finalDam)
 
 func get_hit_rate(p_type:SkillConst.DamageType) -> float:
 	if p_type == SkillConst.DamageType.RANDOM:
@@ -284,11 +345,11 @@ func get_icon() -> Texture2D:
 	
 	return null
 
-func get_fight_image() -> Texture2D:
+func get_fight_skin() -> String:
 	if row:
-		return load(DirConst.UNIT_IMG.path_join(row.right_image))
+		return row.skin
 	
-	return null
+	return ""
 
 func get_fight_map_id() -> int:
 	if row:
@@ -313,7 +374,10 @@ func create_node():
 	return ret
 
 func create_fight_node():
-	return
+	var ret = preload("unit_fight_node.tscn").instantiate()
+	ret.unit = self
+	fight_node = ret
+	return ret
 
 func is_blocked() -> bool:
 	return true
@@ -359,6 +423,13 @@ func can_move() -> bool:
 
 func is_blocking() -> bool:
 	return block_count > 0
+
+func set_next_operate(p_value):
+	if next_operate == p_value:
+		return
+	
+	next_operate = p_value
+	next_operate_changed.emit(next_operate)
 
 static func create_by_id(p_id:int, p_followed_unit = null):
 	var ret = Unit.new()

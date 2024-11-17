@@ -35,5 +35,5 @@ extends Resource
 @export var fight_map_cell:int
 # 正面圖片
 @export var image:String
-# 向右圖片
-@export var right_image:String
+# 皮肤名字
+@export var skin:String

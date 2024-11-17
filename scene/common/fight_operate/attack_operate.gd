@@ -3,8 +3,11 @@ class_name AttackOperate
 
 var stage_count:int
 
+func get_id():
+	return 5
+
 func execute():
-	owner.attack()
+	await owner.attack()
 	
 	if owner.put_skill_state_list.is_empty():
 		owner.next_operate = null

@@ -3,7 +3,7 @@ class_name FightMapConst
 
 
 const FIGHT_MAP_FILE_LIST = [
-	
+	"0.tres",
 ]
 
 static func get_fight_map(p_id:int) -> FightMap:

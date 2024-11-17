@@ -1,0 +1,114 @@
+{
+"skeleton": {
+	"hash": "joNwTU9YmCg",
+	"spine": "4.2.63-beta",
+	"x": -70,
+	"width": 140,
+	"height": 140,
+	"images": "./img/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "body", "parent": "root" },
+	{ "name": "ammo", "parent": "body" }
+],
+"slots": [
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "data_particle", "bone": "ammo" },
+	{ "name": "tail", "bone": "ammo" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"data_particle": {
+				"data_particle": { "scaleX": 0.5, "scaleY": 0.5, "width": 32, "height": 32 }
+			},
+			"tail": {
+				"tail": { "x": -15.82, "scaleX": 0.6, "scaleY": 0.6, "width": 103, "height": 40 }
+			}
+		}
+	},
+	{
+		"name": "cat_archer",
+		"attachments": {
+			"body": {
+				"body": { "name": "cat_archer_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "cat_greatsword",
+		"attachments": {
+			"body": {
+				"body": { "name": "cat_greatsword_man_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "cat_man",
+		"attachments": {
+			"body": {
+				"body": { "name": "cat_man_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "player",
+		"attachments": {
+			"body": {
+				"body": { "name": "player_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	}
+],
+"animations": {
+	"move": {
+		"bones": {
+			"body": {
+				"translate": [
+					{},
+					{ "time": 0.3333, "y": 45 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	},
+	"unpack": {
+		"slots": {
+			"data_particle": {
+				"rgba": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "data_particle" }
+				]
+			},
+			"tail": {
+				"rgba": [
+					{ "color": "9af799b4" },
+					{ "time": 0.6667, "color": "9af7b43c" },
+					{ "time": 1, "color": "9af79900" }
+				],
+				"attachment": [
+					{ "name": "tail" }
+				]
+			}
+		},
+		"bones": {
+			"ammo": {
+				"translate": [
+					{ "y": 40 }
+				],
+				"scale": [
+					{ "x": 0.1 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	}
+}
+}

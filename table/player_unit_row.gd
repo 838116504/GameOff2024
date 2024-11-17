@@ -27,3 +27,5 @@ extends Resource
 @export var back_image:String
 # 向右圖片
 @export var right_image:String
+# 皮肤名字
+@export var skin:String

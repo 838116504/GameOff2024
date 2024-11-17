@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=4 format=3 uid="uid://d1utvww52fs67"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://chb62fn21bl7m"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_4e6fg"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_7siwe"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_8bu18"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_1l3qs"]
 
-[sub_resource type="Resource" id="Resource_h5svj"]
-script = ExtResource("1_4e6fg")
+[sub_resource type="Resource" id="Resource_ee4pq"]
+script = ExtResource("1_8bu18")
 id = 1
-hp = 8
+hp = 10
 def = 0
 strike_hit_rate = 1.0
 thrust_hit_rate = 1
@@ -21,8 +21,48 @@ follow_unit_fight_dir_list = [1]
 fight_map_id = 0
 fight_map_cell = 4
 image = "cat_man_right.png"
-right_image = "cat_man_right.png"
+skin = "cat_man"
+
+[sub_resource type="Resource" id="Resource_p7kju"]
+script = ExtResource("1_8bu18")
+id = 2
+hp = 10
+def = 1
+strike_hit_rate = 1.5
+thrust_hit_rate = 1
+slash_hit_rate = 1
+spd = 1
+skill_id_list = []
+fight_x = 2
+fight_dir = 0
+follow_unit_id_list = []
+follow_unit_fight_x_list = []
+follow_unit_fight_dir_list = []
+fight_map_id = 0
+fight_map_cell = 4
+image = "cat_archer_right.png"
+skin = "cat_archer"
+
+[sub_resource type="Resource" id="Resource_d6pge"]
+script = ExtResource("1_8bu18")
+id = 3
+hp = 20
+def = 2
+strike_hit_rate = 1.0
+thrust_hit_rate = 1
+slash_hit_rate = 1
+spd = 2
+skill_id_list = []
+fight_x = 2
+fight_dir = 0
+follow_unit_id_list = []
+follow_unit_fight_x_list = []
+follow_unit_fight_dir_list = []
+fight_map_id = 0
+fight_map_cell = 4
+image = "cat_greatsword_man_right.png"
+skin = "cat_greatsword"
 
 [resource]
-script = ExtResource("2_7siwe")
-row_list = Array[ExtResource("1_4e6fg")]([SubResource("Resource_h5svj")])
+script = ExtResource("2_1l3qs")
+row_list = Array[ExtResource("1_8bu18")]([SubResource("Resource_ee4pq"), SubResource("Resource_p7kju"), SubResource("Resource_d6pge")])

@@ -2,11 +2,13 @@ extends RefCounted
 class_name SkillState
 
 signal cd_changed(p_cd:int)
+signal extra_attack_changed(p_exAtk)
+signal put_changed(p_put)
 
 var cd:int : set = set_cd
 var skill:Skill : set = set_skill
 var charge_count:int = 0
-var extra_attack:int = 0
+var extra_attack:int = 0 : set = set_extra_attack
 var put := false : set = set_put
 
 func is_cding() -> bool:
@@ -45,6 +47,13 @@ func reset():
 	charge_count = 0
 	extra_attack = 0
 
+func set_extra_attack(p_value):
+	if extra_attack == p_value:
+		return
+	
+	extra_attack = p_value
+	extra_attack_changed.emit(extra_attack)
+
 func set_put(p_value):
 	if put == p_value:
 		return
@@ -52,3 +61,5 @@ func set_put(p_value):
 	put = p_value
 	if !put:
 		extra_attack = 0
+	
+	put_changed.emit(put)

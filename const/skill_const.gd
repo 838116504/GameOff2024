@@ -1,7 +1,7 @@
 extends RefCounted
 class_name SkillConst
 
-enum DamageType { NONE = -1, STRIKE = 0, THRUST = 1, SLASH = 2, RANDOM = 4 }
+enum DamageType { NONE = -1, STRIKE = 0, THRUST = 1, SLASH = 2, RANDOM = 3 }
 
 enum SkillId {
 	SKILL, ATTACK_FRONT_SKILL, RANGED_ATTACK_FORNT_SKILL, TRAP_SKILL, ATTACK_BOTH_SKILL, DASH_PATH_ATTACK_SKILL

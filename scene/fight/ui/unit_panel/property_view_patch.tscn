@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://er5shc6u4boq"]
+
+[ext_resource type="Texture2D" uid="uid://c8rpj1lvb1w7r" path="res://asset/img/ui/common/property_panel.png" id="1_u6x1c"]
+[ext_resource type="Texture2D" uid="uid://cgexqn4j46eup" path="res://asset/img/ui/icon/hp_icon.png" id="2_avxi7"]
+[ext_resource type="Script" path="res://scene/fight/ui/unit_panel/property_view_patch.gd" id="2_qoln1"]
+
+[node name="property_view_patch" type="NinePatchRect"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 160.0
+offset_bottom = 40.0
+texture = ExtResource("1_u6x1c")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_qoln1")
+
+[node name="icon_tex_rect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_avxi7")
+
+[node name="value_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "100000000"
+horizontal_alignment = 2
+text_overrun_behavior = 3

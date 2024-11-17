@@ -1,7 +1,7 @@
 extends Buff
 class_name CannotMoveBuff
 
-var round:int = 1
+var round_count:int = 1
 
 func get_name() -> StringName:
 	return &"cannot_move"
@@ -16,11 +16,11 @@ func exit():
 	super()
 
 func add(p_buff:Buff):
-	round += p_buff.round
+	round_count += p_buff.round_count
 
 func round_start():
-	round -= 1
-	if round <= 0:
+	round_count -= 1
+	if round_count <= 0:
 		owner.buff_manager.erase_buff(get_name())
 
 func stage_start():

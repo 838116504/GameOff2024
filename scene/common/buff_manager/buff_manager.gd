@@ -22,7 +22,7 @@ func add_buff(p_buff:Buff) -> void:
 		buff.add(p_buff)
 	else:
 		buff_list.append(p_buff)
-		buff.enter(owner)
+		p_buff.enter(owner)
 		buff_added.emit(p_buff)
 
 func get_buff(p_buff:StringName) -> Buff:
