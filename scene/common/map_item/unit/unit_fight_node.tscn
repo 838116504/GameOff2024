@@ -41,6 +41,7 @@ preview_time = 0.0
 
 [node name="ammo_bone" type="SpineBoneNode" parent="spine"]
 show_behind_parent = true
+position = Vector2(0, -60)
 bone_name = "ammo"
 bone_mode = 1
 

@@ -15,7 +15,7 @@ func is_cding() -> bool:
 	return cd < skill.get_cd()
 
 func execute(p_owner):
-	skill.execute(p_owner, self)
+	await skill.execute(p_owner, self)
 	cd = 0
 
 func round_start():

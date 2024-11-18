@@ -290,7 +290,7 @@ func clear():
 func get_cell_center_x(p_x:int) -> float:
 	return 0.5 * (size.x - cell_width * cell_count + cell_width) + p_x * cell_width
 
-func set_cell_faction(p_x:int, p_factionId:int):
+func set_cell_faction(p_x:int, p_factionId:int = -1):
 	if !has_cell(p_x):
 		return
 	
@@ -375,7 +375,10 @@ func move_unit(p_unit:Unit, p_x:int):
 		return false
 	
 	cell_unit_list[p_unit.fight_x] = null
+	set_cell_faction(p_unit.fight_x)
 	cell_unit_list[p_x] = p_unit
+	set_cell_faction(p_x, p_unit.faction_id)
+	
 	#p_unit.fight_node.position.x = get_cell_center_x(p_x)
 	
 	for item in cell_items_list[p_x]:
@@ -388,9 +391,11 @@ func swap_unit(p_a:Unit, p_b:Unit):
 	var aX = p_a.fight_x
 	var bX = p_b.fight_x
 	cell_unit_list[aX] = p_b
+	set_cell_faction(aX, p_b.faction_id)
 	cell_unit_list[bX] = p_a
-	p_a.fight_node.position.x = get_cell_center_x(bX)
-	p_b.fight_node.position.x = get_cell_center_x(aX)
+	set_cell_faction(bX, p_a.faction_id)
+	#p_a.fight_node.position.x = get_cell_center_x(bX)
+	#p_b.fight_node.position.x = get_cell_center_x(aX)
 	for item in cell_items_list[aX]:
 		item._unit_entered(p_b)
 	for item in cell_items_list[bX]:

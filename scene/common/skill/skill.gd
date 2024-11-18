@@ -124,7 +124,10 @@ func get_damage(p_type:SkillConst.DamageType) -> float:
 
 func get_effect_list() -> Array:
 	var ret = []
-	var effectIds = [ row.effect_id ] + extra_effect_list
+	var effectIds = [ ]
+	if row.effect_id > 0:
+		effectIds.append(row.effect_id)
+	effectIds += extra_effect_list
 	for i in effectIds:
 		ret.append(SkillConst.SKILL_EFFECT_LIST[i].new())
 	

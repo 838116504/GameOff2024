@@ -300,13 +300,13 @@ func get_unit_hand_combat_damage(p_unit:Unit):
 	return ret
 
 func move_left():
-	super()
+	await super()
 	
 	if passive_state:
 		passive_state.move_left()
 
 func move_right():
-	super()
+	await super()
 	
 	if passive_state:
 		passive_state.move_right()
