@@ -133,7 +133,13 @@ func _map_item_entered(p_item):
 	if p_item is PlayerUnit:
 		event_bus.emit_signal(EventConst.SHOW_ENEMY_PANEL, self)
 
+func can_attack() -> bool:
+	return !put_skill_state_list.is_empty()
+
 func attack():
+	if !can_attack():
+		return
+	
 	var skillState:SkillState = pop_skill()
 	await skillState.execute(self)
 	skillState.put = false
@@ -150,7 +156,7 @@ func move_left():
 	fight_node.play_animation(&"move")
 	var tween = fight_node.create_tween()
 	var moveTo = fight_scene.get_cell_center_x(targetX)
-	tween.tween_property(fight_node, ^"position:x", moveTo, 20.0 / 30.0)
+	tween.tween_property(fight_node, ^"position:x", moveTo, 0.4)
 	await tween.finished
 	
 	fight_x = targetX
@@ -163,12 +169,14 @@ func move_right():
 	if !fight_scene.has_cell(targetX) || fight_scene.get_unit(targetX) != null:
 		return
 	
+	print(self, " before move anim")
 	fight_scene.move_unit(self, targetX)
 	fight_node.play_animation(&"move")
 	var tween = fight_node.create_tween()
 	var moveTo = fight_scene.get_cell_center_x(targetX)
-	tween.tween_property(fight_node, ^"position:x", moveTo, 20.0 / 30.0)
+	tween.tween_property(fight_node, ^"position:x", moveTo, 0.4)
 	await tween.finished
+	print(self, " after move anim")
 	
 	fight_x = targetX
 
@@ -217,6 +225,9 @@ func execute_operate():
 	next_operate.execute()
 
 func attack_operate():
+	if !can_attack():
+		return
+	
 	var op = AttackOperate.new()
 	op.owner = self
 	op.stage_count = put_skill_state_list.size()
