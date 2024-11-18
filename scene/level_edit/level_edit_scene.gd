@@ -70,11 +70,13 @@ func _ready():
 	else:
 		update_map()
 	
+	version = undo_redo.get_version()
+	undo_redo.version_changed.connect(_on_undo_redo_version_changed)
+	
 	update_file_btn_font_color()
 	update_file_btn_text()
 	init_save_confirm_dialoge()
 	
-	undo_redo.version_changed.connect(_on_undo_redo_version_changed)
 	
 	file_btn.get_popup().id_pressed.connect(_on_file_btn_id_pressed)
 	
@@ -82,6 +84,10 @@ func _ready():
 	get_open_file_dialog().current_path = "res://asset/level/"
 	
 	get_tree().auto_accept_quit = false
+	
+	if !OS.has_feature("editor"):
+		for fileDialog in [ get_save_file_dialog(), get_open_file_dialog() ]:
+			fileDialog.access = FileDialog.ACCESS_FILESYSTEM
 
 func _exit_tree():
 	get_tree().auto_accept_quit = true

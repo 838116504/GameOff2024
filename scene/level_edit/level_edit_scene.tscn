@@ -321,15 +321,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="save_comfirm_dialog" type="ConfirmationDialog" parent="."]
+disable_3d = true
 size = Vector2i(500, 100)
 dialog_autowrap = true
 
 [node name="save_file_dialog" type="FileDialog" parent="."]
+disable_3d = true
 size = Vector2i(800, 500)
 filters = PackedStringArray("*.lvl;Level File")
 script = ExtResource("11_0hbof")
 
 [node name="open_file_dialog" type="FileDialog" parent="."]
+disable_3d = true
 title = "Open a File"
 size = Vector2i(800, 500)
 ok_button_text = "Open"
