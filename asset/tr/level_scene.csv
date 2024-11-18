@@ -10,12 +10,12 @@ LS_CHEAT_ABILITY,作弊能力,Cheating Ability
 LS_HP_NOT_ENOUGH_CONFIRM,你的血量不足，是否確認正面決斗?,You don't have enough hp. Do you want to fight head-on?
 LS_YES_BTN,是,Yes
 LS_NO_BTN,否,No
-,,
-,,
-,,
-,,
-,,
-,,
+LS_GAMEOVER,游戲結束,Gameover
+LS_GAMEOVER_LAYER,到達層數︰,Reached Layers︰
+LS_GAMEOVER_KILL_ENEMY,擊殺敵人︰,Killed Enemies︰
+LS_GAMEOVER_SCORE,分數︰,Scores︰
+LS_RETURN_TITLE_BTN,返回標題,Return Title
+LS_GAMEOVER_ENEMY,殘余敵人︰,Residual Enemies︰
 ,,
 ,,
 ,,,

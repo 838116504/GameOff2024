@@ -64,6 +64,7 @@ func _on_hand_combat_btn_pressed() -> void:
 
 func _on_fight_btn_pressed() -> void:
 	close()
+	event_bus.emit_signal(EventConst.FIGHT, unit)
 
 func _on_hp_not_enough_popup_yes_btn_pressed() -> void:
 	player_unit.hand_combat(unit)

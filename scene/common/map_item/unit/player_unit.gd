@@ -44,6 +44,9 @@ var unit_hand_combat_damage_dict := {}
 var state := State.IDLE
 var item_name:String = "player"
 
+var reached_layer:int = 0
+var kill_count:int = 0
+
 func add_data(p_id:int, p_count:int = 1):
 	data_count += p_count
 	for i in data_stack_list:
@@ -103,6 +106,7 @@ func set_layer(p_layer):
 		return
 	
 	layer = p_layer
+	reached_layer = max(layer, reached_layer)
 	layer_changed.emit(layer)
 
 func get_def() -> int:
@@ -171,6 +175,7 @@ func hand_combat(p_unit:Unit):
 	for i in myUnits.size():
 		myUnits[i].hp -= dams[i]
 	
+	kill_count += 1
 	map_view.erase_item(p_unit.position)
 
 func get_unit_hand_combat_damage(p_unit:Unit):
@@ -401,7 +406,7 @@ func get_data():
 	var ret = { "unit_id":unit_id, "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 
 			"spd":spd, "faction_id":faction_id, "data_count":data_count, 
 			"yellow_key_count":yellow_key_count, "blue_key_count":blue_key_count, "red_key_count":red_key_count, 
-			"bug_count":bug_count, "layer":layer, "position":position }
+			"bug_count":bug_count, "layer":layer, "position":position, "reached_layer":reached_layer, "kill_count":kill_count }
 	
 	var dataStackDatas = []
 	dataStackDatas.resize(data_stack_list.size())

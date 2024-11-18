@@ -10,6 +10,7 @@ var player_unit:PlayerUnit : set = set_player_unit
 @onready var right_ui = get_right_ui()
 @onready var map_view = get_map_view()
 @onready var popup_layer = get_popup_layer()
+@onready var fight_layer = get_fight_layer()
 
 
 func get_left_ui():
@@ -27,8 +28,8 @@ func get_input():
 func get_popup_layer():
 	return $popup_layer
 
-func get_fight_scene():
-	return $fight_layer/fight_scene
+func get_fight_layer():
+	return $fight_layer
 
 
 func _ready():
@@ -53,6 +54,7 @@ func _ready():
 			child.set_player_unit(player_unit)
 	
 	get_input().player_unit = player_unit
+	fight_layer.player_unit = player_unit
 
 func load_level(p_path):
 	var file = FileAccess.open(p_path, FileAccess.READ)
@@ -83,3 +85,17 @@ func set_player_unit(p_value):
 
 func _on_player_unit_layer_changed(p_layer):
 	map_view.current_layer = p_layer
+
+
+func _on_fight_scene_winned() -> void:
+	map_view.erase_item(fight_layer.fight_unit.position)
+	for i in fight_layer.fight_unit.follow_unit_list:
+		player_unit.add_data(i.get_unit_id())
+	
+	player_unit.add_data(fight_layer.fight_unit.get_unit_id())
+	player_unit.kill_count += 1
+	fight_layer.fight_unit = null
+
+
+func _on_fight_scene_losed() -> void:
+	pass # Replace with function body.
