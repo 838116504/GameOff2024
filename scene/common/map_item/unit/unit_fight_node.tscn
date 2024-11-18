@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dy3raii4675j3"]
+[gd_scene load_steps=21 format=3 uid="uid://dy3raii4675j3"]
 
 [ext_resource type="Script" path="res://scene/fight/unit_fight_node.gd" id="1_0776r"]
 [ext_resource type="SpineAtlasResource" uid="uid://7e13ijjsrfi3" path="res://asset/spine/unit/unit.atlas" id="2_7jm5i"]
@@ -28,6 +28,8 @@ texture_margin_left = 17.0
 texture_margin_top = 16.8399
 texture_margin_right = 17.0
 texture_margin_bottom = 38.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_rqh2r"]
 
 [node name="unit_fight_node" type="Node2D"]
 script = ExtResource("1_0776r")
@@ -143,6 +145,10 @@ texture = ExtResource("10_qkgj7")
 visible = false
 position = Vector2(0, -140)
 texture = ExtResource("11_q6oia")
+
+[node name="bt_player" type="BTPlayer" parent="."]
+update_mode = 2
+blackboard_plan = SubResource("BlackboardPlan_rqh2r")
 
 [connection signal="skill_added" from="skill_slot_panel_cntr" to="." method="_on_skill_slot_panel_cntr_skill_added"]
 [connection signal="skill_moved" from="skill_slot_panel_cntr" to="." method="_on_skill_slot_panel_cntr_skill_moved"]

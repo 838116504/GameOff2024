@@ -37,3 +37,5 @@ extends Resource
 @export var image:String
 # 皮肤名字
 @export var skin:String
+# 行为树id
+@export var bt_id:int

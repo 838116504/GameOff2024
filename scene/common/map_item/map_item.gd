@@ -1,4 +1,4 @@
-extends RefCounted
+extends Resource
 class_name MapItem
 
 var position:Vector2i

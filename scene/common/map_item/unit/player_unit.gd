@@ -143,7 +143,7 @@ func reset():
 	super()
 	passive_state.reset()
 
-func duplicate():
+func duplicate(_subRes = false):
 	var ret = PlayerUnit.new()
 	ret.set_data(get_data())
 	return ret

@@ -29,6 +29,10 @@ event_bus="*res://autoload/event_bus.gd"
 scene_transition="*res://autoload/scene_transition.gd"
 table_set="*res://autoload/table_set.gd"
 
+[debug]
+
+gdscript/warnings/native_method_override=1
+
 [display]
 
 window/size/viewport_width=1920
@@ -89,4 +93,9 @@ attack={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://asset/tr/level_edit_scene.en.translation", "res://asset/tr/level_edit_scene.zh.translation", "res://asset/tr/skill.en.translation", "res://asset/tr/skill.zh.translation", "res://asset/tr/unit.en.translation", "res://asset/tr/unit.zh.translation", "res://asset/tr/tile.en.translation", "res://asset/tr/tile.zh.translation", "res://asset/tr/map_item.en.translation", "res://asset/tr/map_item.zh.translation", "res://asset/tr/level_scene.en.translation", "res://asset/tr/level_scene.zh.translation", "res://asset/tr/passive.en.translation", "res://asset/tr/passive.zh.translation", "res://asset/tr/cheat.en.translation", "res://asset/tr/cheat.zh.translation", "res://asset/tr/effect.en.translation", "res://asset/tr/effect.zh.translation", "res://asset/tr/fight_scene.en.translation", "res://asset/tr/fight_scene.zh.translation")
+locale/translations=PackedStringArray("res://asset/tr/level_edit_scene.en.translation", "res://asset/tr/level_edit_scene.zh.translation", "res://asset/tr/skill.en.translation", "res://asset/tr/skill.zh.translation", "res://asset/tr/unit.en.translation", "res://asset/tr/unit.zh.translation", "res://asset/tr/tile.en.translation", "res://asset/tr/tile.zh.translation", "res://asset/tr/map_item.en.translation", "res://asset/tr/map_item.zh.translation", "res://asset/tr/level_scene.en.translation", "res://asset/tr/level_scene.zh.translation", "res://asset/tr/passive.en.translation", "res://asset/tr/passive.zh.translation", "res://asset/tr/cheat.en.translation", "res://asset/tr/cheat.zh.translation", "res://asset/tr/effect.en.translation", "res://asset/tr/effect.zh.translation", "res://asset/tr/fight_scene.en.translation", "res://asset/tr/fight_scene.zh.translation", "res://asset/tr/title_scene.en.translation", "res://asset/tr/title_scene.zh.translation")
+
+[limbo_ai]
+
+behavior_tree/behavior_tree_default_dir="res://ai/tree"
+behavior_tree/user_task_dir_1="res://ai/task"

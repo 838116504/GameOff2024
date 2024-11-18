@@ -27,6 +27,9 @@ func get_input():
 func get_popup_layer():
 	return $popup_layer
 
+func get_fight_scene():
+	return $fight_layer/fight_scene
+
 
 func _ready():
 	if map == null:

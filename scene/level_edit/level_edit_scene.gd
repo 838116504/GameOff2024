@@ -1,6 +1,6 @@
 extends Control
 
-enum FileBtnId { NEW, OPEN, SAVE, SAVE_AS }
+enum FileBtnId { NEW, OPEN, SAVE, SAVE_AS, TEST, EXIT }
 
 var map:Map : set = set_map
 var current_map:Map = Map.new()
@@ -51,6 +51,7 @@ func get_file_btn() -> MenuButton:
 func get_save_confirm_dialog() -> ConfirmationDialog:
 	return $save_comfirm_dialog
 
+
 func get_save_file_dialog() -> FileDialog:
 	return $save_file_dialog
 
@@ -79,6 +80,18 @@ func _ready():
 	
 	get_save_file_dialog().current_path = "res://asset/level/"
 	get_open_file_dialog().current_path = "res://asset/level/"
+	
+	get_tree().auto_accept_quit = false
+
+func _exit_tree():
+	get_tree().auto_accept_quit = true
+
+func _notification(p_what):
+	if p_what == NOTIFICATION_WM_CLOSE_REQUEST:
+		if is_need_save():
+			popup_save_confirm_dialog(_on_quit_save_confirmed, get_tree().quit)
+		else:
+			get_tree().quit()
 
 func _on_undo_redo_version_changed():
 	update_file_btn_font_color()
@@ -330,6 +343,7 @@ func init_save_confirm_dialoge():
 	dialog.canceled.connect(_on_save_confirm_dialog_canceled.bind(dialog))
 	noSaveBtn.pressed.connect(_on_save_confirm_dialog_no_save.bind(dialog))
 
+
 func _on_save_confirm_dialog_confirmed(p_dialog:Node):
 	if !p_dialog.has_meta(&"confirmed_callback"):
 		return
@@ -378,6 +392,10 @@ func _on_new_level_save_confirmed():
 	if await save():
 		_new_level()
 
+func _on_quit_save_confirmed():
+	if await save():
+		get_tree().quit()
+
 func set_version(p_value):
 	if version == p_value:
 		return
@@ -406,9 +424,22 @@ func _input(p_event):
 		select_tab_cntr.to_cursor_mode()
 		get_tree().root.set_input_as_handled()
 
+func test_current_level():
+	if file_path.is_empty():
+		return
+	
+	var levelScene = load(ScenePathConst.LEVEL_SCENE).instantiate()
+	levelScene.load_level(file_path)
+	scene_transition.change_scene(levelScene, "fade_out", "fade_in")
+
+func go_title_scene():
+	var titleScene = load(ScenePathConst.TITLE_SCENE).instantiate()
+	scene_transition.change_scene(titleScene, "fade_out", "fade_in")
 
 func _on_open_file_dialog_file_selected(p_path: String) -> void:
 	open(p_path)
+
+
 
 func _on_file_btn_id_pressed(p_id:int):
 	match p_id:
@@ -427,3 +458,14 @@ func _on_file_btn_id_pressed(p_id:int):
 				return
 			
 			save_as(saveFileDialog.path)
+		FileBtnId.TEST:
+			if is_need_save():
+				if !await save():
+					return
+			
+			test_current_level()
+		FileBtnId.EXIT:
+			if is_need_save():
+				popup_save_confirm_dialog(_on_quit_save_confirmed, go_title_scene)
+			else:
+				go_title_scene()

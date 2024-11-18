@@ -107,7 +107,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_4i2wx")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mfphr")
 theme_override_styles/normal = SubResource("StyleBoxTexture_epl6g")
 text = "文件名字"
-item_count = 4
+item_count = 6
 popup/item_0/text = "LES_NEW"
 popup/item_1/text = "LES_OPEN"
 popup/item_1/id = 1
@@ -115,6 +115,10 @@ popup/item_2/text = "LES_SAVE"
 popup/item_2/id = 2
 popup/item_3/text = "LES_SAVE_AS"
 popup/item_3/id = 3
+popup/item_4/text = "LES_TEST"
+popup/item_4/id = 4
+popup/item_5/text = "LES_EXIT"
+popup/item_5/id = 5
 
 [node name="vsep" type="VSeparator" parent="top_bar_panel/hbox"]
 layout_mode = 2

@@ -1,8 +1,8 @@
 extends ColorRect
 
-@export var show_time:float = 0.7
-@export var fade_out_time:float = 1
-@export var up_speed:float = 16
+@export var show_time:float = 1.2
+@export var fade_out_time:float = 2
+@export var up_speed:float = 12
 
 var _rest_show_time:float
 

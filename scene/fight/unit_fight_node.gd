@@ -29,6 +29,7 @@ var skill_dragging := false : set = set_skill_dragging
 @onready var hp_label = get_hp_label()
 @onready var current_sprite = get_current_sprite()
 @onready var skill_slot_panel_cntr = get_skill_slot_panel_cntr()
+@onready var bt_player = get_bt_player()
 
 @onready var op_sprite_list = [ get_move_left_op_sprite(), get_move_right_op_sprite(), get_standby_op_sprite(), 
 		get_turn_op_sprite(), get_put_op_sprite(), get_attack_op_sprite() ]
@@ -72,6 +73,8 @@ func get_put_op_sprite():
 func get_attack_op_sprite():
 	return $attack_op_sprite
 
+func get_bt_player() -> BTPlayer:
+	return $bt_player
 
 func _ready():
 	update()
@@ -98,6 +101,7 @@ func update():
 	
 	hp_progress_bar.max_value = unit.hp
 	hp_progress_bar.value = unit.hp
+	hp_label.text = str(unit.hp)
 	var skel := spine.get_skeleton()
 	skel.set_skin_by_name(unit.get_fight_skin())
 	skel.set_slots_to_setup_pose()
@@ -218,3 +222,9 @@ func _on_skill_slot_panel_cntr_skill_moved(p_pos: Variant, p_skillState: SkillSt
 
 func _on_skill_slot_panel_cntr_skill_removed(p_skillState: SkillState) -> void:
 	unit.erase_put_skill(p_skillState)
+
+func run_bt(p_bt:BehaviorTree):
+	assert(p_bt)
+	
+	bt_player.behavior_tree = p_bt
+	bt_player.update(0.1)

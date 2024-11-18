@@ -42,7 +42,7 @@ var block_count:int = 0
 var followed_unit = null
 var follow_unit_list := []
 var row : set = set_row
-
+var fight_bt:BehaviorTree
 
 func _init():
 	buff_manager.owner = self
@@ -119,6 +119,8 @@ func set_row(p_value):
 				else:
 					unit.fight_direction = -1
 				follow_unit_list.append(unit)
+		
+		fight_bt = BTConst.get_unit_bt(row.bt_id)
 
 func get_faction_id():
 	if followed_unit != null:
@@ -169,14 +171,12 @@ func move_right():
 	if !fight_scene.has_cell(targetX) || fight_scene.get_unit(targetX) != null:
 		return
 	
-	print(self, " before move anim")
 	fight_scene.move_unit(self, targetX)
 	fight_node.play_animation(&"move")
 	var tween = fight_node.create_tween()
 	var moveTo = fight_scene.get_cell_center_x(targetX)
 	tween.tween_property(fight_node, ^"position:x", moveTo, 0.4)
 	await tween.finished
-	print(self, " after move anim")
 	
 	fight_x = targetX
 
@@ -250,6 +250,18 @@ func move_right_operate():
 	op.owner = self
 	next_operate = op
 
+func move_front_operate():
+	if fight_direction < 0:
+		return move_left_operate()
+	else:
+		return move_right_operate()
+
+func move_back_operate():
+	if fight_direction < 0:
+		return move_right_operate()
+	else:
+		return move_left_operate()
+
 func standby_operate():
 	var op = StandbyOperate.new()
 	op.owner = self
@@ -307,6 +319,8 @@ func round_start():
 	for i in skill_state_list:
 		i.round_start()
 	
+	if fight_bt:
+		fight_node.run_bt(fight_bt)
 
 func show_operate():
 	assert(next_operate)
@@ -421,7 +435,17 @@ func has_ready_skill() -> bool:
 	
 	return false
 
-func duplicate():
+func can_put_skill() -> bool:
+	return has_skill_slot() && has_ready_skill()
+
+func put_ready_skill_operate():
+	for i in skill_state_list:
+		if !i.is_cding() && !i in put_skill_state_list:
+			put_skill_operate(i)
+			return
+
+@warning_ignore("native_method_override")
+func duplicate(_subRes = false):
 	var ret = Unit.new()
 	ret.set_data(get_data())
 	return ret
@@ -441,6 +465,28 @@ func set_next_operate(p_value):
 	
 	next_operate = p_value
 	next_operate_changed.emit(next_operate)
+
+func is_face_enemy() -> bool:
+	if !fight_scene:
+		return false
+	
+	var targetX = fight_x + fight_direction
+	while fight_scene.has_cell(targetX):
+		var unit = fight_scene.get_unit(targetX)
+		if unit && unit.faction_id != faction_id:
+			return true
+		
+		targetX = fight_x + fight_direction
+	
+	return false
+
+func is_close_to_face_enemy() -> bool:
+	if !fight_scene:
+		return false
+	
+	var targetX = fight_x + fight_direction
+	var unit = fight_scene.get_unit(targetX)
+	return unit != null && unit.faction_id != faction_id
 
 static func create_by_id(p_id:int, p_followed_unit = null):
 	var ret = Unit.new()

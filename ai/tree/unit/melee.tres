@@ -1,0 +1,94 @@
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://bn1hb37ys3bq2"]
+
+[ext_resource type="Script" path="res://ai/task/check_method.gd" id="1_muyxo"]
+[ext_resource type="Script" path="res://ai/task/call_method.gd" id="1_xdtbq"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_46fmt"]
+
+[sub_resource type="BTCondition" id="BTCondition_tvnde"]
+script = ExtResource("1_muyxo")
+node_path = ".:unit"
+method_name = &"can_put_skill"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTCondition" id="BTCondition_lc6k8"]
+script = ExtResource("1_xdtbq")
+node_path = ".:unit"
+method_name = &"put_ready_skill_operate"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTSequence" id="BTSequence_5gkkn"]
+children = [SubResource("BTCondition_tvnde"), SubResource("BTCondition_lc6k8")]
+
+[sub_resource type="BTCondition" id="BTCondition_04h7h"]
+script = ExtResource("1_muyxo")
+node_path = ".:unit"
+method_name = &"is_face_enemy"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTCondition" id="BTCondition_rriwa"]
+script = ExtResource("1_muyxo")
+node_path = ".:unit"
+method_name = &"can_attack"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTCondition" id="BTCondition_yy048"]
+script = ExtResource("1_muyxo")
+node_path = ".:unit"
+method_name = &"is_close_to_face_enemy"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTCondition" id="BTCondition_pbnx3"]
+script = ExtResource("1_xdtbq")
+node_path = ".:unit"
+method_name = &"attack_operate"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTSequence" id="BTSequence_v8ybl"]
+children = [SubResource("BTCondition_yy048"), SubResource("BTCondition_pbnx3")]
+
+[sub_resource type="BTCondition" id="BTCondition_pu50h"]
+script = ExtResource("1_xdtbq")
+node_path = ".:unit"
+method_name = &"move_front_operate"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTSelector" id="BTSelector_cvb5i"]
+children = [SubResource("BTSequence_v8ybl"), SubResource("BTCondition_pu50h")]
+
+[sub_resource type="BTSequence" id="BTSequence_ivgfd"]
+children = [SubResource("BTCondition_rriwa"), SubResource("BTSelector_cvb5i")]
+
+[sub_resource type="BTCondition" id="BTCondition_21h0q"]
+script = ExtResource("1_xdtbq")
+node_path = ".:unit"
+method_name = &"move_back_operate"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTSelector" id="BTSelector_rpagw"]
+children = [SubResource("BTSequence_ivgfd"), SubResource("BTCondition_21h0q")]
+
+[sub_resource type="BTSequence" id="BTSequence_pvx2b"]
+children = [SubResource("BTCondition_04h7h"), SubResource("BTSelector_rpagw")]
+
+[sub_resource type="BTCondition" id="BTCondition_idcvs"]
+script = ExtResource("1_xdtbq")
+node_path = ".:unit"
+method_name = &"turn_operate"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTSelector" id="BTSelector_l6w4g"]
+children = [SubResource("BTSequence_5gkkn"), SubResource("BTSequence_pvx2b"), SubResource("BTCondition_idcvs")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_46fmt")
+root_task = SubResource("BTSelector_l6w4g")

@@ -1,0 +1,98 @@
+[gd_resource type="BehaviorTree" load_steps=24 format=3 uid="uid://d0e4beoevh7uh"]
+
+[ext_resource type="Script" path="res://ai/task/check_method.gd" id="1_iwjtl"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_0la4w"]
+
+[sub_resource type="BTCondition" id="BTCondition_ala2v"]
+script = ExtResource("1_iwjtl")
+node_path = NodePath("")
+method_name = &"has_put_action"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BTInvert" id="BTInvert_wjg7m"]
+children = [SubResource("BTCondition_ala2v")]
+
+[sub_resource type="BTCondition" id="BTCondition_5ai8l"]
+script = ExtResource("1_iwjtl")
+node_path = NodePath("")
+method_name = &"has_action_put"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BBNode" id="BBNode_mnj1q"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ci1e0"]
+node = SubResource("BBNode_mnj1q")
+method = &"random_put_action_operate"
+
+[sub_resource type="BTSequence" id="BTSequence_rf40n"]
+children = [SubResource("BTCondition_5ai8l"), SubResource("BTCallMethod_ci1e0")]
+
+[sub_resource type="BBNode" id="BBNode_xbgvn"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_3hyiy"]
+node = SubResource("BBNode_xbgvn")
+method = &"move_to_enemy_operate"
+
+[sub_resource type="BTSelector" id="BTSelector_3tksa"]
+children = [SubResource("BTSequence_rf40n"), SubResource("BTCallMethod_3hyiy")]
+
+[sub_resource type="BTSequence" id="BTSequence_odjbb"]
+children = [SubResource("BTInvert_wjg7m"), SubResource("BTSelector_3tksa")]
+
+[sub_resource type="BTCondition" id="BTCondition_lpgfs"]
+script = ExtResource("1_iwjtl")
+node_path = NodePath("")
+method_name = &"is_enemy_in_action_range"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BBNode" id="BBNode_yhu8m"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_oqwrp"]
+node = SubResource("BBNode_yhu8m")
+method = &"execute_action_operate"
+
+[sub_resource type="BTSequence" id="BTSequence_gedq2"]
+children = [SubResource("BTCondition_lpgfs"), SubResource("BTCallMethod_oqwrp")]
+
+[sub_resource type="BTCondition" id="BTCondition_v0aux"]
+script = ExtResource("1_iwjtl")
+node_path = NodePath("")
+method_name = &"is_priortiy_direction_no_enemy"
+include_delta = false
+arg_list = Array[BBVariant]([])
+
+[sub_resource type="BBNode" id="BBNode_jwi05"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_t8xej"]
+node = SubResource("BBNode_jwi05")
+method = &"turn_operate"
+
+[sub_resource type="BTSequence" id="BTSequence_vpxt2"]
+children = [SubResource("BTCondition_v0aux"), SubResource("BTCallMethod_t8xej")]
+
+[sub_resource type="BBNode" id="BBNode_gabvg"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_dpe47"]
+node = SubResource("BBNode_gabvg")
+method = &"move_to_enemy"
+
+[sub_resource type="BTSelector" id="BTSelector_vmokf"]
+children = [SubResource("BTSequence_odjbb"), SubResource("BTSequence_gedq2"), SubResource("BTSequence_vpxt2"), SubResource("BTCallMethod_dpe47")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_0la4w")
+root_task = SubResource("BTSelector_vmokf")

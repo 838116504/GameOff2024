@@ -59,7 +59,7 @@ func get_lose_ui():
 func _ready():
 	super()
 	
-	if enemy_unit == null:
+	if visible && player_unit == null:
 		var playerUnit = PlayerUnit.new()
 		playerUnit.set_unit_id(1)
 		set_fight(playerUnit, Unit.create_by_id(1))

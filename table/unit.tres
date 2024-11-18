@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://chb62fn21bl7m"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://cvdtj6kdaxu6u"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_8bu18"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_1l3qs"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_61ws2"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_xg48q"]
 
-[sub_resource type="Resource" id="Resource_ee4pq"]
-script = ExtResource("1_8bu18")
+[sub_resource type="Resource" id="Resource_2q6at"]
+script = ExtResource("1_61ws2")
 id = 1
 hp = 10
 def = 0
@@ -22,9 +22,10 @@ fight_map_id = 0
 fight_map_cell = 4
 image = "cat_man_right.png"
 skin = "cat_man"
+bt_id = 0
 
-[sub_resource type="Resource" id="Resource_p7kju"]
-script = ExtResource("1_8bu18")
+[sub_resource type="Resource" id="Resource_ghkk1"]
+script = ExtResource("1_61ws2")
 id = 2
 hp = 10
 def = 1
@@ -42,9 +43,10 @@ fight_map_id = 0
 fight_map_cell = 4
 image = "cat_archer_right.png"
 skin = "cat_archer"
+bt_id = 0
 
-[sub_resource type="Resource" id="Resource_d6pge"]
-script = ExtResource("1_8bu18")
+[sub_resource type="Resource" id="Resource_oa8jq"]
+script = ExtResource("1_61ws2")
 id = 3
 hp = 20
 def = 2
@@ -62,7 +64,8 @@ fight_map_id = 0
 fight_map_cell = 4
 image = "cat_greatsword_man_right.png"
 skin = "cat_greatsword"
+bt_id = 0
 
 [resource]
-script = ExtResource("2_1l3qs")
-row_list = Array[ExtResource("1_8bu18")]([SubResource("Resource_ee4pq"), SubResource("Resource_p7kju"), SubResource("Resource_d6pge")])
+script = ExtResource("2_xg48q")
+row_list = Array[ExtResource("1_61ws2")]([SubResource("Resource_2q6at"), SubResource("Resource_ghkk1"), SubResource("Resource_oa8jq")])

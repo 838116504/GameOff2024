@@ -7,3 +7,5 @@ const PLAYER_IMG = "res://asset/img/player/"
 const MAP_ITEM_IMG = "res://asset/img/map_item/"
 
 const FIGHT_MAP = "res://asset/fight_map/"
+
+const UNIT_BT = "res://ai/tree/unit/"
