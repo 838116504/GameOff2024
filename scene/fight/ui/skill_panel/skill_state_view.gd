@@ -7,6 +7,8 @@ var skill_state:SkillState : set = set_skill_state
 
 @onready var cd_hbox = get_cd_hbox()
 @onready var patch = get_patch()
+@onready var damage_tex_rect_list := [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect(), get_random_tex_rect() ]
+@onready var damage_label_list := [ get_strike_label(), get_thrust_label(), get_slash_label(), get_random_label() ]
 
 func get_icon_tex_rect():
 	return $patch/icon_tex_rect
@@ -41,6 +43,9 @@ func get_cd_hbox():
 func get_patch() -> NinePatchRect:
 	return $patch
 
+
+func _ready():
+	update_damage()
 
 #func _notification(p_what):
 	#if p_what == NOTIFICATION_MOUSE_ENTER:
@@ -115,14 +120,24 @@ func _on_skill_state_put_changed(p_put):
 	visible = !p_put
 
 func update_damage():
+	if !is_node_ready() || skill_state == null:
+		return
+	
 	var damType = skill_state.skill.get_damage_type()
 	if damType >= 0:
 		var dam = skill_state.skill.get_damage(damType) + skill_state.extra_attack
-		var damTexRects = [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect(), get_random_tex_rect() ]
-		var damLabels = [ get_strike_label(), get_thrust_label(), get_slash_label(), get_random_label() ]
-		damTexRects[damType].show()
-		damLabels[damType].text = str(dam)
-		damLabels[damType].show()
+		for i in damage_tex_rect_list.size():
+			if i == damType:
+				damage_tex_rect_list[i].show()
+				damage_label_list[i].text = str(dam)
+				damage_label_list[i].show()
+			else:
+				damage_tex_rect_list[i].hide()
+				damage_label_list[i].hide()
+	else:
+		for i in damage_tex_rect_list.size():
+			damage_tex_rect_list[i].hide()
+			damage_label_list[i].hide()
 
 func create_preview():
 	var ret = Control.new()

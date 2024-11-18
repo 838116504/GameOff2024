@@ -43,8 +43,9 @@ func get_description() -> String:
 		ret = tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage(damType) ]])
 		if !is_blockable():
 			words.append(tr("SKILL_UNABLE_BLOCK"))
+	else:
+		ret = tr(row.description)
 	
-	ret = tr(row.description)
 	if is_action_first():
 		words.append(tr("SKILL_ACTION_FIRST"))
 	if is_free_put():

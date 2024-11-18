@@ -125,6 +125,7 @@ anchor_bottom = 1.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_cn0j4")
 
 [node name="cd_hbox" parent="patch/cd_panel_cntr" instance=ExtResource("10_o6p4t")]

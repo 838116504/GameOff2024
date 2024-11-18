@@ -114,7 +114,7 @@ func _on_skill_state_view_pressed(p_view):
 		unit.put_skill_operate(p_view.skill_state)
 
 func _on_skill_state_view_mouse_entered(p_view):
-	p_view.patch.position.y = -20
+	p_view.patch.position.y = -8
 	skill_state_view_mouse_entered.emit(p_view)
 
 func _on_skill_state_view_mouse_exited(p_view):
