@@ -70,19 +70,23 @@ func _gui_input(p_event:InputEvent) -> void:
 	if p_event is InputEventMouseMotion:
 		if p_event.position.y > fight_map.cell_y || p_event.position.y < fight_map.cell_y - 130:
 			unit_panel.unit = null
+			unit_panel.hide()
 		else:
 			var x = p_event.position.x - 0.5 * (size.x - cell_width * cell_count)
 			if x < 0 || x > cell_width * cell_count:
 				unit_panel.unit = null
+				unit_panel.hide()
 				return
 			 
 			var cellId = int(x / cell_width)
 			var unit = get_unit(cellId)
-			if unit == null || abs(x - cellId * cell_width + 0.5 * cell_width) > 65:
+			if unit == null || abs(x - cellId * cell_width - 0.5 * cell_width) > 65:
 				unit_panel.unit = null
+				unit_panel.hide()
 				return
 			
 			unit_panel.unit = unit
+			unit_panel.show()
 	elif InputMap.event_is_action(p_event, &"left", true):
 		if p_event.is_released():
 			if current_unit == null:

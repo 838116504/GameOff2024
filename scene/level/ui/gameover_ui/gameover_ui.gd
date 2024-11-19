@@ -18,7 +18,7 @@ func get_anim_player():
 func _ready():
 	event_bus.listen(EventConst.GAMEOVER, _on_ent_gameover)
 
-func _gui_input(p_event:InputEvent):
+func _gui_input(_event:InputEvent):
 	get_tree().root.set_input_as_handled()
 
 func _on_ent_gameover():

@@ -33,11 +33,11 @@ func _tick(p_delta):
 	else:
 		var root = get_scene_root()
 		if root:
-			var result = root.get_node_and_resource(node_path)
-			if result[1] != null:
-				obj = result[1]
+			var res = root.get_node_and_resource(node_path)
+			if res[1] != null:
+				obj = res[1]
 			else:
-				obj = result[0]
+				obj = res[0]
 	
 	if obj == null:
 		print_debug("CheckMethod: obj == null, node_path = ", node_path, " root = ", get_scene_root())
@@ -50,5 +50,5 @@ func _tick(p_delta):
 	for i in arg_list:
 		args.append(i.get_value(get_scene_root(), get_blackboard()))
 	
-	var result = obj.callv(method_name, args)
+	obj.callv(method_name, args)
 	return Status.SUCCESS

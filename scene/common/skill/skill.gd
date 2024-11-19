@@ -7,6 +7,7 @@ const DAMAGE_TEXT_LIST = [ "SKILL_DAMAGE_0", "SKILL_DAMAGE_1", "SKILL_DAMAGE_2",
 var extra_damage:int = 0
 var damage_rate:float = 1.0
 var extra_cd:int = 0
+var extra_charge_count:int = 0
 var extra_effect_list := []
 var row
 
@@ -85,13 +86,13 @@ func get_slash_damage() -> float:
 func get_random_damage() -> float:
 	return (row.strike_damage + row.thrust_damage + row.slash_damage + extra_damage) * damage_rate
 
-func get_strike_damage_rate() -> float:
+func get_strike_damage_strengthen_rate() -> float:
 	return row.strike_damage_rate
 
-func get_thrust_damage_rate() -> float:
+func get_thrust_damage_strengthen_rate() -> float:
 	return row.thrust_damage_rate
 
-func get_slash_damage_rate() -> float:
+func get_slash_damage_strengthen_rate() -> float:
 	return row.slash_damage_rate
 
 func get_damage_type():
@@ -129,12 +130,12 @@ func get_effect_list() -> Array:
 		effectIds.append(row.effect_id)
 	effectIds += extra_effect_list
 	for i in effectIds:
-		ret.append(SkillConst.SKILL_EFFECT_LIST[i].new())
+		ret.append(SkillConst.create_skill_effect_by_id(i))
 	
 	return ret
 
 func get_charge_count() -> int:
-	return row.charge_count
+	return row.charge_count + extra_charge_count
 
 func round_start(_state):
 	pass
@@ -160,7 +161,8 @@ func attack(p_target, p_attacker):
 		effect.attack(p_attacker, p_target, damType, dam, blockable)
 
 func get_data():
-	return { "script_id":get_script_id(), "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, "extra_cd":extra_cd }
+	return { "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, 
+			"extra_cd":extra_cd, "extra_charge_count":extra_charge_count }
 
 func set_data(p_data):
 	if !p_data is Dictionary:
@@ -172,10 +174,4 @@ func set_data(p_data):
 		set(keys[i], values[i])
 
 static func create_by_id(p_id:int):
-	var skillRow = table_set.skill.get_row(p_id)
-	if skillRow == null:
-		return null
-	
-	var ret = SkillConst.SKILL_LIST[skillRow.script_id].new()
-	ret.id = p_id
-	return ret
+	return SkillConst.create_skill_by_id(p_id)

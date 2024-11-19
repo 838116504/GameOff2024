@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="EffectTable" load_steps=11 format=3 uid="uid://g3ea6qi5ajtx"]
+
+[ext_resource type="Script" path="res://table/effect_row.gd" id="1_jch1n"]
+[ext_resource type="Script" path="res://table/effect_table.gd" id="2_sbc3h"]
+
+[sub_resource type="Resource" id="Resource_amb40"]
+script = ExtResource("1_jch1n")
+id = 1
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_t0ktx"]
+script = ExtResource("1_jch1n")
+id = 2
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_i7hem"]
+script = ExtResource("1_jch1n")
+id = 3
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_ly374"]
+script = ExtResource("1_jch1n")
+id = 4
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_7lqij"]
+script = ExtResource("1_jch1n")
+id = 5
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_6oakf"]
+script = ExtResource("1_jch1n")
+id = 6
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_fkwp7"]
+script = ExtResource("1_jch1n")
+id = 7
+cd = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_37eij"]
+script = ExtResource("1_jch1n")
+id = 8
+cd = 0
+charge_count = 0
+
+[resource]
+script = ExtResource("2_sbc3h")
+row_list = Array[ExtResource("1_jch1n")]([SubResource("Resource_amb40"), SubResource("Resource_t0ktx"), SubResource("Resource_i7hem"), SubResource("Resource_ly374"), SubResource("Resource_7lqij"), SubResource("Resource_6oakf"), SubResource("Resource_fkwp7"), SubResource("Resource_37eij")])

@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+signal pressed
+
 var skill:Skill : set = set_skill
 
 
@@ -34,6 +36,11 @@ func get_cd_hbox():
 	return $cd_panel_cntr/cd_hbox
 
 
+func _gui_input(p_event:InputEvent):
+	if p_event is InputEventMouseButton && p_event.button_index == MOUSE_BUTTON_LEFT:
+		if p_event.is_released():
+			pressed.emit()
+
 func set_skill(p_value):
 	skill = p_value
 	update()
@@ -46,10 +53,14 @@ func update():
 	iconTexRect.texture = skill.get_icon()
 	
 	var damType = skill.get_damage_type()
+	var damTexRects = [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect(), get_random_tex_rect() ]
+	var damLabels = [ get_strike_label(), get_thrust_label(), get_slash_label(), get_random_label() ]
+	for i in damTexRects.size():
+		damTexRects[i].hide()
+		damLabels[i].hide()
+	
 	if damType >= 0:
 		var dam = skill.get_damage(damType)
-		var damTexRects = [ get_strike_tex_rect(), get_thrust_tex_rect(), get_slash_tex_rect(), get_random_tex_rect() ]
-		var damLabels = [ get_strike_label(), get_thrust_label(), get_slash_label(), get_random_label() ]
 		damTexRects[damType].show()
 		damLabels[damType].text = str(dam)
 		damLabels[damType].show()
@@ -58,5 +69,5 @@ func update():
 	cdHbox.set_max_value(skill.get_cd())
 	cdHbox.set_value(skill.get_cd())
 	
-	mouse_filter = MOUSE_FILTER_STOP
+	#mouse_filter = MOUSE_FILTER_STOP
 	tooltip_text = "%s\n%s" % [ skill.get_skill_name(), skill.get_description() ]

@@ -50,7 +50,7 @@ func update_unit():
 	hp_view_patch.value = unit.hp
 	def_view_patch.value = unit.get_def()
 	spd_view_patch.value = unit.get_spd()
-	strike_view_patch.value = unit.get_strike_hit_rate()
-	thrust_view_patch.value = unit.get_thrust_hit_rate()
-	slash_view_patch.value = unit.get_slash_hit_rate()
+	strike_view_patch.value = 1.0 - unit.get_strike_hit_rate()
+	thrust_view_patch.value = 1.0 - unit.get_thrust_hit_rate()
+	slash_view_patch.value = 1.0 - unit.get_slash_hit_rate()
 	show()

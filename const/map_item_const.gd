@@ -45,3 +45,11 @@ const MAP_ITEM_ICON_FILE_LIST = [
 static func get_map_item_icon(p_id:int) -> Texture2D:
 	assert(p_id >= 0 && p_id < MAP_ITEM_ICON_FILE_LIST.size())
 	return load(DirConst.MAP_ITEM_IMG.path_join(MAP_ITEM_ICON_FILE_LIST[p_id]))
+
+static func get_unit_icon(p_id:int) -> Texture2D:
+	assert(p_id > 0)
+	var row = table_set.unit.get_row(p_id)
+	if row:
+		return load(DirConst.UNIT_IMG.path_join(row.image))
+	
+	return null

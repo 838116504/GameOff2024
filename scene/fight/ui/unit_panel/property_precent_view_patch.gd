@@ -24,10 +24,4 @@ func update_value():
 	if value_label == null:
 		return
 	
-	var text:String
-	if value > 1000000:
-		text = "%.3fm" % (float(value / 1000000))
-	else:
-		text = str(value)
-	
 	value_label.text = "%d%%" % int(value * 100)

@@ -39,3 +39,5 @@ extends Resource
 @export var skin:String
 # 行为树id
 @export var bt_id:int
+# 学习的技能id
+@export var learn_skill_id:int

@@ -31,7 +31,7 @@ var strike_hit_rate:float = 1.0
 var thrust_hit_rate:float = 1.0
 var slash_hit_rate:float = 1.0
 var spd:int
-var data_stack_list := []
+var data_stack_list := [ ]
 var data_count:int = 0 : set = set_data_count
 var yellow_key_count:int = 0 : set = set_yellow_key_count
 var blue_key_count:int = 0 : set = set_blue_key_count
@@ -172,8 +172,15 @@ func hand_combat(p_unit:Unit):
 	
 	var dams = unit_hand_combat_damage_dict[uid]
 	var myUnits = [self] + follow_unit_list
+	var aliveCount = 0
 	for i in myUnits.size():
 		myUnits[i].hp -= dams[i]
+		if !myUnits[i].is_dead():
+			aliveCount += 1
+	
+	if aliveCount == 0:
+		event_bus.emit_signal(EventConst.GAMEOVER)
+		return
 	
 	kill_count += 1
 	map_view.erase_item(p_unit.position)
@@ -453,8 +460,8 @@ func set_data(p_data):
 		skill_state_list.resize(datas.size())
 		for i in skill_state_list.size():
 			skill_state_list[i] = SkillState.new()
-			var skill = SkillConst.SKILL_LIST[datas[i].script_id].new()
-			datas[i].erase("script_id")
+			var skill = Skill.create_by_id(datas[i].id)
+			datas[i].erase("id")
 			skill.set_data(datas[i])
 			skill_state_list[i].skill = skill
 		

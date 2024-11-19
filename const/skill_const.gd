@@ -31,3 +31,19 @@ const SKILL_EFFECT_LIST = [
 	preload("res://scene/common/skill_effect/turn.gd"),
 	preload("res://scene/common/skill_effect/dash.gd"),
 ]
+
+static func create_skill_by_id(p_id:int):
+	var row = table_set.skill.get_row(p_id)
+	if row == null:
+		return null
+	
+	var ret = SKILL_LIST[row.script_id].new()
+	ret.set_id(p_id)
+	
+	return ret
+
+static func create_skill_effect_by_id(p_id:int):
+	if p_id < 0 || p_id >= SKILL_EFFECT_LIST.size():
+		return null
+	
+	return SKILL_EFFECT_LIST[p_id].new()

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://cvdtj6kdaxu6u"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://cf00k1s2ixguk"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_61ws2"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_xg48q"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_bj06o"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_l8ep1"]
 
-[sub_resource type="Resource" id="Resource_2q6at"]
-script = ExtResource("1_61ws2")
+[sub_resource type="Resource" id="Resource_141v7"]
+script = ExtResource("1_bj06o")
 id = 1
 hp = 10
 def = 0
@@ -23,9 +23,10 @@ fight_map_cell = 4
 image = "cat_man_right.png"
 skin = "cat_man"
 bt_id = 0
+learn_skill_id = 1
 
-[sub_resource type="Resource" id="Resource_ghkk1"]
-script = ExtResource("1_61ws2")
+[sub_resource type="Resource" id="Resource_jdfn7"]
+script = ExtResource("1_bj06o")
 id = 2
 hp = 10
 def = 1
@@ -33,7 +34,7 @@ strike_hit_rate = 1.5
 thrust_hit_rate = 1
 slash_hit_rate = 1
 spd = 1
-skill_id_list = []
+skill_id_list = [5]
 fight_x = 2
 fight_dir = 0
 follow_unit_id_list = []
@@ -44,9 +45,10 @@ fight_map_cell = 4
 image = "cat_archer_right.png"
 skin = "cat_archer"
 bt_id = 0
+learn_skill_id = 5
 
-[sub_resource type="Resource" id="Resource_oa8jq"]
-script = ExtResource("1_61ws2")
+[sub_resource type="Resource" id="Resource_f1a6m"]
+script = ExtResource("1_bj06o")
 id = 3
 hp = 20
 def = 2
@@ -54,7 +56,7 @@ strike_hit_rate = 1.0
 thrust_hit_rate = 1
 slash_hit_rate = 1
 spd = 2
-skill_id_list = []
+skill_id_list = [9]
 fight_x = 2
 fight_dir = 0
 follow_unit_id_list = []
@@ -65,7 +67,8 @@ fight_map_cell = 4
 image = "cat_greatsword_man_right.png"
 skin = "cat_greatsword"
 bt_id = 0
+learn_skill_id = 9
 
 [resource]
-script = ExtResource("2_xg48q")
-row_list = Array[ExtResource("1_61ws2")]([SubResource("Resource_2q6at"), SubResource("Resource_ghkk1"), SubResource("Resource_oa8jq")])
+script = ExtResource("2_l8ep1")
+row_list = Array[ExtResource("1_bj06o")]([SubResource("Resource_141v7"), SubResource("Resource_jdfn7"), SubResource("Resource_f1a6m")])

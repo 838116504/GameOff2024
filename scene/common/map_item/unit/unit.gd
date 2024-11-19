@@ -428,6 +428,13 @@ func set_data(p_data):
 func has_skill_slot() -> bool:
 	return skill_slot_max_count > put_skill_state_list.size()
 
+func has_skill(p_id:int) -> bool:
+	for i in skill_state_list.size():
+		if skill_state_list[i].skill.get_id() == p_id:
+			return true
+	
+	return false
+
 func has_ready_skill() -> bool:
 	for i in skill_state_list:
 		if !i.is_cding() && !i in put_skill_state_list:

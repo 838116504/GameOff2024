@@ -16,9 +16,17 @@ LS_GAMEOVER_KILL_ENEMY,擊殺敵人︰,Killed Enemies︰
 LS_GAMEOVER_SCORE,分數︰,Scores︰
 LS_RETURN_TITLE_BTN,返回標題,Return Title
 LS_GAMEOVER_ENEMY,殘余敵人︰,Residual Enemies︰
-,,
-,,
-,,,
-,,,
-,,,
-,,,
+LS_DB_PANEL_TITLE,數據庫,Database
+LS_DB_PANEL_COST,價錢︰,Cost︰
+LS_DB_PANEL_ADD_HP,增加血量,Add HP
+LS_DB_PANEL_ADD_DEF,增加防禦,Add Defence
+LS_DB_PANEL_ADD_SPD,增加速度,Add Speed
+LS_DB_LEARN_SKILL,學習技能,Learn Skill
+LS_DB_STRENGTHEN_SKILL,強化技能,Strengthen Skill
+LS_DB_CHOOSE_DATA,選擇數據,Choose Data
+LS_DB_OK_BTN,確認,OK
+LS_DB_EMPTY,空,Empty
+LS_DB_SELECT_SKILL_TITLE,選擇技能,Select Skill
+LS_DB_DAMAGE_INCREASE,傷害提升%d,Damage increase %d
+LS_DB_CD,冷卻%s,Cooldown %s
+LS_DB_CHARGE_COUNT,充能次數%s,Charge Count %s
