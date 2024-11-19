@@ -48,3 +48,18 @@ bbcode_enabled = true
 text = "1"
 fit_content = true
 scroll_active = false
+
+[node name="dialogue_hbox" type="HBoxContainer" parent="vbox"]
+visible = false
+layout_mode = 2
+
+[node name="label" type="Label" parent="vbox/dialogue_hbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "LES_DIALOGUE_ID"
+
+[node name="dialogue_edit" type="SpinBox" parent="vbox/dialogue_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="changed" from="vbox/dialogue_hbox/dialogue_edit" to="." method="_on_dialogue_edit_changed"]
