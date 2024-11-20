@@ -3,6 +3,8 @@ extends Resource
 
 # 單位id
 @export var id:int
+# 名字
+@export var name:String
 # 血量
 @export var hp:int
 # 防禦

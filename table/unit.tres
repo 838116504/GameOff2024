@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=6 format=3 uid="uid://cf00k1s2ixguk"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=8 format=3 uid="uid://1kupm0nsdakj"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_bj06o"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_l8ep1"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_ujeyt"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_fi7qm"]
 
-[sub_resource type="Resource" id="Resource_141v7"]
-script = ExtResource("1_bj06o")
+[sub_resource type="Resource" id="Resource_g2he3"]
+script = ExtResource("1_ujeyt")
 id = 1
+name = "UNIT_1"
 hp = 10
 def = 0
 strike_hit_rate = 1.0
@@ -13,21 +14,45 @@ thrust_hit_rate = 1
 slash_hit_rate = 1
 spd = 1
 skill_id_list = [1]
-fight_x = 2
+fight_x = 3
 fight_dir = 0
-follow_unit_id_list = [1]
-follow_unit_fight_x_list = [0]
-follow_unit_fight_dir_list = [1]
+follow_unit_id_list = []
+follow_unit_fight_x_list = []
+follow_unit_fight_dir_list = []
 fight_map_id = 0
 fight_map_cell = 4
-image = "cat_man_right.png"
-skin = "cat_man"
+image = "data_body.png"
+skin = "data_body"
 bt_id = 0
 learn_skill_id = 1
 
-[sub_resource type="Resource" id="Resource_jdfn7"]
-script = ExtResource("1_bj06o")
+[sub_resource type="Resource" id="Resource_noqmo"]
+script = ExtResource("1_ujeyt")
 id = 2
+name = "UNIT_1"
+hp = 15
+def = 0
+strike_hit_rate = 1.0
+thrust_hit_rate = 1
+slash_hit_rate = 1
+spd = 1
+skill_id_list = [1]
+fight_x = 4
+fight_dir = 0
+follow_unit_id_list = [2]
+follow_unit_fight_x_list = [0]
+follow_unit_fight_dir_list = [1]
+fight_map_id = 0
+fight_map_cell = 5
+image = "data_body.png"
+skin = "data_body"
+bt_id = 0
+learn_skill_id = 1
+
+[sub_resource type="Resource" id="Resource_617kv"]
+script = ExtResource("1_ujeyt")
+id = 3
+name = "UNIT_3"
 hp = 10
 def = 1
 strike_hit_rate = 1.5
@@ -41,15 +66,16 @@ follow_unit_id_list = []
 follow_unit_fight_x_list = []
 follow_unit_fight_dir_list = []
 fight_map_id = 0
-fight_map_cell = 4
+fight_map_cell = 5
 image = "cat_archer_right.png"
 skin = "cat_archer"
 bt_id = 0
 learn_skill_id = 5
 
-[sub_resource type="Resource" id="Resource_f1a6m"]
-script = ExtResource("1_bj06o")
-id = 3
+[sub_resource type="Resource" id="Resource_dxqym"]
+script = ExtResource("1_ujeyt")
+id = 4
+name = "UNIT_4"
 hp = 20
 def = 2
 strike_hit_rate = 1.0
@@ -63,12 +89,35 @@ follow_unit_id_list = []
 follow_unit_fight_x_list = []
 follow_unit_fight_dir_list = []
 fight_map_id = 0
-fight_map_cell = 4
+fight_map_cell = 5
 image = "cat_greatsword_man_right.png"
 skin = "cat_greatsword"
 bt_id = 0
 learn_skill_id = 9
 
+[sub_resource type="Resource" id="Resource_0puxq"]
+script = ExtResource("1_ujeyt")
+id = 5
+name = "UNIT_2"
+hp = 30
+def = 2
+strike_hit_rate = 1.0
+thrust_hit_rate = 1
+slash_hit_rate = 1
+spd = 1
+skill_id_list = [1, 2]
+fight_x = 2
+fight_dir = 0
+follow_unit_id_list = []
+follow_unit_fight_x_list = []
+follow_unit_fight_dir_list = []
+fight_map_id = 0
+fight_map_cell = 5
+image = "cat_man_right.png"
+skin = "cat_man"
+bt_id = 0
+learn_skill_id = 2
+
 [resource]
-script = ExtResource("2_l8ep1")
-row_list = Array[ExtResource("1_bj06o")]([SubResource("Resource_141v7"), SubResource("Resource_jdfn7"), SubResource("Resource_f1a6m")])
+script = ExtResource("2_fi7qm")
+row_list = Array[ExtResource("1_ujeyt")]([SubResource("Resource_g2he3"), SubResource("Resource_noqmo"), SubResource("Resource_617kv"), SubResource("Resource_dxqym"), SubResource("Resource_0puxq")])

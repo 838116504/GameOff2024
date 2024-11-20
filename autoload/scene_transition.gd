@@ -25,12 +25,14 @@ func play(p_name:StringName):
 	if p_name.is_empty():
 		return
 	
+	transition.show()
 	await transition.play(p_name)
 
 func change_scene(p_scene:Node, p_out:StringName, p_in:StringName):
 	assert(p_scene)
 	
 	if !p_out.is_empty():
+		
 		await play(p_out)
 	
 	var prevScene = get_tree().current_scene
@@ -45,6 +47,7 @@ func change_scene(p_scene:Node, p_out:StringName, p_in:StringName):
 	if !p_in.is_empty():
 		await play(p_in)
 	
+	transition.hide()
 	transition.reset()
 	finished.emit()
 

@@ -42,9 +42,31 @@ func update():
 	get_name_label().text = unit.get_map_item_name()
 	get_hp_value_label().text = str(unit.hp)
 	get_def_value_label().text = str(unit.get_def())
-	get_strike_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_strike_hit_rate())
-	get_thrust_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_thrust_hit_rate())
-	get_slash_def_value_label().text = "%0.1f%%" % (100.0 * unit.get_slash_hit_rate())
+	
+	var strikeHitRate = 1.0 - unit.get_strike_hit_rate()
+	var strikeLabel = get_strike_def_value_label()
+	if strikeHitRate != 0.0:
+		strikeLabel.text = "%0.1f%%" % (100.0 * strikeHitRate)
+		strikeLabel.get_parent().get_parent().show()
+	else:
+		strikeLabel.get_parent().get_parent().hide()
+	
+	var thrustHitRate = 1.0 - unit.get_strike_hit_rate()
+	var thrustLabel = get_thrust_def_value_label()
+	if thrustHitRate != 0.0:
+		thrustLabel.text = "%0.1f%%" % (100.0 * thrustHitRate)
+		thrustLabel.get_parent().get_parent().show()
+	else:
+		thrustLabel.get_parent().get_parent().hide()
+	
+	var slashHitRate = 1.0 - unit.get_slash_hit_rate()
+	var slashLabel = get_slash_def_value_label()
+	if slashHitRate != 0.0:
+		slashLabel.text = "%0.1f%%" % (100.0 * slashHitRate)
+		slashLabel.get_parent().get_parent().show()
+	else:
+		slashLabel.get_parent().get_parent().hide()
+	
 	get_spd_value_label().text = str(unit.get_spd())
 	
 	var skills = []

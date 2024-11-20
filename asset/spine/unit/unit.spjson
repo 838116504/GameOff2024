@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "3VmXiXaPHyk",
+	"hash": "oSJOdu/NGWw",
 	"spine": "4.2.63-beta",
 	"x": -70,
 	"width": 140,
@@ -51,6 +51,14 @@
 		"attachments": {
 			"body": {
 				"body": { "name": "cat_man_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "data_body",
+		"attachments": {
+			"body": {
+				"body": { "name": "data_body_right", "y": 70, "width": 140, "height": 140 }
 			}
 		}
 	},

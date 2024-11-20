@@ -51,7 +51,7 @@ func get_unit_id() -> int:
 	return unit_id
 
 func get_map_item_name() -> String:
-	return tr("UNIT_%d" % unit_id)
+	return tr(row.name)
 
 func set_unit_id(p_value):
 	if unit_id == p_value:

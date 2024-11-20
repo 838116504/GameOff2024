@@ -24,4 +24,8 @@ func update_value():
 	if value_label == null:
 		return
 	
-	value_label.text = "%d%%" % int(value * 100)
+	if value == 0:
+		hide()
+	else:
+		value_label.text = "%d%%" % int(value * 100)
+		show()

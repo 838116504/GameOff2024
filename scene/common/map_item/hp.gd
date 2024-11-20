@@ -5,6 +5,9 @@ var hp:int = 400
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.HP
 
+func get_description() -> String:
+	return tr("MAP_ITEM_DESC_%d" % get_map_item_id()).format([["hp", hp]])
+
 func create_node() -> Node2D:
 	node = preload("hp_node.tscn").instantiate()
 	return node

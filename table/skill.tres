@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="SkillTable" load_steps=20 format=3 uid="uid://oqdvoc7v28xb"]
+[gd_resource type="Resource" script_class="SkillTable" load_steps=20 format=3 uid="uid://bac25t1lwnh7e"]
 
-[ext_resource type="Script" path="res://table/skill_row.gd" id="1_07lnd"]
-[ext_resource type="Script" path="res://table/skill_table.gd" id="2_dwe1h"]
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_2kwoa"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_rjvr6"]
 
-[sub_resource type="Resource" id="Resource_84bap"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_rc2rp"]
+script = ExtResource("1_2kwoa")
 id = 1
 script_id = 1
 arg_list = []
@@ -14,7 +14,7 @@ icon = "1.png"
 action_first = 1
 unable_block = 0
 cd = 3
-strike_damage = 3
+strike_damage = 5
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
@@ -25,8 +25,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_cmwy0"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_x6kuq"]
+script = ExtResource("1_2kwoa")
 id = 2
 script_id = 1
 arg_list = []
@@ -36,7 +36,7 @@ icon = "2.png"
 action_first = 0
 unable_block = 0
 cd = 6
-strike_damage = 6
+strike_damage = 10
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
@@ -47,8 +47,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ob6in"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_nf4la"]
+script = ExtResource("1_2kwoa")
 id = 3
 script_id = 1
 arg_list = []
@@ -63,14 +63,14 @@ thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
-strike_damage_rate = 0.0
+strike_damage_rate = 1.0
 thrust_damage_rate = 0.0
 slash_damage_rate = 0.0
 effect_id = 1
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_erdxy"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_n43hr"]
+script = ExtResource("1_2kwoa")
 id = 4
 script_id = 1
 arg_list = []
@@ -85,14 +85,14 @@ thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
-strike_damage_rate = 0.0
+strike_damage_rate = 1.0
 thrust_damage_rate = 0.0
 slash_damage_rate = 0.0
 effect_id = 2
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_gqkf5"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_txnf3"]
+script = ExtResource("1_2kwoa")
 id = 5
 script_id = 2
 arg_list = []
@@ -101,20 +101,20 @@ description = "SKILL_DESC_5"
 icon = "5.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 4
+strike_damage = 10
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
-thrust_damage_rate = 0.0
+thrust_damage_rate = 1.0
 slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_gqxq3"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_c20gx"]
+script = ExtResource("1_2kwoa")
 id = 6
 script_id = 3
 arg_list = []
@@ -123,20 +123,20 @@ description = "SKILL_DESC_6"
 icon = "6.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 6
+strike_damage = 10
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
-thrust_damage_rate = 0.0
+thrust_damage_rate = 1.0
 slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ighpi"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_1m1ad"]
+script = ExtResource("1_2kwoa")
 id = 7
 script_id = 2
 arg_list = [2]
@@ -145,20 +145,20 @@ description = "SKILL_DESC_7"
 icon = "7.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 3
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
-thrust_damage_rate = 0.0
+thrust_damage_rate = 1.0
 slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 1
 
-[sub_resource type="Resource" id="Resource_oowxy"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_w8h8e"]
+script = ExtResource("1_2kwoa")
 id = 8
 script_id = 2
 arg_list = []
@@ -167,20 +167,20 @@ description = "SKILL_DESC_8"
 icon = "8.png"
 action_first = 0
 unable_block = 1
-cd = 0
-strike_damage = 0
+cd = 6
+strike_damage = 40
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
-thrust_damage_rate = 0.0
+thrust_damage_rate = 1.0
 slash_damage_rate = 0.0
 effect_id = 3
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_iltva"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_ktc5b"]
+script = ExtResource("1_2kwoa")
 id = 9
 script_id = 1
 arg_list = [2, 2]
@@ -189,20 +189,20 @@ description = "SKILL_DESC_9"
 icon = "9.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 3
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
 thrust_damage_rate = 0.0
-slash_damage_rate = 0.0
+slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_tfomt"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_8nlpt"]
+script = ExtResource("1_2kwoa")
 id = 10
 script_id = 4
 arg_list = []
@@ -211,20 +211,20 @@ description = "SKILL_DESC_10"
 icon = "10.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 4
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
 thrust_damage_rate = 0.0
-slash_damage_rate = 0.0
+slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_4retc"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_skf03"]
+script = ExtResource("1_2kwoa")
 id = 11
 script_id = 1
 arg_list = []
@@ -233,20 +233,20 @@ description = "SKILL_DESC_11"
 icon = "11.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 5
+strike_damage = 30
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
 thrust_damage_rate = 0.0
-slash_damage_rate = 0.0
+slash_damage_rate = 1.0
 effect_id = 4
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_rfpob"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_k1s82"]
+script = ExtResource("1_2kwoa")
 id = 12
 script_id = 5
 arg_list = []
@@ -255,20 +255,20 @@ description = "SKILL_DESC_12"
 icon = "12.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 6
+strike_damage = 40
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
 thrust_damage_rate = 0.0
-slash_damage_rate = 0.0
+slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_l5irs"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_qmxh5"]
+script = ExtResource("1_2kwoa")
 id = 13
 script_id = 0
 arg_list = []
@@ -277,7 +277,7 @@ description = "SKILL_DESC_13"
 icon = "13.png"
 action_first = 0
 unable_block = 0
-cd = 0
+cd = 6
 strike_damage = 0
 thrust_damage = 0
 slash_damage = 0
@@ -289,8 +289,8 @@ slash_damage_rate = 0.0
 effect_id = 5
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_u8ir5"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_ppo7o"]
+script = ExtResource("1_2kwoa")
 id = 14
 script_id = 0
 arg_list = []
@@ -299,7 +299,7 @@ description = "SKILL_DESC_14"
 icon = "14.png"
 action_first = 0
 unable_block = 0
-cd = 0
+cd = 6
 strike_damage = 0
 thrust_damage = 0
 slash_damage = 0
@@ -311,8 +311,8 @@ slash_damage_rate = 0.0
 effect_id = 6
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_rq05a"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_6kfb5"]
+script = ExtResource("1_2kwoa")
 id = 15
 script_id = 0
 arg_list = []
@@ -321,7 +321,7 @@ description = "SKILL_DESC_15"
 icon = "15.png"
 action_first = 0
 unable_block = 0
-cd = 0
+cd = 6
 strike_damage = 0
 thrust_damage = 0
 slash_damage = 0
@@ -333,8 +333,8 @@ slash_damage_rate = 0.0
 effect_id = 7
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_pasud"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_46h2q"]
+script = ExtResource("1_2kwoa")
 id = 16
 script_id = 0
 arg_list = []
@@ -343,7 +343,7 @@ description = "SKILL_DESC_16"
 icon = "16.png"
 action_first = 0
 unable_block = 0
-cd = 0
+cd = 6
 strike_damage = 0
 thrust_damage = 0
 slash_damage = 0
@@ -355,8 +355,8 @@ slash_damage_rate = 0.0
 effect_id = 8
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_hrco2"]
-script = ExtResource("1_07lnd")
+[sub_resource type="Resource" id="Resource_166mb"]
+script = ExtResource("1_2kwoa")
 id = 17
 script_id = 1
 arg_list = []
@@ -365,7 +365,7 @@ description = "SKILL_DESC_17"
 icon = "17.png"
 action_first = 0
 unable_block = 0
-cd = 4
+cd = 2
 strike_damage = 1
 thrust_damage = 1
 slash_damage = 1
@@ -378,5 +378,5 @@ effect_id = 0
 charge_count = 0
 
 [resource]
-script = ExtResource("2_dwe1h")
-row_list = Array[ExtResource("1_07lnd")]([SubResource("Resource_84bap"), SubResource("Resource_cmwy0"), SubResource("Resource_ob6in"), SubResource("Resource_erdxy"), SubResource("Resource_gqkf5"), SubResource("Resource_gqxq3"), SubResource("Resource_ighpi"), SubResource("Resource_oowxy"), SubResource("Resource_iltva"), SubResource("Resource_tfomt"), SubResource("Resource_4retc"), SubResource("Resource_rfpob"), SubResource("Resource_l5irs"), SubResource("Resource_u8ir5"), SubResource("Resource_rq05a"), SubResource("Resource_pasud"), SubResource("Resource_hrco2")])
+script = ExtResource("2_rjvr6")
+row_list = Array[ExtResource("1_2kwoa")]([SubResource("Resource_rc2rp"), SubResource("Resource_x6kuq"), SubResource("Resource_nf4la"), SubResource("Resource_n43hr"), SubResource("Resource_txnf3"), SubResource("Resource_c20gx"), SubResource("Resource_1m1ad"), SubResource("Resource_w8h8e"), SubResource("Resource_ktc5b"), SubResource("Resource_8nlpt"), SubResource("Resource_skf03"), SubResource("Resource_k1s82"), SubResource("Resource_qmxh5"), SubResource("Resource_ppo7o"), SubResource("Resource_6kfb5"), SubResource("Resource_46h2q"), SubResource("Resource_166mb")])
