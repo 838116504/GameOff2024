@@ -50,7 +50,8 @@ class LevelData:
 		return ret
 
 var id:int
-var player_name:String = "player"
+var player_last_name:String = ""
+var player_first_name:String = "player"
 var play_time:float = 0
 var save_unix_time:int = 0
 var level_data_list := []
@@ -69,6 +70,9 @@ func add_level_record(p_id:int, p_score:int):
 			level_data_list.append(LevelData.new())
 	
 	level_data_list[p_id].add_record(p_score)
+
+func get_player_full_name() -> String:
+	return player_first_name + " " + player_last_name
 
 func get_play_time_text() -> String:
 	var hours = int(play_time / 3600.0)
@@ -106,7 +110,7 @@ func set_data(p_data):
 		set(keys[i], values[i])
 
 func get_data():
-	var ret = { "player_name":player_name, "play_time":play_time, "save_unix_time":save_unix_time }
+	var ret = { "player_first_name":player_first_name, "player_last_name":player_last_name, "play_time":play_time, "save_unix_time":save_unix_time }
 	
 	var levelDatas = []
 	levelDatas.resize(level_data_list.size())

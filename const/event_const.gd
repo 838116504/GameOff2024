@@ -1,7 +1,9 @@
 extends RefCounted
 class_name EventConst
 
-const DIALOGUE = &"dialogue"
+const SHOW_DIALOGUE = &"show_dialogue"
+const HIDE_DIALOGUE = &"hide_dialogue"
+
 const SHOW_MAP_ITEM_DETAIL = &"show_map_item_detail"
 const HIDE_MAP_ITEM_DETAIL = &"hide_map_item_detail"
 const SHOW_ENEMY_PANEL = &"show_enemy_panel"
@@ -13,8 +15,11 @@ const SHOW_PLAYER_PANEL = &"show_player_panel"
 const ENABLE_BLUR = &"enable_blur"
 const DISABLE_BLUR = &"disable_blur"
 
+
+
 const INFO_LIST = [
-	[ DIALOGUE, [ {"name":"id", "type":TYPE_INT} ]],
+	[ SHOW_DIALOGUE, [ {"name":"id", "type":TYPE_INT} ]],
+	[ HIDE_DIALOGUE, [ ]],
 	[ SHOW_MAP_ITEM_DETAIL, [ {"name":"item", "type":TYPE_OBJECT} ]],
 	[ HIDE_MAP_ITEM_DETAIL, [ ]],
 	[ SHOW_ENEMY_PANEL, [ {"name":"unit", "type":TYPE_OBJECT} ]],

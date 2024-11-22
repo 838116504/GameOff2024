@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PlayerUnitTable" load_steps=4 format=3 uid="uid://cxay8dynrurlr"]
+[gd_resource type="Resource" script_class="PlayerUnitTable" load_steps=4 format=3 uid="uid://cn8d1nvjt11wv"]
 
-[ext_resource type="Script" path="res://table/player_unit_row.gd" id="1_88wo7"]
-[ext_resource type="Script" path="res://table/player_unit_table.gd" id="2_rxo7y"]
+[ext_resource type="Script" path="res://table/player_unit_row.gd" id="1_njcvd"]
+[ext_resource type="Script" path="res://table/player_unit_table.gd" id="2_s8fio"]
 
-[sub_resource type="Resource" id="Resource_433hq"]
-script = ExtResource("1_88wo7")
+[sub_resource type="Resource" id="Resource_o0qfo"]
+script = ExtResource("1_njcvd")
 id = 1
 hp = 1000
 def = 0
@@ -21,5 +21,5 @@ right_image = "player_right.png"
 skin = "player"
 
 [resource]
-script = ExtResource("2_rxo7y")
-row_list = Array[ExtResource("1_88wo7")]([SubResource("Resource_433hq")])
+script = ExtResource("2_s8fio")
+row_list = Array[ExtResource("1_njcvd")]([SubResource("Resource_o0qfo")])

@@ -1,0 +1,260 @@
+[gd_resource type="Resource" script_class="DialogueTable" load_steps=39 format=3 uid="uid://ckkntpchf2s8d"]
+
+[ext_resource type="Script" path="res://table/dialogue_row.gd" id="1_ulxs7"]
+[ext_resource type="Script" path="res://table/dialogue_table.gd" id="2_fvemd"]
+
+[sub_resource type="Resource" id="Resource_c25kn"]
+script = ExtResource("1_ulxs7")
+id = 1
+skip_id = 0
+text = "DIALOGUE_1"
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_scj3f"]
+script = ExtResource("1_ulxs7")
+id = 2
+skip_id = -1
+text = "DIALOGUE_2"
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_sm2le"]
+script = ExtResource("1_ulxs7")
+id = 3
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_e83c7"]
+script = ExtResource("1_ulxs7")
+id = 4
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_ummiv"]
+script = ExtResource("1_ulxs7")
+id = 5
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_myoly"]
+script = ExtResource("1_ulxs7")
+id = 6
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_67hqo"]
+script = ExtResource("1_ulxs7")
+id = 7
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_pjdc0"]
+script = ExtResource("1_ulxs7")
+id = 8
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_pkmvs"]
+script = ExtResource("1_ulxs7")
+id = 9
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_q7qyl"]
+script = ExtResource("1_ulxs7")
+id = 10
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_1e0o2"]
+script = ExtResource("1_ulxs7")
+id = 11
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_bmr8y"]
+script = ExtResource("1_ulxs7")
+id = 12
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_nmble"]
+script = ExtResource("1_ulxs7")
+id = 13
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_hd2fu"]
+script = ExtResource("1_ulxs7")
+id = 14
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_xigjy"]
+script = ExtResource("1_ulxs7")
+id = 15
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_3dkdv"]
+script = ExtResource("1_ulxs7")
+id = 16
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_yl48o"]
+script = ExtResource("1_ulxs7")
+id = 17
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_5iwgc"]
+script = ExtResource("1_ulxs7")
+id = 18
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_h3b5o"]
+script = ExtResource("1_ulxs7")
+id = 19
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_r0fik"]
+script = ExtResource("1_ulxs7")
+id = 20
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_i7pf3"]
+script = ExtResource("1_ulxs7")
+id = 21
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_id1g6"]
+script = ExtResource("1_ulxs7")
+id = 22
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_p0281"]
+script = ExtResource("1_ulxs7")
+id = 23
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_qn6s2"]
+script = ExtResource("1_ulxs7")
+id = 24
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_3e5pr"]
+script = ExtResource("1_ulxs7")
+id = 25
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_tvmr8"]
+script = ExtResource("1_ulxs7")
+id = 26
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_4f225"]
+script = ExtResource("1_ulxs7")
+id = 27
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_dbs4t"]
+script = ExtResource("1_ulxs7")
+id = 28
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_tqw0x"]
+script = ExtResource("1_ulxs7")
+id = 29
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_nbmr2"]
+script = ExtResource("1_ulxs7")
+id = 30
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_6vljv"]
+script = ExtResource("1_ulxs7")
+id = 31
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_see0y"]
+script = ExtResource("1_ulxs7")
+id = 32
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_8gqh2"]
+script = ExtResource("1_ulxs7")
+id = 33
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_7s8km"]
+script = ExtResource("1_ulxs7")
+id = 34
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_l017c"]
+script = ExtResource("1_ulxs7")
+id = 35
+skip_id = 0
+text = ""
+avatar = ""
+
+[sub_resource type="Resource" id="Resource_f8ra5"]
+script = ExtResource("1_ulxs7")
+id = 36
+skip_id = 0
+text = ""
+avatar = ""
+
+[resource]
+script = ExtResource("2_fvemd")
+row_list = Array[ExtResource("1_ulxs7")]([SubResource("Resource_c25kn"), SubResource("Resource_scj3f"), SubResource("Resource_sm2le"), SubResource("Resource_e83c7"), SubResource("Resource_ummiv"), SubResource("Resource_myoly"), SubResource("Resource_67hqo"), SubResource("Resource_pjdc0"), SubResource("Resource_pkmvs"), SubResource("Resource_q7qyl"), SubResource("Resource_1e0o2"), SubResource("Resource_bmr8y"), SubResource("Resource_nmble"), SubResource("Resource_hd2fu"), SubResource("Resource_xigjy"), SubResource("Resource_3dkdv"), SubResource("Resource_yl48o"), SubResource("Resource_5iwgc"), SubResource("Resource_h3b5o"), SubResource("Resource_r0fik"), SubResource("Resource_i7pf3"), SubResource("Resource_id1g6"), SubResource("Resource_p0281"), SubResource("Resource_qn6s2"), SubResource("Resource_3e5pr"), SubResource("Resource_tvmr8"), SubResource("Resource_4f225"), SubResource("Resource_dbs4t"), SubResource("Resource_tqw0x"), SubResource("Resource_nbmr2"), SubResource("Resource_6vljv"), SubResource("Resource_see0y"), SubResource("Resource_8gqh2"), SubResource("Resource_7s8km"), SubResource("Resource_l017c"), SubResource("Resource_f8ra5")])

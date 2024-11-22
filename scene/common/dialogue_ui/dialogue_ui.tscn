@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwmxnalcbfw6k"]
+
+[ext_resource type="Texture2D" uid="uid://dk1fdbrfnej3t" path="res://asset/img/ui/common/dialogue_bg.png" id="1_d8qin"]
+[ext_resource type="Script" path="res://scene/common/dialogue_ui/dialogue_ui.gd" id="1_puwtj"]
+[ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="3_7vst3"]
+[ext_resource type="Script" path="res://scene/common/dialogue_ui/text_label.gd" id="4_evxyc"]
+[ext_resource type="Texture2D" uid="uid://dks7hwp5puee8" path="res://asset/img/ui/common/dialogue_next_icon.png" id="5_ltn2w"]
+
+[sub_resource type="Animation" id="Animation_qbfkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("next_icon_tex_rect:offset_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vpqum"]
+resource_name = "idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("next_icon_tex_rect:offset_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 8, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cp7u"]
+_data = {
+"RESET": SubResource("Animation_qbfkp"),
+"idle": SubResource("Animation_vpqum")
+}
+
+[node name="dialogue_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_puwtj")
+
+[node name="bg_patch" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_d8qin")
+patch_margin_top = 6
+
+[node name="avatar_tex_rect" type="TextureRect" parent="bg_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 250.0
+offset_bottom = 56.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_7vst3")
+stretch_mode = 5
+
+[node name="text_label" type="Label" parent="bg_patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 26.0
+offset_right = -40.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 3
+script = ExtResource("4_evxyc")
+
+[node name="next_icon_tex_rect" type="TextureRect" parent="bg_patch/text_label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("5_ltn2w")
+
+[node name="next_icon_anim_player" type="AnimationPlayer" parent="bg_patch/text_label"]
+libraries = {
+"": SubResource("AnimationLibrary_0cp7u")
+}
