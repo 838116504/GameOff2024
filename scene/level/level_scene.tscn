@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://0yvvlo5xttpw" path="res://scene/fight/fight_scene.tscn" id="29_vg6fr"]
 [ext_resource type="Script" path="res://scene/level/ui/fight_layer/fight_layer.gd" id="32_wqnbs"]
 [ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="33_0eium"]
-[ext_resource type="Shader" path="res://asset/shader/blur.gdshader" id="33_whc2o"]
+[ext_resource type="Shader" path="res://asset/shader/blur_screen.gdshader" id="33_whc2o"]
 [ext_resource type="Texture2D" uid="uid://doqsjhrwfcdxm" path="res://asset/img/ui/level_scene/enemy_panel.png" id="34_avbcr"]
 [ext_resource type="Script" path="res://scene/level/ui/enemy_panel/enemy_panel.gd" id="35_cirdb"]
 [ext_resource type="Texture2D" uid="uid://dfvbdgeb1febt" path="res://asset/img/ui/level_scene/enemy_panel_btn.png" id="35_wagut"]

@@ -99,3 +99,12 @@ locale/translations=PackedStringArray("res://asset/tr/level_edit_scene.en.transl
 
 behavior_tree/behavior_tree_default_dir="res://ai/tree"
 behavior_tree/user_task_dir_1="res://ai/task"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+shading/overrides/force_lambert_over_burley=true
+viewport/hdr_2d=true
+2d/snap/snap_2d_vertices_to_pixel=true

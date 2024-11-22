@@ -1,6 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://cty0ug207aupx"]
+[gd_scene load_steps=10 format=3 uid="uid://cty0ug207aupx"]
 
 [ext_resource type="Script" path="res://scene/title/title_scene.gd" id="1_gictc"]
+[ext_resource type="Script" path="res://scene/title/start_popup.gd" id="2_n0pb3"]
+[ext_resource type="PackedScene" uid="uid://cp6obvl6ir1qm" path="res://scene/title/save_ui.tscn" id="2_td3rp"]
+[ext_resource type="Script" path="res://scene/title/dark_color_rect.gd" id="3_8koce"]
+[ext_resource type="PackedScene" uid="uid://b5d60r4er82x0" path="res://scene/title/number_label.tscn" id="4_5l32s"]
+
+[sub_resource type="Animation" id="Animation_mkwyv"]
+resource_name = "open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.00136e-05), Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8h0sk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fnekp"]
+resource_name = "close"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gihgo"]
+_data = {
+"RESET": SubResource("Animation_8h0sk"),
+"close": SubResource("Animation_fnekp"),
+"open": SubResource("Animation_mkwyv")
+}
 
 [node name="title_scene" type="Control"]
 layout_mode = 3
@@ -10,6 +104,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gictc")
+
+[node name="start_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -300.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "TS_START_BTN"
 
 [node name="level_edit_btn" type="Button" parent="."]
 custom_minimum_size = Vector2(240, 60)
@@ -28,4 +137,102 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "TS_LEVEL_EDIT_BTN"
 
+[node name="start_popup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("2_n0pb3")
+
+[node name="dark_color_rect" type="ColorRect" parent="start_popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_8koce")
+generate_label_scene = ExtResource("4_5l32s")
+
+[node name="panel" type="Panel" parent="start_popup"]
+custom_minimum_size = Vector2(600, 680)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 340)
+mouse_filter = 2
+
+[node name="title_label" type="Label" parent="start_popup/panel"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 584.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 32
+text = "Choose Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="line_color_rect" type="ColorRect" parent="start_popup/panel"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 584.0
+offset_bottom = 66.0
+
+[node name="save_vbox" type="VBoxContainer" parent="start_popup/panel"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 74.0
+offset_right = 584.0
+offset_bottom = 570.0
+theme_override_constants/separation = 8
+
+[node name="save_ui" parent="start_popup/panel/save_vbox" instance=ExtResource("2_td3rp")]
+layout_mode = 2
+
+[node name="save2_ui" parent="start_popup/panel/save_vbox" instance=ExtResource("2_td3rp")]
+layout_mode = 2
+
+[node name="save3_ui" parent="start_popup/panel/save_vbox" instance=ExtResource("2_td3rp")]
+layout_mode = 2
+
+[node name="back_btn" type="Button" parent="start_popup/panel"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "TS_START_POPUP_BACK_BTN"
+
+[node name="anim_player" type="AnimationPlayer" parent="start_popup"]
+libraries = {
+"": SubResource("AnimationLibrary_gihgo")
+}
+
+[connection signal="pressed" from="start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="level_edit_btn" to="." method="_on_level_edit_btn_pressed"]
+[connection signal="pressed" from="start_popup/panel/back_btn" to="start_popup" method="_on_back_btn_pressed"]

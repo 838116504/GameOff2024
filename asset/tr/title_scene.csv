@@ -1,15 +1,16 @@
 ﻿keys,zh,en
 TS_LEVEL_EDIT_BTN,關卡編輯,Level Edit
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
+TS_START_BTN,開始游戲,Start Game
+TS_START_POPUP_TITLE,選擇存檔,Choose Save
+TS_SAVE_PLAY_TIME,遊玩時間︰,Play Time︰
+TS_SAVE_SAVE_TIME,保存時間︰,Save Time︰
+TS_SAVE_LOAD_BTN,讀取存檔,Load Save
+TS_SAVE_NEW_GAME_BTN,開始游戲,New Game
+TS_SAVE_EMPTY,空,Empty
+TS_HOUR,小時,hour
+TS_MINUTE,分,minute
+TS_SECOND,秒,second
+TS_START_POPUP_BACK_BTN,返回,Back
 ,,
 ,,
 ,,

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5wf3sup3rkr0"]
+
+[ext_resource type="Script" path="res://scene/hacker/hacker_scene.gd" id="1_iql3c"]
+
+[node name="hacker_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iql3c")

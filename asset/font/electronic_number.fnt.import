@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://co724s8u8n7jg"
+path="res://.godot/imported/electronic_number.fnt-edd03ddf3dd0e5534fbea67e52ef95b3.fontdata"
+
+[deps]
+
+source_file="res://asset/font/electronic_number.fnt"
+dest_files=["res://.godot/imported/electronic_number.fnt-edd03ddf3dd0e5534fbea67e52ef95b3.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

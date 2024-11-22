@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp6obvl6ir1qm"]
+
+[ext_resource type="Script" path="res://scene/title/save_ui.gd" id="1_k26sd"]
+[ext_resource type="Texture2D" uid="uid://l6ftlxe1nljo" path="res://asset/img/ui/common/delete_icon.png" id="1_qytmi"]
+
+[node name="save_ui" type="Control"]
+custom_minimum_size = Vector2(500, 160)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k26sd")
+
+[node name="not_empty_ui" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="player_name_label" type="Label" parent="not_empty_ui"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 102.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 24
+text = "玩家名字"
+
+[node name="play_time_label" type="Label" parent="not_empty_ui"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 40.0
+offset_right = 146.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 24
+text = "TS_SAVE_PLAY_TIME"
+
+[node name="save_time_label" type="Label" parent="not_empty_ui"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 80.0
+offset_right = 152.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 24
+text = "TS_SAVE_SAVE_TIME"
+
+[node name="delete_btn" type="Button" parent="not_empty_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("1_qytmi")
+
+[node name="load_btn" type="Button" parent="not_empty_ui"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -2.0
+offset_right = -20.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "TS_SAVE_LOAD_BTN"
+
+[node name="empty_ui" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="empty_label" type="Label" parent="empty_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_right = -6.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 40
+text = "TS_SAVE_EMPTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_btn" type="Button" parent="empty_ui"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "TS_SAVE_NEW_GAME_BTN"
+
+[node name="id_panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="id_label" type="Label" parent="id_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="not_empty_ui/delete_btn" to="." method="_on_delete_btn_pressed"]
+[connection signal="pressed" from="not_empty_ui/load_btn" to="." method="_on_load_btn_pressed"]
+[connection signal="pressed" from="empty_ui/new_btn" to="." method="_on_new_btn_pressed"]
