@@ -28,6 +28,7 @@ sound_bus="*res://autoload/sound_bus.gd"
 event_bus="*res://autoload/event_bus.gd"
 scene_transition="*res://autoload/scene_transition.gd"
 table_set="*res://autoload/table_set.gd"
+global_dialogue="*res://autoload/global_dialogue.gd"
 
 [debug]
 

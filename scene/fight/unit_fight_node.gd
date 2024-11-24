@@ -11,6 +11,7 @@ const ORDER_TEXTURE_LIST := [
 	preload("res://asset/img/ui/icon/order_7.png"),
 	preload("res://asset/img/ui/icon/order_8.png"),
 	preload("res://asset/img/ui/icon/order_9.png") ]
+const DamageLabelScene = preload("res://scene/common/map_item/unit/damage_label.tscn")
 
 
 var unit:Unit = null : set = set_unit
@@ -136,6 +137,7 @@ func _on_unit_fight_x_changed(_x):
 func _on_unit_hp_changed(_hp):
 	update_hp()
 
+
 func update_op():
 	if current_operate_node:
 		current_operate_node.hide()
@@ -152,11 +154,18 @@ func _on_unit_died():
 	queue_free()
 
 func _on_unit_be_hit(p_dam):
+	if p_dam < 0:
+		return
+	
 	var loseHpColorRect = LoseHpColorRectScene.instantiate()
 	loseHpColorRect.position.x = hp_progress_bar.size.x * unit.hp / hp_progress_bar.max_value
 	loseHpColorRect.size.x = hp_progress_bar.size.x * p_dam / hp_progress_bar.max_value
 	hp_progress_bar.add_child(loseHpColorRect)
 	hp_progress_bar.move_child(loseHpColorRect, 0)
+	
+	var damageLabel = DamageLabelScene.instantiate()
+	damageLabel.text = str(p_dam)
+	add_child(damageLabel)
 
 func _on_unit_put_skill_state_list_changed(p_states):
 	skill_slot_panel_cntr.skill_state_list = p_states

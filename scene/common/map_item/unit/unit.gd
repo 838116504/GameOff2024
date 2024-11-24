@@ -483,7 +483,7 @@ func is_face_enemy() -> bool:
 		if unit && unit.faction_id != faction_id:
 			return true
 		
-		targetX = fight_x + fight_direction
+		targetX = targetX + fight_direction
 	
 	return false
 

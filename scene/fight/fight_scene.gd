@@ -2,6 +2,7 @@ extends BaseScene
 class_name FightScene
 
 signal winned
+signal before_lose_animation
 signal losed
 
 
@@ -14,6 +15,7 @@ var order_unit_list := []
 # format = [ [ faction 0 unitA, ... ], [ faction 1 unitB, ...] ]
 var faction_unit_list := []
 var round_count:int = 0 : set = set_round_count
+var fight_event_list := []
 
 var player_unit:PlayerUnit
 var enemy_unit:Unit
@@ -166,9 +168,13 @@ func execute_stage():
 	
 	for i in actionCount:
 		for unit in firstUnits + orderUnits:
+			unit.fight_node.z_index += 1
 			await unit.next_operate.execute()
+			unit.fight_node.z_index -= 1
 			if ended:
 				return
+			
+			await get_tree().create_timer(0.4, false).timeout
 		
 		if i + 1 < actionCount:
 			firstUnits.clear()
@@ -235,6 +241,11 @@ func win():
 	winUI.add_reward_unit_list(units)
 
 func lose():
+	ended = true
+	before_lose_animation.emit()
+	if global_dialogue.is_dialoguing():
+		await global_dialogue.ended
+	
 	anim_player.play(&"lose")
 
 func _find_empty_cell() -> int:
@@ -479,3 +490,18 @@ func _on_lose_ui_confirmed() -> void:
 	release_focus()
 	hide()
 	losed.emit()
+
+func add_fight_event(p_ent:FightEvent):
+	if p_ent == null:
+		return
+	
+	fight_event_list.append(p_ent)
+	p_ent.begin(self)
+
+func remove_fight_event(p_ent:FightEvent):
+	var find = fight_event_list.find(p_ent)
+	if find < 0:
+		return
+	
+	fight_event_list.remove_at(find)
+	p_ent.end()

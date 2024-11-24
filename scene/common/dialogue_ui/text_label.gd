@@ -1,6 +1,6 @@
 extends Label
 
-@export var text_speed:float = 4
+@export var text_speed:float = 8
 
 var _text_speed:float
 

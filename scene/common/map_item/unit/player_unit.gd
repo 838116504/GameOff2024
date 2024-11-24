@@ -360,9 +360,12 @@ func set_row(p_value):
 			skillState.skill = skill
 			skill_state_list.append(skillState)
 		
-		cheat = CheatConst.CHEAT_LIST[row.cheat_id].new()
-		passive_state = PassiveState.new()
-		passive_state.passive = PassiveConst.PASSIVE_LIST[row.passive_id].new()
+		var cheatClass = CheatConst.CHEAT_LIST[row.cheat_id]
+		if cheatClass != null:
+			cheat = CheatConst.CHEAT_LIST[row.cheat_id].new()
+		if row.passive_id > 0:
+			passive_state = PassiveState.new()
+			passive_state.passive = PassiveConst.PASSIVE_LIST[row.passive_id].new()
 
 func input(p_event:InputEvent):
 	match state:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvrnvqcfpbvoh"]
+[gd_scene load_steps=3 format=3 uid="uid://cvrnvqcfpbvoh"]
 
 [ext_resource type="Script" path="res://scene/game_start/game_start_scene.gd" id="1_ehls1"]
+[ext_resource type="PackedScene" uid="uid://0yvvlo5xttpw" path="res://scene/fight/fight_scene.tscn" id="2_ypq8j"]
 
 [node name="game_start_scene" type="Control"]
 layout_mode = 3
@@ -10,3 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehls1")
+
+[node name="fight_scene" parent="." instance=ExtResource("2_ypq8j")]
+layout_mode = 1

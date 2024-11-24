@@ -25,6 +25,7 @@ func execute(p_owner:Unit, p_state):
 		if unit != null:
 			tween = p_owner.fight_node.create_tween()
 			var finalAmmoX = abs(targetX - p_owner.fight_x) * p_owner.fight_scene.cell_width
+			p_owner.fight_node.ammo_bone.position.x = 0
 			tween.tween_property(p_owner.fight_node.ammo_bone, "position:x", finalAmmoX, 0.5)
 			attack(unit, p_owner)
 			restCount -= 1
@@ -43,6 +44,7 @@ func execute(p_owner:Unit, p_state):
 		if unit != null:
 			tween = p_owner.fight_node.create_tween()
 			var finalAmmoX = abs(targetX - p_owner.fight_x) * p_owner.fight_scene.cell_width
+			p_owner.fight_node.ammo_bone.position.x = 0
 			tween.tween_property(p_owner.fight_node.ammo_bone, "position:x", finalAmmoX, 0.5)
 			attack(unit, p_owner)
 			restCount -= 1

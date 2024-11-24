@@ -52,12 +52,14 @@ func _on_save_ui_load_btn_pressed(p_saveUI):
 	
 	var hackerScene = load(ScenePathConst.HACKER_SCENE).instantiate()
 	hackerScene.save_id = p_saveUI.id
+	scene_transition.change_scene(hackerScene, "fade_out", "fade_in")
 
 func _on_save_ui_new_btn_pressed(p_saveUI):
 	anim_playing = true
 	
 	var gameStartScene = load(ScenePathConst.GAME_START_SCENE).instantiate()
 	gameStartScene.save_id = p_saveUI.id
+	scene_transition.change_scene(gameStartScene, "fade_out", "fade_in")
 
 func _on_back_btn_pressed() -> void:
 	close()

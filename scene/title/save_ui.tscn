@@ -12,6 +12,7 @@ script = ExtResource("1_k26sd")
 [node name="not_empty_ui" type="Control" parent="."]
 visible = false
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
@@ -75,6 +76,7 @@ text = "TS_SAVE_LOAD_BTN"
 
 [node name="empty_ui" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
@@ -107,6 +109,7 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "TS_SAVE_NEW_GAME_BTN"
 

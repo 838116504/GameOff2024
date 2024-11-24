@@ -15,6 +15,7 @@ func execute(p_owner:Unit, p_state):
 	
 	var restCount = count
 	var tween:Tween = null
+	var targets = []
 	for i in range(1, distance + 1):
 		var targetX = p_owner.fight_x + p_owner.fight_direction * i
 		if !p_owner.fight_scene.has_cell(targetX):
@@ -24,8 +25,10 @@ func execute(p_owner:Unit, p_state):
 		if unit != null:
 			tween = p_owner.fight_node.create_tween()
 			var finalAmmoX = abs(targetX - p_owner.fight_x) * p_owner.fight_scene.cell_width
+			p_owner.fight_node.ammo_bone.position.x = 0
 			tween.tween_property(p_owner.fight_node.ammo_bone, "position:x", finalAmmoX, 0.5)
-			attack(unit, p_owner)
+			targets.append(unit)
+			
 			restCount -= 1
 			if restCount <= 0:
 				break
@@ -33,6 +36,9 @@ func execute(p_owner:Unit, p_state):
 	if tween:
 		p_owner.fight_node.play_animation(&"unpack")
 		await tween.finished
+	
+	for tar in targets:
+		attack(tar, p_owner)
 
 func get_max_attack_target() -> int:
 	return count
