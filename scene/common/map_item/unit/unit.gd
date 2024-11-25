@@ -319,7 +319,7 @@ func round_start():
 	for i in skill_state_list:
 		i.round_start()
 	
-	if fight_bt:
+	if fight_bt && fight_node:
 		fight_node.run_bt(fight_bt)
 
 func show_operate():

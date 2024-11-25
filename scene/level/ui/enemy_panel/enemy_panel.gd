@@ -58,6 +58,7 @@ func _on_exit_btn_pressed() -> void:
 func _on_hand_combat_btn_pressed() -> void:
 	if player_unit.is_hand_combat_hp_enough(unit):
 		player_unit.hand_combat(unit)
+		close()
 	else:
 		hp_not_enough_popup.popup()
 
@@ -68,3 +69,4 @@ func _on_fight_btn_pressed() -> void:
 
 func _on_hp_not_enough_popup_yes_btn_pressed() -> void:
 	player_unit.hand_combat(unit)
+	close()

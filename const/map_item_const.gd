@@ -53,3 +53,11 @@ static func get_unit_icon(p_id:int) -> Texture2D:
 		return load(DirConst.UNIT_IMG.path_join(row.image))
 	
 	return null
+
+static func get_unit_name(p_id:int) -> String:
+	assert(p_id > 0)
+	var row = table_set.unit.get_row(p_id)
+	if row:
+		return TranslationServer.translate(row.name)
+	
+	return ""

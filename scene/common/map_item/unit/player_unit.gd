@@ -183,6 +183,10 @@ func hand_combat(p_unit:Unit):
 		return
 	
 	kill_count += 1
+	add_data(uid)
+	for unit in p_unit.follow_unit_list:
+		add_data(unit.get_unit_id())
+	
 	map_view.erase_item(p_unit.position)
 
 func get_unit_hand_combat_damage(p_unit:Unit):

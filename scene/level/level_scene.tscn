@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=113 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dnlbrm1dkxpik" path="res://asset/img/ui/level_scene/blue_btn.png" id="16_e5ulc"]
 [ext_resource type="Script" path="res://scene/level/ui/player_view/yellow_key_count_view.gd" id="17_040dq"]
 [ext_resource type="Script" path="res://scene/level/ui/player_view/blue_key_count_view.gd" id="19_o8roe"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/data_panel_btn.gd" id="19_qni2v"]
 [ext_resource type="Script" path="res://scene/level/ui/player_view/red_key_count_view.gd" id="21_par0f"]
 [ext_resource type="Script" path="res://scene/level/ui/cheat_view/cheat_view.gd" id="26_etthi"]
 [ext_resource type="PackedScene" uid="uid://chscm7mfh86kf" path="res://scene/common/map_item_view/unit_view_vbox.tscn" id="28_526lj"]
@@ -68,6 +69,10 @@
 [ext_resource type="Texture2D" uid="uid://bcy2m0dqea4li" path="res://asset/img/ui/icon/def_icon.png" id="62_y3r8h"]
 [ext_resource type="PackedScene" uid="uid://o4ewhcv85p1y" path="res://scene/common/map_item_view/skill_patch.tscn" id="63_vrcqq"]
 [ext_resource type="Texture2D" uid="uid://ci0ibmfh682rk" path="res://asset/img/ui/common/skill_panel2.png" id="64_wa5gb"]
+[ext_resource type="Texture2D" uid="uid://biptqhenmfhgw" path="res://asset/img/ui/common/divider-005.png" id="68_8gl88"]
+[ext_resource type="Script" path="res://scene/level/ui/data_panel/data_panel.gd" id="68_snsvq"]
+[ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="69_4fvpk"]
+[ext_resource type="PackedScene" uid="uid://c5lolrbxp6l5j" path="res://scene/level/ui/data_panel/data_view.tscn" id="69_dej0x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
 texture = ExtResource("15_7n6e5")
@@ -264,6 +269,24 @@ texture = ExtResource("60_kknuk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j1wk5"]
 texture = ExtResource("60_kknuk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m21fk"]
+texture = ExtResource("69_4fvpk")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.376471, 0.376471, 0.376471, 0.627451)
+
+[sub_resource type="Theme" id="Theme_apsjt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjhii"]
+texture = ExtResource("49_80nci")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0, 0, 0, 0.513726)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3klg1"]
 shader = ExtResource("45_xsvy2")
@@ -883,6 +906,7 @@ offset_right = 2.0
 grow_vertical = 2
 texture_normal = ExtResource("4_m76xl")
 stretch_mode = 3
+script = ExtResource("19_qni2v")
 
 [node name="yellow_key_count_view" type="Control" parent="left_ui/player_view/item_vbox"]
 custom_minimum_size = Vector2(0, 64)
@@ -2100,6 +2124,91 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 7
 theme_override_constants/v_separation = 7
+
+[node name="data_panel" type="Panel" parent="popup_layer"]
+visible = false
+custom_minimum_size = Vector2(600, 800)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m21fk")
+script = ExtResource("68_snsvq")
+
+[node name="title_left_line_patch" type="NinePatchRect" parent="popup_layer/data_panel"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 36.0
+offset_top = 52.0
+offset_right = 240.0
+offset_bottom = 52.0
+grow_vertical = 2
+texture = ExtResource("68_8gl88")
+patch_margin_left = 6
+patch_margin_right = 24
+
+[node name="title_label" type="Label" parent="popup_layer/data_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 36.0
+offset_top = 24.0
+offset_right = -36.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Data"
+horizontal_alignment = 1
+
+[node name="title_right_line_patch" type="NinePatchRect" parent="popup_layer/data_panel"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = 52.0
+offset_right = 168.0
+offset_bottom = 52.0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+texture = ExtResource("68_8gl88")
+patch_margin_left = 6
+patch_margin_right = 24
+
+[node name="data_scroll_cntr" type="ScrollContainer" parent="popup_layer/data_panel"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 100.0
+offset_right = -36.0
+offset_bottom = -36.0
+grow_horizontal = 2
+theme = SubResource("Theme_apsjt")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hjhii")
+horizontal_scroll_mode = 0
+
+[node name="data_hflow_cntr" type="HFlowContainer" parent="popup_layer/data_panel/data_scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 60
+
+[node name="data_view" parent="popup_layer/data_panel/data_scroll_cntr/data_hflow_cntr" instance=ExtResource("69_dej0x")]
+layout_mode = 2
 
 [node name="gameover_ui" type="Control" parent="popup_layer"]
 visible = false

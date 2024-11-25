@@ -698,7 +698,7 @@ position = Vector2(70, 0)
 scale = Vector2(-1, 1)
 preview_skin = "female_imp"
 
-[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="3"]
+[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="0"]
 material = SubResource("CanvasItemMaterial_5p0l0")
 position = Vector2(0, 0)
 

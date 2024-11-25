@@ -483,6 +483,7 @@ func _on_skill_panel_cntr_dragging_view_changed(p_view) -> void:
 func _on_win_ui_confirmed() -> void:
 	release_focus()
 	hide()
+	player_unit.fight_scene = null
 	winned.emit()
 
 

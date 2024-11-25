@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5lolrbxp6l5j"]
+
+[ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="1_l6avf"]
+[ext_resource type="Script" path="res://scene/level/ui/data_panel/data_view.gd" id="2_vtp6y"]
+[ext_resource type="Texture2D" uid="uid://du7eh6xgdm2g" path="res://asset/img/unit/female_imp.png" id="2_x288a"]
+[ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="3_hlqtg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e68rx"]
+texture = ExtResource("1_l6avf")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0, 0, 0, 0.709804)
+
+[node name="data_view" type="Panel"]
+custom_minimum_size = Vector2(156, 156)
+theme_override_styles/panel = SubResource("StyleBoxTexture_e68rx")
+script = ExtResource("2_vtp6y")
+
+[node name="tex_rect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_x288a")
+expand_mode = 1
+
+[node name="name_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = -14.0
+grow_horizontal = 2
+text = "Boss x7"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="bg_patch" type="NinePatchRect" parent="name_label"]
+modulate = Color(0, 0, 0, 0.709804)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hlqtg")
+patch_margin_left = 12
+patch_margin_top = 8
+patch_margin_right = 12
+patch_margin_bottom = 8
