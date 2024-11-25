@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://0yvvlo5xttpw"]
+[gd_scene load_steps=50 format=3 uid="uid://0yvvlo5xttpw"]
 
 [ext_resource type="Script" path="res://scene/fight/fight_scene.gd" id="1_rulib"]
 [ext_resource type="Script" path="res://scene/fight/ui/unit_panel/unit_panel.gd" id="3_8sesy"]
@@ -13,8 +13,31 @@
 [ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="9_g3rkv"]
 [ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="10_i0i2d"]
 [ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="11_y202e"]
+[ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="14_3loe0"]
 [ext_resource type="Script" path="res://scene/fight/ui/win_ui/win_ui.gd" id="14_a7pud"]
+[ext_resource type="Shader" path="res://asset/shader/blur_screen.gdshader" id="15_hxvq8"]
 [ext_resource type="Script" path="res://scene/fight/ui/lose_ui/lose_ui.gd" id="15_mnhor"]
+[ext_resource type="Texture2D" uid="uid://cyruet17crhwf" path="res://asset/img/fight_map/default_cell.png" id="16_kgvl8"]
+[ext_resource type="Script" path="res://scene/fight/ui/help_popup/help_popup.gd" id="16_qcktn"]
+[ext_resource type="Texture2D" uid="uid://dqvrbckbcy6ag" path="res://asset/img/fight_map/default_cell_0.png" id="17_6rffm"]
+[ext_resource type="PackedScene" uid="uid://dy3raii4675j3" path="res://scene/common/map_item/unit/unit_fight_node.tscn" id="18_n26pi"]
+[ext_resource type="Texture2D" uid="uid://bbq01sqomkb6l" path="res://asset/img/fight_map/default_cell_1.png" id="19_lgu10"]
+[ext_resource type="Texture2D" uid="uid://dqh2ohkf3m2ru" path="res://asset/img/ui/icon/order_2.png" id="19_ywcxr"]
+[ext_resource type="PackedScene" uid="uid://o4ewhcv85p1y" path="res://scene/common/map_item_view/skill_patch.tscn" id="21_k85kf"]
+[ext_resource type="Texture2D" uid="uid://djdqalcbo7qg1" path="res://asset/img/ui/icon/arrow.png" id="22_6ybx0"]
+[ext_resource type="Script" path="res://scene/common/skill/skill.gd" id="22_nnvjp"]
+[ext_resource type="Texture2D" uid="uid://dcgo54sv0sr21" path="res://asset/img/ui/input/keyboard_a.png" id="25_4ykhe"]
+[ext_resource type="Texture2D" uid="uid://d4d7d471r2tpt" path="res://asset/img/ui/input/keyboard_d.png" id="26_h83nr"]
+[ext_resource type="Texture2D" uid="uid://cioer0i734trv" path="res://asset/img/ui/input/keyboard_arrow_left.png" id="27_4jv18"]
+[ext_resource type="Script" path="res://scene/fight/ui/help_btn.gd" id="27_jhg8g"]
+[ext_resource type="Texture2D" uid="uid://d1hrw8ybjqia0" path="res://asset/img/ui/input/keyboard_arrow_right.png" id="28_3ick6"]
+[ext_resource type="Texture2D" uid="uid://b6b6putwlno08" path="res://asset/img/ui/input/keyboard_w.png" id="29_hku1l"]
+[ext_resource type="Texture2D" uid="uid://wpvhrnsxu3d4" path="res://asset/img/ui/input/keyboard_arrow_up.png" id="30_y06lx"]
+[ext_resource type="Texture2D" uid="uid://bnu0eqo3btm63" path="res://asset/img/ui/input/keyboard_s.png" id="31_xjjhw"]
+[ext_resource type="Texture2D" uid="uid://bucad8wynbaxr" path="res://asset/img/ui/input/keyboard_arrow_down.png" id="32_7ke58"]
+[ext_resource type="Texture2D" uid="uid://dpw5qkuw6hnm0" path="res://asset/img/ui/input/mouse_left_outline.png" id="33_gwukj"]
+[ext_resource type="Texture2D" uid="uid://db33s0kne7gtn" path="res://asset/img/ui/input/keyboard_space_icon.png" id="33_ptcve"]
+[ext_resource type="Texture2D" uid="uid://cc8duvjqdhetk" path="res://asset/img/ui/input/mouse_right_outline.png" id="34_wf76v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7bjh"]
 texture = ExtResource("3_drh8k")
@@ -305,6 +328,26 @@ _data = {
 "win": SubResource("Animation_eu5d1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jvca"]
+shader = ExtResource("15_hxvq8")
+shader_parameter/blur = 2.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5p0l0"]
+
+[sub_resource type="Resource" id="Resource_c03ut"]
+script = ExtResource("22_nnvjp")
+id = 18
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ndtkx"]
+
+[sub_resource type="Resource" id="Resource_dagu4"]
+script = ExtResource("22_nnvjp")
+id = 19
+
+[sub_resource type="Resource" id="Resource_4xwcl"]
+script = ExtResource("22_nnvjp")
+id = 20
+
 [node name="fight_scene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -456,15 +499,910 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
-root_node = NodePath("../win_ui")
+root_node = NodePath("../ui_layer/win_ui")
 libraries = {
 "": SubResource("AnimationLibrary_mihgf")
 }
 
-[node name="win_ui" type="Control" parent="."]
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="bbc" type="BackBufferCopy" parent="ui_layer"]
 visible = false
-z_index = 3
+copy_mode = 2
+rect = Rect2(0, 0, 1920, 1080)
+script = ExtResource("14_3loe0")
+
+[node name="blur_color_rect" type="ColorRect" parent="ui_layer/bbc"]
+material = SubResource("ShaderMaterial_7jvca")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="help_popup" type="Control" parent="ui_layer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("16_qcktn")
+
+[node name="panel" type="Panel" parent="ui_layer/help_popup"]
+custom_minimum_size = Vector2(1000, 760)
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 380)
+
+[node name="tab_hbox" type="HBoxContainer" parent="ui_layer/help_popup/panel"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = -20.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="tutorial_btn" type="Button" parent="ui_layer/help_popup/panel/tab_hbox"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+button_pressed = true
+text = "FS_TUTORIAL"
+
+[node name="ui_btn" type="Button" parent="ui_layer/help_popup/panel/tab_hbox"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "FS_UI_INTRODUCTION"
+
+[node name="control_btn" type="Button" parent="ui_layer/help_popup/panel/tab_hbox"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "FS_CONTROL"
+
+[node name="line_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 76.0
+offset_right = -16.0
+offset_bottom = 2.0
+
+[node name="page_root_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 78.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tutorial_page" type="Control" parent="ui_layer/help_popup/panel/page_root_patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/tutorial_page"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "FS_TUTORIAL_TEXT"
+autowrap_mode = 3
+
+[node name="ui_page" type="Control" parent="ui_layer/help_popup/panel/page_root_patch"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cell_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 360.0
+offset_right = -240.0
+offset_bottom = 360.0
+grow_horizontal = 2
+texture = ExtResource("16_kgvl8")
+
+[node name="cell2_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 360.0
+offset_right = -80.0
+offset_bottom = 360.0
+grow_horizontal = 2
+texture = ExtResource("17_6rffm")
+
+[node name="unit_fight_node" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect" instance=ExtResource("18_n26pi")]
+position = Vector2(70, 0)
+
+[node name="spine" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect/unit_fight_node" index="0"]
+preview_skin = "player"
+
+[node name="passive_cd_panel_cntr" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect/unit_fight_node" index="1"]
+anchors_preset = 7
+offset_top = -20.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="order_sprite" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect/unit_fight_node" index="2"]
+visible = true
+texture = ExtResource("19_ywcxr")
+
+[node name="cell3_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 360.0
+offset_right = 80.0
+offset_bottom = 360.0
+grow_horizontal = 2
+texture = ExtResource("19_lgu10")
+
+[node name="unit_fight_node" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect" instance=ExtResource("18_n26pi")]
+position = Vector2(70, 0)
+
+[node name="spine" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="0"]
+scale = Vector2(-1, 1)
+preview_skin = "female_imp"
+
+[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="3"]
+material = SubResource("CanvasItemMaterial_5p0l0")
+position = Vector2(0, 0)
+
+[node name="passive_cd_panel_cntr" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="1"]
+anchors_preset = 7
+offset_top = -20.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="order_sprite" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="2"]
+visible = true
+
+[node name="skill_slot_panel_cntr" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="5"]
+visible = true
+
+[node name="skill_patch" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/skill_slot_panel_cntr/vbox" index="1" instance=ExtResource("21_k85kf")]
+layout_mode = 2
+mouse_filter = 2
+skill = SubResource("Resource_c03ut")
+
+[node name="attack_op_sprite" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="11"]
+visible = true
+
+[node name="bt_player" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="12"]
+blackboard_plan = SubResource("BlackboardPlan_ndtkx")
+
+[node name="cell4_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 240.0
+offset_top = 360.0
+offset_right = 240.0
+offset_bottom = 360.0
+grow_horizontal = 2
+texture = ExtResource("16_kgvl8")
+
+[node name="skill_panel_cntr" type="PanelContainer" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -180.0
+offset_right = 70.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p7bjh")
+
+[node name="grid_cntr" type="GridContainer" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/skill_panel_cntr"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 13
+
+[node name="skill_patch" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/skill_panel_cntr/grid_cntr" instance=ExtResource("21_k85kf")]
+layout_mode = 2
+mouse_filter = 2
+skill = SubResource("Resource_dagu4")
+
+[node name="skill_patch2" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/skill_panel_cntr/grid_cntr" instance=ExtResource("21_k85kf")]
+layout_mode = 2
+mouse_filter = 2
+skill = SubResource("Resource_4xwcl")
+
+[node name="cell_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 303.0
+offset_right = 378.0
+offset_bottom = 335.0
+rotation = -5.55933
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="cell_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 300.0
+offset_top = 320.0
+offset_right = 300.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "FS_FACTION_COLOR"
+
+[node name="hp_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 312.0
+offset_top = 437.0
+offset_right = 365.0
+offset_bottom = 469.0
+rotation = -0.620546
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="hp_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 314.0
+offset_top = 449.0
+offset_right = 314.0
+offset_bottom = 473.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_HP_BAR"
+
+[node name="order_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 481.0
+offset_top = 424.0
+offset_right = 563.0
+offset_bottom = 456.0
+rotation = -2.54793
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="order_arrow_patch2" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 478.0
+offset_top = 424.0
+offset_right = 565.0
+offset_bottom = 456.0
+rotation = -0.565809
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="order_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 480.0
+offset_top = 436.0
+offset_right = 480.0
+offset_bottom = 436.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_ACTION_ORDER"
+
+[node name="your_skill_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 283.0
+offset_top = 544.0
+offset_right = 358.0
+offset_bottom = 576.0
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="your_skill_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 208.0
+offset_top = 560.0
+offset_right = 282.0
+offset_bottom = 560.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_YOUR_SKILL"
+
+[node name="skill_cd_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 598.0
+offset_top = 578.0
+offset_right = 639.0
+offset_bottom = 610.0
+rotation = -3.14159
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="skill_cd_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 601.0
+offset_top = 592.0
+offset_right = 601.0
+offset_bottom = 592.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_SKILL_CD"
+
+[node name="skill_damage_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 618.0
+offset_top = 476.0
+offset_right = 659.0
+offset_bottom = 508.0
+rotation = -3.54021
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="skill_damage_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 620.0
+offset_top = 488.0
+offset_right = 620.0
+offset_bottom = 488.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_SKILL_DAMAGE"
+
+[node name="action_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 607.0
+offset_top = 202.0
+offset_right = 648.0
+offset_bottom = 234.0
+rotation = -3.14159
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="action_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 610.0
+offset_top = 216.0
+offset_right = 610.0
+offset_bottom = 216.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_ACTION"
+
+[node name="queue_arrow_patch" type="NinePatchRect" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 667.0
+offset_top = 100.0
+offset_right = 725.0
+offset_bottom = 132.0
+rotation = -3.14159
+pivot_offset = Vector2(0, 16)
+texture = ExtResource("22_6ybx0")
+patch_margin_left = 7
+patch_margin_right = 19
+
+[node name="queue_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/ui_page"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 670.0
+offset_top = 114.0
+offset_right = 670.0
+offset_bottom = 114.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "FS_ATTACK_QUEUE"
+
+[node name="control_page" type="Control" parent="ui_layer/help_popup/panel/page_root_patch"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="move_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 26.0
+offset_right = 172.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 30
+text = "FS_MOVE"
+vertical_alignment = 1
+
+[node name="move_op" type="Control" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+anchors_preset = 0
+offset_left = 402.0
+offset_top = 26.0
+offset_right = 948.0
+offset_bottom = 148.0
+
+[node name="a_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("25_4ykhe")
+
+[node name="add_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_right = 110.0
+offset_bottom = -6.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "+"
+vertical_alignment = 1
+
+[node name="d_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("26_h83nr")
+
+[node name="or_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_right = 209.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+vertical_alignment = 1
+
+[node name="left_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 227.0
+offset_top = -32.0
+offset_right = 291.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("27_4jv18")
+
+[node name="add_label2" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 289.0
+offset_right = 317.0
+offset_bottom = -6.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "+"
+vertical_alignment = 1
+
+[node name="right_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/move_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = -32.0
+offset_right = 379.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("28_3ick6")
+
+[node name="turn_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 150.0
+offset_right = 171.0
+offset_bottom = 274.0
+theme_override_font_sizes/font_size = 30
+text = "FS_TURN"
+vertical_alignment = 1
+
+[node name="turn_op" type="Control" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+anchors_preset = 0
+offset_left = 402.0
+offset_top = 150.0
+offset_right = 948.0
+offset_bottom = 272.0
+
+[node name="w_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/turn_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("29_hku1l")
+
+[node name="or_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/turn_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+vertical_alignment = 1
+
+[node name="up_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/turn_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = -32.0
+offset_right = 139.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("30_y06lx")
+
+[node name="standby_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 274.0
+offset_right = 222.0
+offset_bottom = 398.0
+theme_override_font_sizes/font_size = 30
+text = "FS_STANDBY"
+vertical_alignment = 1
+
+[node name="standby_op" type="Control" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+anchors_preset = 0
+offset_left = 402.0
+offset_top = 274.0
+offset_right = 948.0
+offset_bottom = 396.0
+
+[node name="w_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/standby_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("31_xjjhw")
+
+[node name="or_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/standby_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+vertical_alignment = 1
+
+[node name="up_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/standby_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = -32.0
+offset_right = 139.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("32_7ke58")
+
+[node name="put_skill_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 398.0
+offset_right = 249.0
+offset_bottom = 522.0
+theme_override_font_sizes/font_size = 30
+text = "FS_PUT_SKILL"
+vertical_alignment = 1
+
+[node name="put_skill_op" type="Control" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+anchors_preset = 0
+offset_left = 402.0
+offset_top = 398.0
+offset_right = 948.0
+offset_bottom = 520.0
+
+[node name="w_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/put_skill_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("33_gwukj")
+
+[node name="or_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/put_skill_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+vertical_alignment = 1
+
+[node name="drag_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/put_skill_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "FS_DRAG_SKILL"
+vertical_alignment = 1
+
+[node name="attack_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 522.0
+offset_right = 199.0
+offset_bottom = 646.0
+theme_override_font_sizes/font_size = 30
+text = "FS_ATTACK"
+vertical_alignment = 1
+
+[node name="attack_op" type="Control" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+anchors_preset = 0
+offset_left = 402.0
+offset_top = 522.0
+offset_right = 948.0
+offset_bottom = 644.0
+
+[node name="w_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/attack_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -32.0
+offset_right = 84.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("33_ptcve")
+
+[node name="or_label" type="Label" parent="ui_layer/help_popup/panel/page_root_patch/control_page/attack_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+vertical_alignment = 1
+
+[node name="up_tex_rect" type="TextureRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page/attack_op"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = -32.0
+offset_right = 139.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("34_wf76v")
+
+[node name="left_vline_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 22.0
+offset_right = 8.0
+offset_bottom = -12.0
+grow_vertical = 2
+
+[node name="mid_vline_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 22.0
+offset_right = -80.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="right_vline_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 22.0
+offset_right = -8.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="top_line_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 22.0
+offset_right = -8.0
+offset_bottom = 22.0
+grow_horizontal = 2
+
+[node name="line2_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 148.0
+offset_right = -8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="line3_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 272.0
+offset_right = -8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="line4_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 396.0
+offset_right = -8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="line5_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 520.0
+offset_right = -8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="bottom_line_color_rect" type="ColorRect" parent="ui_layer/help_popup/panel/page_root_patch/control_page"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="win_ui" type="Control" parent="ui_layer"]
+visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -473,13 +1411,13 @@ grow_vertical = 2
 focus_mode = 2
 script = ExtResource("14_a7pud")
 
-[node name="bg_color_rect" type="ColorRect" parent="win_ui"]
+[node name="bg_color_rect" type="ColorRect" parent="ui_layer/win_ui"]
 layout_mode = 0
 offset_top = 200.0
 offset_bottom = 680.0
 color = Color(0, 0.858824, 0.968627, 0.654902)
 
-[node name="hbox" type="HBoxContainer" parent="win_ui/bg_color_rect"]
+[node name="hbox" type="HBoxContainer" parent="ui_layer/win_ui/bg_color_rect"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -489,7 +1427,7 @@ offset_top = 60.0
 offset_bottom = 60.0
 grow_horizontal = 2
 
-[node name="confirm_btn" type="Button" parent="win_ui/bg_color_rect"]
+[node name="confirm_btn" type="Button" parent="ui_layer/win_ui/bg_color_rect"]
 visible = false
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
@@ -507,7 +1445,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "FS_WIN_CONFIRM"
 
-[node name="win_label" type="Label" parent="win_ui"]
+[node name="win_label" type="Label" parent="ui_layer/win_ui"]
 layout_mode = 0
 offset_left = 811.0
 offset_top = 420.0
@@ -521,10 +1459,9 @@ text = "Win"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lose_ui" type="Control" parent="."]
+[node name="lose_ui" type="Control" parent="ui_layer"]
 visible = false
-z_index = 3
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -533,7 +1470,7 @@ grow_vertical = 2
 focus_mode = 2
 script = ExtResource("15_mnhor")
 
-[node name="lose_label" type="Label" parent="lose_ui"]
+[node name="lose_label" type="Label" parent="ui_layer/lose_ui"]
 layout_mode = 0
 offset_left = 779.0
 offset_top = 400.0
@@ -548,7 +1485,7 @@ text = "Lose"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="confirm_btn" type="Button" parent="lose_ui"]
+[node name="confirm_btn" type="Button" parent="ui_layer/lose_ui"]
 visible = false
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
@@ -566,10 +1503,25 @@ pivot_offset = Vector2(100, 30)
 theme_override_font_sizes/font_size = 32
 text = "FS_LOSE_CONFIRM"
 
+[node name="help_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "?"
+script = ExtResource("27_jhg8g")
+
 [connection signal="dragging_view_changed" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_dragging_view_changed"]
 [connection signal="skill_state_view_mouse_entered" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_skill_state_view_mouse_entered"]
 [connection signal="skill_state_view_mouse_exited" from="skill_panel_cntr" to="." method="_on_skill_panel_cntr_skill_state_view_mouse_exited"]
-[connection signal="confirmed" from="win_ui" to="." method="_on_win_ui_confirmed"]
-[connection signal="pressed" from="win_ui/bg_color_rect/confirm_btn" to="win_ui" method="_on_confirm_btn_pressed"]
-[connection signal="confirmed" from="lose_ui" to="." method="_on_lose_ui_confirmed"]
-[connection signal="pressed" from="lose_ui/confirm_btn" to="lose_ui" method="_on_confirm_btn_pressed"]
+[connection signal="confirmed" from="ui_layer/win_ui" to="." method="_on_win_ui_confirmed"]
+[connection signal="pressed" from="ui_layer/win_ui/bg_color_rect/confirm_btn" to="ui_layer/win_ui" method="_on_confirm_btn_pressed"]
+[connection signal="confirmed" from="ui_layer/lose_ui" to="." method="_on_lose_ui_confirmed"]
+[connection signal="pressed" from="ui_layer/lose_ui/confirm_btn" to="ui_layer/lose_ui" method="_on_confirm_btn_pressed"]
+
+[editable path="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect/unit_fight_node"]
+[editable path="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node"]

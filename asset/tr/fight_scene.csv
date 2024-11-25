@@ -2,21 +2,36 @@
 FS_ROUND_COUNT, 回合數,Rounds
 FS_WIN_CONFIRM,確認,Confirm
 FS_LOSE_CONFIRM,確認,Confirm
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
+FS_UI_INTRODUCTION,界面介紹,UI Introduction
+FS_ATTACK_QUEUE,攻擊隊列,Attack Queue
+FS_ACTION,行動,Action
+FS_FACTION_COLOR,陣營顏色,Faction Color
+FS_HP_BAR,血量條,HP Bar
+FS_ACTION_ORDER,行動順序,Action Order
+FS_YOUR_SKILL,你的技能,Your Skills
+FS_SKILL_CD,技能冷卻,Skill Cooldown
+FS_SKILL_DAMAGE,技能傷害,Skill Damage
+FS_CONTROL,操作,Control
+FS_MOVE,移動,Move
+FS_TURN,轉向,Turn
+FS_STANDBY,待命,Standby
+FS_PUT_SKILL,放置技能,Put Skill
+FS_ATTACK,攻擊,Attack
+FS_DRAG_SKILL,拖拽技能至槽位,Drag skill to slot
+FS_TUTORIAL,教程,Tutorial
+FS_TUTORIAL_TEXT,"戰斗是回合制。
+敵方頭上的會顯示下一回合的行動意圖，行動包括移動、轉向、放置一個技能、發動放置的技能、待命。
+然後看速度決定行動順序。
+每個技能都有冷卻回合，在圖標的下方顯示。
+
+勝利條件為敵方全部死亡。
+失敗條件為己方全部死亡。","The battle is turn-based.
+The enemy's head will display the action intention for the next turn. Actions include moving, turning, placing a skill, activating the placed skill, and standing by. 
+Then decide the order of actions based on speed.
+Each skill has a cooldown turn, which is displayed below the icon.
+
+The victory condition is that all enemies die.
+The failure condition is that all party members die."
 ,,
 ,,,
 ,,,

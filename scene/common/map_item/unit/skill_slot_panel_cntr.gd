@@ -33,9 +33,10 @@ func update_enabled():
 	if !is_node_ready():
 		return
 	
-	for i in range(1, vbox.get_child_count()):
-		var child = vbox.get_child(i)
-		child.enabled = enabled
+	if !skill_state_list.is_empty():
+		for i in range(1, vbox.get_child_count()):
+			var child = vbox.get_child(i)
+			child.enabled = enabled
 	
 	if !enabled:
 		add_skill_slot_patch.hide()
@@ -86,6 +87,8 @@ func _on_skill_slot_patch_skill_moved(p_skillState, p_patch):
 
 func show_add_skill_slot():
 	add_skill_slot_patch.show()
+	visible = true
 
 func hide_add_skill_slot():
 	add_skill_slot_patch.hide()
+	visible = !skill_state_list.is_empty() || add_skill_slot_patch.visible

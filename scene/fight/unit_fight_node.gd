@@ -77,6 +77,9 @@ func get_attack_op_sprite():
 func get_bt_player() -> BTPlayer:
 	return $bt_player
 
+func get_passive_cd_panel_cntr():
+	return $passive_cd_panel_cntr
+
 func _ready():
 	update()
 
@@ -92,12 +95,16 @@ func set_unit(p_unit):
 		unit.put_skill_state_list_changed.connect(_on_unit_put_skill_state_list_changed)
 		unit.next_operate_changed.connect(_on_unit_next_operate_changed)
 		
+		if unit is PlayerUnit:
+			if unit.passive_state:
+				get_passive_cd_panel_cntr().passive_state = unit.passive_state
+		
 		if is_node_ready():
 			update()
 
 func update():
 	if unit == null:
-		hide()
+		#hide()
 		return
 	
 	hp_progress_bar.max_value = unit.hp

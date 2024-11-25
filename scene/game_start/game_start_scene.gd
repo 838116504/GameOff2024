@@ -22,3 +22,5 @@ func _ready():
 	var loseEnt = LoseDialogueEvent.new()
 	loseEnt.dialogue_id = 5
 	fight_scene.add_fight_event(loseEnt)
+	var showHelpPopupEnt = ShowHelpPopupEvent.new()
+	fight_scene.add_fight_event(showHelpPopupEnt)

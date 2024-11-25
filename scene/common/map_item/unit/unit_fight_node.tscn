@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dy3raii4675j3"]
+[gd_scene load_steps=25 format=3 uid="uid://dy3raii4675j3"]
 
 [ext_resource type="Script" path="res://scene/fight/unit_fight_node.gd" id="1_0776r"]
 [ext_resource type="SpineAtlasResource" uid="uid://7e13ijjsrfi3" path="res://asset/spine/unit/unit.atlas" id="2_7jm5i"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cru5jcs5oui7q" path="res://asset/img/ui/common/hp_progress_bar.png" id="3_xbmj4"]
 [ext_resource type="Texture2D" uid="uid://cesgsntgbx0i6" path="res://asset/img/ui/icon/order_1.png" id="4_jxnxi"]
 [ext_resource type="Texture2D" uid="uid://raat26avyhkd" path="res://asset/img/ui/icon/current_pointer.png" id="4_rhtj4"]
+[ext_resource type="PackedScene" uid="uid://0sknuifahe1i" path="res://scene/common/map_item_view/cd_hbox.tscn" id="5_7l44n"]
+[ext_resource type="Texture2D" uid="uid://bsouy3n7efrwo" path="res://asset/img/ui/common/passive_cd.png" id="5_e5vx4"]
+[ext_resource type="Script" path="res://scene/common/map_item/unit/passive_cd_panel_cntr.gd" id="5_j3l06"]
 [ext_resource type="Texture2D" uid="uid://dj22n1hnkycb7" path="res://asset/img/ui/fight_scene/skill_slot_panel.png" id="5_lh2br"]
 [ext_resource type="Script" path="res://scene/common/map_item/unit/skill_slot_panel_cntr.gd" id="6_1mteh"]
 [ext_resource type="Texture2D" uid="uid://bxuruiwuc5iwk" path="res://asset/img/ui/fight_scene/skill_slot.png" id="6_13uum"]
@@ -21,6 +24,13 @@
 [sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_pxtho"]
 atlas_res = ExtResource("2_7jm5i")
 skeleton_file_res = ExtResource("3_g5exj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1l26"]
+texture = ExtResource("5_e5vx4")
+texture_margin_left = 5.95728
+texture_margin_top = 4.0
+texture_margin_right = 6.04119
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvi42"]
 texture = ExtResource("5_lh2br")
@@ -47,9 +57,27 @@ position = Vector2(0, -60)
 bone_name = "ammo"
 bone_mode = 1
 
+[node name="passive_cd_panel_cntr" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.99924
+offset_top = 1.0
+offset_right = 7.99924
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m1l26")
+script = ExtResource("5_j3l06")
+
+[node name="cd_hbox" parent="passive_cd_panel_cntr" instance=ExtResource("5_7l44n")]
+layout_mode = 2
+
 [node name="order_sprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 20)
+position = Vector2(0, 30)
 texture = ExtResource("4_jxnxi")
 
 [node name="current_sprite" type="Sprite2D" parent="."]

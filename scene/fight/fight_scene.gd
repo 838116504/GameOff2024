@@ -52,10 +52,10 @@ func get_anim_player() -> AnimationPlayer:
 	return $anim_player
 
 func get_win_ui():
-	return $win_ui
+	return $ui_layer/win_ui
 
 func get_lose_ui():
-	return $lose_ui
+	return $ui_layer/lose_ui
 
 
 func _ready():

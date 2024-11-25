@@ -2,7 +2,7 @@ extends NinePatchRect
 
 signal pressed
 
-var skill:Skill : set = set_skill
+@export var skill:Skill : set = set_skill
 
 
 func get_icon_tex_rect():
