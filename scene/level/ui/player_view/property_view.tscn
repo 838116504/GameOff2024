@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx84wgjxk1q3f"]
+
+[ext_resource type="Script" path="res://scene/level/ui/player_view/property_view.gd" id="1_fmk58"]
+[ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="2_ruic7"]
+[ext_resource type="Texture2D" uid="uid://c8rpj1lvb1w7r" path="res://asset/img/ui/common/property_panel.png" id="3_wjy85"]
+
+[node name="strike_def_view" type="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_fmk58")
+
+[node name="icon_tex_rect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ruic7")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wjy85")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1

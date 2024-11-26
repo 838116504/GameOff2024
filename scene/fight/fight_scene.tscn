@@ -670,7 +670,6 @@ position = Vector2(70, 0)
 preview_skin = "player"
 
 [node name="passive_cd_panel_cntr" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell2_tex_rect/unit_fight_node" index="1"]
-anchors_preset = 7
 offset_top = -20.0
 offset_bottom = 0.0
 grow_vertical = 0
@@ -703,7 +702,6 @@ material = SubResource("CanvasItemMaterial_5p0l0")
 position = Vector2(0, 0)
 
 [node name="passive_cd_panel_cntr" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node" index="1"]
-anchors_preset = 7
 offset_top = -20.0
 offset_bottom = 0.0
 grow_vertical = 0

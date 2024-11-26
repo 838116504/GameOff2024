@@ -11,13 +11,14 @@ const HIDE_MAP_ITEM_DETAIL = &"hide_map_item_detail"
 const SHOW_ENEMY_PANEL = &"show_enemy_panel"
 const SHOW_DATABASE_PANEL = &"show_database_panel"
 const SHOW_DATA_PANEL = &"show_data_panel"
+const SHOW_PLAYER_PANEL = &"show_player_panel"
 const FIGHT = &"fight"
 const GAMEOVER = &"gameover"
-const SHOW_PLAYER_PANEL = &"show_player_panel"
+
 
 const ENABLE_BLUR = &"enable_blur"
 const DISABLE_BLUR = &"disable_blur"
-
+const BLUR_PRESSED = &"blur_pressed"
 
 
 const INFO_LIST = [
@@ -36,4 +37,5 @@ const INFO_LIST = [
 	
 	[ ENABLE_BLUR, [ ]],
 	[ DISABLE_BLUR, [ ]],
+	[ BLUR_PRESSED, [ ]],
 ]

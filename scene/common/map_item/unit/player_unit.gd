@@ -24,6 +24,9 @@ signal blue_key_count_changed(p_count:int)
 signal red_key_count_changed(p_count:int)
 signal bug_count_changed(p_count:int)
 signal layer_changed(p_layer:int)
+signal strike_hit_rate_changed(p_rate:float)
+signal thrust_hit_rate_changed(p_rate:float)
+signal slash_hit_rate_changed(p_rate:float)
 
 
 var def:int
@@ -488,6 +491,28 @@ func set_data(p_data):
 	var values = p_data.values()
 	for i in keys.size():
 		set(keys[i], values[i])
+
+func set_extra_strike_hit_rate(p_value):
+	if extra_strike_hit_rate == p_value:
+		return
+	
+	extra_strike_hit_rate = p_value
+	strike_hit_rate_changed.emit(get_strike_hit_rate())
+
+func set_extra_thrust_hit_rate(p_value):
+	if extra_thrust_hit_rate == p_value:
+		return
+	
+	extra_thrust_hit_rate = p_value
+	thrust_hit_rate_changed.emit(get_thrust_hit_rate())
+
+func set_extra_slash_hit_rate(p_value):
+	if extra_slash_hit_rate == p_value:
+		return
+	
+	extra_slash_hit_rate = p_value
+	slash_hit_rate_changed.emit(get_slash_hit_rate())
+
 
 func _mouse_entered():
 	pass

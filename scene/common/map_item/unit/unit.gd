@@ -6,6 +6,8 @@ const UnitFightNodeScene = preload("res://scene/common/map_item/unit/unit_fight_
 signal died
 signal be_hit(p_damage)
 signal hp_changed(p_hp)
+signal def_changed(p_def)
+signal spd_changed(p_spd)
 signal fight_x_changed(p_x)
 signal fight_direction_changed(p_dir)
 signal put_skill_state_list_changed(p_states)
@@ -20,12 +22,12 @@ var fight_x:int : set = set_fight_x
 var fight_direction:int = 1 : set = set_fight_direction
 var fight_scene:FightScene = null
 var fight_node:Node = null
-var extra_def:int
-var extra_spd:int
+var extra_def:int : set = set_extra_def
+var extra_spd:int : set = set_extra_spd
 var def_rate:float = 1.0
-var extra_strike_hit_rate:float
-var extra_thrust_hit_rate:float
-var extra_slash_hit_rate:float
+var extra_strike_hit_rate:float : set = set_extra_strike_hit_rate
+var extra_thrust_hit_rate:float : set = set_extra_thrust_hit_rate
+var extra_slash_hit_rate:float : set = set_extra_slash_hit_rate
 var strike_def_rate:float = 1.0
 var thrust_def_rate:float = 1.0
 var slash_def_rate:float = 1.0
@@ -333,6 +335,9 @@ func get_init_hp() -> int:
 	
 	return 1
 
+func get_hp() -> int:
+	return hp
+
 func get_def() -> int:
 	if row:
 		return (row.def + extra_def) * def_rate
@@ -494,6 +499,29 @@ func is_close_to_face_enemy() -> bool:
 	var targetX = fight_x + fight_direction
 	var unit = fight_scene.get_unit(targetX)
 	return unit != null && unit.faction_id != faction_id
+
+func set_extra_def(p_value):
+	if extra_def == p_value:
+		return
+	
+	extra_def = p_value
+	def_changed.emit(get_def())
+
+func set_extra_spd(p_value):
+	if extra_spd == p_value:
+		return
+	
+	extra_spd = p_value
+	spd_changed.emit(get_spd())
+
+func set_extra_strike_hit_rate(p_value):
+	extra_strike_hit_rate = p_value
+
+func set_extra_thrust_hit_rate(p_value):
+	extra_thrust_hit_rate = p_value
+
+func set_extra_slash_hit_rate(p_value):
+	extra_slash_hit_rate = p_value
 
 static func create_by_id(p_id:int, p_followed_unit = null):
 	var ret = Unit.new()

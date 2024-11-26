@@ -17,7 +17,7 @@ SKILL_2,重拳,Heavy Punch
 SKILL_DESC_2,對面前一格造成{damage},Deal {damage} to the front cell
 SKILL_3,推,Push
 SKILL_DESC_3,對面前一格造成{damage},Deal {damage} to the front cell
-SKILL_4,翻倒,Tip
+SKILL_4,橫掃,Sweep Across
 SKILL_DESC_4,對面前一格造成{damage},Deal {damage} to the front cell
 SKILL_5,射箭,Archery
 SKILL_DESC_5,對面前第一個目標造成{damage},Deal {damage} to the first target ahead
@@ -36,12 +36,12 @@ SKILL_DESC_11,對面前一格造成{damage},Deal {damage} to the front cell
 SKILL_12,霹靂一閃,Flash Of Thunder
 SKILL_DESC_12,移動到面前最前的空地，對路過的人造成{damage},Move to the frontmost empty cell and deal {damage} to people passing by
 SKILL_13,格擋,Block
-SKILL_DESC_13,,
+SKILL_DESC_13,免疫可格擋傷害1次,Immune to block damage 1 time
 SKILL_14,換位,Transposition
-SKILL_DESC_14,,
+SKILL_DESC_14,和面前一格的人換位,Change places with the person in front of cell
 SKILL_15,轉向,Turn
-SKILL_DESC_15,,
+SKILL_DESC_15,改變方向,Change direction
 SKILL_16,衝刺,Dash
-SKILL_DESC_16,,
+SKILL_DESC_16,衝到最前方,Rush to the front
 SKILL_17,解包,Unpacking
 SKILL_DESC_17,對面前一格造成{damage},Deal {damage} to the front cell

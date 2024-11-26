@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxt42sqvsssfa"]
+
+[ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="1_3s5x0"]
+[ext_resource type="Script" path="res://scene/level/ui/player_panel/skill_panel_cntr.gd" id="2_d6whw"]
+[ext_resource type="PackedScene" uid="uid://o4ewhcv85p1y" path="res://scene/common/map_item_view/skill_patch.tscn" id="3_teeid"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hckhx"]
+texture = ExtResource("1_3s5x0")
+texture_margin_left = 16.0
+texture_margin_top = 12.0
+texture_margin_right = 16.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0, 0, 0, 0.627451)
+
+[node name="skill_panel_cntr" type="PanelContainer"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hckhx")
+script = ExtResource("2_d6whw")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="skill_patch" parent="hbox" instance=ExtResource("3_teeid")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="vbox" type="VBoxContainer" parent="hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="name_label" type="Label" parent="hbox/vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Skill Name"
+
+[node name="desc_label" type="Label" parent="hbox/vbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 16
+text = "skill description"
+autowrap_mode = 3

@@ -15,6 +15,7 @@ modulate_color = Color(0, 0, 0, 0.709804)
 
 [node name="data_view" type="Panel"]
 custom_minimum_size = Vector2(156, 156)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_e68rx")
 script = ExtResource("2_vtp6y")
 

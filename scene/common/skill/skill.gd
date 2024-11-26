@@ -47,6 +47,10 @@ func get_description() -> String:
 	else:
 		ret = tr(row.description)
 	
+	var effects = get_effect_list()
+	for i in effects.size():
+		words.append(effects[i].get_effect_name())
+	
 	if is_action_first():
 		words.append(tr("SKILL_ACTION_FIRST"))
 	if is_free_put():

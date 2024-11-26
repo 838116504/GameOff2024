@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=126 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -39,6 +39,7 @@
 [ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="33_0eium"]
 [ext_resource type="Shader" path="res://asset/shader/blur_screen.gdshader" id="33_whc2o"]
 [ext_resource type="Texture2D" uid="uid://doqsjhrwfcdxm" path="res://asset/img/ui/level_scene/enemy_panel.png" id="34_avbcr"]
+[ext_resource type="Script" path="res://scene/level/ui/blur/blur_color_rect.gd" id="35_310ox"]
 [ext_resource type="Script" path="res://scene/level/ui/enemy_panel/enemy_panel.gd" id="35_cirdb"]
 [ext_resource type="Texture2D" uid="uid://dfvbdgeb1febt" path="res://asset/img/ui/level_scene/enemy_panel_btn.png" id="35_wagut"]
 [ext_resource type="Texture2D" uid="uid://bttmccsbwch8k" path="res://asset/img/ui/level_scene/fight_icon.png" id="36_i12g5"]
@@ -72,7 +73,18 @@
 [ext_resource type="Texture2D" uid="uid://biptqhenmfhgw" path="res://asset/img/ui/common/divider-005.png" id="68_8gl88"]
 [ext_resource type="Script" path="res://scene/level/ui/data_panel/data_panel.gd" id="68_snsvq"]
 [ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="69_4fvpk"]
+[ext_resource type="Texture2D" uid="uid://cp1ofbowvggta" path="res://asset/img/ui/common/panel-transparent-center-013.png" id="69_5g7sc"]
 [ext_resource type="PackedScene" uid="uid://c5lolrbxp6l5j" path="res://scene/level/ui/data_panel/data_view.tscn" id="69_dej0x"]
+[ext_resource type="PackedScene" uid="uid://dx84wgjxk1q3f" path="res://scene/level/ui/player_view/property_view.tscn" id="70_orvwl"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/strike_hit_rate_view.gd" id="71_afwmq"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/def_view.gd" id="71_n3htn"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/thrust_hit_rate_view.gd" id="73_8djip"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/slash_hit_rate_view.gd" id="74_5boeu"]
+[ext_resource type="Script" path="res://scene/level/ui/player_view/spd_view.gd" id="75_g0dhd"]
+[ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="76_uqq50"]
+[ext_resource type="Script" path="res://scene/level/ui/player_panel/passive_panel_cntr.gd" id="77_df65o"]
+[ext_resource type="Script" path="res://scene/level/ui/player_panel/skill_vbox.gd" id="78_grqj7"]
+[ext_resource type="PackedScene" uid="uid://cxt42sqvsssfa" path="res://scene/level/ui/player_panel/skill_panel_cntr.tscn" id="79_a3obh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
 texture = ExtResource("15_7n6e5")
@@ -277,6 +289,14 @@ texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 modulate_color = Color(0.376471, 0.376471, 0.376471, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0q4g"]
+texture = ExtResource("76_uqq50")
+texture_margin_left = 16.0
+texture_margin_top = 8.0
+texture_margin_right = 16.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0, 0, 0, 0.627451)
 
 [sub_resource type="Theme" id="Theme_apsjt"]
 
@@ -653,174 +673,6 @@ theme_override_font_sizes/font_size = 26
 text = "8"
 vertical_alignment = 1
 
-[node name="strike_def_view" type="Control" parent="left_ui/player_view/unit_view/property_vbox"]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/unit_view/property_vbox/strike_def_view"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("6_w4cai")
-stretch_mode = 3
-
-[node name="patch" type="NinePatchRect" parent="left_ui/player_view/unit_view/property_vbox/strike_def_view"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_abc1p")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="value_label" type="Label" parent="left_ui/player_view/unit_view/property_vbox/strike_def_view/patch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -2.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "8"
-vertical_alignment = 1
-
-[node name="thrust_def_view" type="Control" parent="left_ui/player_view/unit_view/property_vbox"]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/unit_view/property_vbox/thrust_def_view"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_sqchm")
-stretch_mode = 3
-
-[node name="patch" type="NinePatchRect" parent="left_ui/player_view/unit_view/property_vbox/thrust_def_view"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_abc1p")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="value_label" type="Label" parent="left_ui/player_view/unit_view/property_vbox/thrust_def_view/patch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -2.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "8"
-vertical_alignment = 1
-
-[node name="slash_def_view" type="Control" parent="left_ui/player_view/unit_view/property_vbox"]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/unit_view/property_vbox/slash_def_view"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("8_1hf0r")
-stretch_mode = 3
-
-[node name="patch" type="NinePatchRect" parent="left_ui/player_view/unit_view/property_vbox/slash_def_view"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_abc1p")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="value_label" type="Label" parent="left_ui/player_view/unit_view/property_vbox/slash_def_view/patch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -2.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "8"
-vertical_alignment = 1
-
-[node name="spd_view" type="Control" parent="left_ui/player_view/unit_view/property_vbox"]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="icon_tex_rect" type="TextureRect" parent="left_ui/player_view/unit_view/property_vbox/spd_view"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_uyw32")
-stretch_mode = 3
-
-[node name="patch" type="NinePatchRect" parent="left_ui/player_view/unit_view/property_vbox/spd_view"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_abc1p")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="value_label" type="Label" parent="left_ui/player_view/unit_view/property_vbox/spd_view/patch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -2.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "8"
-vertical_alignment = 1
-
 [node name="layer_patch" type="NinePatchRect" parent="left_ui/player_view"]
 custom_minimum_size = Vector2(0, 51)
 layout_mode = 1
@@ -1065,7 +917,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
-text = "LS_HELP"
+text = "LS_HELP_BTN"
 
 [node name="save_load_btn" type="Button" parent="left_ui/btns_grid_cntr"]
 layout_mode = 2
@@ -1079,7 +931,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_67pus")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0os0e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_75hfw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
-text = "LS_SKIP_LAYER_BTN"
+text = "LS_SAVE_LOAD_BTN"
 
 [node name="volume_btn" type="Button" parent="left_ui/btns_grid_cntr"]
 layout_mode = 2
@@ -1252,6 +1104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("35_310ox")
 
 [node name="enemy_panel" type="Panel" parent="popup_layer"]
 process_mode = 3
@@ -1434,16 +1287,6 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "LS_NO_BTN"
-
-[node name="player_panel" type="Panel" parent="popup_layer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 2
-script = ExtResource("46_ut6jr")
 
 [node name="database_panel" type="Panel" parent="popup_layer"]
 visible = false
@@ -2125,6 +1968,164 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 7
 theme_override_constants/v_separation = 7
 
+[node name="player_panel" type="Panel" parent="popup_layer"]
+visible = false
+custom_minimum_size = Vector2(600, 740)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 370)
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m21fk")
+script = ExtResource("46_ut6jr")
+
+[node name="name_label" type="Label" parent="popup_layer/player_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -60.0
+offset_bottom = -33.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "玩家名字"
+horizontal_alignment = 1
+
+[node name="bg_patch" type="NinePatchRect" parent="popup_layer/player_panel/name_label"]
+modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("69_5g7sc")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
+
+[node name="scroll_cntr" type="ScrollContainer" parent="popup_layer/player_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/player_panel/scroll_cntr"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="hp_view" type="Control" parent="popup_layer/player_panel/scroll_cntr/vbox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("6_fdyuc")
+
+[node name="icon_tex_rect" type="TextureRect" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_uc5jt")
+stretch_mode = 3
+
+[node name="patch" type="NinePatchRect" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_abc1p")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="value_label" type="Label" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view/patch"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -2.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "8"
+vertical_alignment = 1
+
+[node name="def_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("71_n3htn")
+icon = ExtResource("62_y3r8h")
+
+[node name="strike_hit_rate_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("71_afwmq")
+icon = ExtResource("6_w4cai")
+
+[node name="thrust_hit_rate_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("73_8djip")
+icon = ExtResource("7_sqchm")
+
+[node name="slash_hit_rate_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("74_5boeu")
+icon = ExtResource("8_1hf0r")
+
+[node name="spd_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("75_g0dhd")
+icon = ExtResource("9_uyw32")
+
+[node name="passive_panel_cntr" type="PanelContainer" parent="popup_layer/player_panel/scroll_cntr/vbox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s0q4g")
+script = ExtResource("77_df65o")
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/player_panel/scroll_cntr/vbox/passive_panel_cntr"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="name_label" type="Label" parent="popup_layer/player_panel/scroll_cntr/vbox/passive_panel_cntr/vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sign Out"
+horizontal_alignment = 1
+
+[node name="desc_label" type="Label" parent="popup_layer/player_panel/scroll_cntr/vbox/passive_panel_cntr/vbox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "After moving, you cannot be attacked until the next turn"
+autowrap_mode = 3
+
+[node name="skill_vbox" type="VBoxContainer" parent="popup_layer/player_panel/scroll_cntr/vbox"]
+layout_mode = 2
+script = ExtResource("78_grqj7")
+
+[node name="skill_panel_cntr" parent="popup_layer/player_panel/scroll_cntr/vbox/skill_vbox" instance=ExtResource("79_a3obh")]
+layout_mode = 2
+
 [node name="data_panel" type="Panel" parent="popup_layer"]
 visible = false
 custom_minimum_size = Vector2(600, 800)
@@ -2139,6 +2140,7 @@ offset_right = 300.0
 offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(300, 400)
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_m21fk")
 script = ExtResource("68_snsvq")
