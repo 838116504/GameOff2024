@@ -1,8 +1,321 @@
-[gd_scene load_steps=2 format=3 uid="uid://5wf3sup3rkr0"]
+[gd_scene load_steps=11 format=3 uid="uid://5wf3sup3rkr0"]
 
 [ext_resource type="Script" path="res://scene/hacker/hacker_scene.gd" id="1_iql3c"]
+[ext_resource type="Texture2D" uid="uid://dri4mvjmw8yor" path="res://asset/img/game_icon/icon.png" id="2_u73kj"]
+[ext_resource type="Texture2D" uid="uid://bxqnw24h50mih" path="res://asset/img/bg/hacker_scene_bg_bottom.png" id="3_pi6ir"]
+[ext_resource type="Texture2D" uid="uid://du7eh6xgdm2g" path="res://asset/img/unit/female_imp.png" id="4_5niak"]
+[ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="5_qcg66"]
+[ext_resource type="Texture2D" uid="uid://cp1ofbowvggta" path="res://asset/img/ui/common/panel-transparent-center-013.png" id="6_d4krd"]
+[ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="7_elc62"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp024"]
+atlas = ExtResource("4_5niak")
+region = Rect2(36, 5, 72, 72)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqkfb"]
+texture = ExtResource("5_qcg66")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0, 0, 0, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wb3a"]
+texture = ExtResource("7_elc62")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.627451)
 
 [node name="hacker_scene" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_iql3c")
+
+[node name="color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.212305, 0.212305, 0.212305, 1)
+metadata/_edit_lock_ = true
+
+[node name="icon_tex_rect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u73kj")
+
+[node name="bg_tex_rect" type="TextureRect" parent="."]
+modulate = Color(0.360784, 1, 0.290196, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_pi6ir")
+stretch_mode = 1
+
+[node name="app_vflow_cntr" type="VFlowContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="mesugaki_btn" type="TextureButton" parent="app_vflow_cntr"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_gp024")
+
+[node name="popup_layer" type="CanvasLayer" parent="."]
+
+[node name="level_popup" type="Control" parent="popup_layer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="panel" type="Panel" parent="popup_layer/level_popup"]
+custom_minimum_size = Vector2(600, 240)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_uqkfb")
+
+[node name="target_bg_patch" type="NinePatchRect" parent="popup_layer/level_popup/panel"]
+self_modulate = Color(0.439049, 0.439049, 0.439049, 0.745098)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 170.0
+offset_bottom = -30.0
+grow_vertical = 2
+texture = ExtResource("6_d4krd")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/level_popup/panel/target_bg_patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="label" type="Label" parent="popup_layer/level_popup/panel/target_bg_patch/vbox"]
+layout_mode = 2
+text = "HS_TARGET"
+horizontal_alignment = 1
+
+[node name="target_tex_rect" type="TextureRect" parent="popup_layer/level_popup/panel/target_bg_patch/vbox"]
+layout_mode = 2
+texture = ExtResource("4_5niak")
+
+[node name="completed_label" type="Label" parent="popup_layer/level_popup/panel/target_bg_patch"]
+visible = false
+layout_mode = 0
+offset_left = -44.0
+offset_top = 22.0
+offset_right = 86.0
+offset_bottom = 57.0
+rotation = -0.478239
+theme_override_colors/font_color = Color(0.982359, 0.734718, 0.0532994, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Completed"
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/level_popup/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+
+[node name="record_panel" type="Panel" parent="popup_layer/level_popup/panel/vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 59)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wb3a")
+
+[node name="text_label" type="Label" parent="popup_layer/level_popup/panel/vbox/record_panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 24.0
+text = "Highest score: 9999
+Time: 2024/11/26 23:07:00"
+
+[node name="save_panel" type="Panel" parent="popup_layer/level_popup/panel/vbox"]
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wb3a")
+
+[node name="text_label" type="Label" parent="popup_layer/level_popup/panel/vbox/save_panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 24.0
+text = "Time: 2024/11/26 23:07:00
+Play Time: 2H"
+
+[node name="continue_btn" type="Button" parent="popup_layer/level_popup/panel/vbox/save_panel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HS_CONTINUE_BTN"
+
+[node name="new_panel" type="Panel" parent="popup_layer/level_popup/panel/vbox"]
+visible = false
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wb3a")
+
+[node name="text_label" type="Label" parent="popup_layer/level_popup/panel/vbox/new_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 3.0
+offset_right = -10.0
+offset_bottom = 54.0
+text = "......"
+autowrap_mode = 3
+
+[node name="hack_btn" type="Button" parent="popup_layer/level_popup/panel/vbox/new_panel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HS_HACK_BTN"
+
+[node name="input_name_popup" type="ColorRect" parent="popup_layer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="title_label" type="Label" parent="popup_layer/input_name_popup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "HS_INPUT_NAME_TITLE"
+
+[node name="last_name_hbox" type="HBoxContainer" parent="popup_layer/input_name_popup"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="popup_layer/input_name_popup/last_name_hbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "HS_LAST_NAME"
+
+[node name="last_name_edit" type="LineEdit" parent="popup_layer/input_name_popup/last_name_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Last Name"
+
+[node name="first_name_hbox" type="HBoxContainer" parent="popup_layer/input_name_popup"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 70.0
+offset_right = 200.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="popup_layer/input_name_popup/first_name_hbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "HS_FIRST_NAME"
+
+[node name="first_name_edit" type="LineEdit" parent="popup_layer/input_name_popup/first_name_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "First Name"

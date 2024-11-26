@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://uc8obesxg0km"
+
+[deps]
+
+files=["res://asset/tr/hacker_scene.zh.translation", "res://asset/tr/hacker_scene.en.translation"]
+
+source_file="res://asset/tr/hacker_scene.csv"
+dest_files=["res://asset/tr/hacker_scene.zh.translation", "res://asset/tr/hacker_scene.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0

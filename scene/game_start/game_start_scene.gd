@@ -24,3 +24,9 @@ func _ready():
 	fight_scene.add_fight_event(loseEnt)
 	var showHelpPopupEnt = ShowHelpPopupEvent.new()
 	fight_scene.add_fight_event(showHelpPopupEnt)
+
+
+func _on_fight_scene_losed() -> void:
+	var hackerScene = load(ScenePathConst.HACKER_SCENE).instantiate()
+	hackerScene.save_id = save_id
+	scene_transition.change_scene(hackerScene, "fade_out", "fade_in")

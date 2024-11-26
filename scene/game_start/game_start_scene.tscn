@@ -14,3 +14,5 @@ script = ExtResource("1_ehls1")
 
 [node name="fight_scene" parent="." instance=ExtResource("2_ypq8j")]
 layout_mode = 1
+
+[connection signal="losed" from="fight_scene" to="." method="_on_fight_scene_losed"]
