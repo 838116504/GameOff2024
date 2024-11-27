@@ -3,16 +3,16 @@ HS_TARGET,目標,Target
 HS_RECORD_TEXT,"最高分數: %d
 日期: %s","Highest score: %d
 Date: %s"
-HS_SAVE_TEXT,"日期: %s
-遊玩時間: %s","Date: %s
+HS_SAVE_TEXT,"保存日期: %s
+遊玩時長: %s","Save Date: %s
 Play Time: %s"
 HS_CONTINUE_BTN,継续,Continue
 HS_HACK_BTN,駭入,Hack Into
 HS_INPUT_NAME_TITLE,輸入你的名字,Input Your Name
 HS_LAST_NAME,姓,Last Name
 HS_FIRST_NAME,名,First Name
-,,
-,,
+HS_LAST_NAME_EMPTY,姓不能為空,Last name cannot be empty
+HS_FIRST_NAME_EMPTY,名不能為空,First name cannot be empty
 ,,
 ,,
 ,,

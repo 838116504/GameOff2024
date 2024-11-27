@@ -15,10 +15,19 @@ func get_text_label():
 
 
 func _gui_input(p_event:InputEvent):
+	get_tree().root.set_input_as_handled()
+	
 	if p_event is InputEventMouseButton:
 		if p_event.button_index == MOUSE_BUTTON_LEFT:
 			if p_event.is_released():
 				next()
+
+func _notification(p_what: int) -> void:
+	if p_what == NOTIFICATION_VISIBILITY_CHANGED:
+		if is_visible_in_tree():
+			grab_focus()
+		else:
+			release_focus()
 
 func next():
 	if text_label.is_playing():

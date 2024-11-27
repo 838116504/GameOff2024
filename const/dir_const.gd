@@ -9,5 +9,6 @@ const MAP_ITEM_IMG = "res://asset/img/map_item/"
 
 const FIGHT_MAP = "res://asset/fight_map/"
 const GAME_SAVE = "save/"
+const LEVEL = "res://asset/level/"
 
 const UNIT_BT = "res://ai/tree/unit/"

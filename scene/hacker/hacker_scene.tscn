@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://5wf3sup3rkr0"]
+[gd_scene load_steps=13 format=3 uid="uid://5wf3sup3rkr0"]
 
 [ext_resource type="Script" path="res://scene/hacker/hacker_scene.gd" id="1_iql3c"]
 [ext_resource type="Texture2D" uid="uid://dri4mvjmw8yor" path="res://asset/img/game_icon/icon.png" id="2_u73kj"]
 [ext_resource type="Texture2D" uid="uid://bxqnw24h50mih" path="res://asset/img/bg/hacker_scene_bg_bottom.png" id="3_pi6ir"]
 [ext_resource type="Texture2D" uid="uid://du7eh6xgdm2g" path="res://asset/img/unit/female_imp.png" id="4_5niak"]
 [ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="5_qcg66"]
+[ext_resource type="Script" path="res://scene/hacker/level_btn.gd" id="5_tbl5n"]
 [ext_resource type="Texture2D" uid="uid://cp1ofbowvggta" path="res://asset/img/ui/common/panel-transparent-center-013.png" id="6_d4krd"]
+[ext_resource type="Script" path="res://scene/hacker/level_popup.gd" id="6_pa4lv"]
 [ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="7_elc62"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp024"]
@@ -85,6 +87,8 @@ offset_bottom = 40.0
 [node name="mesugaki_btn" type="TextureButton" parent="app_vflow_cntr"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_gp024")
+script = ExtResource("5_tbl5n")
+level_id = 1
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
@@ -96,6 +100,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
+script = ExtResource("6_pa4lv")
 
 [node name="panel" type="Panel" parent="popup_layer/level_popup"]
 custom_minimum_size = Vector2(600, 240)
@@ -186,6 +192,7 @@ text = "Highest score: 9999
 Time: 2024/11/26 23:07:00"
 
 [node name="save_panel" type="Panel" parent="popup_layer/level_popup/panel/vbox"]
+visible = false
 custom_minimum_size = Vector2(0, 116)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5wb3a")
@@ -211,10 +218,10 @@ anchor_bottom = 1.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 text = "HS_CONTINUE_BTN"
 
 [node name="new_panel" type="Panel" parent="popup_layer/level_popup/panel/vbox"]
-visible = false
 custom_minimum_size = Vector2(0, 116)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5wb3a")
@@ -241,81 +248,8 @@ anchor_bottom = 1.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 text = "HS_HACK_BTN"
 
-[node name="input_name_popup" type="ColorRect" parent="popup_layer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="title_label" type="Label" parent="popup_layer/input_name_popup"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -40.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "HS_INPUT_NAME_TITLE"
-
-[node name="last_name_hbox" type="HBoxContainer" parent="popup_layer/input_name_popup"]
-custom_minimum_size = Vector2(400, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 20.0
-offset_right = 200.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="label" type="Label" parent="popup_layer/input_name_popup/last_name_hbox"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "HS_LAST_NAME"
-
-[node name="last_name_edit" type="LineEdit" parent="popup_layer/input_name_popup/last_name_hbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-placeholder_text = "Last Name"
-
-[node name="first_name_hbox" type="HBoxContainer" parent="popup_layer/input_name_popup"]
-custom_minimum_size = Vector2(400, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 70.0
-offset_right = 200.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="label" type="Label" parent="popup_layer/input_name_popup/first_name_hbox"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "HS_FIRST_NAME"
-
-[node name="first_name_edit" type="LineEdit" parent="popup_layer/input_name_popup/first_name_hbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-placeholder_text = "First Name"
+[connection signal="pressed" from="popup_layer/level_popup/panel/vbox/save_panel/continue_btn" to="popup_layer/level_popup" method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="popup_layer/level_popup/panel/vbox/new_panel/hack_btn" to="popup_layer/level_popup" method="_on_hack_btn_pressed"]

@@ -2,10 +2,11 @@ extends RefCounted
 class_name GameSave
 
 const SAVE_EXTENSION = "save"
+const LEVEL_EXTENSION = "lvl"
 
 class LevelRecord:
 	var score:int
-	var time:float
+	var time:int
 	
 	func set_data(p_value):
 		if !p_value is Array:
@@ -16,6 +17,39 @@ class LevelRecord:
 	
 	func get_data():
 		return [ score, time ]
+
+class LevelSave:
+	var play_time:float = 0
+	var map:Map
+	var path:String
+	var game_save:GameSave
+	
+	func save() -> bool:
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		if !file:
+			return false
+		
+		file.store_var(play_time)
+		file.store_var(map.get_data())
+		file.close()
+		return true
+	
+	static func load(p_path:String) -> LevelSave:
+		var file = FileAccess.open(p_path, FileAccess.READ)
+		if !file:
+			return null
+		
+		var ret = LevelSave.new()
+		ret.path = p_path
+		ret.play_time = file.get_var()
+		var mapData = file.get_var()
+		file.close()
+		
+		ret.map = Map.new()
+		ret.map.set_data(mapData)
+		
+		
+		return ret
 
 class LevelData:
 	var finished:int = 0
@@ -49,6 +83,7 @@ class LevelData:
 		
 		return ret
 
+
 var id:int
 var player_last_name:String = ""
 var player_first_name:String = "player"
@@ -57,12 +92,24 @@ var save_unix_time:int = 0
 var level_data_list := []
 
 
-func finish_level(p_id:int):
+func finish_level(p_id:int) -> void:
 	if p_id >= level_data_list.size():
 		for _i in p_id + 1 - level_data_list.size():
 			level_data_list.append(LevelData.new())
 	
 	level_data_list[p_id].finished = 1
+
+func is_level_finised(p_id:int) -> bool:
+	if p_id >= level_data_list.size():
+		return false
+	
+	return level_data_list[p_id].finished != 0
+
+func get_level_record(p_id) -> LevelRecord:
+	if p_id >= level_data_list.size():
+		return null
+	
+	return level_data_list[p_id].record
 
 func add_level_record(p_id:int, p_score:int):
 	if p_id >= level_data_list.size():
@@ -92,7 +139,35 @@ func get_play_time_text() -> String:
 func get_save_time_text() -> String:
 	return Time.get_datetime_string_from_unix_time(save_unix_time)
 
-func set_data(p_data):
+func get_level_save_path(p_id:int) -> String:
+	return get_save_dir(p_id).path_join(str(p_id) + "." + SAVE_EXTENSION)
+
+func has_level_save(p_id:int) -> bool:
+	return FileAccess.file_exists(get_level_save_path(p_id))
+
+func get_level_save(p_id:int) -> LevelSave:
+	assert(has_level_save(p_id))
+	
+	var path = get_level_save_path(p_id)
+	var ret = LevelSave.load(path)
+	ret.game_save = self
+	ret.map.player_unit.item_name = get_player_full_name()
+	return ret
+
+func get_level_save_save_time(p_id:int):
+	assert(has_level_save(p_id))
+	
+	var path = get_level_save_path(p_id)
+	return FileAccess.get_modified_time(path)
+
+func create_player_unit() -> PlayerUnit:
+	var ret := PlayerUnit.new()
+	ret.set_unit_id(1)
+	ret.item_name = get_player_full_name()
+	
+	return ret
+
+func set_data(p_data) -> void:
 	if !p_data is Dictionary:
 		return
 	
@@ -122,9 +197,9 @@ func get_data():
 	return ret
 
 
-static func get_save_dir() -> String:
+static func get_save_dir(p_id:int) -> String:
 	var ret:String = OS.get_executable_path().get_base_dir()
-	ret = ret.path_join(DirConst.GAME_SAVE)
+	ret = ret.path_join(DirConst.GAME_SAVE).path_join(str(p_id) + "/")
 	if !DirAccess.dir_exists_absolute(ret):
 		DirAccess.make_dir_absolute(ret)
 	
@@ -132,7 +207,7 @@ static func get_save_dir() -> String:
  
 static func get_save_path(p_id:int) -> String:
 	var filename = "main." + SAVE_EXTENSION
-	var dir = get_save_dir().path_join(str(p_id) + "/")
+	var dir = get_save_dir(p_id)
 	return dir.path_join(filename)
 
 static func load_save(p_id:int) -> GameSave:

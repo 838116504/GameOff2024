@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddspq21qwktej"]
+
+[ext_resource type="Script" path="res://scene/hacker/input_name_popup.gd" id="1_hsbyi"]
+
+[node name="input_name_popup" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_hsbyi")
+
+[node name="title_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "HS_INPUT_NAME_TITLE"
+
+[node name="last_name_hbox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="last_name_hbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "HS_LAST_NAME"
+
+[node name="last_name_edit" type="LineEdit" parent="last_name_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Last Name"
+max_length = 9
+
+[node name="first_name_hbox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 70.0
+offset_right = 200.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="first_name_hbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "HS_FIRST_NAME"
+
+[node name="first_name_edit" type="LineEdit" parent="first_name_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "First Name"
+max_length = 9
+
+[node name="ok_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = 140.0
+offset_right = 4.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "OK"
+
+[node name="accept_dialog" type="AcceptDialog" parent="."]
+
+[connection signal="pressed" from="ok_btn" to="." method="_on_ok_btn_pressed"]

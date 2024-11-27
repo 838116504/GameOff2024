@@ -66,7 +66,7 @@ func _ready():
 		playerUnit.set_unit_id(1)
 		set_fight(playerUnit, Unit.create_by_id(1))
 
-func _gui_input(p_event:InputEvent) -> void:
+func _unhandled_input(p_event:InputEvent) -> void:
 	get_tree().root.set_input_as_handled()
 	
 	if p_event is InputEventMouseMotion:

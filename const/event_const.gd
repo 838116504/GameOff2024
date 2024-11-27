@@ -6,6 +6,9 @@ const HIDE_DIALOGUE = &"hide_dialogue"
 const SHOW_HELP_POPUP = &"show_help_popup"
 const HIDE_HELP_POPUP = &"hide_help_popup"
 
+# hacker scene
+const SHOW_LEVEL_POPUP = &"show_level_popup"
+
 const SHOW_MAP_ITEM_DETAIL = &"show_map_item_detail"
 const HIDE_MAP_ITEM_DETAIL = &"hide_map_item_detail"
 const SHOW_ENEMY_PANEL = &"show_enemy_panel"
@@ -26,6 +29,9 @@ const INFO_LIST = [
 	[ HIDE_DIALOGUE, [ ]],
 	[ SHOW_HELP_POPUP, [ ]],
 	[ HIDE_HELP_POPUP, [ ]],
+	
+	[ SHOW_LEVEL_POPUP, [ {"name":"id", "type":TYPE_INT} ]],
+	
 	[ SHOW_MAP_ITEM_DETAIL, [ {"name":"item", "type":TYPE_OBJECT} ]],
 	[ HIDE_MAP_ITEM_DETAIL, [ ]],
 	[ SHOW_ENEMY_PANEL, [ {"name":"unit", "type":TYPE_OBJECT} ]],

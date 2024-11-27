@@ -4,7 +4,7 @@ const TEST_LVL_PATH = "res://asset/level/noob.lvl"
 
 var map:Map : set = set_map
 var player_unit:PlayerUnit : set = set_player_unit
-
+var level_save:GameSave.LevelSave
 
 @onready var left_ui = get_left_ui()
 @onready var right_ui = get_right_ui()
@@ -56,7 +56,7 @@ func _ready():
 	get_input().player_unit = player_unit
 	fight_layer.player_unit = player_unit
 
-func load_level(p_path):
+func load_level(p_path:String):
 	var file = FileAccess.open(p_path, FileAccess.READ)
 	assert(file)
 	
@@ -64,6 +64,11 @@ func load_level(p_path):
 	var loadMap = Map.new()
 	loadMap.set_data(mapData)
 	map = loadMap
+	if player_unit:
+		player_unit.layer = map.entrance_layer
+		player_unit.position = map.entrance_position
+		map.player_unit = player_unit
+
 
 func set_map(p_map):
 	if map == p_map:
@@ -98,4 +103,4 @@ func _on_fight_scene_winned() -> void:
 
 
 func _on_fight_scene_losed() -> void:
-	pass # Replace with function body.
+	event_bus.emit_signal(EventConst.GAMEOVER)

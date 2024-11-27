@@ -355,7 +355,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
 script = ExtResource("1_rulib")
 
 [node name="bg_color_rect" type="ColorRect" parent="."]
@@ -697,7 +696,7 @@ position = Vector2(70, 0)
 scale = Vector2(-1, 1)
 preview_skin = "female_imp"
 
-[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="0"]
+[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="3"]
 material = SubResource("CanvasItemMaterial_5p0l0")
 position = Vector2(0, 0)
 
