@@ -95,8 +95,9 @@ offset_right = 4.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
-text = "OK"
+text = "HS_LOGIN"
 
 [node name="accept_dialog" type="AcceptDialog" parent="."]
 

@@ -3,7 +3,7 @@ extends RefCounted
 ## 左鍵物品鎖定，右鍵解鎖
 
 var map:Map
-var locked_item:MapItem = null
+var locked_item:MapItem = null : set = set_locked_item
 
 
 func enter():
@@ -47,3 +47,9 @@ func _get_item(p_cell:Vector2i):
 		ret = map.get_item(0, p_cell)
 	
 	return ret
+
+func set_locked_item(p_value):
+	if locked_item == p_value:
+		return
+	
+	locked_item = p_value

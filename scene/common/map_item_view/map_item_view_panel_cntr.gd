@@ -1,6 +1,12 @@
 extends PanelContainer
 
+signal item_data_changed(p_item)
+
 var map_item:MapItem : set = set_map_item
+
+@onready var dialogue_vbox = get_dialogue_vbox()
+@onready var dialogue_edit = get_dialogue_edit()
+@onready var dialogue_preview_label = get_dialogue_preview_label()
 
 func get_icon_tex_rect():
 	return $vbox/hbox/icon_tex_rect
@@ -11,12 +17,14 @@ func get_name_label():
 func get_desc_label():
 	return $vbox/desc_label
 
-func get_dialogue_hbox():
-	return $vbox/dialogue_hbox
+func get_dialogue_vbox():
+	return $vbox/dialogue_vbox
 
 func get_dialogue_edit() -> SpinBox:
-	return $vbox/dialogue_hbox/dialogue_edit
+	return $vbox/dialogue_vbox/hbox/dialogue_edit
 
+func get_dialogue_preview_label():
+	return $vbox/dialogue_vbox/preview_label
 
 func set_map_item(p_item):
 	map_item = p_item
@@ -33,17 +41,30 @@ func update():
 	var descLabel = get_desc_label()
 	descLabel.text = map_item.get_description()
 	
-	var dialogueHbox = get_dialogue_hbox()
 	if map_item is DialogueTrigger:
-		var dialogueEdit = get_dialogue_edit()
-		dialogueEdit.value = map_item.dialogue_id
-		dialogueHbox.show()
+		dialogue_edit.max_value = table_set.dialogue.get_row_list()[-1].id
+		dialogue_edit.value = map_item.dialogue_id
+		dialogue_vbox.show()
+		udpate_dialogue_preview()
 	else:
-		dialogueHbox.hide()
+		dialogue_vbox.hide()
 
 
-func _on_dialogue_edit_changed() -> void:
+func _on_dialogue_edit_value_changed(p_value) -> void:
 	if !map_item is DialogueTrigger:
 		return
 	
-	map_item.dialogue_id = get_dialogue_edit().value
+	map_item.dialogue_id = int(p_value)
+	udpate_dialogue_preview()
+	item_data_changed.emit(map_item)
+
+func udpate_dialogue_preview():
+	if dialogue_edit.value == 0:
+		dialogue_preview_label.text = ""
+		return
+	
+	var row = table_set.dialogue.get_row(int(dialogue_edit.value))
+	if row:
+		dialogue_preview_label.text = tr(row.text)
+	else:
+		dialogue_preview_label.text = ""

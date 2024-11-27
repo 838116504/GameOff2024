@@ -12,7 +12,7 @@ func create_node() -> Node2D:
 
 func _map_item_entered(p_item):
 	if p_item is PlayerUnit:
-		pass
+		event_bus.emit_signal(EventConst.SHOW_DIALOGUE, dialogue_id)
 
 
 func set_data(p_data):

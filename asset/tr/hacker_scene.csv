@@ -13,7 +13,7 @@ HS_LAST_NAME,姓,Last Name
 HS_FIRST_NAME,名,First Name
 HS_LAST_NAME_EMPTY,姓不能為空,Last name cannot be empty
 HS_FIRST_NAME_EMPTY,名不能為空,First name cannot be empty
-,,
+HS_LOGIN,登入,Log in
 ,,
 ,,
 ,,

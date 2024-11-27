@@ -65,6 +65,12 @@ func _ready():
 		var playerUnit = PlayerUnit.new()
 		playerUnit.set_unit_id(1)
 		set_fight(playerUnit, Unit.create_by_id(1))
+	
+	set_process_unhandled_input(is_visible_in_tree())
+
+func _notification(p_what:int) -> void:
+	if p_what == NOTIFICATION_VISIBILITY_CHANGED:
+		set_process_unhandled_input(is_visible_in_tree())
 
 func _unhandled_input(p_event:InputEvent) -> void:
 	get_tree().root.set_input_as_handled()
@@ -381,7 +387,6 @@ func set_fight(p_player:PlayerUnit, p_enemy:Unit):
 		add_unit(player_unit.follow_unit_list[i])
 	
 	show()
-	grab_focus()
 	
 	round_start()
 

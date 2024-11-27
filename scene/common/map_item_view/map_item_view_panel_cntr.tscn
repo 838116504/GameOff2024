@@ -49,17 +49,22 @@ text = "1"
 fit_content = true
 scroll_active = false
 
-[node name="dialogue_hbox" type="HBoxContainer" parent="vbox"]
-visible = false
+[node name="dialogue_vbox" type="VBoxContainer" parent="vbox"]
 layout_mode = 2
 
-[node name="label" type="Label" parent="vbox/dialogue_hbox"]
+[node name="hbox" type="HBoxContainer" parent="vbox/dialogue_vbox"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="vbox/dialogue_vbox/hbox"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "LES_DIALOGUE_ID"
 
-[node name="dialogue_edit" type="SpinBox" parent="vbox/dialogue_hbox"]
+[node name="dialogue_edit" type="SpinBox" parent="vbox/dialogue_vbox/hbox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="changed" from="vbox/dialogue_hbox/dialogue_edit" to="." method="_on_dialogue_edit_changed"]
+[node name="preview_label" type="Label" parent="vbox/dialogue_vbox"]
+layout_mode = 2
+
+[connection signal="value_changed" from="vbox/dialogue_vbox/hbox/dialogue_edit" to="." method="_on_dialogue_edit_value_changed"]

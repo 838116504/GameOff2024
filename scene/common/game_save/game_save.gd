@@ -24,6 +24,10 @@ class LevelSave:
 	var path:String
 	var game_save:GameSave
 	
+	func add_play_time(p_time:float):
+		play_time += p_time
+		game_save.add_play_time(p_time)
+	
 	func save() -> bool:
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		if !file:
@@ -91,6 +95,9 @@ var play_time:float = 0
 var save_unix_time:int = 0
 var level_data_list := []
 
+
+func add_play_time(p_time:float):
+	play_time += p_time
 
 func finish_level(p_id:int) -> void:
 	if p_id >= level_data_list.size():

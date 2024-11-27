@@ -696,7 +696,7 @@ position = Vector2(70, 0)
 scale = Vector2(-1, 1)
 preview_skin = "female_imp"
 
-[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="3"]
+[node name="ammo_bone" parent="ui_layer/help_popup/panel/page_root_patch/ui_page/cell3_tex_rect/unit_fight_node/spine" index="0"]
 material = SubResource("CanvasItemMaterial_5p0l0")
 position = Vector2(0, 0)
 
@@ -1497,6 +1497,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(100, 30)
+focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "FS_LOSE_CONFIRM"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=127 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -85,6 +85,7 @@
 [ext_resource type="Script" path="res://scene/level/ui/player_panel/passive_panel_cntr.gd" id="77_df65o"]
 [ext_resource type="Script" path="res://scene/level/ui/player_panel/skill_vbox.gd" id="78_grqj7"]
 [ext_resource type="PackedScene" uid="uid://cxt42sqvsssfa" path="res://scene/level/ui/player_panel/skill_panel_cntr.tscn" id="79_a3obh"]
+[ext_resource type="Script" path="res://scene/common/play_timer/play_timer.gd" id="86_1vuuv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
 texture = ExtResource("15_7n6e5")
@@ -2387,6 +2388,9 @@ text = "LS_RETURN_TITLE_BTN"
 libraries = {
 "": SubResource("AnimationLibrary_lq71y")
 }
+
+[node name="play_timer" type="Node" parent="."]
+script = ExtResource("86_1vuuv")
 
 [connection signal="losed" from="fight_layer/fight_scene" to="." method="_on_fight_scene_losed"]
 [connection signal="winned" from="fight_layer/fight_scene" to="." method="_on_fight_scene_winned"]

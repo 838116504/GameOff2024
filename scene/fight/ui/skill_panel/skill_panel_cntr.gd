@@ -35,7 +35,7 @@ func set_unit(p_value):
 
 func enable():
 	for child in grid_cntr.get_children():
-		child.mouse_filter = MOUSE_FILTER_STOP
+		child.mouse_filter = MOUSE_FILTER_IGNORE if child.skill_state.is_cding() else MOUSE_FILTER_STOP
 
 func disable():
 	for child in grid_cntr.get_children():

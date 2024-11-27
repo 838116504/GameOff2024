@@ -31,6 +31,8 @@ func get_popup_layer():
 func get_fight_layer():
 	return $fight_layer
 
+func get_play_timer():
+	return $play_timer
 
 func _ready():
 	if map == null:
@@ -55,6 +57,8 @@ func _ready():
 	
 	get_input().player_unit = player_unit
 	fight_layer.player_unit = player_unit
+	
+	get_play_timer().save = level_save
 
 func load_level(p_path:String):
 	var file = FileAccess.open(p_path, FileAccess.READ)

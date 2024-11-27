@@ -150,6 +150,7 @@ func update_map():
 		entrance_x_edit.value_changed.disconnect(_on_entrance_x_edit_value_changed)
 	if entrance_y_edit.value_changed.is_connected(_on_entrance_y_edit_value_changed):
 		entrance_y_edit.value_changed.disconnect(_on_entrance_y_edit_value_changed)
+	
 	current_layer = 0
 	current_layer_edit.value = 0
 	entrance_layer_edit.max_value = map.get_layer() - 1
@@ -297,6 +298,17 @@ func _on_select_tab_cntr_tile_put(p_rect: Rect2i, p_tileId: int) -> void:
 	undo_redo.create_action("set tile with rect")
 	undo_redo.add_do_method(set_tile_with_rect.bind(p_rect, p_tileId))
 	undo_redo.add_undo_method(set_rect_tiles.bind(p_rect, tiles))
+	undo_redo.commit_action()
+
+func set_item_data(p_position, p_id, p_data):
+	current_map.set_item_data(0, p_position, p_id, p_data)
+	map.set_item_data(current_layer, p_position, p_id, p_data)
+
+func _on_map_item_view_panel_cntr_item_data_changed(p_item:MapItem) -> void:
+	undo_redo.create_action("set item data")
+	undo_redo.add_do_method(set_item_data.bind(p_item.position, p_item.get_map_item_id(), p_item.get_data()))
+	var prevData = current_map.get_item(0, p_item.position).get_data()
+	undo_redo.add_undo_method(set_item_data.bind(p_item.position, p_item.get_map_item_id(), prevData))
 	undo_redo.commit_action()
 
 func save():

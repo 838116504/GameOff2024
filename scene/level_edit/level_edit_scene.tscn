@@ -342,4 +342,5 @@ filters = PackedStringArray("*.lvl;Level File")
 [connection signal="item_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_item_put"]
 [connection signal="layer_changed" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_layer_changed"]
 [connection signal="tile_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_tile_put"]
+[connection signal="item_data_changed" from="left_ui/map_item_detail_ui/scroll_cntr/vbox/map_item_view_panel_cntr" to="." method="_on_map_item_view_panel_cntr_item_data_changed"]
 [connection signal="file_selected" from="open_file_dialog" to="." method="_on_open_file_dialog_file_selected"]

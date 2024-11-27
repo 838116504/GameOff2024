@@ -89,7 +89,10 @@ func set_item(p_layer:int, p_pos:Vector2i, p_id:int):
 
 func set_item_data(p_layer:int, p_pos:Vector2i, p_id:int, p_data):
 	before_item_changed.emit(p_layer, p_pos, p_id)
-	item_list[p_layer][_to_map_position_id(p_pos)] = [p_id, p_data]
+	if p_data:
+		item_list[p_layer][_to_map_position_id(p_pos)] = [p_id, p_data]
+	else:
+		item_list[p_layer][_to_map_position_id(p_pos)] = p_id
 	item_changed.emit(p_layer, p_pos)
 
 func move_item(p_layer:int, p_from:Vector2i, p_to:Vector2i):
@@ -172,5 +175,9 @@ func set_player_unit(p_value):
 	player_unit = p_value
 	if player_unit:
 		before_item_changed.emit(player_unit.layer, player_unit.position, player_unit.layer, player_unit.get_map_item_id())
-		item_list[player_unit.layer][_to_map_position_id(player_unit.position)] = player_unit
+		var posId = _to_map_position_id(player_unit.position)
+		var item = get_item(player_unit.layer, player_unit.position)
+		if item != null:
+			item._map_item_entered(player_unit)
+		item_list[player_unit.layer][posId] = player_unit
 		item_changed.emit(player_unit.layer, player_unit.position)

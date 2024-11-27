@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5wf3sup3rkr0"]
+[gd_scene load_steps=14 format=3 uid="uid://5wf3sup3rkr0"]
 
 [ext_resource type="Script" path="res://scene/hacker/hacker_scene.gd" id="1_iql3c"]
 [ext_resource type="Texture2D" uid="uid://dri4mvjmw8yor" path="res://asset/img/game_icon/icon.png" id="2_u73kj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cp1ofbowvggta" path="res://asset/img/ui/common/panel-transparent-center-013.png" id="6_d4krd"]
 [ext_resource type="Script" path="res://scene/hacker/level_popup.gd" id="6_pa4lv"]
 [ext_resource type="Texture2D" uid="uid://cbyktrwlsxlmk" path="res://asset/img/ui/common/panel-transparent-center-015.png" id="7_elc62"]
+[ext_resource type="Script" path="res://scene/common/play_timer/play_timer.gd" id="10_mqh0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp024"]
 atlas = ExtResource("4_5niak")
@@ -250,6 +251,9 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "HS_HACK_BTN"
+
+[node name="play_timer" type="Node" parent="."]
+script = ExtResource("10_mqh0g")
 
 [connection signal="pressed" from="popup_layer/level_popup/panel/vbox/save_panel/continue_btn" to="popup_layer/level_popup" method="_on_continue_btn_pressed"]
 [connection signal="pressed" from="popup_layer/level_popup/panel/vbox/new_panel/hack_btn" to="popup_layer/level_popup" method="_on_hack_btn_pressed"]
