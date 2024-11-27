@@ -178,6 +178,10 @@ func set_player_unit(p_value):
 		var posId = _to_map_position_id(player_unit.position)
 		var item = get_item(player_unit.layer, player_unit.position)
 		if item != null:
+			if scene_transition.is_playing():
+				Engine.get_main_loop().paused = true
+				await scene_transition.finished
+				Engine.get_main_loop().paused = false
 			item._map_item_entered(player_unit)
 		item_list[player_unit.layer][posId] = player_unit
 		item_changed.emit(player_unit.layer, player_unit.position)

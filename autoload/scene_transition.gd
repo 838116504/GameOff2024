@@ -28,11 +28,13 @@ func play(p_name:StringName):
 	transition.show()
 	await transition.play(p_name)
 
+func is_playing():
+	return transition.visible
+
 func change_scene(p_scene:Node, p_out:StringName, p_in:StringName):
 	assert(p_scene)
 	
 	if !p_out.is_empty():
-		
 		await play(p_out)
 	
 	var prevScene = get_tree().current_scene
