@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=138 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ixdffk8pm2n" path="res://asset/img/ui/level_scene/database_panel_scroll_grabber_pressed.png" id="52_e6vd7"]
 [ext_resource type="Texture2D" uid="uid://bvsddhs8a78mx" path="res://asset/img/ui/level_scene/database_panel_scroll_up_btn_pressed.png" id="52_vvuu3"]
 [ext_resource type="Texture2D" uid="uid://chflmby0m0f3k" path="res://asset/img/ui/level_scene/database_panel_scroll_down_btn.png" id="53_m5pbg"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/unit_view_panel_cntr.gd" id="54_djjsu"]
 [ext_resource type="Texture2D" uid="uid://dvtlrt6h3fh5g" path="res://asset/img/ui/level_scene/database_panel_scroll_down_btn_hover.png" id="54_ui0r1"]
 [ext_resource type="Texture2D" uid="uid://0b11m7wk4k6t" path="res://asset/img/ui/level_scene/database_panel_scroll_down_btn_pressed.png" id="55_5t28c"]
 [ext_resource type="Texture2D" uid="uid://baeasnai15000" path="res://asset/img/ui/level_scene/database_panel_option_btn_pressed.png" id="59_ypw5o"]
@@ -205,6 +206,14 @@ texture_margin_top = 9.0
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
 modulate_color = Color(0.411765, 0.756863, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c62n1"]
+texture = ExtResource("76_uqq50")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(1, 1, 1, 0.666667)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxog0"]
 texture = ExtResource("47_ki22v")
@@ -1642,6 +1651,58 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "LS_NO_BTN"
 
+[node name="unit_view_panel_cntr" type="PanelContainer" parent="popup_layer/enemy_panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c62n1")
+script = ExtResource("54_djjsu")
+
+[node name="vbox" type="VBoxContainer" parent="popup_layer/enemy_panel/unit_view_panel_cntr"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="hp_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("6_fdyuc")
+icon = ExtResource("4_uc5jt")
+
+[node name="def_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("71_n3htn")
+icon = ExtResource("62_y3r8h")
+
+[node name="strike_hit_rate_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("71_afwmq")
+icon = ExtResource("6_w4cai")
+
+[node name="thrust_hit_rate_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("73_8djip")
+icon = ExtResource("7_sqchm")
+
+[node name="slash_hit_rate_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("74_5boeu")
+icon = ExtResource("8_1hf0r")
+
+[node name="spd_view" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox" instance=ExtResource("70_orvwl")]
+layout_mode = 2
+script = ExtResource("75_g0dhd")
+icon = ExtResource("9_uyw32")
+
+[node name="skill_vbox" type="VBoxContainer" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("78_grqj7")
+
+[node name="skill_panel_cntr" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox/skill_vbox" instance=ExtResource("79_a3obh")]
+layout_mode = 2
+
 [node name="database_panel" type="Panel" parent="popup_layer"]
 visible = false
 custom_minimum_size = Vector2(1020, 840)
@@ -2383,47 +2444,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="hp_view" type="Control" parent="popup_layer/player_panel/scroll_cntr/vbox"]
-custom_minimum_size = Vector2(0, 40)
+[node name="hp_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
 layout_mode = 2
-mouse_filter = 2
 script = ExtResource("6_fdyuc")
-
-[node name="icon_tex_rect" type="TextureRect" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_uc5jt")
-stretch_mode = 3
-
-[node name="patch" type="NinePatchRect" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_abc1p")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="value_label" type="Label" parent="popup_layer/player_panel/scroll_cntr/vbox/hp_view/patch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -2.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "8"
-vertical_alignment = 1
+icon = ExtResource("4_uc5jt")
 
 [node name="def_view" parent="popup_layer/player_panel/scroll_cntr/vbox" instance=ExtResource("70_orvwl")]
 layout_mode = 2
@@ -2747,6 +2771,10 @@ script = ExtResource("86_1vuuv")
 
 [connection signal="losed" from="fight_layer/fight_scene" to="." method="_on_fight_scene_losed"]
 [connection signal="winned" from="fight_layer/fight_scene" to="." method="_on_fight_scene_winned"]
+[connection signal="unit_mouse_entered" from="popup_layer/enemy_panel/simple_panel" to="popup_layer/enemy_panel" method="_on_simple_panel_unit_mouse_entered"]
+[connection signal="unit_mouse_exited" from="popup_layer/enemy_panel/simple_panel" to="popup_layer/enemy_panel" method="_on_simple_panel_unit_mouse_exited"]
+[connection signal="unit_mouse_entered" from="popup_layer/enemy_panel/detail_panel" to="popup_layer/enemy_panel" method="_on_detail_panel_unit_mouse_entered"]
+[connection signal="unit_mouse_exited" from="popup_layer/enemy_panel/detail_panel" to="popup_layer/enemy_panel" method="_on_detail_panel_unit_mouse_exited"]
 [connection signal="pressed" from="popup_layer/enemy_panel/switch_btn" to="popup_layer/enemy_panel" method="_on_switch_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/fight_btn" to="popup_layer/enemy_panel" method="_on_fight_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/hand_combat_btn" to="popup_layer/enemy_panel" method="_on_hand_combat_btn_pressed"]

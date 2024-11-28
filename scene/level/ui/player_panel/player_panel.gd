@@ -29,7 +29,9 @@ func set_player_unit(p_value:PlayerUnit):
 	nameLabel.text = p_value.get_map_item_name()
 	var vbox = get_vbox()
 	for child in vbox.get_children():
-		if child.has_method("set_player_unit"):
+		if child.has_method("set_unit"):
+			child.set_unit(p_value)
+		elif child.has_method("set_player_unit"):
 			child.set_player_unit(p_value)
 
 func open():

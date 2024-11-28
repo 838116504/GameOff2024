@@ -10,6 +10,8 @@ var unit:Unit : set = set_unit
 @onready var simple_panel = get_simple_panel()
 @onready var detail_panel = get_detail_panel()
 @onready var select_patch = get_select_patch()
+@onready var unit_view_panel_cntr = get_unit_view_panel_cntr()
+
 
 func get_fight_btn():
 	return $btns_hbox/fight_btn
@@ -28,6 +30,10 @@ func get_detail_panel():
 
 func get_select_patch() -> NinePatchRect:
 	return $btns_hbox/fight_btn/select_patch
+
+func get_unit_view_panel_cntr():
+	return $unit_view_panel_cntr
+
 
 func _ready():
 	event_bus.listen(EventConst.SHOW_ENEMY_PANEL, _on_ent_show_enemy_panel)
@@ -81,8 +87,16 @@ func close():
 	event_bus.emit_signal(EventConst.DISABLE_BLUR)
 
 func switch_display():
+	hide_unit_view()
 	simple_panel.visible = !simple_panel.visible
 	detail_panel.visible = !simple_panel.visible
+
+func popup_unit_view(p_unit):
+	unit_view_panel_cntr.set_unit(p_unit)
+	unit_view_panel_cntr.show()
+
+func hide_unit_view():
+	unit_view_panel_cntr.hide()
 
 func _on_ent_show_enemy_panel(p_unit):
 	unit = p_unit
@@ -111,6 +125,20 @@ func _on_hp_not_enough_popup_yes_btn_pressed() -> void:
 	player_unit.hand_combat(unit)
 	close()
 
-
 func _on_switch_btn_pressed() -> void:
 	switch_display()
+
+
+func _on_simple_panel_unit_mouse_entered(p_unit) -> void:
+	popup_unit_view(p_unit)
+
+func _on_simple_panel_unit_mouse_exited(_unit) -> void:
+	hide_unit_view()
+
+
+func _on_detail_panel_unit_mouse_entered(p_unit) -> void:
+	popup_unit_view(p_unit)
+
+
+func _on_detail_panel_unit_mouse_exited(_unit) -> void:
+	hide_unit_view()

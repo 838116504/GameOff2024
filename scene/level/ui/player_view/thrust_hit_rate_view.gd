@@ -1,25 +1,27 @@
 extends "property_view.gd"
 
-var player_unit:PlayerUnit
+var unit:Unit
 
-func set_player_unit(p_value:PlayerUnit):
-	if player_unit == p_value:
+func set_unit(p_value:Unit):
+	if unit == p_value:
 		return
 	
-	if player_unit:
-		player_unit.thrust_hit_rate_changed.disconnect(_on_player_unit_thrust_hit_rate_changed)
+	if unit:
+		if unit.has_signal("thrust_hit_rate_changed"):
+			unit.thrust_hit_rate_changed.disconnect(_on_unit_thrust_hit_rate_changed)
 	
-	player_unit = p_value
-	if player_unit:
-		var hitRate = player_unit.get_thrust_hit_rate()
+	unit = p_value
+	if unit:
+		var hitRate = unit.get_thrust_hit_rate()
 		if hitRate == 1.0:
 			hide()
 		else:
 			show()
 			set_value_string("%d%%" % (100 - int(hitRate * 100)))
-		player_unit.thrust_hit_rate_changed.connect(_on_player_unit_thrust_hit_rate_changed)
+		if unit.has_signal("thrust_hit_rate_changed"):
+			unit.thrust_hit_rate_changed.connect(_on_unit_thrust_hit_rate_changed)
 
-func _on_player_unit_thrust_hit_rate_changed(p_rate:float):
+func _on_unit_thrust_hit_rate_changed(p_rate:float):
 	if p_rate == 1.0:
 		hide()
 	else:
