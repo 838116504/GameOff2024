@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal item_data_changed(p_item)
 
+@export var editable := false
 var map_item:MapItem : set = set_map_item
 
 @onready var dialogue_vbox = get_dialogue_vbox()
@@ -41,7 +42,7 @@ func update():
 	var descLabel = get_desc_label()
 	descLabel.text = map_item.get_description()
 	
-	if map_item is DialogueTrigger:
+	if map_item is DialogueTrigger && editable:
 		dialogue_edit.max_value = table_set.dialogue.get_row_list()[-1].id
 		dialogue_edit.value = map_item.dialogue_id
 		dialogue_vbox.show()

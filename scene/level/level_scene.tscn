@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=136 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://scene/level/ui/player_view/data_panel_btn.gd" id="19_qni2v"]
 [ext_resource type="Script" path="res://scene/level/ui/player_view/red_key_count_view.gd" id="21_par0f"]
 [ext_resource type="Script" path="res://scene/level/ui/cheat_view/cheat_view.gd" id="26_etthi"]
+[ext_resource type="Texture2D" uid="uid://uumf44xnidsf" path="res://asset/img/ui/common/panel-transparent-border-005.png" id="28_8ymap"]
 [ext_resource type="PackedScene" uid="uid://chscm7mfh86kf" path="res://scene/common/map_item_view/unit_view_vbox.tscn" id="28_526lj"]
 [ext_resource type="Script" path="res://scene/level/input.gd" id="28_ohq6x"]
 [ext_resource type="Script" path="res://scene/level/ui/map_item_detail_ui/map_item_detail_ui.gd" id="28_sgvju"]
@@ -120,6 +121,14 @@ texture_margin_left = 8.0
 texture_margin_top = 5.0
 texture_margin_right = 8.0
 texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2kkh"]
+texture = ExtResource("28_8ymap")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+modulate_color = Color(0.537011, 0.537011, 0.537011, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhnow"]
 shader = ExtResource("33_whc2o")
@@ -1074,7 +1083,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("28_sgvju")
 
-[node name="bg_color_rect" type="ColorRect" parent="right_ui/map_item_detail_ui"]
+[node name="bg_panel" type="Panel" parent="right_ui/map_item_detail_ui"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1082,13 +1091,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.0907865, 0.42088, 0.524891, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_b2kkh")
 
 [node name="scroll_cntr" type="ScrollContainer" parent="right_ui/map_item_detail_ui"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 

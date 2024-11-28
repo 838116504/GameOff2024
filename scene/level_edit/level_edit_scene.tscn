@@ -279,6 +279,7 @@ size_flags_vertical = 3
 [node name="map_item_view_panel_cntr" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox" instance=ExtResource("11_tyxvh")]
 visible = false
 layout_mode = 2
+editable = true
 
 [node name="unit_view_vbox" parent="left_ui/map_item_detail_ui/scroll_cntr/vbox" instance=ExtResource("12_akqye")]
 visible = false

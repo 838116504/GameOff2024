@@ -50,6 +50,7 @@ fit_content = true
 scroll_active = false
 
 [node name="dialogue_vbox" type="VBoxContainer" parent="vbox"]
+visible = false
 layout_mode = 2
 
 [node name="hbox" type="HBoxContainer" parent="vbox/dialogue_vbox"]
