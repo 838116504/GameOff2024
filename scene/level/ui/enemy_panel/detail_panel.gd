@@ -46,6 +46,7 @@ func set_enemy_unit(p_unit:Unit):
 		else:
 			child.texture = fightMap.faction_cell_texture_list[cellUnits[i].faction_id]
 			var spine:SpineSprite = child.get_child(0)
+			spine.scale.x = cellUnits[i].fight_direction
 			var skel = spine.get_skeleton()
 			skel.set_skin_by_name(cellUnits[i].get_fight_skin())
 			skel.set_slots_to_setup_pose()

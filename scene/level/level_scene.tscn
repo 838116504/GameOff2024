@@ -139,7 +139,7 @@ texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
-modulate_color = Color(0, 0, 0, 0.627451)
+modulate_color = Color(0, 0, 0, 0.670588)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dgih"]
 texture = ExtResource("36_kojdq")
@@ -1434,6 +1434,7 @@ offset_top = 12.0
 offset_right = -10.0
 offset_bottom = 12.0
 grow_horizontal = 0
+focus_mode = 0
 texture_normal = ExtResource("41_0iimh")
 
 [node name="btns_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel"]
@@ -1455,11 +1456,30 @@ focus_neighbor_left = NodePath("../exit_btn")
 focus_neighbor_right = NodePath("../hand_combat_btn")
 focus_next = NodePath("../hand_combat_btn")
 focus_previous = NodePath("../exit_btn")
+focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_3dgih")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tervp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ox7b0")
+
+[node name="select_patch" type="NinePatchRect" parent="popup_layer/enemy_panel/btns_hbox/fight_btn"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("69_5g7sc")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
 
 [node name="icon_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/btns_hbox/fight_btn"]
 layout_mode = 1
@@ -1484,6 +1504,7 @@ focus_neighbor_left = NodePath("../fight_btn")
 focus_neighbor_right = NodePath("../exit_btn")
 focus_next = NodePath("../exit_btn")
 focus_previous = NodePath("../fight_btn")
+focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_x5w3a")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")
@@ -1532,6 +1553,7 @@ focus_neighbor_left = NodePath("../hand_combat_btn")
 focus_neighbor_right = NodePath("../fight_btn")
 focus_next = NodePath("../fight_btn")
 focus_previous = NodePath("../hand_combat_btn")
+focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_h63tx")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_frlbg")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hc0wj")

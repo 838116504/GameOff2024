@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="UnitTable" load_steps=9 format=3 uid="uid://cn5stso6h4d6h"]
+[gd_resource type="Resource" script_class="UnitTable" load_steps=9 format=3 uid="uid://kxpegsmmikwy"]
 
-[ext_resource type="Script" path="res://table/unit_row.gd" id="1_ksmde"]
-[ext_resource type="Script" path="res://table/unit_table.gd" id="2_pwl21"]
+[ext_resource type="Script" path="res://table/unit_row.gd" id="1_420ji"]
+[ext_resource type="Script" path="res://table/unit_table.gd" id="2_88v7y"]
 
-[sub_resource type="Resource" id="Resource_y1e0b"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_ootuo"]
+script = ExtResource("1_420ji")
 id = 1
 name = "UNIT_1"
 hp = 10
@@ -26,8 +26,8 @@ skin = "data_body"
 bt_id = 0
 learn_skill_id = 1
 
-[sub_resource type="Resource" id="Resource_6nlvn"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_04qd5"]
+script = ExtResource("1_420ji")
 id = 2
 name = "UNIT_1"
 hp = 15
@@ -49,8 +49,8 @@ skin = "data_body"
 bt_id = 0
 learn_skill_id = 1
 
-[sub_resource type="Resource" id="Resource_2hb4o"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_gew88"]
+script = ExtResource("1_420ji")
 id = 3
 name = "UNIT_3"
 hp = 10
@@ -72,8 +72,8 @@ skin = "cat_archer"
 bt_id = 0
 learn_skill_id = 5
 
-[sub_resource type="Resource" id="Resource_j4ppy"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_hdni1"]
+script = ExtResource("1_420ji")
 id = 4
 name = "UNIT_4"
 hp = 20
@@ -95,8 +95,8 @@ skin = "cat_greatsword"
 bt_id = 0
 learn_skill_id = 9
 
-[sub_resource type="Resource" id="Resource_0e3jt"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_kofcv"]
+script = ExtResource("1_420ji")
 id = 5
 name = "UNIT_2"
 hp = 30
@@ -118,8 +118,8 @@ skin = "cat_man"
 bt_id = 0
 learn_skill_id = 2
 
-[sub_resource type="Resource" id="Resource_a1385"]
-script = ExtResource("1_ksmde")
+[sub_resource type="Resource" id="Resource_1a1x5"]
+script = ExtResource("1_420ji")
 id = 6
 name = "UNIT_5"
 hp = 10000
@@ -142,5 +142,5 @@ bt_id = 0
 learn_skill_id = 4
 
 [resource]
-script = ExtResource("2_pwl21")
-row_list = Array[ExtResource("1_ksmde")]([SubResource("Resource_y1e0b"), SubResource("Resource_6nlvn"), SubResource("Resource_2hb4o"), SubResource("Resource_j4ppy"), SubResource("Resource_0e3jt"), SubResource("Resource_a1385")])
+script = ExtResource("2_88v7y")
+row_list = Array[ExtResource("1_420ji")]([SubResource("Resource_ootuo"), SubResource("Resource_04qd5"), SubResource("Resource_gew88"), SubResource("Resource_hdni1"), SubResource("Resource_kofcv"), SubResource("Resource_1a1x5")])

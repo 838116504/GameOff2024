@@ -9,6 +9,7 @@ var unit:Unit : set = set_unit
 @onready var hp_not_enough_popup = get_hp_not_enough_popup()
 @onready var simple_panel = get_simple_panel()
 @onready var detail_panel = get_detail_panel()
+@onready var select_patch = get_select_patch()
 
 func get_fight_btn():
 	return $btns_hbox/fight_btn
@@ -25,9 +26,33 @@ func get_simple_panel():
 func get_detail_panel():
 	return $detail_panel
 
+func get_select_patch() -> NinePatchRect:
+	return $btns_hbox/fight_btn/select_patch
 
 func _ready():
 	event_bus.listen(EventConst.SHOW_ENEMY_PANEL, _on_ent_show_enemy_panel)
+
+func _gui_input(p_event:InputEvent):
+	get_tree().root.set_input_as_handled()
+	if InputMap.event_is_action(p_event, &"left", true):
+		if p_event.is_released():
+			var curBtn = select_patch.get_parent()
+			var prevId = wrapi(curBtn.get_index() - 1, 0, 3)
+			var nextBtn = curBtn.get_parent().get_child(prevId)
+			select_patch.reparent(nextBtn, false)
+	elif InputMap.event_is_action(p_event, &"right", true):
+		if p_event.is_released():
+			var curBtn = select_patch.get_parent()
+			var prevId = wrapi(curBtn.get_index() + 1, 0, 3)
+			var nextBtn = curBtn.get_parent().get_child(prevId)
+			select_patch.reparent(nextBtn, false)
+	elif InputMap.event_is_action(p_event, &"attack", true):
+		if p_event.is_released():
+			var curBtn = select_patch.get_parent()
+			curBtn.pressed.emit()
+	elif InputMap.event_is_action(p_event, &"switch", true):
+		if p_event.is_released():
+			switch_display()
 
 func set_player_unit(p_value):
 	player_unit = p_value
@@ -48,13 +73,17 @@ func set_unit(p_value):
 
 func open():
 	event_bus.emit_signal(EventConst.ENABLE_BLUR)
-	fight_btn.grab_focus()
+	grab_focus()
 	show()
 
 func close():
-	fight_btn.release_focus()
+	release_focus()
 	hide()
 	event_bus.emit_signal(EventConst.DISABLE_BLUR)
+
+func switch_display():
+	simple_panel.visible = !simple_panel.visible
+	detail_panel.visible = !simple_panel.visible
 
 func _on_ent_show_enemy_panel(p_unit):
 	unit = p_unit
@@ -85,5 +114,4 @@ func _on_hp_not_enough_popup_yes_btn_pressed() -> void:
 
 
 func _on_switch_btn_pressed() -> void:
-	simple_panel.visible = !simple_panel.visible
-	detail_panel.visible = !simple_panel.visible
+	switch_display()
