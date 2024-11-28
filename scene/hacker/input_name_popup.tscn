@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddspq21qwktej"]
+[gd_scene load_steps=3 format=3 uid="uid://ddspq21qwktej"]
 
 [ext_resource type="Script" path="res://scene/hacker/input_name_popup.gd" id="1_hsbyi"]
+[ext_resource type="Texture2D" uid="uid://dri4mvjmw8yor" path="res://asset/img/game_icon/icon.png" id="2_6rhjc"]
 
 [node name="input_name_popup" type="ColorRect"]
 anchors_preset = 15
@@ -11,49 +12,23 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_hsbyi")
 
-[node name="title_label" type="Label" parent="."]
+[node name="logo_tex_rect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -60.0
-offset_bottom = -60.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "HS_INPUT_NAME_TITLE"
+texture = ExtResource("2_6rhjc")
 
-[node name="last_name_hbox" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(400, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 20.0
-offset_right = 200.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="label" type="Label" parent="last_name_hbox"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "HS_LAST_NAME"
-
-[node name="last_name_edit" type="LineEdit" parent="last_name_hbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-placeholder_text = "Last Name"
-max_length = 9
-
-[node name="first_name_hbox" type="HBoxContainer" parent="."]
+[node name="user_name_hbox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 1
 anchors_preset = -1
@@ -67,18 +42,20 @@ offset_right = 200.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="label" type="Label" parent="first_name_hbox"]
+[node name="label" type="Label" parent="user_name_hbox"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "HS_FIRST_NAME"
+text = "HS_USER_NAME"
 
-[node name="first_name_edit" type="LineEdit" parent="first_name_hbox"]
+[node name="user_name_edit" type="LineEdit" parent="user_name_hbox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
-placeholder_text = "First Name"
+placeholder_text = "User Name"
 max_length = 9
 
 [node name="ok_btn" type="Button" parent="."]
@@ -90,9 +67,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -4.0
-offset_top = 140.0
+offset_top = 130.0
 offset_right = 4.0
-offset_bottom = 140.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0

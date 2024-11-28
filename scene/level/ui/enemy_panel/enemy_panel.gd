@@ -34,25 +34,24 @@ func _ready():
 
 func _gui_input(p_event:InputEvent):
 	get_tree().root.set_input_as_handled()
-	if InputMap.event_is_action(p_event, &"left", true):
-		if p_event.is_released():
-			var curBtn = select_patch.get_parent()
-			var prevId = wrapi(curBtn.get_index() - 1, 0, 3)
-			var nextBtn = curBtn.get_parent().get_child(prevId)
-			select_patch.reparent(nextBtn, false)
-	elif InputMap.event_is_action(p_event, &"right", true):
-		if p_event.is_released():
-			var curBtn = select_patch.get_parent()
-			var prevId = wrapi(curBtn.get_index() + 1, 0, 3)
-			var nextBtn = curBtn.get_parent().get_child(prevId)
-			select_patch.reparent(nextBtn, false)
-	elif InputMap.event_is_action(p_event, &"attack", true):
-		if p_event.is_released():
+	
+	if p_event.is_released():
+		if InputMap.event_is_action(p_event, &"left", true):
+			move_select(-1)
+		elif InputMap.event_is_action(p_event, &"right", true):
+			move_select(1)
+		elif InputMap.event_is_action(p_event, &"attack", true):
 			var curBtn = select_patch.get_parent()
 			curBtn.pressed.emit()
-	elif InputMap.event_is_action(p_event, &"switch", true):
-		if p_event.is_released():
+		elif InputMap.event_is_action(p_event, &"switch", true):
 			switch_display()
+
+func move_select(p_dir:int):
+	var curBtn = select_patch.get_parent()
+	var nextId = wrapi(curBtn.get_index() + p_dir, 0, 3)
+	var nextBtn = curBtn.get_parent().get_child(nextId)
+	select_patch.reparent(nextBtn, false)
+	nextBtn.move_child(select_patch, 0)
 
 func set_player_unit(p_value):
 	player_unit = p_value

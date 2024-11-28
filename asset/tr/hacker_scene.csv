@@ -11,8 +11,10 @@ HS_HACK_BTN,駭入,Hack Into
 HS_INPUT_NAME_TITLE,輸入你的名字,Input Your Name
 HS_LAST_NAME,姓,Last Name
 HS_FIRST_NAME,名,First Name
+HS_USER_NAME,用戶名,User Name
 HS_LAST_NAME_EMPTY,姓不能為空,Last name cannot be empty
 HS_FIRST_NAME_EMPTY,名不能為空,First name cannot be empty
+HS_USER_NAME_EMPTY,用戶名不能為空,User name cannot be empty
 HS_LOGIN,登入,Log in
 ,,
 ,,
