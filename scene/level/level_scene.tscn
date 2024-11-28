@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=134 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -38,7 +38,6 @@
 [ext_resource type="Script" path="res://scene/level/ui/fight_layer/fight_layer.gd" id="32_wqnbs"]
 [ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="33_0eium"]
 [ext_resource type="Shader" path="res://asset/shader/blur_screen.gdshader" id="33_whc2o"]
-[ext_resource type="Texture2D" uid="uid://doqsjhrwfcdxm" path="res://asset/img/ui/level_scene/enemy_panel.png" id="34_avbcr"]
 [ext_resource type="Script" path="res://scene/level/ui/blur/blur_color_rect.gd" id="35_310ox"]
 [ext_resource type="Script" path="res://scene/level/ui/enemy_panel/enemy_panel.gd" id="35_cirdb"]
 [ext_resource type="Texture2D" uid="uid://dfvbdgeb1febt" path="res://asset/img/ui/level_scene/enemy_panel_btn.png" id="35_wagut"]
@@ -46,6 +45,13 @@
 [ext_resource type="Texture2D" uid="uid://coug628i4mrqx" path="res://asset/img/ui/level_scene/enemy_panel_btn_focus.png" id="36_kojdq"]
 [ext_resource type="Texture2D" uid="uid://bwodasj3q28bo" path="res://asset/img/ui/icon/hand_combat_icon.png" id="37_klaal"]
 [ext_resource type="Texture2D" uid="uid://cs02u75v3g2ut" path="res://asset/img/ui/level_scene/exit_icon.png" id="38_4tqv8"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/simple_panel.gd" id="39_0vfsw"]
+[ext_resource type="Texture2D" uid="uid://beqjopb61dni2" path="res://asset/img/ui/level_scene/VS.png" id="39_8u5ue"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://c677wx76m17ma" path="res://asset/spine/unit/unit.tres" id="40_xkhaf"]
+[ext_resource type="Texture2D" uid="uid://d1x61xa3m2b37" path="res://asset/img/ui/level_scene/switch_btn.png" id="41_0iimh"]
+[ext_resource type="Texture2D" uid="uid://cyruet17crhwf" path="res://asset/img/fight_map/default_cell.png" id="41_h1rum"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/detail_panel.gd" id="42_pc088"]
+[ext_resource type="Texture2D" uid="uid://dqvrbckbcy6ag" path="res://asset/img/fight_map/default_cell_0.png" id="42_qelvn"]
 [ext_resource type="Script" path="res://scene/level/ui/enemy_panel/hp_not_enough_popup.gd" id="42_w2raj"]
 [ext_resource type="Script" path="res://scene/level/ui/gameover_ui/gameover_ui.gd" id="44_bdh25"]
 [ext_resource type="Shader" path="res://asset/shader/empty_circle.gdshader" id="45_xsvy2"]
@@ -120,7 +126,20 @@ shader = ExtResource("33_whc2o")
 shader_parameter/blur = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnps1"]
-texture = ExtResource("34_avbcr")
+texture = ExtResource("69_4fvpk")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.537011, 0.537011, 0.537011, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubohl"]
+texture = ExtResource("76_uqq50")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(0, 0, 0, 0.627451)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dgih"]
 texture = ExtResource("36_kojdq")
@@ -144,7 +163,7 @@ texture_margin_left = 9.0
 texture_margin_top = 8.50732
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
-modulate_color = Color(0.446777, 0.446777, 0.446777, 1)
+modulate_color = Color(0.336608, 0.336608, 0.336608, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tervp"]
 texture = ExtResource("35_wagut")
@@ -152,7 +171,7 @@ texture_margin_left = 9.0
 texture_margin_top = 8.50732
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
-modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+modulate_color = Color(0.172833, 0.172833, 0.172833, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ox7b0"]
 texture = ExtResource("35_wagut")
@@ -160,7 +179,7 @@ texture_margin_left = 9.0
 texture_margin_top = 8.50732
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
-modulate_color = Color(0.34902, 0.34902, 0.34902, 1)
+modulate_color = Color(0.194349, 0.194349, 0.194349, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5w3a"]
 texture = ExtResource("36_kojdq")
@@ -893,6 +912,7 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 
 [node name="skip_layer_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -907,6 +927,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_SKIP_LAYER_BTN"
 
 [node name="help_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -921,6 +942,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_HELP_BTN"
 
 [node name="save_load_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -935,6 +957,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_SAVE_LOAD_BTN"
 
 [node name="volume_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -949,6 +972,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8idwf")
 text = "LS_VOLUME_BTN"
 
 [node name="exit_btn" type="Button" parent="left_ui/btns_grid_cntr"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -1004,11 +1028,11 @@ offset_bottom = 35.0
 [node name="title_label" type="Label" parent="right_ui/cheat_view/title_hbox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "LS_CHEAT_ABILITY"
 
 [node name="bug_icon_tex_rect" type="TextureRect" parent="right_ui/cheat_view/title_hbox"]
-custom_minimum_size = Vector2(35, 35)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("16_7xxej")
 expand_mode = 1
@@ -1021,6 +1045,7 @@ vertical_alignment = 1
 
 [node name="bug_count_label" type="Label" parent="right_ui/cheat_view/title_hbox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "0"
 vertical_alignment = 1
 
@@ -1029,7 +1054,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 40.0
+offset_top = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -1110,13 +1135,306 @@ script = ExtResource("35_310ox")
 [node name="enemy_panel" type="Panel" parent="popup_layer"]
 process_mode = 3
 visible = false
-offset_left = 442.0
-offset_top = 193.0
-offset_right = 1408.0
-offset_bottom = 887.0
+custom_minimum_size = Vector2(0, 400)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 459.0
+offset_right = 1391.0
+grow_vertical = 2
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qnps1")
 script = ExtResource("35_cirdb")
+
+[node name="simple_panel" type="Panel" parent="popup_layer/enemy_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -104.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ubohl")
+script = ExtResource("39_0vfsw")
+
+[node name="left_unit4_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+visible = false
+position = Vector2(257.5, 200)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="left_unit5_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+visible = false
+position = Vector2(132.5, 200)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="left_unit2_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+visible = false
+position = Vector2(320, 220)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="left_unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(195, 220)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="left_unit3_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+visible = false
+position = Vector2(70, 220)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="right_unit4_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(642.5, 200)
+scale = Vector2(-1, 1)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "cat_man"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="right_unit5_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(767.5, 200)
+scale = Vector2(-1, 1)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "female_imp"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="right_unit2_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(580, 220)
+scale = Vector2(-1, 1)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "data_body"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="right_unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(705, 220)
+scale = Vector2(-1, 1)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "cat_greatsword"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="right_unit3_spine" type="SpineSprite" parent="popup_layer/enemy_panel/simple_panel"]
+position = Vector2(830, 220)
+scale = Vector2(-1, 1)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "cat_archer"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="vs_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/simple_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("39_8u5ue")
+
+[node name="detail_panel" type="Panel" parent="popup_layer/enemy_panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -104.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ubohl")
+script = ExtResource("42_pc088")
+
+[node name="cell_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 220.0
+offset_right = 115.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell2_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 220.0
+offset_right = 205.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_qelvn")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell2_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell3_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 220.0
+offset_right = 295.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell3_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell4_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 220.0
+offset_right = 385.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell4_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell5_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 220.0
+offset_right = 475.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell5_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "player"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell6_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 220.0
+offset_right = 565.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell6_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "cat_man"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell7_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 220.0
+offset_right = 655.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell7_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "female_imp"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell8_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 220.0
+offset_right = 745.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell8_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "data_body"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="cell9_tex_rect" type="TextureRect" parent="popup_layer/enemy_panel/detail_panel"]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 220.0
+offset_right = 835.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_h1rum")
+
+[node name="unit_spine" type="SpineSprite" parent="popup_layer/enemy_panel/detail_panel/cell9_tex_rect"]
+position = Vector2(70, 0)
+skeleton_data_res = ExtResource("40_xkhaf")
+preview_skin = "cat_greatsword"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="switch_btn" type="TextureButton" parent="popup_layer/enemy_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = 12.0
+grow_horizontal = 0
+texture_normal = ExtResource("41_0iimh")
 
 [node name="btns_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel"]
 layout_mode = 1
@@ -2394,6 +2712,7 @@ script = ExtResource("86_1vuuv")
 
 [connection signal="losed" from="fight_layer/fight_scene" to="." method="_on_fight_scene_losed"]
 [connection signal="winned" from="fight_layer/fight_scene" to="." method="_on_fight_scene_winned"]
+[connection signal="pressed" from="popup_layer/enemy_panel/switch_btn" to="popup_layer/enemy_panel" method="_on_switch_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/fight_btn" to="popup_layer/enemy_panel" method="_on_fight_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/hand_combat_btn" to="popup_layer/enemy_panel" method="_on_hand_combat_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/btns_hbox/exit_btn" to="popup_layer/enemy_panel" method="_on_exit_btn_pressed"]
