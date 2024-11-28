@@ -23,5 +23,5 @@ func set_player_unit(p_value):
 		get_player_panel_btn().player_unit = player_unit
 	
 	for child in get_property_vbox().get_children():
-		if child.has_method("set_player_unit"):
-			child.set_player_unit(player_unit)
+		if child.has_method("set_unit"):
+			child.set_unit(player_unit)

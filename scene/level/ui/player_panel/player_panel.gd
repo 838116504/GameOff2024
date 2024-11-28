@@ -57,7 +57,7 @@ func close():
 	event_bus.unlisten(EventConst.BLUR_PRESSED, _on_ent_blur_pressed)
 	anim_playing = true
 	var tween = create_tween()
-	tween.tween_property(self, ^"scale", Vector2.ZERO, 0.2)
+	tween.tween_property(self, ^"scale", Vector2.ZERO, 0.15)
 	await tween.finished
 	anim_playing = false
 	release_focus()

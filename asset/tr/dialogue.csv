@@ -10,8 +10,8 @@ DIALOGUE_8,看到由程序生成了捷徑。打開試試能不能駭進她的電
 DIALOGUE_9,駭進去了(WSAD鍵 / 方向鍵移動),Hack went in ( WSAD keys / arrow keys movement )
 DIALOGUE_10,可惡，還有一層防火墙保護,"Damn, there is firewall protection here"
 DIALOGUE_11,咦，右邊有個Bug，可以利用這Bug破解這層的防火墙,"Hey, there is a bug on the right. You can use this bug to crack this layer of firewall"
-,,
-,,
+DIALOGUE_12,前面那個是對方電腦上的數據，需要擊敗它才能過去,The one in front is the data on the opponent's computer. You need to defeat it in order to pass
+DIALOGUE_13,正面決斗是雙方不回避的戰斗方式，跳過過程直接出結果,Head-on duel is a fighting method where both sides do not avoid. It will skip the process and get the result.
 ,,
 ,,
 ,,

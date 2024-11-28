@@ -7,7 +7,7 @@ LS_HELP_BTN,幫助,Help
 LS_VOLUME_BTN,音量设置,Volumes
 LS_EXIT,離開,Exit
 LS_CHEAT_ABILITY,作弊能力,Cheating Ability
-LS_HP_NOT_ENOUGH_CONFIRM,你的血量不足，是否確認正面決斗?,You don't have enough hp. Do you want to fight head-on?
+LS_HP_NOT_ENOUGH_CONFIRM,你的血量不足，是否確認正面決斗?,You don't have enough hp. Do you want to fight head-on duel?
 LS_YES_BTN,是,Yes
 LS_NO_BTN,否,No
 LS_GAMEOVER,游戲結束,Gameover
@@ -30,3 +30,4 @@ LS_DB_SELECT_SKILL_TITLE,選擇技能,Select Skill
 LS_DB_DAMAGE_INCREASE,傷害提升%d,Damage increase %d
 LS_DB_CD,冷卻%s,Cooldown %s
 LS_DB_CHARGE_COUNT,充能次數%s,Charge Count %s
+LS_CLOSE,關閉,Close

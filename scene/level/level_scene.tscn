@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=140 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -79,6 +79,7 @@
 [ext_resource type="PackedScene" uid="uid://o4ewhcv85p1y" path="res://scene/common/map_item_view/skill_patch.tscn" id="63_vrcqq"]
 [ext_resource type="Texture2D" uid="uid://ci0ibmfh682rk" path="res://asset/img/ui/common/skill_panel2.png" id="64_wa5gb"]
 [ext_resource type="Texture2D" uid="uid://biptqhenmfhgw" path="res://asset/img/ui/common/divider-005.png" id="68_8gl88"]
+[ext_resource type="Script" path="res://scene/level/ui/enemy_panel/win_popup.gd" id="68_kddat"]
 [ext_resource type="Script" path="res://scene/level/ui/data_panel/data_panel.gd" id="68_snsvq"]
 [ext_resource type="Texture2D" uid="uid://b3g5j2l1tnlad" path="res://asset/img/ui/common/panel-000.png" id="69_4fvpk"]
 [ext_resource type="Texture2D" uid="uid://cp1ofbowvggta" path="res://asset/img/ui/common/panel-transparent-center-013.png" id="69_5g7sc"]
@@ -214,6 +215,14 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 modulate_color = Color(1, 1, 1, 0.666667)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mp1vt"]
+texture = ExtResource("69_4fvpk")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.147672, 0.147672, 0.147672, 0.870588)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxog0"]
 texture = ExtResource("47_ki22v")
@@ -1164,6 +1173,7 @@ anchor_bottom = 0.5
 offset_left = 459.0
 offset_right = 1391.0
 grow_vertical = 2
+pivot_offset = Vector2(466, 200)
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qnps1")
 script = ExtResource("35_cirdb")
@@ -1702,6 +1712,73 @@ script = ExtResource("78_grqj7")
 
 [node name="skill_panel_cntr" parent="popup_layer/enemy_panel/unit_view_panel_cntr/vbox/skill_vbox" instance=ExtResource("79_a3obh")]
 layout_mode = 2
+
+[node name="win_popup" type="Control" parent="popup_layer/enemy_panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("68_kddat")
+
+[node name="panel" type="Panel" parent="popup_layer/enemy_panel/win_popup"]
+custom_minimum_size = Vector2(600, 220)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -110.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 110)
+theme_override_styles/panel = SubResource("StyleBoxTexture_mp1vt")
+
+[node name="title_label" type="Label" parent="popup_layer/enemy_panel/win_popup/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(149, 115)
+theme_override_colors/font_color = Color(0.949284, 0.890392, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="reward_hbox" type="HBoxContainer" parent="popup_layer/enemy_panel/win_popup/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 44.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="close_btn" type="Button" parent="popup_layer/enemy_panel/win_popup/panel"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "LS_CLOSE"
 
 [node name="database_panel" type="Panel" parent="popup_layer"]
 visible = false
@@ -2782,6 +2859,8 @@ script = ExtResource("86_1vuuv")
 [connection signal="yes_btn_pressed" from="popup_layer/enemy_panel/hp_not_enough_popup" to="popup_layer/enemy_panel" method="_on_hp_not_enough_popup_yes_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox/yes_btn" to="popup_layer/enemy_panel/hp_not_enough_popup" method="_on_yes_btn_pressed"]
 [connection signal="pressed" from="popup_layer/enemy_panel/hp_not_enough_popup/panel_cntr/margin_cntr/vbox/btn_hbox/no_btn" to="popup_layer/enemy_panel/hp_not_enough_popup" method="_on_no_btn_pressed"]
+[connection signal="closed" from="popup_layer/enemy_panel/win_popup" to="popup_layer/enemy_panel" method="_on_win_popup_closed"]
+[connection signal="pressed" from="popup_layer/enemy_panel/win_popup/panel/close_btn" to="popup_layer/enemy_panel/win_popup" method="_on_close_btn_pressed"]
 [connection signal="pressed" from="popup_layer/database_panel/title_color_rect/close_btn" to="popup_layer/database_panel" method="_on_close_btn_pressed"]
 [connection signal="pressed" from="popup_layer/database_panel/result_panel/strengthen_skill/skill_btn" to="popup_layer/database_panel" method="_on_skill_btn_pressed"]
 [connection signal="pressed" from="popup_layer/database_panel/result_panel/ok_btn" to="popup_layer/database_panel" method="_on_ok_btn_pressed"]

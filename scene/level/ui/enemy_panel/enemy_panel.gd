@@ -3,6 +3,7 @@ extends Panel
 var player_unit:PlayerUnit
 var unit:Unit : set = set_unit
 
+var anim_playing := false
 
 @onready var fight_btn = get_fight_btn()
 @onready var damage_label = get_damage_label()
@@ -11,6 +12,7 @@ var unit:Unit : set = set_unit
 @onready var detail_panel = get_detail_panel()
 @onready var select_patch = get_select_patch()
 @onready var unit_view_panel_cntr = get_unit_view_panel_cntr()
+@onready var win_popup = get_win_popup()
 
 
 func get_fight_btn():
@@ -34,6 +36,8 @@ func get_select_patch() -> NinePatchRect:
 func get_unit_view_panel_cntr():
 	return $unit_view_panel_cntr
 
+func get_win_popup():
+	return $win_popup
 
 func _ready():
 	event_bus.listen(EventConst.SHOW_ENEMY_PANEL, _on_ent_show_enemy_panel)
@@ -77,11 +81,30 @@ func set_unit(p_value):
 			damage_label.text = str(-damage)
 
 func open():
+	if anim_playing:
+		return
+	
 	event_bus.emit_signal(EventConst.ENABLE_BLUR)
 	grab_focus()
 	show()
+	
+	anim_playing = true
+	var tween = create_tween()
+	scale = Vector2.ZERO
+	tween.tween_property(self, "scale", Vector2.ONE, 0.2)
+	await tween.finished
+	anim_playing = false
 
 func close():
+	if anim_playing:
+		return
+	
+	anim_playing = true
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.15)
+	await tween.finished
+	anim_playing = false
+	
 	release_focus()
 	hide()
 	event_bus.emit_signal(EventConst.DISABLE_BLUR)
@@ -112,7 +135,8 @@ func _on_exit_btn_pressed() -> void:
 func _on_hand_combat_btn_pressed() -> void:
 	if player_unit.is_hand_combat_hp_enough(unit):
 		player_unit.hand_combat(unit)
-		close()
+		win_popup.set_reward_unit_list([unit] + unit.follow_unit_list)
+		win_popup.open()
 	else:
 		hp_not_enough_popup.popup()
 
@@ -142,3 +166,7 @@ func _on_detail_panel_unit_mouse_entered(p_unit) -> void:
 
 func _on_detail_panel_unit_mouse_exited(_unit) -> void:
 	hide_unit_view()
+
+
+func _on_win_popup_closed() -> void:
+	close()
