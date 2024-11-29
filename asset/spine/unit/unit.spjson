@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "pIgvb7UrNwg",
+	"hash": "bKW32PIwYfc",
 	"spine": "4.2.63-beta",
 	"x": -70,
 	"width": 140,
@@ -59,6 +59,30 @@
 		"attachments": {
 			"body": {
 				"body": { "name": "data_body_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "data_man",
+		"attachments": {
+			"body": {
+				"body": { "name": "data_man", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "data_swordsman",
+		"attachments": {
+			"body": {
+				"body": { "name": "data_swordsman", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "data_tank",
+		"attachments": {
+			"body": {
+				"body": { "name": "data_tank", "y": 70, "width": 140, "height": 140 }
 			}
 		}
 	},

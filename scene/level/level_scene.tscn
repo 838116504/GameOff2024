@@ -717,7 +717,7 @@ offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 26
-text = "8"
+text = "1000"
 vertical_alignment = 1
 
 [node name="layer_patch" type="NinePatchRect" parent="left_ui/player_view"]

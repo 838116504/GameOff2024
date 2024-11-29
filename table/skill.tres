@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="SkillTable" load_steps=23 format=3 uid="uid://g3kojqyfa1rf"]
+[gd_resource type="Resource" script_class="SkillTable" load_steps=38 format=3 uid="uid://dkullcyqfkmtd"]
 
-[ext_resource type="Script" path="res://table/skill_row.gd" id="1_rk864"]
-[ext_resource type="Script" path="res://table/skill_table.gd" id="2_r0822"]
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_43uj3"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_snvmu"]
 
-[sub_resource type="Resource" id="Resource_2pob6"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_3uthb"]
+script = ExtResource("1_43uj3")
 id = 1
 script_id = 1
 arg_list = []
@@ -25,8 +25,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_tdqps"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_qduh3"]
+script = ExtResource("1_43uj3")
 id = 2
 script_id = 1
 arg_list = []
@@ -47,8 +47,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_okpce"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_vlsil"]
+script = ExtResource("1_43uj3")
 id = 3
 script_id = 1
 arg_list = []
@@ -57,8 +57,8 @@ description = "SKILL_DESC_3"
 icon = "3.png"
 action_first = 0
 unable_block = 0
-cd = 3
-strike_damage = 0
+cd = 4
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
@@ -69,8 +69,8 @@ slash_damage_rate = 0.0
 effect_id = 1
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_3436n"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_m7m2n"]
+script = ExtResource("1_43uj3")
 id = 4
 script_id = 1
 arg_list = []
@@ -79,8 +79,8 @@ description = "SKILL_DESC_4"
 icon = "4.png"
 action_first = 0
 unable_block = 0
-cd = 0
-strike_damage = 0
+cd = 4
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
@@ -91,8 +91,8 @@ slash_damage_rate = 0.0
 effect_id = 2
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_nugcg"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_2tnux"]
+script = ExtResource("1_43uj3")
 id = 5
 script_id = 2
 arg_list = []
@@ -113,8 +113,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_culaf"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_ym0sb"]
+script = ExtResource("1_43uj3")
 id = 6
 script_id = 3
 arg_list = []
@@ -123,20 +123,20 @@ description = "SKILL_DESC_6"
 icon = "6.png"
 action_first = 0
 unable_block = 0
-cd = 6
-strike_damage = 10
+cd = 7
+strike_damage = 20
 thrust_damage = 0
 slash_damage = 0
 random_damage_type = 0
 free_put = 0
 strike_damage_rate = 0.0
-thrust_damage_rate = 1.0
+thrust_damage_rate = 2.0
 slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_whmjk"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_kl85r"]
+script = ExtResource("1_43uj3")
 id = 7
 script_id = 2
 arg_list = [2]
@@ -157,8 +157,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 1
 
-[sub_resource type="Resource" id="Resource_rjfwj"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_mmygl"]
+script = ExtResource("1_43uj3")
 id = 8
 script_id = 2
 arg_list = []
@@ -179,8 +179,8 @@ slash_damage_rate = 0.0
 effect_id = 3
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ymc4f"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_jc8co"]
+script = ExtResource("1_43uj3")
 id = 9
 script_id = 1
 arg_list = [2, 2]
@@ -201,8 +201,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_884u0"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_jkf4p"]
+script = ExtResource("1_43uj3")
 id = 10
 script_id = 4
 arg_list = []
@@ -223,8 +223,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_0vcjg"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_knl14"]
+script = ExtResource("1_43uj3")
 id = 11
 script_id = 1
 arg_list = []
@@ -245,8 +245,8 @@ slash_damage_rate = 1.0
 effect_id = 4
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_02soj"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_y2nso"]
+script = ExtResource("1_43uj3")
 id = 12
 script_id = 5
 arg_list = []
@@ -267,8 +267,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_dumuu"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_yikql"]
+script = ExtResource("1_43uj3")
 id = 13
 script_id = 0
 arg_list = []
@@ -289,8 +289,8 @@ slash_damage_rate = 0.0
 effect_id = 5
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_1fjfp"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_eu86t"]
+script = ExtResource("1_43uj3")
 id = 14
 script_id = 0
 arg_list = []
@@ -311,8 +311,8 @@ slash_damage_rate = 0.0
 effect_id = 6
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_0xb27"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_3i6rn"]
+script = ExtResource("1_43uj3")
 id = 15
 script_id = 0
 arg_list = []
@@ -333,8 +333,8 @@ slash_damage_rate = 0.0
 effect_id = 7
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_36cld"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_yyot8"]
+script = ExtResource("1_43uj3")
 id = 16
 script_id = 0
 arg_list = []
@@ -355,8 +355,8 @@ slash_damage_rate = 0.0
 effect_id = 8
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_0x2be"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_sgeis"]
+script = ExtResource("1_43uj3")
 id = 17
 script_id = 1
 arg_list = []
@@ -377,8 +377,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_l4sbc"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_1km33"]
+script = ExtResource("1_43uj3")
 id = 18
 script_id = 1
 arg_list = []
@@ -399,8 +399,8 @@ slash_damage_rate = 0.0
 effect_id = 2
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_7d4h3"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_2eljg"]
+script = ExtResource("1_43uj3")
 id = 19
 script_id = 1
 arg_list = []
@@ -421,8 +421,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_wo8gm"]
-script = ExtResource("1_rk864")
+[sub_resource type="Resource" id="Resource_rng4k"]
+script = ExtResource("1_43uj3")
 id = 20
 script_id = 1
 arg_list = []
@@ -443,6 +443,336 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
+[sub_resource type="Resource" id="Resource_xvdvu"]
+script = ExtResource("1_43uj3")
+id = 21
+script_id = 1
+arg_list = []
+name = "SKILL_1"
+description = "SKILL_DESC_1"
+icon = "1.png"
+action_first = 1
+unable_block = 0
+cd = 3
+strike_damage = 10
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 1.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_qnlrf"]
+script = ExtResource("1_43uj3")
+id = 22
+script_id = 1
+arg_list = []
+name = "SKILL_2"
+description = "SKILL_DESC_2"
+icon = "2.png"
+action_first = 0
+unable_block = 0
+cd = 6
+strike_damage = 20
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 2.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_80u0e"]
+script = ExtResource("1_43uj3")
+id = 23
+script_id = 1
+arg_list = [2, 2]
+name = "SKILL_9"
+description = "SKILL_DESC_9"
+icon = "9.png"
+action_first = 0
+unable_block = 0
+cd = 3
+strike_damage = 26
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 1.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_xl3vn"]
+script = ExtResource("1_43uj3")
+id = 24
+script_id = 4
+arg_list = []
+name = "SKILL_10"
+description = "SKILL_DESC_10"
+icon = "10.png"
+action_first = 0
+unable_block = 0
+cd = 4
+strike_damage = 26
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 1.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_3kul1"]
+script = ExtResource("1_43uj3")
+id = 25
+script_id = 2
+arg_list = []
+name = "SKILL_5"
+description = "SKILL_DESC_5"
+icon = "5.png"
+action_first = 0
+unable_block = 0
+cd = 4
+strike_damage = 20
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 1.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_glual"]
+script = ExtResource("1_43uj3")
+id = 26
+script_id = 3
+arg_list = []
+name = "SKILL_6"
+description = "SKILL_DESC_6"
+icon = "6.png"
+action_first = 0
+unable_block = 0
+cd = 7
+strike_damage = 36
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 2.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_yhc51"]
+script = ExtResource("1_43uj3")
+id = 27
+script_id = 1
+arg_list = []
+name = "SKILL_1"
+description = "SKILL_DESC_1"
+icon = "1.png"
+action_first = 1
+unable_block = 0
+cd = 3
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 1.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_t5js6"]
+script = ExtResource("1_43uj3")
+id = 28
+script_id = 1
+arg_list = []
+name = "SKILL_2"
+description = "SKILL_DESC_2"
+icon = "2.png"
+action_first = 0
+unable_block = 0
+cd = 6
+strike_damage = 200
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 2.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_tjh33"]
+script = ExtResource("1_43uj3")
+id = 29
+script_id = 1
+arg_list = []
+name = "SKILL_3"
+description = "SKILL_DESC_3"
+icon = "3.png"
+action_first = 0
+unable_block = 0
+cd = 3
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 1.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 0.0
+effect_id = 1
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_5phnm"]
+script = ExtResource("1_43uj3")
+id = 30
+script_id = 1
+arg_list = [2, 2]
+name = "SKILL_9"
+description = "SKILL_DESC_9"
+icon = "9.png"
+action_first = 0
+unable_block = 0
+cd = 3
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 1.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_5sbvb"]
+script = ExtResource("1_43uj3")
+id = 31
+script_id = 4
+arg_list = []
+name = "SKILL_10"
+description = "SKILL_DESC_10"
+icon = "10.png"
+action_first = 0
+unable_block = 0
+cd = 4
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 1.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_ev7cj"]
+script = ExtResource("1_43uj3")
+id = 32
+script_id = 1
+arg_list = []
+name = "SKILL_11"
+description = "SKILL_DESC_11"
+icon = "11.png"
+action_first = 0
+unable_block = 0
+cd = 5
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 0.0
+slash_damage_rate = 1.0
+effect_id = 4
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_npdre"]
+script = ExtResource("1_43uj3")
+id = 33
+script_id = 2
+arg_list = []
+name = "SKILL_5"
+description = "SKILL_DESC_5"
+icon = "5.png"
+action_first = 0
+unable_block = 0
+cd = 4
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 1.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_27vmc"]
+script = ExtResource("1_43uj3")
+id = 34
+script_id = 3
+arg_list = []
+name = "SKILL_6"
+description = "SKILL_DESC_6"
+icon = "6.png"
+action_first = 0
+unable_block = 0
+cd = 7
+strike_damage = 200
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 2.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 0
+
+[sub_resource type="Resource" id="Resource_s4jjk"]
+script = ExtResource("1_43uj3")
+id = 35
+script_id = 2
+arg_list = [2]
+name = "SKILL_7"
+description = "SKILL_DESC_7"
+icon = "7.png"
+action_first = 0
+unable_block = 0
+cd = 3
+strike_damage = 100
+thrust_damage = 0
+slash_damage = 0
+random_damage_type = 0
+free_put = 0
+strike_damage_rate = 0.0
+thrust_damage_rate = 1.0
+slash_damage_rate = 0.0
+effect_id = 0
+charge_count = 1
+
 [resource]
-script = ExtResource("2_r0822")
-row_list = Array[ExtResource("1_rk864")]([SubResource("Resource_2pob6"), SubResource("Resource_tdqps"), SubResource("Resource_okpce"), SubResource("Resource_3436n"), SubResource("Resource_nugcg"), SubResource("Resource_culaf"), SubResource("Resource_whmjk"), SubResource("Resource_rjfwj"), SubResource("Resource_ymc4f"), SubResource("Resource_884u0"), SubResource("Resource_0vcjg"), SubResource("Resource_02soj"), SubResource("Resource_dumuu"), SubResource("Resource_1fjfp"), SubResource("Resource_0xb27"), SubResource("Resource_36cld"), SubResource("Resource_0x2be"), SubResource("Resource_l4sbc"), SubResource("Resource_7d4h3"), SubResource("Resource_wo8gm")])
+script = ExtResource("2_snvmu")
+row_list = Array[ExtResource("1_43uj3")]([SubResource("Resource_3uthb"), SubResource("Resource_qduh3"), SubResource("Resource_vlsil"), SubResource("Resource_m7m2n"), SubResource("Resource_2tnux"), SubResource("Resource_ym0sb"), SubResource("Resource_kl85r"), SubResource("Resource_mmygl"), SubResource("Resource_jc8co"), SubResource("Resource_jkf4p"), SubResource("Resource_knl14"), SubResource("Resource_y2nso"), SubResource("Resource_yikql"), SubResource("Resource_eu86t"), SubResource("Resource_3i6rn"), SubResource("Resource_yyot8"), SubResource("Resource_sgeis"), SubResource("Resource_1km33"), SubResource("Resource_2eljg"), SubResource("Resource_rng4k"), SubResource("Resource_xvdvu"), SubResource("Resource_qnlrf"), SubResource("Resource_80u0e"), SubResource("Resource_xl3vn"), SubResource("Resource_3kul1"), SubResource("Resource_glual"), SubResource("Resource_yhc51"), SubResource("Resource_t5js6"), SubResource("Resource_tjh33"), SubResource("Resource_5phnm"), SubResource("Resource_5sbvb"), SubResource("Resource_ev7cj"), SubResource("Resource_npdre"), SubResource("Resource_27vmc"), SubResource("Resource_s4jjk")])

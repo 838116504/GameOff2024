@@ -2,7 +2,8 @@ extends RefCounted
 class_name BTConst
 
 const UNIT_BT_FILE_LIST = [
-	"melee.tres"
+	"melee.tres",
+	"range.tres",
 ]
 
 static func get_unit_bt(p_id):
