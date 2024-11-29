@@ -2,7 +2,7 @@ extends Resource
 class_name MapItem
 
 var position:Vector2i
-var map_view
+var map_view : set = set_map_view
 var node:Node2D
 
 
@@ -35,6 +35,9 @@ func get_description() -> String:
 
 func create_node() -> Node2D:
 	return null
+
+func set_map_view(p_value):
+	map_view = p_value
 
 func _map_item_entered(_item):
 	pass

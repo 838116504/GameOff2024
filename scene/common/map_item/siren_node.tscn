@@ -1,6 +1,124 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5u1hkgdidvj"]
+[gd_scene load_steps=8 format=3 uid="uid://h5u1hkgdidvj"]
 
 [ext_resource type="Texture2D" uid="uid://b5j0qxgb2impo" path="res://asset/img/map_item/siren.png" id="1_1bfgj"]
+[ext_resource type="Script" path="res://scene/common/map_item/siren_node.gd" id="2_5stwl"]
+[ext_resource type="Texture2D" uid="uid://bhy8tt3yune85" path="res://asset/img/map_item/laser_head.png" id="3_8yc0k"]
+[ext_resource type="Texture2D" uid="uid://dscums2138jwl" path="res://asset/img/map_item/laser.png" id="4_101pg"]
+[ext_resource type="Texture2D" uid="uid://dounrlxchk3v1" path="res://asset/img/map_item/laser_tail.png" id="5_iegll"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48um8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmpf0"]
 
 [node name="siren_node" type="Sprite2D"]
 texture = ExtResource("1_1bfgj")
+script = ExtResource("2_5stwl")
+
+[node name="laser_head_tex_rect" type="TextureRect" parent="."]
+anchors_preset = -1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8yc0k")
+
+[node name="left_laser" type="Control" parent="."]
+visible = false
+layout_mode = 3
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="body_patch" type="NinePatchRect" parent="left_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("4_101pg")
+
+[node name="tail_tex_rect" type="TextureRect" parent="left_laser"]
+material = SubResource("CanvasItemMaterial_hmpf0")
+layout_mode = 1
+anchors_preset = -1
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_iegll")
+stretch_mode = 3
+flip_h = true
+
+[node name="right_laser" type="Control" parent="."]
+visible = false
+layout_mode = 3
+mouse_filter = 2
+
+[node name="body_patch" type="NinePatchRect" parent="right_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("4_101pg")
+
+[node name="tail_tex_rect" type="TextureRect" parent="right_laser"]
+material = SubResource("CanvasItemMaterial_hmpf0")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("5_iegll")
+stretch_mode = 3
+
+[node name="up_laser" type="Control" parent="."]
+visible = false
+layout_mode = 3
+rotation = -1.5708
+mouse_filter = 2
+
+[node name="body_patch" type="NinePatchRect" parent="up_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("4_101pg")
+
+[node name="tail_tex_rect" type="TextureRect" parent="up_laser"]
+material = SubResource("CanvasItemMaterial_hmpf0")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("5_iegll")
+stretch_mode = 3
+
+[node name="down_laser" type="Control" parent="."]
+visible = false
+layout_mode = 3
+rotation = 1.5708
+mouse_filter = 2
+
+[node name="body_patch" type="NinePatchRect" parent="down_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("4_101pg")
+
+[node name="tail_tex_rect" type="TextureRect" parent="down_laser"]
+material = SubResource("CanvasItemMaterial_hmpf0")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_vertical = 2
+texture = ExtResource("5_iegll")
+stretch_mode = 3

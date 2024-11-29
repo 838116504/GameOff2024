@@ -34,6 +34,7 @@ func get_fight_layer():
 func get_play_timer():
 	return $play_timer
 
+
 func _ready():
 	if map == null:
 		load_level(TEST_LVL_PATH)
