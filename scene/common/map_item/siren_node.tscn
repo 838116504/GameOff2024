@@ -1,21 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://h5u1hkgdidvj"]
+[gd_scene load_steps=11 format=3 uid="uid://h5u1hkgdidvj"]
 
 [ext_resource type="Texture2D" uid="uid://b5j0qxgb2impo" path="res://asset/img/map_item/siren.png" id="1_1bfgj"]
 [ext_resource type="Script" path="res://scene/common/map_item/siren_node.gd" id="2_5stwl"]
 [ext_resource type="Texture2D" uid="uid://bhy8tt3yune85" path="res://asset/img/map_item/laser_head.png" id="3_8yc0k"]
 [ext_resource type="Texture2D" uid="uid://dscums2138jwl" path="res://asset/img/map_item/laser.png" id="4_101pg"]
 [ext_resource type="Texture2D" uid="uid://dounrlxchk3v1" path="res://asset/img/map_item/laser_tail.png" id="5_iegll"]
+[ext_resource type="Texture2D" uid="uid://ckvsdergmm38n" path="res://asset/img/map_item/siren_ring.png" id="6_4r1jm"]
+[ext_resource type="Texture2D" uid="uid://cdxst2b0swsth" path="res://asset/img/map_item/laser_fade.png" id="6_omqgp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48um8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmpf0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qpqyr"]
+blend_mode = 1
 
 [node name="siren_node" type="Sprite2D"]
 texture = ExtResource("1_1bfgj")
 script = ExtResource("2_5stwl")
 
 [node name="laser_head_tex_rect" type="TextureRect" parent="."]
-anchors_preset = -1
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
@@ -26,11 +30,26 @@ texture = ExtResource("3_8yc0k")
 
 [node name="left_laser" type="Control" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 1
 layout_mode = 3
+anchors_preset = 0
 grow_horizontal = 0
 mouse_filter = 2
 
+[node name="body_fade_patch" type="NinePatchRect" parent="left_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = ExtResource("6_omqgp")
+
 [node name="body_patch" type="NinePatchRect" parent="left_laser"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_48um8")
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 1
@@ -51,10 +70,25 @@ flip_h = true
 
 [node name="right_laser" type="Control" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 1
 layout_mode = 3
+anchors_preset = 0
 mouse_filter = 2
 
+[node name="body_fade_patch" type="NinePatchRect" parent="right_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = ExtResource("6_omqgp")
+
 [node name="body_patch" type="NinePatchRect" parent="right_laser"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_48um8")
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 1
@@ -75,11 +109,26 @@ stretch_mode = 3
 
 [node name="up_laser" type="Control" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 1
 layout_mode = 3
+anchors_preset = 0
 rotation = -1.5708
 mouse_filter = 2
 
+[node name="body_fade_patch" type="NinePatchRect" parent="up_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = ExtResource("6_omqgp")
+
 [node name="body_patch" type="NinePatchRect" parent="up_laser"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_48um8")
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 1
@@ -100,11 +149,26 @@ stretch_mode = 3
 
 [node name="down_laser" type="Control" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 1
 layout_mode = 3
+anchors_preset = 0
 rotation = 1.5708
 mouse_filter = 2
 
+[node name="body_fade_patch" type="NinePatchRect" parent="down_laser"]
+material = SubResource("CanvasItemMaterial_48um8")
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = ExtResource("6_omqgp")
+
 [node name="body_patch" type="NinePatchRect" parent="down_laser"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_48um8")
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 1
@@ -122,3 +186,9 @@ anchor_right = 1.0
 grow_vertical = 2
 texture = ExtResource("5_iegll")
 stretch_mode = 3
+
+[node name="ring_sprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_qpqyr")
+texture = ExtResource("6_4r1jm")

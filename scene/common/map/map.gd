@@ -50,7 +50,7 @@ func _to_cell_position(p_id:int) -> Vector2i:
 	var y:int = p_id / get_width()
 	return Vector2i(p_id - y * get_width(), y)
 
-func get_item(p_layer:int, p_pos:Vector2i):
+func get_item(p_layer:int, p_pos:Vector2i) -> MapItem:
 	var posId = _to_map_position_id(p_pos)
 	var itemData = item_list[p_layer][posId]
 	if itemData == null:

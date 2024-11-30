@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Tile" load_steps=2 format=3 uid="uid://cky8nqecej0lh"]
+
+[ext_resource type="Script" path="res://scene/common/tile/tile.gd" id="1_pdi6b"]
+
+[resource]
+script = ExtResource("1_pdi6b")
+name = "TILE_7"
+tile_id = 7
+blocked = false
+layer = 0

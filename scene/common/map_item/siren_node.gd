@@ -3,6 +3,7 @@ extends Sprite2D
 var item:MapItem
 var map_view:MapView
 
+
 func get_laser_head_tex_rect():
 	return $laser_head_tex_rect
 
@@ -18,28 +19,50 @@ func get_up_laser() -> Control:
 func get_down_laser() -> Control:
 	return $down_laser
 
+func get_ring_sprite() -> Sprite2D:
+	return $ring_sprite
+
 
 func _ready():
+	event_bus.listen(EventConst.SIREN_TRIGGERED, _on_ent_siren_triggered)
 	update()
 
 func set_map_view(p_value):
 	if map_view:
 		map_view.map.item_changed.disconnect(_on_map_item_changed)
+		map_view.map.tile_changed.disconnect(_on_map_tile_changed)
 		map_view.map.item_moved.disconnect(_on_map_item_moved)
 	
 	map_view = p_value
 	
 	if map_view:
 		map_view.map.item_changed.connect(_on_map_item_changed)
+		map_view.map.tile_changed.connect(_on_map_tile_changed)
 		map_view.map.item_moved.connect(_on_map_item_moved)
 		update()
 
-# 检查移除门
+# 检查门的移除
 func _on_map_item_changed(p_layer:int, p_pos:Vector2i):
 	if map_view.current_layer != p_layer:
 		return
 	
 	if map_view.map.get_item(p_layer, p_pos) != null:
+		return
+	
+	if item.position.x == p_pos.x:
+		if p_pos.y < item.position.y:
+			update_up_laser()
+		else:
+			update_down_laser()
+	elif item.position.y == p_pos.y:
+		if p_pos.x < item.position.x:
+			update_left_laser()
+		else:
+			update_right_laser()
+
+# 检查墙的破解
+func _on_map_tile_changed(p_layer:int, p_pos:Vector2i, _id:int):
+	if map_view.current_layer != p_layer:
 		return
 	
 	if item.position.x == p_pos.x:
@@ -183,7 +206,17 @@ func update_right_laser():
 		show_right_laser(l)
 
 func trigger():
-	pass
+	event_bus.unlisten(EventConst.SIREN_TRIGGERED, _on_ent_siren_triggered)
+	event_bus.emit_signal(EventConst.DISABLE_INPUT)
+	event_bus.emit_signal(EventConst.SIREN_TRIGGERED)
+	var ringSprite = get_ring_sprite()
+	ringSprite.show()
+	var tween = create_tween()
+	tween.tween_property(ringSprite, "scale", Vector2(20, 20), 0.4)
+	await tween.finished
+	ringSprite.hide()
+	event_bus.emit_signal(EventConst.ENABLE_INPUT)
+	queue_free()
 
 func update():
 	if map_view == null || !is_node_ready():
@@ -230,3 +263,6 @@ func show_down_laser(p_len):
 	downLaser.custom_minimum_size.x = p_len * map_view.get_cell_size().x
 	downLaser.show()
 	get_laser_head_tex_rect().show()
+
+func _on_ent_siren_triggered():
+	queue_free()

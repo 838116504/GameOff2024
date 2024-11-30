@@ -5,3 +5,5 @@ TILE_3,牆,Wall
 TILE_4,破解的牆,Cracked wall
 TILE_5,上樓梯,Upstairs
 TILE_6,下樓梯,Downstairs
+TILE_7,關閉的上樓梯,Closed upstairs
+TILE_8,關閉的下樓梯,Closed downstairs

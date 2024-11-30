@@ -15,9 +15,13 @@ const SHOW_ENEMY_PANEL = &"show_enemy_panel"
 const SHOW_DATABASE_PANEL = &"show_database_panel"
 const SHOW_DATA_PANEL = &"show_data_panel"
 const SHOW_PLAYER_PANEL = &"show_player_panel"
+
 const FIGHT = &"fight"
 const GAMEOVER = &"gameover"
+const ENABLE_INPUT = &"enable_input"
+const DISABLE_INPUT = &"disable_input"
 
+const SIREN_TRIGGERED = &"siren_triggered"
 
 const ENABLE_BLUR = &"enable_blur"
 const DISABLE_BLUR = &"disable_blur"
@@ -35,11 +39,16 @@ const INFO_LIST = [
 	[ SHOW_MAP_ITEM_DETAIL, [ {"name":"item", "type":TYPE_OBJECT} ]],
 	[ HIDE_MAP_ITEM_DETAIL, [ ]],
 	[ SHOW_ENEMY_PANEL, [ {"name":"unit", "type":TYPE_OBJECT} ]],
-	[ FIGHT, [ {"name":"unit", "type":TYPE_OBJECT} ]],
-	[ GAMEOVER, [ ]],
 	[ SHOW_PLAYER_PANEL, [ {"name":"player_unit", "type":TYPE_OBJECT} ]],
 	[ SHOW_DATABASE_PANEL, [ {"name":"database", "type":TYPE_OBJECT} ]],
 	[ SHOW_DATA_PANEL, [ ]],
+	
+	[ FIGHT, [ {"name":"unit", "type":TYPE_OBJECT} ]],
+	[ GAMEOVER, [ ]],
+	[ ENABLE_INPUT, [ ]],
+	[ DISABLE_INPUT, [ ]],
+	
+	[ SIREN_TRIGGERED, [ ]],
 	
 	[ ENABLE_BLUR, [ ]],
 	[ DISABLE_BLUR, [ ]],

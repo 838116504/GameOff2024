@@ -6,6 +6,7 @@ var current_layer:int = 0 : set = set_current_layer
 var item_node_list := []
 var tile_map:TileMap
 var item_root:Node2D
+var stairs_closed := false : set = set_stairs_closed
 
 var hover_item:MapItem = null : set = set_hover_item
 
@@ -17,6 +18,9 @@ func _init():
 	item_root = Node2D.new()
 	item_root.y_sort_enabled = true
 	add_child(item_root)
+
+func _ready():
+	event_bus.listen(EventConst.SIREN_TRIGGERED, _on_ent_siren_triggered)
 
 func _gui_input(p_event:InputEvent) -> void:
 	if map == null:
@@ -30,6 +34,27 @@ func _gui_input(p_event:InputEvent) -> void:
 			return
 		
 		hover_item = item_node_list[cellId].get_meta(&"item")
+
+func get_current_enemy_count() -> int:
+	var ret = 0
+	for y in map.get_height():
+		for x in map.get_width():
+			var pos = Vector2i(x, y)
+			var item = map.get_item(current_layer, pos)
+			if item == null:
+				continue
+			
+			if item.get_map_item_id() == MapItemConst.MapItemId.UNIT:
+				ret += 1
+	
+	return ret
+
+func _on_ent_siren_triggered():
+	var enemyCount = get_current_enemy_count()
+	if enemyCount <= 0:
+		return
+	
+	stairs_closed = true
 
 func get_cell_size() -> Vector2:
 	return tile_map.tile_set.tile_size
@@ -73,6 +98,9 @@ func init_map():
 		for x in map.get_width():
 			var pos = Vector2i(x, y)
 			var tile = map.get_tile(current_layer, pos)
+			match tile.get_tile_id():
+				TileConst.TileId.CLOSED_UPSTAIRS, TileConst.TileId.CLOSED_DOWNSTAIRS:
+					stairs_closed = true
 			_set_tile(pos, tile)
 			var item = map.get_item(current_layer, pos)
 			create_item_node(item, pos)
@@ -176,6 +204,10 @@ func _on_map_item_changed(p_layer:int, p_pos:Vector2i):
 	if p_layer != current_layer:
 		return
 	
+	if stairs_closed && map.get_item(p_layer, p_pos) == null:
+		if get_current_enemy_count() <= 0:
+			stairs_closed = false
+	
 	udpate_cell_item(p_pos)
 
 func udpate_cell_item(p_cell:Vector2i):
@@ -216,3 +248,29 @@ func _on_hover_item_node_tree_exited(p_node):
 		return
 	
 	hover_item = null
+
+func set_stairs_closed(p_value):
+	if stairs_closed == p_value:
+		return
+	
+	stairs_closed = p_value
+	if stairs_closed:
+		for y in map.get_height():
+			for x in map.get_width():
+				var pos = Vector2i(x, y)
+				var tile = map.get_tile(current_layer, pos)
+				match tile.get_tile_id():
+					TileConst.TileId.UPSTAIRS:
+						map.set_tile(current_layer, pos, TileConst.TileId.CLOSED_UPSTAIRS)
+					TileConst.TileId.DOWNSTAIRS:
+						map.set_tile(current_layer, pos, TileConst.TileId.CLOSED_DOWNSTAIRS)
+	else:
+		for y in map.get_height():
+			for x in map.get_width():
+				var pos = Vector2i(x, y)
+				var tile = map.get_tile(current_layer, pos)
+				match tile.get_tile_id():
+					TileConst.TileId.CLOSED_UPSTAIRS:
+						map.set_tile(current_layer, pos, TileConst.TileId.UPSTAIRS)
+					TileConst.TileId.CLOSED_DOWNSTAIRS:
+						map.set_tile(current_layer, pos, TileConst.TileId.DOWNSTAIRS)

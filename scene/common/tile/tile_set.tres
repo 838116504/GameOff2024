@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://ic24y1qifkto"]
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://ic24y1qifkto"]
 
 [ext_resource type="Texture2D" uid="uid://d4gdrws5qf2hv" path="res://asset/img/tile/floor.png" id="1_3kt2j"]
 [ext_resource type="Texture2D" uid="uid://blsucd18y7xlk" path="res://asset/img/tile/void.png" id="2_h8b1t"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://on50fnjemxox" path="res://asset/img/tile/cracked_wall.png" id="4_4ya1u"]
 [ext_resource type="Texture2D" uid="uid://bc06gt4cbiobw" path="res://asset/img/tile/upstairs.png" id="5_jo2ja"]
 [ext_resource type="Texture2D" uid="uid://bbg2poyxvru2l" path="res://asset/img/tile/downstairs.png" id="6_rq0b5"]
+[ext_resource type="Texture2D" uid="uid://bes7qyysdipbe" path="res://asset/img/tile/closed_upstairs.png" id="7_ofw3q"]
+[ext_resource type="Texture2D" uid="uid://d0f6pfyxewuse" path="res://asset/img/tile/closed_downstairs.png" id="8_rp07e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5q82t"]
 resource_name = "地板"
@@ -43,6 +45,18 @@ texture = ExtResource("6_rq0b5")
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ex3h0"]
+resource_name = "關閉的上樓梯"
+texture = ExtResource("7_ofw3q")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_287ws"]
+resource_name = "關閉的下樓梯"
+texture = ExtResource("8_rp07e")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(70, 70)
 sources/1 = SubResource("TileSetAtlasSource_5q82t")
@@ -51,3 +65,5 @@ sources/3 = SubResource("TileSetAtlasSource_2aw5l")
 sources/4 = SubResource("TileSetAtlasSource_x61um")
 sources/5 = SubResource("TileSetAtlasSource_n67ur")
 sources/6 = SubResource("TileSetAtlasSource_xvcvg")
+sources/7 = SubResource("TileSetAtlasSource_ex3h0")
+sources/8 = SubResource("TileSetAtlasSource_287ws")
