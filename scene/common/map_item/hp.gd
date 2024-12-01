@@ -1,6 +1,6 @@
 extends MapItem
 
-var hp:int = 400
+var hp:int = 100
 
 func get_map_item_id() -> int:
 	return MapItemConst.MapItemId.HP

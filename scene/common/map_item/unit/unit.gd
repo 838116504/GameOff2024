@@ -58,6 +58,7 @@ func get_unit_set_id() -> int:
 	return unit_set_id
 
 func get_map_item_name() -> String:
+	assert(row)
 	return tr(row.name)
 
 func set_unit_id(p_value):

@@ -22,6 +22,10 @@ func _init():
 func _ready():
 	event_bus.listen(EventConst.SIREN_TRIGGERED, _on_ent_siren_triggered)
 
+func _notification(p_what:int) -> void:
+	if p_what == NOTIFICATION_MOUSE_EXIT:
+		hover_item = null
+
 func _gui_input(p_event:InputEvent) -> void:
 	if map == null:
 		return
@@ -208,9 +212,9 @@ func _on_map_item_changed(p_layer:int, p_pos:Vector2i):
 		if get_current_enemy_count() <= 0:
 			stairs_closed = false
 	
-	udpate_cell_item(p_pos)
+	update_cell_item(p_pos)
 
-func udpate_cell_item(p_cell:Vector2i):
+func update_cell_item(p_cell:Vector2i):
 	var item = map.get_item(current_layer, p_cell)
 	create_item_node(item, p_cell)
 

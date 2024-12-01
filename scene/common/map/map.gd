@@ -71,6 +71,8 @@ func get_item(p_layer:int, p_pos:Vector2i) -> MapItem:
 		var ret = MapItemConst.MAP_ITEM_LIST[itemData[0]].new()
 		ret.position = p_pos
 		ret.set_data(itemData[1])
+		#if ret is Unit && itemData[1].has("unit_id"):
+			#print_debug(ret.position, " data = ", itemData[1])
 		return ret
 	
 	return itemData
