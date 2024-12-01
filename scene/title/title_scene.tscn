@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cty0ug207aupx"]
+[gd_scene load_steps=12 format=3 uid="uid://cty0ug207aupx"]
 
 [ext_resource type="Script" path="res://scene/title/title_scene.gd" id="1_gictc"]
 [ext_resource type="Texture2D" uid="uid://dri4mvjmw8yor" path="res://asset/img/game_icon/icon.png" id="2_f2lj2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cp6obvl6ir1qm" path="res://scene/title/save_ui.tscn" id="2_td3rp"]
 [ext_resource type="Script" path="res://scene/title/dark_color_rect.gd" id="3_8koce"]
 [ext_resource type="PackedScene" uid="uid://b5d60r4er82x0" path="res://scene/title/number_label.tscn" id="4_5l32s"]
+[ext_resource type="Script" path="res://scene/title/langage_switch_btn.gd" id="7_ondkl"]
 
 [sub_resource type="Animation" id="Animation_8h0sk"]
 length = 0.001
@@ -169,6 +170,22 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "TS_LEVEL_EDIT_BTN"
+
+[node name="langage_switch_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 90.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "English"
+script = ExtResource("7_ondkl")
 
 [node name="start_popup" type="Control" parent="."]
 visible = false
