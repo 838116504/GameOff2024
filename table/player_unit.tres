@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PlayerUnitTable" load_steps=5 format=3 uid="uid://b67xlaf4fh82i"]
+[gd_resource type="Resource" script_class="PlayerUnitTable" load_steps=5 format=3 uid="uid://rf1685r20pbw"]
 
-[ext_resource type="Script" path="res://table/player_unit_row.gd" id="1_jktak"]
-[ext_resource type="Script" path="res://table/player_unit_table.gd" id="2_cwvy7"]
+[ext_resource type="Script" path="res://table/player_unit_row.gd" id="1_n3gxr"]
+[ext_resource type="Script" path="res://table/player_unit_table.gd" id="2_l2hft"]
 
-[sub_resource type="Resource" id="Resource_afv7q"]
-script = ExtResource("1_jktak")
+[sub_resource type="Resource" id="Resource_44wxv"]
+script = ExtResource("1_n3gxr")
 id = 1
 hp = 1000
 def = 0
@@ -20,8 +20,8 @@ back_image = "player_back.png"
 right_image = "player_right.png"
 skin = "player"
 
-[sub_resource type="Resource" id="Resource_p2rbn"]
-script = ExtResource("1_jktak")
+[sub_resource type="Resource" id="Resource_cpkcd"]
+script = ExtResource("1_n3gxr")
 id = 2
 hp = 1000
 def = 0
@@ -38,5 +38,5 @@ right_image = "player_right.png"
 skin = "player"
 
 [resource]
-script = ExtResource("2_cwvy7")
-row_list = Array[ExtResource("1_jktak")]([SubResource("Resource_afv7q"), SubResource("Resource_p2rbn")])
+script = ExtResource("2_l2hft")
+row_list = Array[ExtResource("1_n3gxr")]([SubResource("Resource_44wxv"), SubResource("Resource_cpkcd")])
