@@ -233,6 +233,7 @@ func erase_put_skill(p_skillState:SkillState):
 	if find < 0:
 		return
 	
+	p_skillState.put = false
 	put_skill_state_list.remove_at(find)
 	put_skill_state_list_changed.emit(put_skill_state_list)
 

@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="LevelTable" load_steps=4 format=3 uid="uid://f4t4sxd27b24"]
+[gd_resource type="Resource" script_class="LevelTable" load_steps=4 format=3 uid="uid://dja425fykb7u8"]
 
-[ext_resource type="Script" path="res://table/level_row.gd" id="1_ln2h2"]
-[ext_resource type="Script" path="res://table/level_table.gd" id="2_m7mei"]
+[ext_resource type="Script" path="res://table/level_row.gd" id="1_gtm2a"]
+[ext_resource type="Script" path="res://table/level_table.gd" id="2_rs5vg"]
 
-[sub_resource type="Resource" id="Resource_m4j7e"]
-script = ExtResource("1_ln2h2")
+[sub_resource type="Resource" id="Resource_vpt25"]
+script = ExtResource("1_gtm2a")
 id = 1
 target_id = 50
 level = "noob"
 
 [resource]
-script = ExtResource("2_m7mei")
-row_list = Array[ExtResource("1_ln2h2")]([SubResource("Resource_m4j7e")])
+script = ExtResource("2_rs5vg")
+row_list = Array[ExtResource("1_gtm2a")]([SubResource("Resource_vpt25")])

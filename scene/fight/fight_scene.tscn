@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c2mw54wufmrb0" path="res://asset/img/ui/icon/strike_def_icon.png" id="9_g3rkv"]
 [ext_resource type="Texture2D" uid="uid://c5p1t2244361b" path="res://asset/img/ui/icon/thrust_def_icon.png" id="10_i0i2d"]
 [ext_resource type="Texture2D" uid="uid://d4k38313u8lgi" path="res://asset/img/ui/icon/slash_def_icon.png" id="11_y202e"]
-[ext_resource type="Script" path="res://scene/level/ui/blur/bbc.gd" id="14_3loe0"]
 [ext_resource type="Script" path="res://scene/fight/ui/win_ui/win_ui.gd" id="14_a7pud"]
+[ext_resource type="Script" path="res://scene/fight/ui/blur/bbc.gd" id="14_xtlbb"]
 [ext_resource type="Shader" path="res://asset/shader/blur_screen.gdshader" id="15_hxvq8"]
 [ext_resource type="Script" path="res://scene/fight/ui/lose_ui/lose_ui.gd" id="15_mnhor"]
 [ext_resource type="Texture2D" uid="uid://cyruet17crhwf" path="res://asset/img/fight_map/default_cell.png" id="16_kgvl8"]
@@ -509,7 +509,7 @@ libraries = {
 visible = false
 copy_mode = 2
 rect = Rect2(0, 0, 1920, 1080)
-script = ExtResource("14_3loe0")
+script = ExtResource("14_xtlbb")
 
 [node name="blur_color_rect" type="ColorRect" parent="ui_layer/bbc"]
 material = SubResource("ShaderMaterial_7jvca")
@@ -1423,6 +1423,7 @@ anchor_right = 0.5
 offset_top = 60.0
 offset_bottom = 60.0
 grow_horizontal = 2
+alignment = 1
 
 [node name="confirm_btn" type="Button" parent="ui_layer/win_ui/bg_color_rect"]
 visible = false

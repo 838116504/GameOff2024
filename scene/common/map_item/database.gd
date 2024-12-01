@@ -28,7 +28,8 @@ func set_use_time(p_value):
 		return
 	
 	use_time = p_value
-	map_view.map.set_item_data(map_view.current_layer, position, get_map_item_id(), get_data())
+	if map_view:
+		map_view.map.set_item_data(map_view.current_layer, position, get_map_item_id(), get_data())
 
 func set_data(p_data):
 	if p_data is Array:

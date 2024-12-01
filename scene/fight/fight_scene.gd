@@ -239,6 +239,7 @@ func _on_unit_died(p_unit:Unit):
 			win()
 
 func win():
+	ended = true
 	anim_player.play(&"win")
 	await anim_player.animation_finished
 	
@@ -489,12 +490,14 @@ func _on_win_ui_confirmed() -> void:
 	release_focus()
 	hide()
 	player_unit.fight_scene = null
+	get_win_ui().hide()
 	winned.emit()
 
 
 func _on_lose_ui_confirmed() -> void:
 	release_focus()
 	hide()
+	get_lose_ui().hide()
 	losed.emit()
 
 func add_fight_event(p_ent:FightEvent):
