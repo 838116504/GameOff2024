@@ -1,0 +1,179 @@
+[gd_resource type="Resource" script_class="UnitSetTable" load_steps=22 format=3 uid="uid://bgrvsitbt8qk8"]
+
+[ext_resource type="Script" path="res://table/unit_set_row.gd" id="1_6gkeg"]
+[ext_resource type="Script" path="res://table/unit_set_table.gd" id="2_djn44"]
+
+[sub_resource type="Resource" id="Resource_0shmg"]
+script = ExtResource("1_6gkeg")
+id = 1
+fight_map_id = 0
+fight_map_cell = 4
+unit_id_list = [1]
+unit_fight_x_list = [3]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_5jsyg"]
+script = ExtResource("1_6gkeg")
+id = 2
+fight_map_id = 1
+fight_map_cell = 5
+unit_id_list = [1, 1]
+unit_fight_x_list = [0, 4]
+unit_fight_dir_list = [1, 0]
+
+[sub_resource type="Resource" id="Resource_wbwlj"]
+script = ExtResource("1_6gkeg")
+id = 3
+fight_map_id = 0
+fight_map_cell = 4
+unit_id_list = [3]
+unit_fight_x_list = [3]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_m1qao"]
+script = ExtResource("1_6gkeg")
+id = 4
+fight_map_id = 0
+fight_map_cell = 4
+unit_id_list = [4]
+unit_fight_x_list = [3]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_rovpi"]
+script = ExtResource("1_6gkeg")
+id = 5
+fight_map_id = 0
+fight_map_cell = 5
+unit_id_list = [5]
+unit_fight_x_list = [4]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_q7usm"]
+script = ExtResource("1_6gkeg")
+id = 6
+fight_map_id = 1
+fight_map_cell = 5
+unit_id_list = [3, 3]
+unit_fight_x_list = [0, 4]
+unit_fight_dir_list = [1, 0]
+
+[sub_resource type="Resource" id="Resource_8copw"]
+script = ExtResource("1_6gkeg")
+id = 7
+fight_map_id = 1
+fight_map_cell = 5
+unit_id_list = [4, 4]
+unit_fight_x_list = [0, 4]
+unit_fight_dir_list = [1, 0]
+
+[sub_resource type="Resource" id="Resource_d66l8"]
+script = ExtResource("1_6gkeg")
+id = 8
+fight_map_id = 1
+fight_map_cell = 5
+unit_id_list = [5, 5]
+unit_fight_x_list = [0, 4]
+unit_fight_dir_list = [1, 0]
+
+[sub_resource type="Resource" id="Resource_n08dp"]
+script = ExtResource("1_6gkeg")
+id = 9
+fight_map_id = 1
+fight_map_cell = 5
+unit_id_list = [4, 3]
+unit_fight_x_list = [0, 4]
+unit_fight_dir_list = [1, 0]
+
+[sub_resource type="Resource" id="Resource_p1ybm"]
+script = ExtResource("1_6gkeg")
+id = 10
+fight_map_id = 2
+fight_map_cell = 5
+unit_id_list = [5, 3]
+unit_fight_x_list = [4, 2]
+unit_fight_dir_list = [0, 0]
+
+[sub_resource type="Resource" id="Resource_a1n5v"]
+script = ExtResource("1_6gkeg")
+id = 11
+fight_map_id = 2
+fight_map_cell = 5
+unit_id_list = [5, 4]
+unit_fight_x_list = [4, 2]
+unit_fight_dir_list = [0, 0]
+
+[sub_resource type="Resource" id="Resource_afwck"]
+script = ExtResource("1_6gkeg")
+id = 12
+fight_map_id = 1
+fight_map_cell = 7
+unit_id_list = [3, 3, 3]
+unit_fight_x_list = [0, 4, 6]
+unit_fight_dir_list = [1, 0, 0]
+
+[sub_resource type="Resource" id="Resource_dpuno"]
+script = ExtResource("1_6gkeg")
+id = 13
+fight_map_id = 1
+fight_map_cell = 7
+unit_id_list = [4, 4, 4]
+unit_fight_x_list = [0, 4, 6]
+unit_fight_dir_list = [1, 0, 0]
+
+[sub_resource type="Resource" id="Resource_0kbef"]
+script = ExtResource("1_6gkeg")
+id = 14
+fight_map_id = 1
+fight_map_cell = 7
+unit_id_list = [5, 5, 3]
+unit_fight_x_list = [0, 5, 4]
+unit_fight_dir_list = [1, 0, 0]
+
+[sub_resource type="Resource" id="Resource_c8vk6"]
+script = ExtResource("1_6gkeg")
+id = 15
+fight_map_id = 1
+fight_map_cell = 7
+unit_id_list = [5, 5, 4]
+unit_fight_x_list = [0, 5, 4]
+unit_fight_dir_list = [1, 0, 0]
+
+[sub_resource type="Resource" id="Resource_vl863"]
+script = ExtResource("1_6gkeg")
+id = 16
+fight_map_id = 0
+fight_map_cell = 5
+unit_id_list = [16]
+unit_fight_x_list = [2]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_l1c3a"]
+script = ExtResource("1_6gkeg")
+id = 17
+fight_map_id = 0
+fight_map_cell = 5
+unit_id_list = [17]
+unit_fight_x_list = [2]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_fm5lo"]
+script = ExtResource("1_6gkeg")
+id = 18
+fight_map_id = 0
+fight_map_cell = 5
+unit_id_list = [18]
+unit_fight_x_list = [2]
+unit_fight_dir_list = [0]
+
+[sub_resource type="Resource" id="Resource_u8pxk"]
+script = ExtResource("1_6gkeg")
+id = 50
+fight_map_id = 0
+fight_map_cell = 4
+unit_id_list = [50]
+unit_fight_x_list = [2]
+unit_fight_dir_list = [0]
+
+[resource]
+script = ExtResource("2_djn44")
+row_list = Array[ExtResource("1_6gkeg")]([SubResource("Resource_0shmg"), SubResource("Resource_5jsyg"), SubResource("Resource_wbwlj"), SubResource("Resource_m1qao"), SubResource("Resource_rovpi"), SubResource("Resource_q7usm"), SubResource("Resource_8copw"), SubResource("Resource_d66l8"), SubResource("Resource_n08dp"), SubResource("Resource_p1ybm"), SubResource("Resource_a1n5v"), SubResource("Resource_afwck"), SubResource("Resource_dpuno"), SubResource("Resource_0kbef"), SubResource("Resource_c8vk6"), SubResource("Resource_vl863"), SubResource("Resource_l1c3a"), SubResource("Resource_fm5lo"), SubResource("Resource_u8pxk")])

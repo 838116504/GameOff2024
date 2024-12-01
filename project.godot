@@ -14,10 +14,11 @@ scene_transition/transtion_path="res://addons/scene_transition/transition.tscn"
 
 [application]
 
-config/name="Game Off 2024"
+config/name="Hacker World"
 run/main_scene="res://scene/title/title_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://asset/img/game_icon/icon.png"
+config/windows_native_icon="res://asset/img/game_icon/icon.ico"
 
 [autoload]
 

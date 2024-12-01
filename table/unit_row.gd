@@ -19,22 +19,6 @@ extends Resource
 @export var spd:int
 # 技能id數組
 @export var skill_id_list:Array
-# 戰斗起始位置
-@export var fight_x:int
-# 戰斗起始方向
-# (1=右,其他左)
-@export var fight_dir:int
-# 追隨unit id數組
-@export var follow_unit_id_list:Array
-# 追隨單位戰斗起始位置
-@export var follow_unit_fight_x_list:Array
-# 追隨單位戰斗起始方向
-# (1=右,其他左)
-@export var follow_unit_fight_dir_list:Array
-# 戰斗地圖id
-@export var fight_map_id:int
-# 戰斗地圖格数
-@export var fight_map_cell:int
 # 正面圖片
 @export var image:String
 # 皮肤名字

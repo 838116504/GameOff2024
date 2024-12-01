@@ -20,8 +20,8 @@ MAP_ITEM_DESC_9,增加{hp}血量,Add {hp} hp
 MAP_ITEM_10,甲,Armor
 MAP_ITEM_DESC_10,增加{armor}防禦,Add {armor} defence
 MAP_ITEM_11,警報器,Siren
-MAP_ITEM_DESC_11,監視前後左右四方向，發現入侵者就會發起警報,"Monitor the front, rear, left, and right directions and trigger an alarm if intruders are found"
+MAP_ITEM_DESC_11,監視上下左右四方向，發現入侵者就會發起警報,"Monitor the up, down, left, and right directions and trigger an alarm if intruders are found"
 MAP_ITEM_12,文件夾,Folder
-MAP_ITEM_DESC_12,裏面藏着的不為人知的內容正是我的目標,The unknown content hidden inside is my goal
+MAP_ITEM_DESC_12,裏面藏着的不為人知的內容,The unknown content hidden
 MAP_ITEM_13,數據庫,Database
 MAP_ITEM_DESC_13,強化自身的地方,A place to strengthen yourself

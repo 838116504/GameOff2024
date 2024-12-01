@@ -116,9 +116,9 @@ func create_item_node(p_item:MapItem, p_pos):
 	if p_item == null:
 		return
 	
-	var node:Node = p_item.create_node()
 	p_item.map_view = self
 	p_item.position = p_pos
+	var node:Node = p_item.create_node()
 	if node:
 		item_node_list[itemId] = node
 		node.set_meta(&"item", p_item)

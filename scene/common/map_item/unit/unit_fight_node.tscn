@@ -52,6 +52,12 @@ position = Vector2(0, -60)
 bone_name = "ammo"
 bone_mode = 1
 
+[node name="ammo2_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "ammo"
+bone_mode = 1
+
 [node name="passive_cd_panel_cntr" type="PanelContainer" parent="."]
 visible = false
 anchors_preset = 7

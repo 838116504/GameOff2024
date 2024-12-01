@@ -10,7 +10,7 @@ func get_fight_scene() -> FightScene:
 func _ready():
 	var playerUnit = PlayerUnit.new()
 	playerUnit.set_unit_id(2)
-	var enemy = Unit.create_by_id(50)
+	var enemy = Unit.create_by_unit_set_id(50)
 	fight_scene.set_fight(playerUnit, enemy)
 	var startEnt = StartDialgoueEvent.new()
 	startEnt.dialogue_id = 1

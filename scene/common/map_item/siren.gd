@@ -13,7 +13,6 @@ func set_map_view(p_value):
 func create_node() -> Node2D:
 	node = preload("siren_node.tscn").instantiate()
 	node.item = self
-	node.set_map_view(map_view)
 	return node
 
 func _map_item_entered(_item):

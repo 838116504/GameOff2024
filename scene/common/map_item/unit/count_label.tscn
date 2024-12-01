@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ygkt66jdwbbo"]
+
+[ext_resource type="Texture2D" uid="uid://ch2cuy6cjl0nc" path="res://asset/img/ui/icon/unit_count_icon.png" id="1_dnl6d"]
+
+[node name="count_label" type="Label"]
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+text = "2"
+
+[node name="icon_tex_rect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_dnl6d")
+stretch_mode = 3

@@ -1,7 +1,7 @@
 extends MapItem
 class_name Database
 
-var use_time:int = 0
+var use_time:int = 0 : set = set_use_time
 var base_cost:int = 1
 var increase_cost:int = 1
 
@@ -23,6 +23,12 @@ func is_blocked() -> bool:
 func get_cost():
 	return base_cost + increase_cost * use_time
 
+func set_use_time(p_value):
+	if use_time == p_value:
+		return
+	
+	use_time = p_value
+	map_view.map.set_item_data(map_view.current_layer, position, get_map_item_id(), get_data())
 
 func set_data(p_data):
 	if p_data is Array:

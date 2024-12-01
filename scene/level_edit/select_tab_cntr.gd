@@ -120,9 +120,9 @@ func init_item():
 		itemBtn.pressed.connect(_on_item_btn_pressed.bind(itemBtn))
 		itemHflowCntr.add_child(itemBtn)
 	
-	for row in table_set.unit.get_row_list():
+	for row in table_set.unit_set.get_row_list():
 		var itemBtn = ItemBtnScene.instantiate()
-		itemBtn.item = Unit.create_by_id(row.id)
+		itemBtn.item = Unit.create_by_unit_set_id(row.id)
 		itemBtn.pressed.connect(_on_item_btn_pressed.bind(itemBtn))
 		itemHflowCntr.add_child(itemBtn)
 

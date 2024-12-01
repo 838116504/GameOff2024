@@ -2,7 +2,7 @@ extends Resource
 class_name MapItem
 
 var position:Vector2i
-var map_view : set = set_map_view
+var map_view:MapView : set = set_map_view
 var node:Node2D
 
 

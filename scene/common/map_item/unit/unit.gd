@@ -15,6 +15,7 @@ signal next_operate_changed(p_op)
 
 
 var unit_id:int = 0 : set = set_unit_id
+var unit_set_id:int = 0 : set = set_unit_set_id
 var faction_id:int = 1
 var hp:int : set = set_hp
 var next_operate:FightOperate = null : set = set_next_operate
@@ -44,6 +45,7 @@ var block_count:int = 0
 var followed_unit = null
 var follow_unit_list := []
 var row : set = set_row
+var unit_set_row : set = set_unit_set_row
 var fight_bt:BehaviorTree
 
 func _init():
@@ -61,6 +63,13 @@ func set_unit_id(p_value):
 	
 	unit_id = p_value
 	row = table_set.unit.get_row(unit_id)
+
+func set_unit_set_id(p_value):
+	if unit_set_id == p_value:
+		return
+	
+	unit_set_id = p_value
+	unit_set_row = table_set.unit_set.get_row(unit_set_id)
 
 func set_hp(p_value):
 	if hp == p_value:
@@ -99,11 +108,6 @@ func set_row(p_value):
 	row = p_value
 	if row:
 		hp = row.hp
-		fight_x = row.fight_x
-		if row.fight_dir == 1:
-			fight_direction = 1
-		else:
-			fight_direction = -1
 		
 		skill_state_list.clear()
 		for skillId in row.skill_id_list:
@@ -112,17 +116,34 @@ func set_row(p_value):
 			state.skill = skill
 			skill_state_list.append(state)
 		
-		if followed_unit == null:
-			for i in row.follow_unit_id_list.size():
-				var unit = Unit.create_by_id(row.follow_unit_id_list[i], self)
-				unit.fight_x = row.follow_unit_fight_x_list[i]
-				if row.follow_unit_fight_dir_list[i] == 1:
+		fight_bt = BTConst.get_unit_bt(row.bt_id)
+
+func set_unit_set_row(p_value):
+	if unit_set_row == p_value:
+		return
+	
+	unit_set_row = p_value
+	if unit_set_row:
+		assert(!unit_set_row.unit_id_list.is_empty() && \
+				unit_set_row.unit_id_list.size() == unit_set_row.unit_fight_x_list.size() && \
+				unit_set_row.unit_fight_dir_list.size() == unit_set_row.unit_fight_x_list.size())
+		unit_id = unit_set_row.unit_id_list[0]
+		fight_x = unit_set_row.unit_fight_x_list[0]
+		if unit_set_row.unit_fight_dir_list[0] == 1:
+			fight_direction = 1
+		else:
+			fight_direction = -1
+		
+		follow_unit_list.clear()
+		if unit_set_row.unit_id_list.size() > 1:
+			for i in range(1, unit_set_row.unit_id_list.size()):
+				var unit = Unit.create_by_id(unit_set_row.unit_id_list[i], self)
+				unit.fight_x = unit_set_row.unit_fight_x_list[i]
+				if unit_set_row.unit_fight_dir_list[i] == 1:
 					unit.fight_direction = 1
 				else:
 					unit.fight_direction = -1
 				follow_unit_list.append(unit)
-		
-		fight_bt = BTConst.get_unit_bt(row.bt_id)
 
 func get_faction_id():
 	if followed_unit != null:
@@ -382,14 +403,14 @@ func get_fight_skin() -> String:
 	return ""
 
 func get_fight_map_id() -> int:
-	if row:
-		return row.fight_map_id
+	if unit_set_row:
+		return unit_set_row.fight_map_id
 	
 	return 0
 
 func get_fight_map_cell_count() -> int:
-	if row:
-		return row.fight_map_cell
+	if unit_set_row:
+		return unit_set_row.fight_map_cell
 	
 	return 4
 
@@ -417,7 +438,7 @@ func is_invincible() -> bool:
 
 func get_data():
 	var ret = {}
-	ret.unit_id = unit_id
+	ret.unit_set_id = unit_set_id
 	
 	return ret
 
@@ -523,8 +544,13 @@ func set_extra_thrust_hit_rate(p_value):
 func set_extra_slash_hit_rate(p_value):
 	extra_slash_hit_rate = p_value
 
-static func create_by_id(p_id:int, p_followed_unit = null):
+static func create_by_id(p_id:int, p_followed_unit = null) -> Unit:
 	var ret = Unit.new()
 	ret.followed_unit = p_followed_unit
 	ret.unit_id = p_id
+	return ret
+
+static func create_by_unit_set_id(p_id:int) -> Unit:
+	var ret = Unit.new()
+	ret.unit_set_id = p_id
 	return ret

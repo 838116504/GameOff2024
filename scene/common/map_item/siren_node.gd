@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var item:MapItem
+var item:MapItem : set = set_item
 var map_view:MapView
 
 
@@ -26,6 +26,11 @@ func get_ring_sprite() -> Sprite2D:
 func _ready():
 	event_bus.listen(EventConst.SIREN_TRIGGERED, _on_ent_siren_triggered)
 	update()
+
+func set_item(p_value):
+	item = p_value
+	if item:
+		map_view = item.map_view
 
 func set_map_view(p_value):
 	if map_view:
