@@ -237,6 +237,18 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
+[node name="target_label" type="Label" parent="left_ui/select_tab_cntr/item_scroll_cntr/item_hflow_cntr/cursor_btn"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 2.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "目標"
+
 [node name="tile_scroll_cntr" type="ScrollContainer" parent="left_ui/select_tab_cntr"]
 visible = false
 layout_mode = 2
@@ -342,6 +354,7 @@ filters = PackedStringArray("*.lvl;Level File")
 
 [connection signal="item_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_item_put"]
 [connection signal="layer_changed" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_layer_changed"]
+[connection signal="target_unit_set_id_changed" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_target_unit_set_id_changed"]
 [connection signal="tile_put" from="left_ui/select_tab_cntr" to="." method="_on_select_tab_cntr_tile_put"]
 [connection signal="item_data_changed" from="left_ui/map_item_detail_ui/scroll_cntr/vbox/map_item_view_panel_cntr" to="." method="_on_map_item_view_panel_cntr_item_data_changed"]
 [connection signal="file_selected" from="open_file_dialog" to="." method="_on_open_file_dialog_file_selected"]

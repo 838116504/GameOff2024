@@ -27,6 +27,7 @@ signal layer_changed(p_layer:int)
 signal strike_hit_rate_changed(p_rate:float)
 signal thrust_hit_rate_changed(p_rate:float)
 signal slash_hit_rate_changed(p_rate:float)
+signal hand_combat_won(p_unit:Unit)
 
 
 var def:int
@@ -162,7 +163,7 @@ func round_start():
 		passive_state.round_start()
 
 func is_hand_combat_hp_enough(p_unit:Unit) -> bool:
-	var uid = p_unit.get_unit_id()
+	var uid = p_unit.get_unit_set_id()
 	if !unit_hand_combat_damage_dict.has(uid):
 		get_unit_hand_combat_damage(p_unit)
 	
@@ -175,7 +176,7 @@ func is_hand_combat_hp_enough(p_unit:Unit) -> bool:
 	return false
 
 func hand_combat(p_unit:Unit):
-	var uid = p_unit.get_unit_id()
+	var uid = p_unit.get_unit_set_id()
 	if !unit_hand_combat_damage_dict.has(uid):
 		get_unit_hand_combat_damage(p_unit)
 	
@@ -192,11 +193,12 @@ func hand_combat(p_unit:Unit):
 		return
 	
 	kill_count += 1
-	add_data(uid)
+	add_data(p_unit.get_unit_id())
 	for unit in p_unit.follow_unit_list:
 		add_data(unit.get_unit_id())
 	
 	map_view.erase_item(p_unit.position)
+	hand_combat_won.emit(p_unit)
 
 func get_unit_hand_combat_damage(p_unit:Unit):
 	assert(p_unit != null)
@@ -523,6 +525,8 @@ func set_extra_slash_hit_rate(p_value):
 	extra_slash_hit_rate = p_value
 	slash_hit_rate_changed.emit(get_slash_hit_rate())
 
+func get_gameover_score():
+	return reached_layer * 100 + kill_count
 
 func _mouse_entered():
 	pass

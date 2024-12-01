@@ -1,7 +1,7 @@
 extends BaseScene
 class_name FightScene
 
-signal winned
+signal won
 signal before_lose_animation
 signal losed
 
@@ -491,7 +491,7 @@ func _on_win_ui_confirmed() -> void:
 	hide()
 	player_unit.fight_scene = null
 	get_win_ui().hide()
-	winned.emit()
+	won.emit()
 
 
 func _on_lose_ui_confirmed() -> void:

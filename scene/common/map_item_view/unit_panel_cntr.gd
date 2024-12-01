@@ -51,7 +51,7 @@ func update():
 	else:
 		strikeLabel.get_parent().get_parent().hide()
 	
-	var thrustHitRate = 1.0 - unit.get_strike_hit_rate()
+	var thrustHitRate = 1.0 - unit.get_thrust_hit_rate()
 	var thrustLabel = get_thrust_def_value_label()
 	if thrustHitRate != 0.0:
 		thrustLabel.text = "%0.1f%%" % (100.0 * thrustHitRate)

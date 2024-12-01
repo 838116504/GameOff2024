@@ -18,6 +18,7 @@ const SHOW_PLAYER_PANEL = &"show_player_panel"
 
 const FIGHT = &"fight"
 const GAMEOVER = &"gameover"
+const GAME_VICTORY = &"game_victory"
 const ENABLE_INPUT = &"enable_input"
 const DISABLE_INPUT = &"disable_input"
 
@@ -47,6 +48,7 @@ const INFO_LIST = [
 	
 	[ FIGHT, [ {"name":"unit", "type":TYPE_OBJECT} ]],
 	[ GAMEOVER, [ ]],
+	[ GAME_VICTORY, [ {"name":"rest_unit_count", "type":TYPE_INT}, {"name":"score", "type":TYPE_INT} ]],
 	[ ENABLE_INPUT, [ ]],
 	[ DISABLE_INPUT, [ ]],
 	

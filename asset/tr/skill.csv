@@ -45,3 +45,9 @@ SKILL_16,衝刺,Dash
 SKILL_DESC_16,衝到最前方,Rush to the front
 SKILL_17,解包,Unpacking
 SKILL_DESC_17,對面前一格造成{damage},Deal {damage} to the front cell
+SKILL_50,雌小鬼戰敗史,History of the defeat of the mesugaki
+SKILL_DESC_50,對雌小鬼造成{damage}傷害。如果她的血量少于1500則這傷害雙倍,"Causes {damage} damage to the mesugaki. If she's HP is less than 1500, the damage will be doubled."
+SKILL_51,雌小鬼的債款,The mesugaki's debt
+SKILL_DESC_51,雌小鬼附加50%易傷7回合,The mesugaki increases vulnerability by 50% for 8 turns
+SKILL_52,雌小鬼的馬甲,The mesugaki's sockpuppet
+SKILL_DESC_52,雌小鬼附加100%破防7回合，對雌小鬼造成{damage}傷害,"The mesugaki has an additional 100% defense break for 8 turns, causing {damage} damage to the mesugaki."

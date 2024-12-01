@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://wthqcgpv2spv"]
+[gd_scene load_steps=144 format=3 uid="uid://wthqcgpv2spv"]
 
 [ext_resource type="Script" path="res://scene/level/level_scene.gd" id="1_vopfr"]
 [ext_resource type="Texture2D" uid="uid://b6egdlkgfe4uk" path="res://asset/img/player/player_front.png" id="2_i5utg"]
@@ -95,6 +95,7 @@
 [ext_resource type="Script" path="res://scene/level/ui/player_panel/skill_vbox.gd" id="78_grqj7"]
 [ext_resource type="PackedScene" uid="uid://cxt42sqvsssfa" path="res://scene/level/ui/player_panel/skill_panel_cntr.tscn" id="79_a3obh"]
 [ext_resource type="Script" path="res://scene/common/play_timer/play_timer.gd" id="86_1vuuv"]
+[ext_resource type="Script" path="res://scene/level/ui/victory_ui/victory_ui.gd" id="95_8oiag"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67pus"]
 texture = ExtResource("15_7n6e5")
@@ -564,6 +565,307 @@ tracks/7/keys = {
 _data = {
 "RESET": SubResource("Animation_ji2v2"),
 "gameover": SubResource("Animation_hs5jh")
+}
+
+[sub_resource type="Animation" id="Animation_fug2p"]
+resource_name = "victory"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title_label:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -200.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("title_label:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -200.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("layer_hbox:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_hbox:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rest_enemy_hbox:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hp_hbox:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sep_color_rect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("score_hbox:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("thank_label:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("exit_btn:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("bg_color_rect:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ru8vb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title_label:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("title_label:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("layer_hbox:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_hbox:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rest_enemy_hbox:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hp_hbox:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sep_color_rect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("score_hbox:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("thank_label:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("exit_btn:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("bg_color_rect:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0kj8g"]
+_data = {
+"RESET": SubResource("Animation_ru8vb"),
+"victory": SubResource("Animation_fug2p")
 }
 
 [node name="level_scene" type="Control"]
@@ -2844,11 +3146,279 @@ libraries = {
 "": SubResource("AnimationLibrary_lq71y")
 }
 
+[node name="victory_ui" type="Control" parent="popup_layer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("95_8oiag")
+
+[node name="bg_color_rect" type="ColorRect" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="title_label" type="Label" parent="popup_layer/victory_ui"]
+custom_minimum_size = Vector2(1000, 160)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(500, 80)
+theme_override_colors/font_color = Color(0.973814, 0.697971, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0.494425, 0.221277, 4.81308e-08, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "LS_GAME_VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="layer_hbox" type="HBoxContainer" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="text_label" type="Label" parent="popup_layer/victory_ui/layer_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LS_GAMEOVER_LAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space" type="Control" parent="popup_layer/victory_ui/layer_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="layer_label" type="Label" parent="popup_layer/victory_ui/layer_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy_hbox" type="HBoxContainer" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="text_label" type="Label" parent="popup_layer/victory_ui/enemy_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LS_GAMEOVER_KILL_ENEMY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space" type="Control" parent="popup_layer/victory_ui/enemy_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="enemy_label" type="Label" parent="popup_layer/victory_ui/enemy_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rest_enemy_hbox" type="HBoxContainer" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="text_label" type="Label" parent="popup_layer/victory_ui/rest_enemy_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LS_REMAINING_ENEMIES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space" type="Control" parent="popup_layer/victory_ui/rest_enemy_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="rest_enemy_label" type="Label" parent="popup_layer/victory_ui/rest_enemy_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp_hbox" type="HBoxContainer" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="text_label" type="Label" parent="popup_layer/victory_ui/hp_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LS_REMAINING_HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space" type="Control" parent="popup_layer/victory_ui/hp_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="hp_label" type="Label" parent="popup_layer/victory_ui/hp_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sep_color_rect" type="ColorRect" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(420, 4)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 106.0
+offset_right = 20.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="score_hbox" type="HBoxContainer" parent="popup_layer/victory_ui"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="text_label" type="Label" parent="popup_layer/victory_ui/score_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "LS_GAMEOVER_SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="space" type="Control" parent="popup_layer/victory_ui/score_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="score_label" type="Label" parent="popup_layer/victory_ui/score_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="thank_label" type="Label" parent="popup_layer/victory_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.619114, 0.635568, 1)
+theme_override_font_sizes/font_size = 60
+text = "LS_THANKS_FOR_PLAYING"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="exit_btn" type="Button" parent="popup_layer/victory_ui"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 340.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(120, 25)
+theme_override_font_sizes/font_size = 24
+text = "LS_EXIT"
+
+[node name="anim_player" type="AnimationPlayer" parent="popup_layer/victory_ui"]
+libraries = {
+"": SubResource("AnimationLibrary_0kj8g")
+}
+
 [node name="play_timer" type="Node" parent="."]
 script = ExtResource("86_1vuuv")
 
 [connection signal="losed" from="fight_layer/fight_scene" to="." method="_on_fight_scene_losed"]
-[connection signal="winned" from="fight_layer/fight_scene" to="." method="_on_fight_scene_winned"]
+[connection signal="won" from="fight_layer/fight_scene" to="." method="_on_fight_scene_won"]
 [connection signal="unit_mouse_entered" from="popup_layer/enemy_panel/simple_panel" to="popup_layer/enemy_panel" method="_on_simple_panel_unit_mouse_entered"]
 [connection signal="unit_mouse_exited" from="popup_layer/enemy_panel/simple_panel" to="popup_layer/enemy_panel" method="_on_simple_panel_unit_mouse_exited"]
 [connection signal="unit_mouse_entered" from="popup_layer/enemy_panel/detail_panel" to="popup_layer/enemy_panel" method="_on_detail_panel_unit_mouse_entered"]
@@ -2868,3 +3438,5 @@ script = ExtResource("86_1vuuv")
 [connection signal="pressed" from="popup_layer/database_panel/select_skill_color_rect/title_patch/close_btn" to="popup_layer/database_panel" method="_on_select_skill_close_btn_pressed"]
 [connection signal="exit_btn_pressed" from="popup_layer/gameover_ui" to="." method="_on_gameover_ui_exit_btn_pressed"]
 [connection signal="pressed" from="popup_layer/gameover_ui/exit_btn" to="popup_layer/gameover_ui" method="_on_exit_btn_pressed"]
+[connection signal="exit_btn_pressed" from="popup_layer/victory_ui" to="." method="_on_victory_ui_exit_btn_pressed"]
+[connection signal="pressed" from="popup_layer/victory_ui/exit_btn" to="popup_layer/victory_ui" method="_on_exit_btn_pressed"]

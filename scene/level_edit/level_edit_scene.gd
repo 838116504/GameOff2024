@@ -158,6 +158,7 @@ func update_map():
 	entrance_x_edit.value = map.entrance_position.x
 	entrance_y_edit.value = map.entrance_position.y
 	
+	current_map.target_unit_set_id = map.target_unit_set_id
 	current_map.tile_id_list[0] = map.tile_id_list[0].duplicate()
 	current_map.item_list[0] = map.item_list[0].duplicate()
 	map_view.update_layer()
@@ -303,6 +304,20 @@ func _on_select_tab_cntr_tile_put(p_rect: Rect2i, p_tileId: int) -> void:
 func set_item_data(p_position, p_id, p_data):
 	current_map.set_item_data(0, p_position, p_id, p_data)
 	map.set_item_data(current_layer, p_position, p_id, p_data)
+
+func _on_select_tab_cntr_target_unit_set_id_changed(p_id: int) -> void:
+	undo_redo.create_action("set target unit set")
+	undo_redo.add_do_method(set_target_unit_set.bind(p_id))
+	undo_redo.add_undo_method(set_target_unit_set.bind(map.target_unit_set_id))
+	undo_redo.commit_action()
+
+func set_target_unit_set(p_id:int):
+	if map.target_unit_set_id == p_id:
+		return
+	
+	current_map.target_unit_set_id = p_id
+	map.target_unit_set_id = p_id
+	select_tab_cntr.update_target_unit_set()
 
 func _on_map_item_view_panel_cntr_item_data_changed(p_item:MapItem) -> void:
 	undo_redo.create_action("set item data")

@@ -32,3 +32,7 @@ LS_DB_CD,冷卻%s,Cooldown %s
 LS_DB_CHARGE_COUNT,充能次數%s,Charge Count %s
 LS_CLOSE,關閉,Close
 LS_EXIT_BTN,離開,Exit
+LS_REMAINING_ENEMIES,剩余敵人︰,Remaining Enemies︰
+LS_REMAINING_HP,血量︰,HP︰
+LS_GAME_VICTORY,遊戲勝利,Game Victory
+LS_THANKS_FOR_PLAYING,感謝遊玩,Thanks For Playing

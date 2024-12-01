@@ -6,6 +6,7 @@ const TileBtnScene = preload("res://scene/level_edit/tile_btn.tscn")
 signal item_put(p_rect:Rect2i, p_item)
 signal tile_put(p_rect:Rect2i, p_tileId:int)
 signal layer_changed
+signal target_unit_set_id_changed(p_id:int)
 
 @export var map_input_path:NodePath
 
@@ -18,6 +19,7 @@ var _right_button_pressed := false
 
 @onready var select_box_patch = get_select_box_patch()
 @onready var cursor_btn = get_cursor_btn()
+@onready var target_label = get_target_label()
 
 func get_select_box_patch() -> NinePatchRect:
 	return $item_scroll_cntr/item_hflow_cntr/cursor_btn/select_box_patch
@@ -33,6 +35,10 @@ func get_map_input() -> Control:
 
 func get_cursor_btn():
 	return $item_scroll_cntr/item_hflow_cntr/cursor_btn
+
+func get_target_label():
+	return $item_scroll_cntr/item_hflow_cntr/cursor_btn/target_label
+
 
 func _ready():
 	set_tab_title(0, tr("LES_ITEM_TAB"))
@@ -124,7 +130,23 @@ func init_item():
 		var itemBtn = ItemBtnScene.instantiate()
 		itemBtn.item = Unit.create_by_unit_set_id(row.id)
 		itemBtn.pressed.connect(_on_item_btn_pressed.bind(itemBtn))
+		itemBtn.right_pressed.connect(_on_item_btn_right_pressed.bind(itemBtn))
 		itemHflowCntr.add_child(itemBtn)
+	
+	update_target_unit_set()
+
+func update_target_unit_set():
+	if map == null:
+		return
+	
+	target_label.hide()
+	var itemHflowCntr = get_item_hflow_cntr()
+	for i in range(MapItemConst.MapItemId.UNIT, itemHflowCntr.get_child_count()):
+		var child = itemHflowCntr.get_child(i)
+		if child.item.get_unit_set_id() == map.target_unit_set_id:
+			target_label.reparent(child, false)
+			target_label.show()
+			break
 
 func init_tile():
 	var tileHflowCntr = get_tile_hflow_cntr()
@@ -152,6 +174,13 @@ func _on_item_btn_pressed(p_btn):
 	mode_list[1].put_item = p_btn.item
 	mode = mode_list[1]
 
+func _on_item_btn_right_pressed(p_btn):
+	var id = p_btn.item.get_unit_set_id()
+	if id == map.target_unit_set_id:
+		return
+	
+	target_unit_set_id_changed.emit(id)
+
 func _on_tile_btn_pressed(p_btn):
 	if select_box_patch.get_parent() == p_btn:
 		return
@@ -163,6 +192,8 @@ func _on_tile_btn_pressed(p_btn):
 func update_map():
 	if mode:
 		mode.update_map()
+	
+	update_target_unit_set()
 
 func set_mode(p_value):
 	if mode == p_value:

@@ -19,6 +19,7 @@ class LevelRecord:
 		return [ score, time ]
 
 class LevelSave:
+	var id:int
 	var play_time:float = 0
 	var map:Map
 	var path:String
@@ -163,6 +164,7 @@ func get_level_save(p_id:int) -> LevelSave:
 	
 	var path = get_level_save_path(p_id)
 	var ret = LevelSave.load(path)
+	ret.id = p_id
 	ret.game_save = self
 	ret.map.player_unit.item_name = get_player_full_name()
 	return ret

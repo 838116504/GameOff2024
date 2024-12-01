@@ -18,6 +18,7 @@ var item_list := []
 var tile_id_list:Array = []
 var entrance_layer:int = 0
 var entrance_position:Vector2i
+var target_unit_set_id:int = 1
 
 var player_unit:PlayerUnit : set = set_player_unit
 
@@ -155,7 +156,8 @@ func add_layer(p_value:int):
 	layer_changed.emit(nextLayer)
 
 func get_data():
-	var ret = { "item_list":item_list, "tile_id_list": tile_id_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position}
+	var ret = { "item_list":item_list, "tile_id_list": tile_id_list, "entrance_layer":entrance_layer, "entrance_position":entrance_position, 
+			"target_unit_set_id":target_unit_set_id }
 	if player_unit:
 		var items = item_list.duplicate()
 		items[player_unit.layer][_to_map_position_id(player_unit.position)] = null

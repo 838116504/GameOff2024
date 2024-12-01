@@ -464,6 +464,9 @@ func _on_ok_btn_pressed() -> void:
 			if skillRow.effect_id > 0:
 				strengthen_skill_state.skill.extra_effect_list.append(skillRow.effect_id)
 	
+	player_unit.extra_strike_hit_rate += unitRow.strike_hit_rate - 1.0
+	player_unit.extra_thrust_hit_rate += unitRow.thrust_hit_rate - 1.0
+	player_unit.extra_slash_hit_rate += unitRow.slash_hit_rate - 1.0
 	database.use_time += 1
 	player_unit.unit_hand_combat_damage_dict.clear()
 	
