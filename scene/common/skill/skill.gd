@@ -31,7 +31,7 @@ func set_skill_arg(_arg):
 
 func execute(p_owner:Unit, p_state):
 	for i in get_effect_list():
-		i.execute(p_owner, p_state)
+		await i.execute(p_owner, p_state)
 
 func get_skill_name() -> String:
 	return tr(row.name)

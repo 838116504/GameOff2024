@@ -465,6 +465,7 @@ func _on_ok_btn_pressed() -> void:
 				strengthen_skill_state.skill.extra_effect_list.append(skillRow.effect_id)
 	
 	database.use_time += 1
+	player_unit.unit_hand_combat_damage_dict.clear()
 	
 	close()
 

@@ -69,8 +69,8 @@ func get_item(p_layer:int, p_pos:Vector2i) -> MapItem:
 	
 	if itemData is Array:
 		var ret = MapItemConst.MAP_ITEM_LIST[itemData[0]].new()
-		ret.set_data(itemData[1])
 		ret.position = p_pos
+		ret.set_data(itemData[1])
 		return ret
 	
 	return itemData

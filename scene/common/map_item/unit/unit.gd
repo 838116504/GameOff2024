@@ -54,6 +54,9 @@ func _init():
 func get_unit_id() -> int:
 	return unit_id
 
+func get_unit_set_id() -> int:
+	return unit_set_id
+
 func get_map_item_name() -> String:
 	return tr(row.name)
 
@@ -438,7 +441,10 @@ func is_invincible() -> bool:
 
 func get_data():
 	var ret = {}
-	ret.unit_set_id = unit_set_id
+	if followed_unit == null:
+		ret.unit_set_id = unit_set_id
+	else:
+		ret.unit_id = unit_id
 	
 	return ret
 

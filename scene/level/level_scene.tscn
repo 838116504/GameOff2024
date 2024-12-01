@@ -1725,7 +1725,7 @@ focus_mode = 2
 script = ExtResource("68_kddat")
 
 [node name="panel" type="Panel" parent="popup_layer/enemy_panel/win_popup"]
-custom_minimum_size = Vector2(600, 220)
+custom_minimum_size = Vector2(600, 280)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1778,6 +1778,7 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
+theme_override_font_sizes/font_size = 32
 text = "LS_CLOSE"
 
 [node name="database_panel" type="Panel" parent="popup_layer"]

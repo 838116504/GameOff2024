@@ -11,7 +11,7 @@ func create_node() -> Node2D:
 
 func _map_item_entered(p_item):
 	if p_item is PlayerUnit:
-		p_item.def += def
+		p_item.add_def(def)
 
 
 func set_data(p_data):

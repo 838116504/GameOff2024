@@ -9,7 +9,7 @@ func get_script_id() -> int:
 	return 4
 
 func execute(p_owner:Unit, p_state):
-	super(p_owner, p_state)
+	await super(p_owner, p_state)
 	
 	if (front_distance <= 0 && back_distance <= 0) || count <= 0:
 		return

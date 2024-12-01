@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "ZoX5OB5YF3A",
+	"hash": "WJoY7/Ed934",
 	"spine": "4.2.63-beta",
 	"x": -70,
 	"width": 140,
@@ -163,6 +163,14 @@
 		"attachments": {
 			"body": {
 				"body": { "name": "female_imp_right", "y": 70, "width": 140, "height": 140 }
+			}
+		}
+	},
+	{
+		"name": "gun_data_body",
+		"attachments": {
+			"body": {
+				"body": { "name": "gun_data_body", "y": 70, "width": 140, "height": 140 }
 			}
 		}
 	},

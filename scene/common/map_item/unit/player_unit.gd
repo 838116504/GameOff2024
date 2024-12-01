@@ -155,6 +155,12 @@ func duplicate(_subRes = false):
 	ret.set_data(get_data())
 	return ret
 
+func round_start():
+	super()
+	
+	if passive_state:
+		passive_state.round_start()
+
 func is_hand_combat_hp_enough(p_unit:Unit) -> bool:
 	var uid = p_unit.get_unit_id()
 	if !unit_hand_combat_damage_dict.has(uid):
@@ -195,7 +201,7 @@ func hand_combat(p_unit:Unit):
 func get_unit_hand_combat_damage(p_unit:Unit):
 	assert(p_unit != null)
 	
-	var uid = p_unit.get_unit_id()
+	var uid = p_unit.get_unit_set_id()
 	if unit_hand_combat_damage_dict.has(uid):
 		var dam = 0
 		for i in unit_hand_combat_damage_dict[uid]:
@@ -418,6 +424,10 @@ func get_right_image() -> Texture2D:
 		return load(DirConst.PLAYER_IMG.path_join(row.right_image))
 	
 	return null
+
+func add_def(p_def = 1):
+	def += p_def
+	unit_hand_combat_damage_dict.clear()
 
 func get_data():
 	var ret = { "unit_id":unit_id, "hp":hp, "def":def, "strike_hit_rate":strike_hit_rate, "thrust_hit_rate":thrust_hit_rate, "slash_hit_rate":slash_hit_rate, 

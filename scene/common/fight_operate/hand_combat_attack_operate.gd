@@ -26,7 +26,7 @@ func execute():
 				if curI >= enemy_list.size():
 					break
 			
-			skillState.skill.attack(enemy_list[curI], owner)
+			skillState.skill.attack(enemy_list[curI], owner, skillState.skill.get_final_damage_type())
 			skillState.cd = 0
 		
 		skillState.put = false

@@ -25,6 +25,8 @@ const SIREN_TRIGGERED = &"siren_triggered"
 
 const ENABLE_BLUR = &"enable_blur"
 const DISABLE_BLUR = &"disable_blur"
+const FIGHT_SCENE_ENABLE_BLUR = &"fight_scene_enable_blur"
+const FIGHT_SCENE_DISABLE_BLUR = &"fight_scene_disable_blur"
 const BLUR_PRESSED = &"blur_pressed"
 
 
@@ -52,5 +54,7 @@ const INFO_LIST = [
 	
 	[ ENABLE_BLUR, [ ]],
 	[ DISABLE_BLUR, [ ]],
+	[ FIGHT_SCENE_ENABLE_BLUR, [ ]],
+	[ FIGHT_SCENE_DISABLE_BLUR, [ ]],
 	[ BLUR_PRESSED, [ ]],
 ]

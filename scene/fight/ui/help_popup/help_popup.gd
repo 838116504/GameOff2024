@@ -50,7 +50,7 @@ func open():
 		return
 	
 	_animing = true
-	event_bus.emit_signal(EventConst.ENABLE_BLUR)
+	event_bus.emit_signal(EventConst.FIGHT_SCENE_ENABLE_BLUR)
 	get_tree().paused = true
 	grab_focus()
 	show()
@@ -70,7 +70,7 @@ func close():
 	await tween.finished
 	release_focus()
 	hide()
-	event_bus.emit_signal(EventConst.DISABLE_BLUR)
+	event_bus.emit_signal(EventConst.FIGHT_SCENE_DISABLE_BLUR)
 	get_tree().paused = false
 	_animing = false
 

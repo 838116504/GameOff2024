@@ -280,13 +280,11 @@ func play_ammo_animation(p_endCellX:int, p_ammoId:int):
 	if finalX < 0:
 		ammoBone.scale.x = -1
 	else:
-		ammoBone.scale_x = 1
+		ammoBone.scale.x = 1
 	var tween = create_tween()
 	tween.tween_property(ammoBone, "position:x", finalX, 0.5)
 	play_animation("ammo" + str(p_ammoId + 1), false, p_ammoId + 1)
 	return tween.finished
-
-
 
 func _on_skill_slot_panel_cntr_skill_added(p_pos: Variant, p_skillState: SkillState) -> void:
 	if p_skillState in unit.put_skill_state_list:

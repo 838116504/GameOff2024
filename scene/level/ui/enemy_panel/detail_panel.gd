@@ -37,6 +37,7 @@ func get_unit_scale() -> float:
 	return 0.5 if cell_unit_list.size() > 5 else 1.0
 
 func set_enemy_unit(p_unit:Unit):
+	cell_unit_list.clear()
 	cell_unit_list.resize(p_unit.get_fight_map_cell_count())
 	for unit in [p_unit] + p_unit.follow_unit_list:
 		cell_unit_list[unit.fight_x] = unit

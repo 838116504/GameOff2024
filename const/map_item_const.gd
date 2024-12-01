@@ -31,7 +31,7 @@ const MAP_ITEM_ICON_FILE_LIST = [
 	"blue_door.png",
 	"red_door.png",
 	"yellow_key.png",
-	"bule_key.png",
+	"blue_key.png",
 	"red_key.png",
 	"bug.png",
 	"dialogue.png",
