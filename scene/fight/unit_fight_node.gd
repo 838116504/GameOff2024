@@ -24,7 +24,6 @@ var skill_hover := false : set = set_skill_hover
 var skill_dragging := false : set = set_skill_dragging
 
 @onready var spine = get_spine()
-@onready var ammo_bone = get_ammo_bone()
 @onready var order_sprite = get_order_sprite()
 @onready var hp_progress_bar = get_hp_progress_bar()
 @onready var hp_label = get_hp_label()
@@ -38,8 +37,26 @@ var skill_dragging := false : set = set_skill_dragging
 func get_spine() -> SpineSprite:
 	return $spine
 
+func get_strike_bone() -> SpineBoneNode:
+	return $spine/strike_bone
+
+func get_strike2_bone() -> SpineBoneNode:
+	return $spine/strike2_bone
+
+func get_slash_bone() -> SpineBoneNode:
+	return $spine/slash_bone
+
+func get_slash2_bone() -> SpineBoneNode:
+	return $spine/slash2_bone
+
+func get_slash3_bone() -> SpineBoneNode:
+	return $spine/slash2_bone
+
 func get_ammo_bone() -> SpineBoneNode:
 	return $spine/ammo_bone
+
+func get_ammo2_bone() -> SpineBoneNode:
+	return $spine/ammo2_bone
 
 func get_order_sprite():
 	return $order_sprite
@@ -211,12 +228,65 @@ func update_add_skill_slot():
 	else:
 		skill_slot_panel_cntr.hide_add_skill_slot()
 
-func play_animation(p_anim:StringName, p_loop := false):
+func play_animation(p_anim:StringName, p_loop := false, p_track := 0):
 	var animState = spine.get_animation_state()
 	if animState == null:
 		return
 	
-	animState.set_animation(p_anim, p_loop)
+	animState.set_animation(p_anim, p_loop, p_track)
+
+func play_strike_animation(p_endCellX:int, p_id:int):
+	var strikeBone:SpineBoneNode
+	match p_id:
+		0:
+			strikeBone = get_strike_bone()
+		1:
+			strikeBone = get_strike2_bone()
+	
+	var finalX = (p_endCellX - unit.fight_x) * unit.fight_scene.cell_width * unit.fight_direction
+	strikeBone.position.x = finalX
+	var tween = create_tween()
+	tween.tween_property(strikeBone, "position:x", finalX, 0.5)
+	play_animation(&"strike" + str(p_id + 1), false, p_id + 1)
+	return tween.finished
+
+func play_slash_animation(p_endCellX:int, p_id:int):
+	var slashBone:SpineBoneNode
+	match p_id:
+		0:
+			slashBone = get_slash_bone()
+		1:
+			slashBone = get_slash2_bone()
+		2:
+			slashBone = get_slash3_bone()
+	
+	var finalX = (p_endCellX - unit.fight_x) * unit.fight_scene.cell_width * unit.fight_direction
+	slashBone.position.x = finalX
+	var tween = create_tween()
+	tween.tween_property(slashBone, "position:x", finalX, 0.5)
+	play_animation(&"slash" + str(p_id + 1), false, p_id + 1)
+	return tween.finished
+
+func play_ammo_animation(p_endCellX:int, p_ammoId:int):
+	var ammoBone:SpineBoneNode
+	match p_ammoId:
+		0:
+			ammoBone = get_ammo_bone()
+		1:
+			ammoBone = get_ammo2_bone()
+	
+	ammoBone.position.x = 0
+	var finalX = (p_endCellX - unit.fight_x) * unit.fight_scene.cell_width * unit.fight_direction
+	if finalX < 0:
+		ammoBone.scale.x = -1
+	else:
+		ammoBone.scale_x = 1
+	var tween = create_tween()
+	tween.tween_property(ammoBone, "position:x", finalX, 0.5)
+	play_animation("ammo" + str(p_ammoId + 1), false, p_ammoId + 1)
+	return tween.finished
+
+
 
 func _on_skill_slot_panel_cntr_skill_added(p_pos: Variant, p_skillState: SkillState) -> void:
 	if p_skillState in unit.put_skill_state_list:

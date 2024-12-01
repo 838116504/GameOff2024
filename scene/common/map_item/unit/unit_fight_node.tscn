@@ -46,6 +46,36 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 
+[node name="strike_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "strike"
+bone_mode = 1
+
+[node name="strike2_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "strike2"
+bone_mode = 1
+
+[node name="slash_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "slash"
+bone_mode = 1
+
+[node name="slash2_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "slash2"
+bone_mode = 1
+
+[node name="slash3_bone" type="SpineBoneNode" parent="spine"]
+show_behind_parent = true
+position = Vector2(0, -60)
+bone_name = "slash3"
+bone_mode = 1
+
 [node name="ammo_bone" type="SpineBoneNode" parent="spine"]
 show_behind_parent = true
 position = Vector2(0, -60)
@@ -55,7 +85,7 @@ bone_mode = 1
 [node name="ammo2_bone" type="SpineBoneNode" parent="spine"]
 show_behind_parent = true
 position = Vector2(0, -60)
-bone_name = "ammo"
+bone_name = "ammo2"
 bone_mode = 1
 
 [node name="passive_cd_panel_cntr" type="PanelContainer" parent="."]

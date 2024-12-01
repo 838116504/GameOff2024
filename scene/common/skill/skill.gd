@@ -41,7 +41,7 @@ func get_description() -> String:
 	var ret = ""
 	var words = []
 	if damType >= 0:
-		ret = tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage(damType) ]])
+		ret = tr(row.description).format([["damage", tr(DAMAGE_TEXT_LIST[damType]) % get_damage() ]])
 		if !is_blockable():
 			words.append(tr("SKILL_UNABLE_BLOCK"))
 	else:
@@ -114,8 +114,16 @@ func get_damage_type():
 	
 	return SkillConst.DamageType.NONE
 
-func get_damage(p_type:SkillConst.DamageType) -> float:
-	match p_type:
+func get_final_damage_type():
+	var ret = get_damage_type()
+	if ret == SkillConst.DamageType.RANDOM:
+		@warning_ignore("int_as_enum_without_cast")
+		ret = randi_range(SkillConst.DamageType.STRIKE, SkillConst.DamageType.SLASH)
+	return ret
+
+func get_damage() -> float:
+	var type = get_damage_type()
+	match type:
 		SkillConst.DamageType.STRIKE:
 			return get_strike_damage()
 		SkillConst.DamageType.THRUST:
@@ -156,13 +164,12 @@ func is_free_put() -> bool:
 func get_max_attack_target() -> int:
 	return 1
 
-func attack(p_target, p_attacker):
-	var damType = get_damage_type()
-	var dam = get_damage(damType)
+func attack(p_target, p_attacker, p_finalDamType):
+	var dam = get_damage()
 	var blockable = is_blockable()
-	p_target.hit(p_attacker, damType, dam, blockable)
+	p_target.hit(p_attacker, p_finalDamType, dam, blockable)
 	for effect in get_effect_list():
-		effect.attack(p_attacker, p_target, damType, dam, blockable)
+		effect.attack(p_attacker, p_target, p_finalDamType, dam, blockable)
 
 func get_data():
 	return { "id":id, "extra_damage":extra_damage, "damage_rate":damage_rate, 

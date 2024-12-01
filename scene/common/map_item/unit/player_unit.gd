@@ -215,7 +215,7 @@ func get_unit_hand_combat_damage(p_unit:Unit):
 	var myHighestAtk = 0
 	for i in myUnits:
 		for s in i.skill_state_list:
-			myHighestAtk = max(myHighestAtk, s.skill.get_damage(s.skill.get_damage_type()))
+			myHighestAtk = max(myHighestAtk, s.skill.get_damage())
 	
 	if myHighestAtk <= enemyHighestDef:
 		var dams = []

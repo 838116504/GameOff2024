@@ -125,7 +125,7 @@ func update_damage():
 	
 	var damType = skill_state.skill.get_damage_type()
 	if damType >= 0:
-		var dam = skill_state.skill.get_damage(damType) + skill_state.extra_attack
+		var dam = skill_state.skill.get_damage() + skill_state.extra_attack
 		for i in damage_tex_rect_list.size():
 			if i == damType:
 				damage_tex_rect_list[i].show()

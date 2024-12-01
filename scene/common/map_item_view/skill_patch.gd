@@ -60,7 +60,7 @@ func update():
 		damLabels[i].hide()
 	
 	if damType >= 0:
-		var dam = skill.get_damage(damType)
+		var dam = skill.get_damage()
 		damTexRects[damType].show()
 		damLabels[damType].text = str(dam)
 		damLabels[damType].show()

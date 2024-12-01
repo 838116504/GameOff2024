@@ -13,6 +13,6 @@ func execute(p_owner:Unit, _state):
 		return
 	
 	var trap = FightCellItemConst.FIGHT_CELL_ITEM_LIST[FightCellItemConst.FightCellItemId.TRAP].new()
-	trap.damage_type = get_damage_type()
-	trap.damage = get_damage(trap.damage_type)
+	trap.damage_type = get_final_damage_type()
+	trap.damage = get_damage()
 	p_owner.fight_scene.add_cell_item(trap, targetX)

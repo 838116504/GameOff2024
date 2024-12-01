@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "sAC+NTW6ScE",
+	"hash": "ZoX5OB5YF3A",
 	"spine": "4.2.63-beta",
 	"x": -70,
 	"width": 140,
@@ -17,30 +17,58 @@
 	{ "name": "slash_end_bone", "parent": "slash", "x": 27, "y": -27 },
 	{ "name": "slash_start_bone", "parent": "slash", "x": -27, "y": 27 },
 	{ "name": "slash2", "parent": "body" },
-	{ "name": "slash_end_bone2", "parent": "slash2", "x": 27, "y": -27 },
-	{ "name": "slash_start_bone2", "parent": "slash2", "x": -27, "y": 27 },
+	{ "name": "slash2_end_bone", "parent": "slash2", "x": 27, "y": -27 },
+	{ "name": "slash2_start_bone", "parent": "slash2", "x": -27, "y": 27 },
 	{ "name": "slash3", "parent": "body" },
-	{ "name": "slash_end_bone3", "parent": "slash3", "x": 27, "y": -27 },
-	{ "name": "slash_start_bone3", "parent": "slash3", "x": -27, "y": 27 },
+	{ "name": "slash3_end_bone", "parent": "slash3", "x": 27, "y": -27 },
+	{ "name": "slash3_start_bone", "parent": "slash3", "x": -27, "y": 27 },
 	{ "name": "strike", "parent": "body", "y": 50 },
-	{ "name": "strike2", "parent": "body", "y": 50 }
+	{ "name": "strike2", "parent": "body", "y": 50 },
+	{ "name": "strike_scale_bone", "parent": "strike" },
+	{ "name": "strike2_scale_bone", "parent": "strike2" }
 ],
 "slots": [
 	{ "name": "body", "bone": "body", "attachment": "body" },
 	{ "name": "tail", "bone": "ammo" },
 	{ "name": "tail2", "bone": "ammo2" },
 	{ "name": "thrust_damage", "bone": "ammo" },
-	{ "name": "thrust_damage2", "bone": "ammo2" },
+	{ "name": "thrust2_damage", "bone": "ammo2" },
 	{ "name": "slash_damage", "bone": "slash" },
-	{ "name": "slash_damage2", "bone": "slash2" },
-	{ "name": "slash_damage3", "bone": "slash3" },
-	{ "name": "strike_damage", "bone": "strike" },
-	{ "name": "strike_damage2", "bone": "strike2" }
+	{ "name": "slash2_damage", "bone": "slash2" },
+	{ "name": "slash3_damage", "bone": "slash3" },
+	{ "name": "strike_damage", "bone": "strike_scale_bone" },
+	{ "name": "strike2_damage", "bone": "strike2_scale_bone" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
+			"slash2_damage": {
+				"slash_damage": {
+					"type": "mesh",
+					"color": "3cfff9ff",
+					"uvs": [ 0.81067, 0.66523, 1, 0.90405, 1, 1, 0.89738, 1, 0.65835, 0.8296, 0.43202, 0.62994, 0.19105, 0.36058, 1.0E-5, 0.07702, 0, 0, 0.09337, 0, 0.35026, 0.19105, 0.61962, 0.4303 ],
+					"triangles": [ 3, 1, 2, 1, 3, 0, 3, 4, 0, 4, 5, 0, 5, 11, 0, 5, 6, 11, 11, 6, 10, 7, 9, 6, 6, 9, 10, 7, 8, 9 ],
+					"vertices": [ 2, 8, -7.12, 16.43, 0.8412, 9, 46.88, -37.57, 0.1588, 2, 8, 5, 1.14, 0.99987, 9, 59, -52.86, 1.3E-4, 1, 8, 5, -5, 1, 2, 8, -1.57, -5, 0.9997, 9, 52.43, -59, 3.0E-4, 2, 8, -16.87, 5.91, 0.84874, 9, 37.13, -48.09, 0.15126, 2, 8, -31.35, 18.68, 0.54581, 9, 22.65, -35.32, 0.45419, 2, 8, -46.77, 35.92, 0.17333, 9, 7.23, -18.08, 0.82667, 1, 9, -5, 0.07, 1, 1, 9, -5, 5, 1, 2, 8, -53.02, 59, 1.2E-4, 9, 0.98, 5, 0.99988, 2, 8, -36.58, 46.77, 0.1646, 9, 17.42, -7.23, 0.8354, 2, 8, -19.34, 31.46, 0.53332, 9, 34.66, -22.54, 0.46668 ],
+					"hull": 12,
+					"edges": [ 0, 22, 8, 10, 20, 22, 16, 18, 18, 20, 12, 14, 14, 16, 4, 6, 6, 8, 0, 2, 2, 4, 10, 12 ],
+					"width": 64,
+					"height": 64
+				}
+			},
+			"slash3_damage": {
+				"slash_damage": {
+					"type": "mesh",
+					"color": "3cfff9ff",
+					"uvs": [ 0.81067, 0.66523, 1, 0.90405, 1, 1, 0.89738, 1, 0.65835, 0.8296, 0.43202, 0.62994, 0.19105, 0.36058, 1.0E-5, 0.07702, 0, 0, 0.09337, 0, 0.35026, 0.19105, 0.61962, 0.4303 ],
+					"triangles": [ 3, 1, 2, 1, 3, 0, 3, 4, 0, 4, 5, 0, 5, 11, 0, 5, 6, 11, 11, 6, 10, 7, 9, 6, 6, 9, 10, 7, 8, 9 ],
+					"vertices": [ 2, 11, -7.12, 16.43, 0.8412, 12, 46.88, -37.57, 0.1588, 2, 11, 5, 1.14, 0.99987, 12, 59, -52.86, 1.3E-4, 1, 11, 5, -5, 1, 2, 11, -1.57, -5, 0.9997, 12, 52.43, -59, 3.0E-4, 2, 11, -16.87, 5.91, 0.84874, 12, 37.13, -48.09, 0.15126, 2, 11, -31.35, 18.68, 0.54581, 12, 22.65, -35.32, 0.45419, 2, 11, -46.77, 35.92, 0.17333, 12, 7.23, -18.08, 0.82667, 1, 12, -5, 0.07, 1, 1, 12, -5, 5, 1, 2, 11, -53.02, 59, 1.2E-4, 12, 0.98, 5, 0.99988, 2, 11, -36.58, 46.77, 0.1646, 12, 17.42, -7.23, 0.8354, 2, 11, -19.34, 31.46, 0.53332, 12, 34.66, -22.54, 0.46668 ],
+					"hull": 12,
+					"edges": [ 0, 22, 8, 10, 20, 22, 16, 18, 18, 20, 12, 14, 14, 16, 4, 6, 6, 8, 0, 2, 2, 4, 10, 12 ],
+					"width": 64,
+					"height": 64
+				}
+			},
 			"slash_damage": {
 				"slash_damage": {
 					"type": "mesh",
@@ -54,36 +82,10 @@
 					"height": 64
 				}
 			},
-			"slash_damage2": {
-				"slash_damage": {
-					"type": "mesh",
-					"color": "3cfff9ff",
-					"uvs": [ 0.81067, 0.66523, 1, 0.90405, 1, 1, 0.89738, 1, 0.65835, 0.8296, 0.43202, 0.62994, 0.19105, 0.36058, 1.0E-5, 0.07702, 0, 0, 0.09337, 0, 0.35026, 0.19105, 0.61962, 0.4303 ],
-					"triangles": [ 3, 1, 2, 1, 3, 0, 3, 4, 0, 4, 5, 0, 5, 11, 0, 5, 6, 11, 11, 6, 10, 7, 9, 6, 6, 9, 10, 7, 8, 9 ],
-					"vertices": [ 2, 8, -7.12, 16.43, 0.8412, 9, 46.88, -37.57, 0.1588, 2, 8, 5, 1.14, 0.99987, 9, 59, -52.86, 1.3E-4, 1, 8, 5, -5, 1, 2, 8, -1.57, -5, 0.9997, 9, 52.43, -59, 3.0E-4, 2, 8, -16.87, 5.91, 0.84874, 9, 37.13, -48.09, 0.15126, 2, 8, -31.35, 18.68, 0.54581, 9, 22.65, -35.32, 0.45419, 2, 8, -46.77, 35.92, 0.17333, 9, 7.23, -18.08, 0.82667, 1, 9, -5, 0.07, 1, 1, 9, -5, 5, 1, 2, 8, -53.02, 59, 1.2E-4, 9, 0.98, 5, 0.99988, 2, 8, -36.58, 46.77, 0.1646, 9, 17.42, -7.23, 0.8354, 2, 8, -19.34, 31.46, 0.53332, 9, 34.66, -22.54, 0.46668 ],
-					"hull": 12,
-					"edges": [ 0, 22, 8, 10, 20, 22, 16, 18, 18, 20, 12, 14, 14, 16, 4, 6, 6, 8, 0, 2, 2, 4, 10, 12 ],
-					"width": 64,
-					"height": 64
-				}
-			},
-			"slash_damage3": {
-				"slash_damage": {
-					"type": "mesh",
-					"color": "3cfff9ff",
-					"uvs": [ 0.81067, 0.66523, 1, 0.90405, 1, 1, 0.89738, 1, 0.65835, 0.8296, 0.43202, 0.62994, 0.19105, 0.36058, 1.0E-5, 0.07702, 0, 0, 0.09337, 0, 0.35026, 0.19105, 0.61962, 0.4303 ],
-					"triangles": [ 3, 1, 2, 1, 3, 0, 3, 4, 0, 4, 5, 0, 5, 11, 0, 5, 6, 11, 11, 6, 10, 7, 9, 6, 6, 9, 10, 7, 8, 9 ],
-					"vertices": [ 2, 11, -7.12, 16.43, 0.8412, 12, 46.88, -37.57, 0.1588, 2, 11, 5, 1.14, 0.99987, 12, 59, -52.86, 1.3E-4, 1, 11, 5, -5, 1, 2, 11, -1.57, -5, 0.9997, 12, 52.43, -59, 3.0E-4, 2, 11, -16.87, 5.91, 0.84874, 12, 37.13, -48.09, 0.15126, 2, 11, -31.35, 18.68, 0.54581, 12, 22.65, -35.32, 0.45419, 2, 11, -46.77, 35.92, 0.17333, 12, 7.23, -18.08, 0.82667, 1, 12, -5, 0.07, 1, 1, 12, -5, 5, 1, 2, 11, -53.02, 59, 1.2E-4, 12, 0.98, 5, 0.99988, 2, 11, -36.58, 46.77, 0.1646, 12, 17.42, -7.23, 0.8354, 2, 11, -19.34, 31.46, 0.53332, 12, 34.66, -22.54, 0.46668 ],
-					"hull": 12,
-					"edges": [ 0, 22, 8, 10, 20, 22, 16, 18, 18, 20, 12, 14, 14, 16, 4, 6, 6, 8, 0, 2, 2, 4, 10, 12 ],
-					"width": 64,
-					"height": 64
-				}
-			},
-			"strike_damage": {
+			"strike2_damage": {
 				"strike_damage": { "color": "ff9700ff", "width": 64, "height": 64 }
 			},
-			"strike_damage2": {
+			"strike_damage": {
 				"strike_damage": { "color": "ff9700ff", "width": 64, "height": 64 }
 			},
 			"tail": {
@@ -92,10 +94,10 @@
 			"tail2": {
 				"tail": { "x": -15.82, "scaleX": 0.6, "scaleY": 0.6, "width": 103, "height": 40 }
 			},
-			"thrust_damage": {
+			"thrust2_damage": {
 				"thrust_damage": { "color": "ffef00ff", "scaleX": 0.4, "scaleY": 0.4, "width": 64, "height": 64 }
 			},
-			"thrust_damage2": {
+			"thrust_damage": {
 				"thrust_damage": { "color": "ffef00ff", "scaleX": 0.4, "scaleY": 0.4, "width": 64, "height": 64 }
 			}
 		}
@@ -182,160 +184,7 @@
 	}
 ],
 "animations": {
-	"move": {
-		"bones": {
-			"body": {
-				"translate": [
-					{},
-					{ "time": 0.2, "y": 45 },
-					{ "time": 0.4 }
-				]
-			}
-		}
-	},
-	"slash_attack": {
-		"slots": {
-			"slash_damage": {
-				"rgba": [
-					{ "color": "ffffff32" },
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" }
-				],
-				"attachment": [
-					{ "name": "slash_damage" }
-				]
-			}
-		},
-		"bones": {
-			"slash": {
-				"translate": [
-					{ "y": 50 }
-				]
-			},
-			"slash_end_bone": {
-				"translate": [
-					{ "x": -47, "y": 47 },
-					{ "time": 0.3333, "x": 8, "y": -8 }
-				]
-			},
-			"slash_start_bone": {
-				"translate": [
-					{ "x": -8, "y": 8 }
-				]
-			}
-		}
-	},
-	"slash_attack2": {
-		"slots": {
-			"slash_damage2": {
-				"rgba": [
-					{ "color": "ffffff32" },
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" }
-				],
-				"attachment": [
-					{ "name": "slash_damage" }
-				]
-			}
-		},
-		"bones": {
-			"slash2": {
-				"translate": [
-					{ "y": 50 }
-				]
-			},
-			"slash_end_bone2": {
-				"translate": [
-					{ "x": -47, "y": 47 },
-					{ "time": 0.3333, "x": 8, "y": -8 }
-				]
-			},
-			"slash_start_bone2": {
-				"translate": [
-					{ "x": -8, "y": 8 }
-				]
-			}
-		}
-	},
-	"slash_attack3": {
-		"slots": {
-			"slash_damage3": {
-				"rgba": [
-					{ "color": "ffffff32" },
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" }
-				],
-				"attachment": [
-					{ "name": "slash_damage" }
-				]
-			}
-		},
-		"bones": {
-			"slash3": {
-				"translate": [
-					{ "y": 50 }
-				]
-			},
-			"slash_end_bone3": {
-				"translate": [
-					{ "x": -47, "y": 47 },
-					{ "time": 0.3333, "x": 8, "y": -8 }
-				]
-			},
-			"slash_start_bone3": {
-				"translate": [
-					{ "x": -8, "y": 8 }
-				]
-			}
-		}
-	},
-	"strike_attack": {
-		"slots": {
-			"strike_damage": {
-				"rgba": [
-					{ "color": "ffffff64" },
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" }
-				],
-				"attachment": [
-					{ "name": "strike_damage" }
-				]
-			}
-		},
-		"bones": {
-			"strike": {
-				"scale": [
-					{ "x": 0.1, "y": 0.1 },
-					{ "time": 0.4667, "x": 1.5, "y": 1.5 },
-					{ "time": 0.6667, "x": 0.4, "y": 0.4 }
-				]
-			}
-		}
-	},
-	"strike_attack2": {
-		"slots": {
-			"strike_damage2": {
-				"rgba": [
-					{ "color": "ffffff64" },
-					{ "time": 0.6667, "color": "ffffffff" },
-					{ "time": 1, "color": "ffffff00" }
-				],
-				"attachment": [
-					{ "name": "strike_damage" }
-				]
-			}
-		},
-		"bones": {
-			"strike2": {
-				"scale": [
-					{ "x": 0.1, "y": 0.1 },
-					{ "time": 0.4667, "x": 1.5, "y": 1.5 },
-					{ "time": 0.6667, "x": 0.4, "y": 0.4 }
-				]
-			}
-		}
-	},
-	"thrust_attack": {
+	"ammo1": {
 		"slots": {
 			"tail": {
 				"rgba": [
@@ -369,7 +218,7 @@
 			}
 		}
 	},
-	"thrust_attack2": {
+	"ammo2": {
 		"slots": {
 			"tail2": {
 				"rgba": [
@@ -381,7 +230,7 @@
 					{ "name": "tail" }
 				]
 			},
-			"thrust_damage2": {
+			"thrust2_damage": {
 				"rgba": [
 					{ "time": 0.6667, "color": "ffffffff" },
 					{ "time": 1, "color": "ffffff00" }
@@ -399,6 +248,159 @@
 				"scale": [
 					{ "x": 0.1 },
 					{ "time": 0.6667 }
+				]
+			}
+		}
+	},
+	"move": {
+		"bones": {
+			"body": {
+				"translate": [
+					{},
+					{ "time": 0.2, "y": 45 },
+					{ "time": 0.4 }
+				]
+			}
+		}
+	},
+	"slash1": {
+		"slots": {
+			"slash_damage": {
+				"rgba": [
+					{ "color": "ffffff32" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "slash_damage" }
+				]
+			}
+		},
+		"bones": {
+			"slash": {
+				"translate": [
+					{ "y": 50 }
+				]
+			},
+			"slash_end_bone": {
+				"translate": [
+					{ "x": -47, "y": 47 },
+					{ "time": 0.3333, "x": 8, "y": -8 }
+				]
+			},
+			"slash_start_bone": {
+				"translate": [
+					{ "x": -8, "y": 8 }
+				]
+			}
+		}
+	},
+	"slash2": {
+		"slots": {
+			"slash2_damage": {
+				"rgba": [
+					{ "color": "ffffff32" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "slash_damage" }
+				]
+			}
+		},
+		"bones": {
+			"slash2": {
+				"translate": [
+					{ "y": 50 }
+				]
+			},
+			"slash2_end_bone": {
+				"translate": [
+					{ "x": -47, "y": 47 },
+					{ "time": 0.3333, "x": 8, "y": -8 }
+				]
+			},
+			"slash2_start_bone": {
+				"translate": [
+					{ "x": -8, "y": 8 }
+				]
+			}
+		}
+	},
+	"slash3": {
+		"slots": {
+			"slash3_damage": {
+				"rgba": [
+					{ "color": "ffffff32" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "slash_damage" }
+				]
+			}
+		},
+		"bones": {
+			"slash3": {
+				"translate": [
+					{ "y": 50 }
+				]
+			},
+			"slash3_end_bone": {
+				"translate": [
+					{ "x": -47, "y": 47 },
+					{ "time": 0.3333, "x": 8, "y": -8 }
+				]
+			},
+			"slash3_start_bone": {
+				"translate": [
+					{ "x": -8, "y": 8 }
+				]
+			}
+		}
+	},
+	"strike1": {
+		"slots": {
+			"strike_damage": {
+				"rgba": [
+					{ "color": "ffffff64" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "strike_damage" }
+				]
+			}
+		},
+		"bones": {
+			"strike_scale_bone": {
+				"scale": [
+					{ "x": 0.15, "y": 0.1 },
+					{ "time": 0.4667, "x": 2.25, "y": 1.5 },
+					{ "time": 0.6667, "x": 0.6, "y": 0.4 }
+				]
+			}
+		}
+	},
+	"strike2": {
+		"slots": {
+			"strike2_damage": {
+				"rgba": [
+					{ "color": "ffffff64" },
+					{ "time": 0.6667, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "strike_damage" }
+				]
+			}
+		},
+		"bones": {
+			"strike2_scale_bone": {
+				"scale": [
+					{ "x": 0.15, "y": 0.1 },
+					{ "time": 0.4667, "x": 2.25, "y": 1.5 },
+					{ "time": 0.6667, "x": 0.6, "y": 0.4 }
 				]
 			}
 		}

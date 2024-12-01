@@ -14,8 +14,10 @@ func execute(p_owner:Unit, p_state):
 		return
 	
 	var restCount = count
-	var tween:Tween = null
 	var targets = []
+	var damTypes = []
+	var attackId:int = 0
+	var endSignal = null
 	for i in range(1, distance + 1):
 		var targetX = p_owner.fight_x + p_owner.fight_direction * i
 		if !p_owner.fight_scene.has_cell(targetX):
@@ -23,22 +25,27 @@ func execute(p_owner:Unit, p_state):
 		
 		var unit = p_owner.fight_scene.get_unit(targetX)
 		if unit != null:
-			tween = p_owner.fight_node.create_tween()
-			var finalAmmoX = abs(targetX - p_owner.fight_x) * p_owner.fight_scene.cell_width
-			p_owner.fight_node.ammo_bone.position.x = 0
-			tween.tween_property(p_owner.fight_node.ammo_bone, "position:x", finalAmmoX, 0.5)
+			var damType = get_final_damage_type()
+			match damType:
+				SkillConst.DamageType.STRIKE:
+					endSignal = p_owner.fight_node.play_strike_animation(targetX, attackId)
+				SkillConst.DamageType.THRUST:
+					endSignal = p_owner.fight_node.play_ammo_animation(targetX, attackId)
+				SkillConst.DamageType.SLASH:
+					endSignal = p_owner.fight_node.play_slash_animation(targetX, attackId)
+			attackId += 1
 			targets.append(unit)
+			damTypes.append(damType)
 			
 			restCount -= 1
 			if restCount <= 0:
 				break
 	
-	if tween:
-		p_owner.fight_node.play_animation(&"unpack")
-		await tween.finished
+	if endSignal:
+		await endSignal
 	
-	for tar in targets:
-		attack(tar, p_owner)
+	for i in targets.size():
+		attack(targets[i], p_owner, damTypes[i])
 
 func get_max_attack_target() -> int:
 	return count
