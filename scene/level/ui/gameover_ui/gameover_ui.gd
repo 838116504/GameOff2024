@@ -1,5 +1,7 @@
 extends Control
 
+signal exit_btn_pressed
+
 var player_unit:PlayerUnit
 
 func get_layer_label():
@@ -40,3 +42,7 @@ func close():
 
 func set_player_unit(p_value):
 	player_unit = p_value
+
+
+func _on_exit_btn_pressed() -> void:
+	exit_btn_pressed.emit()

@@ -31,3 +31,4 @@ LS_DB_DAMAGE_INCREASE,傷害提升%d,Damage increase %d
 LS_DB_CD,冷卻%s,Cooldown %s
 LS_DB_CHARGE_COUNT,充能次數%s,Charge Count %s
 LS_CLOSE,關閉,Close
+LS_EXIT_BTN,離開,Exit

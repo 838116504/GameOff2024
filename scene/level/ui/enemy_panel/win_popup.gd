@@ -29,7 +29,7 @@ func set_reward_unit_list(p_units:Array):
 		child.set_icon(p_units[i].get_icon())
 		child.show()
 	
-	get_panel().custom_minimum_size.x = max(96.0 * p_units.size() + 48, 200)
+	get_panel().custom_minimum_size.x = max(96.0 * p_units.size() + 68, 220)
 
 func open():
 	show()

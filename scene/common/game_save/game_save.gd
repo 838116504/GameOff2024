@@ -38,6 +38,12 @@ class LevelSave:
 		file.close()
 		return true
 	
+	func delete():
+		if path.is_empty() || !FileAccess.file_exists(path):
+			return
+		
+		DirAccess.remove_absolute(path)
+	
 	static func load(p_path:String) -> LevelSave:
 		var file = FileAccess.open(p_path, FileAccess.READ)
 		if !file:
@@ -173,6 +179,15 @@ func create_player_unit() -> PlayerUnit:
 	ret.item_name = get_player_full_name()
 	
 	return ret
+
+func save():
+	var path = get_save_path(id)
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return
+	
+	file.store_var(get_data())
+	file.close()
 
 func set_data(p_data) -> void:
 	if !p_data is Dictionary:

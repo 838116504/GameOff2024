@@ -8,8 +8,7 @@ func get_user_name_edit():
 func get_accept_dialog() -> AcceptDialog:
 	return $accept_dialog
 
-
-func _on_ok_btn_pressed() -> void:
+func ok():
 	var userName = get_user_name_edit().text
 	if userName.is_empty():
 		var acceptDialog = get_accept_dialog()
@@ -18,3 +17,9 @@ func _on_ok_btn_pressed() -> void:
 		return
 	
 	ok_btn_pressed.emit(userName)
+
+func _on_ok_btn_pressed() -> void:
+	ok()
+
+func _on_user_name_edit_text_submitted(_text:String) -> void:
+	ok()

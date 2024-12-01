@@ -77,12 +77,15 @@ func get_item(p_layer:int, p_pos:Vector2i) -> MapItem:
 	
 	return itemData
 
-func get_tile(p_layer:int, p_pos:Vector2i):
-	var ret = TileConst.TILE_LIST[tile_id_list[p_layer][_to_map_position_id(p_pos)]]
+func get_tile(p_layer:int, p_pos:Vector2i) -> Tile:
+	var ret:Resource = TileConst.get_tile(tile_id_list[p_layer][_to_map_position_id(p_pos)])
 	if ret == null:
-		ret = TileConst.TILE_LIST[default_tile_id]
+		ret = TileConst.get_tile(default_tile_id)
 	
 	return ret
+
+func get_tile_id(p_layer:int, p_pos:Vector2i) -> int:
+	return tile_id_list[p_layer][_to_map_position_id(p_pos)]
 
 func set_item(p_layer:int, p_pos:Vector2i, p_id:int):
 	before_item_changed.emit(p_layer, p_pos, p_id)

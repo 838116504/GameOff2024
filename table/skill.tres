@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="SkillTable" load_steps=38 format=3 uid="uid://b58t3su2s8bdj"]
+[gd_resource type="Resource" script_class="SkillTable" load_steps=38 format=3 uid="uid://beg2hdhi1elld"]
 
-[ext_resource type="Script" path="res://table/skill_row.gd" id="1_eu0l4"]
-[ext_resource type="Script" path="res://table/skill_table.gd" id="2_in6yo"]
+[ext_resource type="Script" path="res://table/skill_row.gd" id="1_kb1q1"]
+[ext_resource type="Script" path="res://table/skill_table.gd" id="2_vlapm"]
 
-[sub_resource type="Resource" id="Resource_aac4d"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_7o5k3"]
+script = ExtResource("1_kb1q1")
 id = 1
 script_id = 1
 arg_list = []
@@ -25,8 +25,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_2wrnx"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_yggqm"]
+script = ExtResource("1_kb1q1")
 id = 2
 script_id = 1
 arg_list = []
@@ -47,8 +47,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_10kca"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_pe817"]
+script = ExtResource("1_kb1q1")
 id = 3
 script_id = 1
 arg_list = []
@@ -69,8 +69,8 @@ slash_damage_rate = 0.0
 effect_id = 1
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_odjs8"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_4dq8t"]
+script = ExtResource("1_kb1q1")
 id = 4
 script_id = 1
 arg_list = []
@@ -91,8 +91,8 @@ slash_damage_rate = 0.0
 effect_id = 2
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_lk3j2"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_430ot"]
+script = ExtResource("1_kb1q1")
 id = 5
 script_id = 2
 arg_list = []
@@ -113,8 +113,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_44wxl"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_l044f"]
+script = ExtResource("1_kb1q1")
 id = 6
 script_id = 3
 arg_list = []
@@ -135,8 +135,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_d7faq"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_wndjm"]
+script = ExtResource("1_kb1q1")
 id = 7
 script_id = 2
 arg_list = [2]
@@ -157,8 +157,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 1
 
-[sub_resource type="Resource" id="Resource_g6qdo"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_kgep6"]
+script = ExtResource("1_kb1q1")
 id = 8
 script_id = 2
 arg_list = []
@@ -179,8 +179,8 @@ slash_damage_rate = 0.0
 effect_id = 3
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_w4urm"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_gtnsl"]
+script = ExtResource("1_kb1q1")
 id = 9
 script_id = 1
 arg_list = [2, 2]
@@ -201,8 +201,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_qwlvd"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_nb167"]
+script = ExtResource("1_kb1q1")
 id = 10
 script_id = 4
 arg_list = []
@@ -223,8 +223,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_6wxdh"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_c1wi5"]
+script = ExtResource("1_kb1q1")
 id = 11
 script_id = 1
 arg_list = []
@@ -245,8 +245,8 @@ slash_damage_rate = 1.0
 effect_id = 4
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_gmor7"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_yj7gu"]
+script = ExtResource("1_kb1q1")
 id = 12
 script_id = 5
 arg_list = []
@@ -267,8 +267,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ud85j"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_3m71d"]
+script = ExtResource("1_kb1q1")
 id = 13
 script_id = 0
 arg_list = []
@@ -289,8 +289,8 @@ slash_damage_rate = 0.0
 effect_id = 5
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_plyuy"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_cko8j"]
+script = ExtResource("1_kb1q1")
 id = 14
 script_id = 0
 arg_list = []
@@ -311,8 +311,8 @@ slash_damage_rate = 0.0
 effect_id = 6
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_bm1mv"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_goapd"]
+script = ExtResource("1_kb1q1")
 id = 15
 script_id = 0
 arg_list = []
@@ -333,8 +333,8 @@ slash_damage_rate = 0.0
 effect_id = 7
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_v7apm"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_ktpi0"]
+script = ExtResource("1_kb1q1")
 id = 16
 script_id = 0
 arg_list = []
@@ -355,8 +355,8 @@ slash_damage_rate = 0.0
 effect_id = 8
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_y8u1w"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_iotfs"]
+script = ExtResource("1_kb1q1")
 id = 17
 script_id = 1
 arg_list = []
@@ -377,8 +377,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_tspsr"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_21asd"]
+script = ExtResource("1_kb1q1")
 id = 18
 script_id = 1
 arg_list = []
@@ -399,8 +399,8 @@ slash_damage_rate = 0.0
 effect_id = 2
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_e5x2o"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_fwsn4"]
+script = ExtResource("1_kb1q1")
 id = 19
 script_id = 1
 arg_list = []
@@ -421,8 +421,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_sb4k7"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_u2jua"]
+script = ExtResource("1_kb1q1")
 id = 20
 script_id = 1
 arg_list = []
@@ -443,8 +443,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_h0hj1"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_khajk"]
+script = ExtResource("1_kb1q1")
 id = 21
 script_id = 1
 arg_list = []
@@ -465,8 +465,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_8vf8q"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_bbe7v"]
+script = ExtResource("1_kb1q1")
 id = 22
 script_id = 1
 arg_list = []
@@ -487,8 +487,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_uy70o"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_d637e"]
+script = ExtResource("1_kb1q1")
 id = 23
 script_id = 1
 arg_list = [2, 2]
@@ -509,8 +509,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ao23f"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_sfmyu"]
+script = ExtResource("1_kb1q1")
 id = 24
 script_id = 4
 arg_list = []
@@ -531,8 +531,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_emcqu"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_lvtfy"]
+script = ExtResource("1_kb1q1")
 id = 25
 script_id = 2
 arg_list = []
@@ -553,8 +553,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_0ffwo"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_m0kg0"]
+script = ExtResource("1_kb1q1")
 id = 26
 script_id = 3
 arg_list = []
@@ -575,8 +575,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_mg7nq"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_chglc"]
+script = ExtResource("1_kb1q1")
 id = 27
 script_id = 1
 arg_list = []
@@ -597,8 +597,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_05m18"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_1dhvg"]
+script = ExtResource("1_kb1q1")
 id = 28
 script_id = 1
 arg_list = []
@@ -619,8 +619,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_yy250"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_m0vxr"]
+script = ExtResource("1_kb1q1")
 id = 29
 script_id = 1
 arg_list = []
@@ -641,8 +641,8 @@ slash_damage_rate = 0.0
 effect_id = 1
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_56cis"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_3178t"]
+script = ExtResource("1_kb1q1")
 id = 30
 script_id = 1
 arg_list = [2, 2]
@@ -663,8 +663,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_kkjvg"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_8xn15"]
+script = ExtResource("1_kb1q1")
 id = 31
 script_id = 4
 arg_list = []
@@ -685,8 +685,8 @@ slash_damage_rate = 1.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_ud3ny"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_xvvda"]
+script = ExtResource("1_kb1q1")
 id = 32
 script_id = 1
 arg_list = []
@@ -707,8 +707,8 @@ slash_damage_rate = 1.0
 effect_id = 4
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_wqwtk"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_nv577"]
+script = ExtResource("1_kb1q1")
 id = 33
 script_id = 2
 arg_list = []
@@ -729,8 +729,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_765pl"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_fxihl"]
+script = ExtResource("1_kb1q1")
 id = 34
 script_id = 3
 arg_list = []
@@ -751,8 +751,8 @@ slash_damage_rate = 0.0
 effect_id = 0
 charge_count = 0
 
-[sub_resource type="Resource" id="Resource_2lgwj"]
-script = ExtResource("1_eu0l4")
+[sub_resource type="Resource" id="Resource_s3pcp"]
+script = ExtResource("1_kb1q1")
 id = 35
 script_id = 2
 arg_list = [2]
@@ -774,5 +774,5 @@ effect_id = 0
 charge_count = 1
 
 [resource]
-script = ExtResource("2_in6yo")
-row_list = Array[ExtResource("1_eu0l4")]([SubResource("Resource_aac4d"), SubResource("Resource_2wrnx"), SubResource("Resource_10kca"), SubResource("Resource_odjs8"), SubResource("Resource_lk3j2"), SubResource("Resource_44wxl"), SubResource("Resource_d7faq"), SubResource("Resource_g6qdo"), SubResource("Resource_w4urm"), SubResource("Resource_qwlvd"), SubResource("Resource_6wxdh"), SubResource("Resource_gmor7"), SubResource("Resource_ud85j"), SubResource("Resource_plyuy"), SubResource("Resource_bm1mv"), SubResource("Resource_v7apm"), SubResource("Resource_y8u1w"), SubResource("Resource_tspsr"), SubResource("Resource_e5x2o"), SubResource("Resource_sb4k7"), SubResource("Resource_h0hj1"), SubResource("Resource_8vf8q"), SubResource("Resource_uy70o"), SubResource("Resource_ao23f"), SubResource("Resource_emcqu"), SubResource("Resource_0ffwo"), SubResource("Resource_mg7nq"), SubResource("Resource_05m18"), SubResource("Resource_yy250"), SubResource("Resource_56cis"), SubResource("Resource_kkjvg"), SubResource("Resource_ud3ny"), SubResource("Resource_wqwtk"), SubResource("Resource_765pl"), SubResource("Resource_2lgwj")])
+script = ExtResource("2_vlapm")
+row_list = Array[ExtResource("1_kb1q1")]([SubResource("Resource_7o5k3"), SubResource("Resource_yggqm"), SubResource("Resource_pe817"), SubResource("Resource_4dq8t"), SubResource("Resource_430ot"), SubResource("Resource_l044f"), SubResource("Resource_wndjm"), SubResource("Resource_kgep6"), SubResource("Resource_gtnsl"), SubResource("Resource_nb167"), SubResource("Resource_c1wi5"), SubResource("Resource_yj7gu"), SubResource("Resource_3m71d"), SubResource("Resource_cko8j"), SubResource("Resource_goapd"), SubResource("Resource_ktpi0"), SubResource("Resource_iotfs"), SubResource("Resource_21asd"), SubResource("Resource_fwsn4"), SubResource("Resource_u2jua"), SubResource("Resource_khajk"), SubResource("Resource_bbe7v"), SubResource("Resource_d637e"), SubResource("Resource_sfmyu"), SubResource("Resource_lvtfy"), SubResource("Resource_m0kg0"), SubResource("Resource_chglc"), SubResource("Resource_1dhvg"), SubResource("Resource_m0vxr"), SubResource("Resource_3178t"), SubResource("Resource_8xn15"), SubResource("Resource_xvvda"), SubResource("Resource_nv577"), SubResource("Resource_fxihl"), SubResource("Resource_s3pcp")])

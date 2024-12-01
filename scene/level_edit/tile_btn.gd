@@ -7,7 +7,7 @@ func set_tile_id(p_value):
 		return
 	
 	tile_id = p_value
-	var tile = TileConst.TILE_LIST[tile_id]
+	var tile = TileConst.get_tile(tile_id)
 	if tile:
 		var tileSource = TileConst.TILE_SET.get_source(tile_id)
 		assert(tileSource is TileSetAtlasSource)

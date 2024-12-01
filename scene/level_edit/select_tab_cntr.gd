@@ -128,7 +128,7 @@ func init_item():
 
 func init_tile():
 	var tileHflowCntr = get_tile_hflow_cntr()
-	for i in range(1, TileConst.TILE_LIST.size()):
+	for i in range(1, TileConst.TILE_PATH_LIST.size()):
 		var tileBtn = TileBtnScene.instantiate()
 		tileBtn.tile_id = i
 		tileBtn.pressed.connect(_on_tile_btn_pressed.bind(tileBtn))

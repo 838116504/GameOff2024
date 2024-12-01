@@ -102,7 +102,7 @@ func init_map():
 		for x in map.get_width():
 			var pos = Vector2i(x, y)
 			var tile = map.get_tile(current_layer, pos)
-			match tile.get_tile_id():
+			match tile.tile_id:
 				TileConst.TileId.CLOSED_UPSTAIRS, TileConst.TileId.CLOSED_DOWNSTAIRS:
 					stairs_closed = true
 			_set_tile(pos, tile)

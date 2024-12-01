@@ -450,7 +450,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("back_title_btn:scale")
+tracks/7/path = NodePath("exit_btn:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -550,7 +550,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("back_title_btn:scale")
+tracks/7/path = NodePath("exit_btn:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1761,7 +1761,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 44.0
+offset_top = 74.0
 grow_horizontal = 2
 theme_override_constants/separation = 12
 alignment = 1
@@ -2822,7 +2822,7 @@ text = "9999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="back_title_btn" type="Button" parent="popup_layer/gameover_ui"]
+[node name="exit_btn" type="Button" parent="popup_layer/gameover_ui"]
 custom_minimum_size = Vector2(240, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -2837,7 +2837,7 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(120, 25)
 theme_override_font_sizes/font_size = 24
-text = "LS_RETURN_TITLE_BTN"
+text = "LS_EXIT"
 
 [node name="anim_player" type="AnimationPlayer" parent="popup_layer/gameover_ui"]
 libraries = {
@@ -2866,3 +2866,5 @@ script = ExtResource("86_1vuuv")
 [connection signal="pressed" from="popup_layer/database_panel/result_panel/strengthen_skill/skill_btn" to="popup_layer/database_panel" method="_on_skill_btn_pressed"]
 [connection signal="pressed" from="popup_layer/database_panel/result_panel/ok_btn" to="popup_layer/database_panel" method="_on_ok_btn_pressed"]
 [connection signal="pressed" from="popup_layer/database_panel/select_skill_color_rect/title_patch/close_btn" to="popup_layer/database_panel" method="_on_select_skill_close_btn_pressed"]
+[connection signal="exit_btn_pressed" from="popup_layer/gameover_ui" to="." method="_on_gameover_ui_exit_btn_pressed"]
+[connection signal="pressed" from="popup_layer/gameover_ui/exit_btn" to="popup_layer/gameover_ui" method="_on_exit_btn_pressed"]

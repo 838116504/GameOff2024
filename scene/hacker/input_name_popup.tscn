@@ -78,4 +78,5 @@ text = "HS_LOGIN"
 
 [node name="accept_dialog" type="AcceptDialog" parent="."]
 
+[connection signal="text_submitted" from="user_name_hbox/user_name_edit" to="." method="_on_user_name_edit_text_submitted"]
 [connection signal="pressed" from="ok_btn" to="." method="_on_ok_btn_pressed"]

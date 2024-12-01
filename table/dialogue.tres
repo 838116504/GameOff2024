@@ -1,260 +1,260 @@
-[gd_resource type="Resource" script_class="DialogueTable" load_steps=39 format=3 uid="uid://bcnlcqh742xul"]
+[gd_resource type="Resource" script_class="DialogueTable" load_steps=39 format=3 uid="uid://d3sq6crd2ufhu"]
 
-[ext_resource type="Script" path="res://table/dialogue_row.gd" id="1_pp3fl"]
-[ext_resource type="Script" path="res://table/dialogue_table.gd" id="2_jqlc8"]
+[ext_resource type="Script" path="res://table/dialogue_row.gd" id="1_gfb4e"]
+[ext_resource type="Script" path="res://table/dialogue_table.gd" id="2_kxwc7"]
 
-[sub_resource type="Resource" id="Resource_ketc1"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_btpe4"]
+script = ExtResource("1_gfb4e")
 id = 1
 skip_id = 0
 text = "DIALOGUE_1"
 avatar = "female_imp.png"
 
-[sub_resource type="Resource" id="Resource_gmrc4"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_yhpe5"]
+script = ExtResource("1_gfb4e")
 id = 2
 skip_id = -1
 text = "DIALOGUE_2"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_q3o25"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_hv7ck"]
+script = ExtResource("1_gfb4e")
 id = 3
 skip_id = 0
 text = "DIALOGUE_3"
 avatar = "female_imp.png"
 
-[sub_resource type="Resource" id="Resource_7dc77"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_f6dor"]
+script = ExtResource("1_gfb4e")
 id = 4
 skip_id = -1
 text = "DIALOGUE_4"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_qpn43"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_y2tqb"]
+script = ExtResource("1_gfb4e")
 id = 5
 skip_id = -1
 text = "DIALOGUE_5"
 avatar = "female_imp.png"
 
-[sub_resource type="Resource" id="Resource_hx6nd"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_h7yhx"]
+script = ExtResource("1_gfb4e")
 id = 6
 skip_id = 0
 text = "DIALOGUE_6"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_vdh6x"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_fyudg"]
+script = ExtResource("1_gfb4e")
 id = 7
 skip_id = -1
 text = "DIALOGUE_7"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_g0sod"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_tqby8"]
+script = ExtResource("1_gfb4e")
 id = 8
 skip_id = -1
 text = "DIALOGUE_8"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_jpmu0"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_pd7fb"]
+script = ExtResource("1_gfb4e")
 id = 9
 skip_id = -1
 text = "DIALOGUE_9"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_toeda"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_nubbr"]
+script = ExtResource("1_gfb4e")
 id = 10
 skip_id = 0
 text = "DIALOGUE_10"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_1th15"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_cgcx2"]
+script = ExtResource("1_gfb4e")
 id = 11
 skip_id = -1
 text = "DIALOGUE_11"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_g24el"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_buhou"]
+script = ExtResource("1_gfb4e")
 id = 12
-skip_id = 0
+skip_id = -1
 text = "DIALOGUE_12"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_x80di"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_smbbf"]
+script = ExtResource("1_gfb4e")
 id = 13
 skip_id = -1
 text = "DIALOGUE_13"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_1mt5b"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_pff2n"]
+script = ExtResource("1_gfb4e")
 id = 14
 skip_id = -1
 text = "DIALOGUE_14"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_yj4vl"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_sb476"]
+script = ExtResource("1_gfb4e")
 id = 15
 skip_id = -1
 text = "DIALOGUE_15"
 avatar = "player_front.png"
 
-[sub_resource type="Resource" id="Resource_kwky0"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_u5t1s"]
+script = ExtResource("1_gfb4e")
 id = 16
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_cjagx"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_fn6tw"]
+script = ExtResource("1_gfb4e")
 id = 17
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_dtvvn"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_4g48s"]
+script = ExtResource("1_gfb4e")
 id = 18
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_m21gk"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_n3y8h"]
+script = ExtResource("1_gfb4e")
 id = 19
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_ffk1k"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_ddkek"]
+script = ExtResource("1_gfb4e")
 id = 20
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_rixc3"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_18bf4"]
+script = ExtResource("1_gfb4e")
 id = 21
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_sj0od"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_q2yge"]
+script = ExtResource("1_gfb4e")
 id = 22
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_puy6b"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_rjnne"]
+script = ExtResource("1_gfb4e")
 id = 23
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_creoj"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_qu21o"]
+script = ExtResource("1_gfb4e")
 id = 24
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_rasbv"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_mpduw"]
+script = ExtResource("1_gfb4e")
 id = 25
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_qr2g2"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_r6dt7"]
+script = ExtResource("1_gfb4e")
 id = 26
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_xaa0u"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_dhwr1"]
+script = ExtResource("1_gfb4e")
 id = 27
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_eixuv"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_m6l1f"]
+script = ExtResource("1_gfb4e")
 id = 28
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_jdhuc"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_dppmx"]
+script = ExtResource("1_gfb4e")
 id = 29
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_o2pmw"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_usooe"]
+script = ExtResource("1_gfb4e")
 id = 30
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_qfm6p"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_i7iub"]
+script = ExtResource("1_gfb4e")
 id = 31
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_awua4"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_3oy5r"]
+script = ExtResource("1_gfb4e")
 id = 32
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_nnaqd"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_2skni"]
+script = ExtResource("1_gfb4e")
 id = 33
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_wwsus"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_eq6py"]
+script = ExtResource("1_gfb4e")
 id = 34
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_6fbh0"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_jkpum"]
+script = ExtResource("1_gfb4e")
 id = 35
 skip_id = 0
 text = ""
 avatar = ""
 
-[sub_resource type="Resource" id="Resource_whi8u"]
-script = ExtResource("1_pp3fl")
+[sub_resource type="Resource" id="Resource_3ntej"]
+script = ExtResource("1_gfb4e")
 id = 36
 skip_id = 0
 text = ""
 avatar = ""
 
 [resource]
-script = ExtResource("2_jqlc8")
-row_list = Array[ExtResource("1_pp3fl")]([SubResource("Resource_ketc1"), SubResource("Resource_gmrc4"), SubResource("Resource_q3o25"), SubResource("Resource_7dc77"), SubResource("Resource_qpn43"), SubResource("Resource_hx6nd"), SubResource("Resource_vdh6x"), SubResource("Resource_g0sod"), SubResource("Resource_jpmu0"), SubResource("Resource_toeda"), SubResource("Resource_1th15"), SubResource("Resource_g24el"), SubResource("Resource_x80di"), SubResource("Resource_1mt5b"), SubResource("Resource_yj4vl"), SubResource("Resource_kwky0"), SubResource("Resource_cjagx"), SubResource("Resource_dtvvn"), SubResource("Resource_m21gk"), SubResource("Resource_ffk1k"), SubResource("Resource_rixc3"), SubResource("Resource_sj0od"), SubResource("Resource_puy6b"), SubResource("Resource_creoj"), SubResource("Resource_rasbv"), SubResource("Resource_qr2g2"), SubResource("Resource_xaa0u"), SubResource("Resource_eixuv"), SubResource("Resource_jdhuc"), SubResource("Resource_o2pmw"), SubResource("Resource_qfm6p"), SubResource("Resource_awua4"), SubResource("Resource_nnaqd"), SubResource("Resource_wwsus"), SubResource("Resource_6fbh0"), SubResource("Resource_whi8u")])
+script = ExtResource("2_kxwc7")
+row_list = Array[ExtResource("1_gfb4e")]([SubResource("Resource_btpe4"), SubResource("Resource_yhpe5"), SubResource("Resource_hv7ck"), SubResource("Resource_f6dor"), SubResource("Resource_y2tqb"), SubResource("Resource_h7yhx"), SubResource("Resource_fyudg"), SubResource("Resource_tqby8"), SubResource("Resource_pd7fb"), SubResource("Resource_nubbr"), SubResource("Resource_cgcx2"), SubResource("Resource_buhou"), SubResource("Resource_smbbf"), SubResource("Resource_pff2n"), SubResource("Resource_sb476"), SubResource("Resource_u5t1s"), SubResource("Resource_fn6tw"), SubResource("Resource_4g48s"), SubResource("Resource_n3y8h"), SubResource("Resource_ddkek"), SubResource("Resource_18bf4"), SubResource("Resource_q2yge"), SubResource("Resource_rjnne"), SubResource("Resource_qu21o"), SubResource("Resource_mpduw"), SubResource("Resource_r6dt7"), SubResource("Resource_dhwr1"), SubResource("Resource_m6l1f"), SubResource("Resource_dppmx"), SubResource("Resource_usooe"), SubResource("Resource_i7iub"), SubResource("Resource_3oy5r"), SubResource("Resource_2skni"), SubResource("Resource_eq6py"), SubResource("Resource_jkpum"), SubResource("Resource_3ntej")])

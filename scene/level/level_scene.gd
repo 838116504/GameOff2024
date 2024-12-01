@@ -38,6 +38,8 @@ func get_play_timer():
 func _ready():
 	if map == null:
 		load_level(TEST_LVL_PATH)
+	else:
+		map_view.map = map
 	
 	if player_unit == null:
 		if map.player_unit:
@@ -60,6 +62,8 @@ func _ready():
 	fight_layer.player_unit = player_unit
 	
 	get_play_timer().save = level_save
+	
+	event_bus.listen(EventConst.GAMEOVER, _on_ent_gameover)
 
 func load_level(p_path:String):
 	var file = FileAccess.open(p_path, FileAccess.READ)
@@ -80,7 +84,9 @@ func set_map(p_map):
 		return
 	
 	map = p_map
-	get_map_view().map = map
+	
+	if is_node_ready():
+		map_view.map = map
 
 func set_player_unit(p_value):
 	if player_unit == p_value:
@@ -92,6 +98,10 @@ func set_player_unit(p_value):
 	player_unit = p_value
 	if player_unit:
 		player_unit.layer_changed.connect(_on_player_unit_layer_changed)
+
+func _on_ent_gameover():
+	if level_save && level_save.game_save:
+		level_save.game_save.save()
 
 func _on_player_unit_layer_changed(p_layer):
 	map_view.current_layer = p_layer
@@ -109,3 +119,11 @@ func _on_fight_scene_winned() -> void:
 
 func _on_fight_scene_losed() -> void:
 	event_bus.emit_signal(EventConst.GAMEOVER)
+
+
+func _on_gameover_ui_exit_btn_pressed() -> void:
+	var hackerScene = load(ScenePathConst.HACKER_SCENE).instantiate()
+	if level_save && level_save.game_save:
+		hackerScene.save_id = level_save.game_save.id
+	
+	scene_transition.change_scene(hackerScene, "fade_out", "fade_in")
