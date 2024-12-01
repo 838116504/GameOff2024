@@ -68,4 +68,18 @@ size_flags_horizontal = 3
 [node name="preview_label" type="Label" parent="vbox/dialogue_vbox"]
 layout_mode = 2
 
+[node name="folder_hbox" type="HBoxContainer" parent="vbox"]
+visible = false
+layout_mode = 2
+
+[node name="label" type="Label" parent="vbox/folder_hbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "LES_SKILL"
+
+[node name="skill_opt_btn" type="OptionButton" parent="vbox/folder_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [connection signal="value_changed" from="vbox/dialogue_vbox/hbox/dialogue_edit" to="." method="_on_dialogue_edit_value_changed"]
+[connection signal="item_selected" from="vbox/folder_hbox/skill_opt_btn" to="." method="_on_skill_opt_btn_item_selected"]

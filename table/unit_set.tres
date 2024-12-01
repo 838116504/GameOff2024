@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="UnitSetTable" load_steps=26 format=3 uid="uid://dr2egg430vtd0"]
+[gd_resource type="Resource" script_class="UnitSetTable" load_steps=26 format=3 uid="uid://cpblvchva5p36"]
 
-[ext_resource type="Script" path="res://table/unit_set_row.gd" id="1_yceh6"]
-[ext_resource type="Script" path="res://table/unit_set_table.gd" id="2_lisav"]
+[ext_resource type="Script" path="res://table/unit_set_row.gd" id="1_t4fka"]
+[ext_resource type="Script" path="res://table/unit_set_table.gd" id="2_t1o0d"]
 
-[sub_resource type="Resource" id="Resource_t02wv"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_tjggm"]
+script = ExtResource("1_t4fka")
 id = 1
 fight_map_id = 0
 fight_map_cell = 4
@@ -12,8 +12,8 @@ unit_id_list = [1]
 unit_fight_x_list = [3]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_ou17x"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_plyg6"]
+script = ExtResource("1_t4fka")
 id = 2
 fight_map_id = 1
 fight_map_cell = 5
@@ -21,8 +21,8 @@ unit_id_list = [1, 1]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_e3ef8"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_bvsvy"]
+script = ExtResource("1_t4fka")
 id = 3
 fight_map_id = 0
 fight_map_cell = 4
@@ -30,8 +30,8 @@ unit_id_list = [2]
 unit_fight_x_list = [3]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_1uogp"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_qesxy"]
+script = ExtResource("1_t4fka")
 id = 4
 fight_map_id = 1
 fight_map_cell = 5
@@ -39,8 +39,8 @@ unit_id_list = [2, 2]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_bjxtl"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_rf0j4"]
+script = ExtResource("1_t4fka")
 id = 5
 fight_map_id = 0
 fight_map_cell = 4
@@ -48,8 +48,8 @@ unit_id_list = [6]
 unit_fight_x_list = [3]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_mpqc1"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_hl1co"]
+script = ExtResource("1_t4fka")
 id = 6
 fight_map_id = 1
 fight_map_cell = 5
@@ -57,8 +57,8 @@ unit_id_list = [6, 6]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_asiib"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_uhag4"]
+script = ExtResource("1_t4fka")
 id = 7
 fight_map_id = 0
 fight_map_cell = 4
@@ -66,8 +66,8 @@ unit_id_list = [3]
 unit_fight_x_list = [3]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_0lyha"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_irpmh"]
+script = ExtResource("1_t4fka")
 id = 8
 fight_map_id = 0
 fight_map_cell = 4
@@ -75,8 +75,8 @@ unit_id_list = [4]
 unit_fight_x_list = [3]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_3k7dc"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_vxvvw"]
+script = ExtResource("1_t4fka")
 id = 9
 fight_map_id = 0
 fight_map_cell = 5
@@ -84,8 +84,8 @@ unit_id_list = [5]
 unit_fight_x_list = [4]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_qtvaa"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_d5lwj"]
+script = ExtResource("1_t4fka")
 id = 10
 fight_map_id = 1
 fight_map_cell = 5
@@ -93,8 +93,8 @@ unit_id_list = [3, 3]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_ntcrs"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_akkub"]
+script = ExtResource("1_t4fka")
 id = 11
 fight_map_id = 1
 fight_map_cell = 5
@@ -102,8 +102,8 @@ unit_id_list = [4, 4]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_elqnk"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_tja5u"]
+script = ExtResource("1_t4fka")
 id = 12
 fight_map_id = 1
 fight_map_cell = 5
@@ -111,8 +111,8 @@ unit_id_list = [5, 5]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_wbgun"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_4pu6n"]
+script = ExtResource("1_t4fka")
 id = 13
 fight_map_id = 1
 fight_map_cell = 5
@@ -120,8 +120,8 @@ unit_id_list = [4, 3]
 unit_fight_x_list = [0, 4]
 unit_fight_dir_list = [1, 0]
 
-[sub_resource type="Resource" id="Resource_sjt20"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_aupa8"]
+script = ExtResource("1_t4fka")
 id = 14
 fight_map_id = 2
 fight_map_cell = 5
@@ -129,8 +129,8 @@ unit_id_list = [5, 3]
 unit_fight_x_list = [4, 2]
 unit_fight_dir_list = [0, 0]
 
-[sub_resource type="Resource" id="Resource_irelg"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_xwvxh"]
+script = ExtResource("1_t4fka")
 id = 15
 fight_map_id = 2
 fight_map_cell = 5
@@ -138,8 +138,8 @@ unit_id_list = [5, 4]
 unit_fight_x_list = [4, 2]
 unit_fight_dir_list = [0, 0]
 
-[sub_resource type="Resource" id="Resource_25my7"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_bgffa"]
+script = ExtResource("1_t4fka")
 id = 16
 fight_map_id = 1
 fight_map_cell = 7
@@ -147,8 +147,8 @@ unit_id_list = [3, 3, 3]
 unit_fight_x_list = [0, 4, 6]
 unit_fight_dir_list = [1, 0, 0]
 
-[sub_resource type="Resource" id="Resource_syfc8"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_yivhn"]
+script = ExtResource("1_t4fka")
 id = 17
 fight_map_id = 1
 fight_map_cell = 7
@@ -156,8 +156,8 @@ unit_id_list = [4, 4, 4]
 unit_fight_x_list = [0, 4, 6]
 unit_fight_dir_list = [1, 0, 0]
 
-[sub_resource type="Resource" id="Resource_r0ghy"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_v8ltc"]
+script = ExtResource("1_t4fka")
 id = 18
 fight_map_id = 1
 fight_map_cell = 7
@@ -165,8 +165,8 @@ unit_id_list = [5, 5, 3]
 unit_fight_x_list = [0, 5, 4]
 unit_fight_dir_list = [1, 0, 0]
 
-[sub_resource type="Resource" id="Resource_66jlx"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_axvg8"]
+script = ExtResource("1_t4fka")
 id = 19
 fight_map_id = 1
 fight_map_cell = 7
@@ -174,8 +174,8 @@ unit_id_list = [5, 5, 4]
 unit_fight_x_list = [0, 5, 4]
 unit_fight_dir_list = [1, 0, 0]
 
-[sub_resource type="Resource" id="Resource_h3t11"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_6awjw"]
+script = ExtResource("1_t4fka")
 id = 20
 fight_map_id = 0
 fight_map_cell = 5
@@ -183,8 +183,8 @@ unit_id_list = [16]
 unit_fight_x_list = [2]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_fwf5m"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_mw7ja"]
+script = ExtResource("1_t4fka")
 id = 21
 fight_map_id = 0
 fight_map_cell = 5
@@ -192,8 +192,8 @@ unit_id_list = [17]
 unit_fight_x_list = [2]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_abyjn"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_k4epc"]
+script = ExtResource("1_t4fka")
 id = 22
 fight_map_id = 0
 fight_map_cell = 5
@@ -201,8 +201,8 @@ unit_id_list = [18]
 unit_fight_x_list = [2]
 unit_fight_dir_list = [0]
 
-[sub_resource type="Resource" id="Resource_mchu3"]
-script = ExtResource("1_yceh6")
+[sub_resource type="Resource" id="Resource_mllfw"]
+script = ExtResource("1_t4fka")
 id = 50
 fight_map_id = 0
 fight_map_cell = 4
@@ -211,5 +211,5 @@ unit_fight_x_list = [2]
 unit_fight_dir_list = [0]
 
 [resource]
-script = ExtResource("2_lisav")
-row_list = Array[ExtResource("1_yceh6")]([SubResource("Resource_t02wv"), SubResource("Resource_ou17x"), SubResource("Resource_e3ef8"), SubResource("Resource_1uogp"), SubResource("Resource_bjxtl"), SubResource("Resource_mpqc1"), SubResource("Resource_asiib"), SubResource("Resource_0lyha"), SubResource("Resource_3k7dc"), SubResource("Resource_qtvaa"), SubResource("Resource_ntcrs"), SubResource("Resource_elqnk"), SubResource("Resource_wbgun"), SubResource("Resource_sjt20"), SubResource("Resource_irelg"), SubResource("Resource_25my7"), SubResource("Resource_syfc8"), SubResource("Resource_r0ghy"), SubResource("Resource_66jlx"), SubResource("Resource_h3t11"), SubResource("Resource_fwf5m"), SubResource("Resource_abyjn"), SubResource("Resource_mchu3")])
+script = ExtResource("2_t1o0d")
+row_list = Array[ExtResource("1_t4fka")]([SubResource("Resource_tjggm"), SubResource("Resource_plyg6"), SubResource("Resource_bvsvy"), SubResource("Resource_qesxy"), SubResource("Resource_rf0j4"), SubResource("Resource_hl1co"), SubResource("Resource_uhag4"), SubResource("Resource_irpmh"), SubResource("Resource_vxvvw"), SubResource("Resource_d5lwj"), SubResource("Resource_akkub"), SubResource("Resource_tja5u"), SubResource("Resource_4pu6n"), SubResource("Resource_aupa8"), SubResource("Resource_xwvxh"), SubResource("Resource_bgffa"), SubResource("Resource_yivhn"), SubResource("Resource_v8ltc"), SubResource("Resource_axvg8"), SubResource("Resource_6awjw"), SubResource("Resource_mw7ja"), SubResource("Resource_k4epc"), SubResource("Resource_mllfw")])

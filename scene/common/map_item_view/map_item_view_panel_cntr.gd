@@ -8,6 +8,8 @@ var map_item:MapItem : set = set_map_item
 @onready var dialogue_vbox = get_dialogue_vbox()
 @onready var dialogue_edit = get_dialogue_edit()
 @onready var dialogue_preview_label = get_dialogue_preview_label()
+@onready var folder_hbox = get_folder_hbox()
+@onready var skill_opt_btn = get_skill_opt_btn()
 
 func get_icon_tex_rect():
 	return $vbox/hbox/icon_tex_rect
@@ -26,6 +28,18 @@ func get_dialogue_edit() -> SpinBox:
 
 func get_dialogue_preview_label():
 	return $vbox/dialogue_vbox/preview_label
+
+func get_folder_hbox():
+	return $vbox/folder_hbox
+
+func get_skill_opt_btn() -> OptionButton:
+	return $vbox/folder_hbox/skill_opt_btn
+
+
+func _ready():
+	skill_opt_btn.clear()
+	for row in table_set.skill.get_row_list():
+		skill_opt_btn.add_item(tr(row.name), row.id)
 
 func set_map_item(p_item):
 	map_item = p_item
@@ -49,6 +63,12 @@ func update():
 		udpate_dialogue_preview()
 	else:
 		dialogue_vbox.hide()
+	
+	if map_item is Folder && editable:
+		skill_opt_btn.select(skill_opt_btn.get_item_index(map_item.skill_id))
+		folder_hbox.show()
+	else:
+		folder_hbox.hide()
 
 
 func _on_dialogue_edit_value_changed(p_value) -> void:
@@ -69,3 +89,11 @@ func udpate_dialogue_preview():
 		dialogue_preview_label.text = tr(row.text)
 	else:
 		dialogue_preview_label.text = ""
+
+
+func _on_skill_opt_btn_item_selected(p_index:int) -> void:
+	if !map_item is Folder:
+		return
+	
+	map_item.skill_id = skill_opt_btn.get_item_id(p_index)
+	item_data_changed.emit(map_item)

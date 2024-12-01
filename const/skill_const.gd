@@ -18,6 +18,9 @@ const SKILL_LIST = [
 	preload("res://scene/common/skill/trap_skill.gd"),
 	preload("res://scene/common/skill/attack_both_skill.gd"),
 	preload("res://scene/common/skill/dash_path_attack_skill.gd"),
+	preload("res://scene/common/skill/skill_50.gd"),
+	preload("res://scene/common/skill/skill_51.gd"),
+	preload("res://scene/common/skill/skill_52.gd"),
 ]
 
 const SKILL_EFFECT_LIST = [

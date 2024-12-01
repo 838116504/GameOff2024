@@ -29,6 +29,7 @@ var def_rate:float = 1.0
 var extra_strike_hit_rate:float : set = set_extra_strike_hit_rate
 var extra_thrust_hit_rate:float : set = set_extra_thrust_hit_rate
 var extra_slash_hit_rate:float : set = set_extra_slash_hit_rate
+var hit_rate:float = 1.0
 var strike_def_rate:float = 1.0
 var thrust_def_rate:float = 1.0
 var slash_def_rate:float = 1.0
@@ -116,11 +117,14 @@ func set_row(p_value):
 		skill_state_list.clear()
 		for skillId in row.skill_id_list:
 			var skill = Skill.create_by_id(skillId)
-			var state = SkillState.new()
-			state.skill = skill
-			skill_state_list.append(state)
+			add_skill(skill)
 		
 		fight_bt = BTConst.get_unit_bt(row.bt_id)
+
+func add_skill(p_skill):
+	var state = SkillState.new()
+	state.skill = p_skill
+	skill_state_list.append(state)
 
 func set_unit_set_row(p_value):
 	if unit_set_row == p_value:
@@ -315,7 +319,7 @@ func hit(_attacker, p_type:SkillConst.DamageType, p_damage:int, p_blockable:bool
 	if is_invincible():
 		return
 	
-	var dam = p_damage - get_def()
+	var dam = (p_damage - get_def()) * hit_rate
 	
 	if dam <= 0:
 		return
